@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
 import L from 'leaflet';
@@ -138,6 +138,31 @@ function mapsLinks(mural) {
     apple: `https://maps.apple.com/?daddr=${lat},${lng}&dirflg=w`,
   };
 }
+function distanceMeters(a, b) {
+  const R = 6371000;
+  const toRad = value => (value * Math.PI) / 180;
+  const dLat = toRad(b[0] - a[0]);
+  const dLng = toRad(b[1] - a[1]);
+  const lat1 = toRad(a[0]);
+  const lat2 = toRad(b[0]);
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
+function totalRouteMeters(items) {
+  return items.slice(1).reduce((sum, item, index) => sum + distanceMeters(items[index].coords, item.coords), 0);
+}
+function routeMapLink(items) {
+  const origin = items[0].coords.join(',');
+  const destination = items[items.length - 1].coords.join(',');
+  const waypoints = items.slice(1, -1).map(m => m.coords.join(',')).join('|');
+  return `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&waypoints=${encodeURIComponent(waypoints)}&travelmode=walking`;
+}
+function shareMural(mural) {
+  const url = `${window.location.origin}${window.location.pathname}#${mural.id}`;
+  const text = `${mural.title} - Murales di Riparbella`;
+  if (navigator.share) navigator.share({ title: text, text, url }).catch(() => {});
+  else { navigator.clipboard?.writeText(url); alert('Link copiato negli appunti'); }
+}
 
 function speak(text, lang) {
   if (!('speechSynthesis' in window)) {
@@ -155,12 +180,34 @@ function App() {
   const [language, setLanguage] = useState('it');
   const [selectedId, setSelectedId] = useState(MURALES[0].id);
   const [expanded, setExpanded] = useState(false);
+  const [query, setQuery] = useState('');
+  const [year, setYear] = useState('all');
+
+  useEffect(() => {
+    const idFromHash = window.location.hash.replace('#', '');
+    if (idFromHash && MURALES.some(m => m.id === idFromHash)) setSelectedId(idFromHash);
+  }, []);
+
+  useEffect(() => {
+    window.history.replaceState(null, '', `#${selectedId}`);
+  }, [selectedId]);
   const selected = useMemo(() => MURALES.find(m => m.id === selectedId) || MURALES[0], [selectedId]);
   const selectedIndex = MURALES.findIndex(m => m.id === selected.id);
   const next = MURALES[(selectedIndex + 1) % MURALES.length];
   const links = mapsLinks(selected);
   const short = language === 'it' ? selected.shortIt : selected.shortEn;
   const full = language === 'it' ? selected.fullIt : selected.fullEn;
+  const years = useMemo(() => ['all', ...Array.from(new Set(MURALES.map(m => m.year))).sort()], []);
+  const filteredMurales = useMemo(() => {
+    const clean = query.trim().toLowerCase();
+    return MURALES.filter(m => {
+      const matchesYear = year === 'all' || m.year === year;
+      const text = `${m.title} ${m.artist} ${m.place} ${m.theme}`.toLowerCase();
+      return matchesYear && (!clean || text.includes(clean));
+    });
+  }, [query, year]);
+  const routeDistance = Math.round(totalRouteMeters(MURALES) / 10) * 10;
+  const routeMinutes = Math.max(10, Math.round(routeDistance / 75));
 
   const labels = {
     it: {
@@ -171,7 +218,7 @@ function App() {
       list: 'Tappe', guide: 'Guida interattiva', details: 'Approfondimento', readMore: 'Leggi di più', readLess: 'Riduci testo',
       listen: 'Ascolta guida', google: 'Portami qui con Google Maps', apple: 'Apri in Apple Maps', next: 'Prossima tappa',
       artist: 'Artista', year: 'Anno', place: 'Dove si trova', theme: 'Tema', qr: 'Scheda QR',
-      project: 'Il progetto', projectText: 'Questa web app raccoglie i murales di Riparbella in un itinerario digitale bilingue, con foto, descrizioni e navigazione verso ogni opera.'
+      project: 'Il progetto', projectText: 'Questa web app raccoglie i murales di Riparbella in un itinerario digitale bilingue, con foto, descrizioni e navigazione verso ogni opera.', search: 'Cerca murale, artista o luogo', allYears: 'Tutti gli anni', openRoute: 'Apri percorso completo', estimated: 'Tempo stimato', share: 'Condividi scheda', noResults: 'Nessun murale trovato con questi filtri.'
     },
     en: {
       heroTitle: 'Murals of Riparbella',
@@ -181,7 +228,7 @@ function App() {
       list: 'Stops', guide: 'Interactive guide', details: 'More details', readMore: 'Read more', readLess: 'Show less',
       listen: 'Listen to guide', google: 'Take me here with Google Maps', apple: 'Open in Apple Maps', next: 'Next stop',
       artist: 'Artist', year: 'Year', place: 'Location', theme: 'Theme', qr: 'QR page',
-      project: 'The project', projectText: 'This web app brings together the murals of Riparbella in a bilingual digital route, with photos, descriptions and navigation to each artwork.'
+      project: 'The project', projectText: 'This web app brings together the murals of Riparbella in a bilingual digital route, with photos, descriptions and navigation to each artwork.', search: 'Search mural, artist or place', allYears: 'All years', openRoute: 'Open full route', estimated: 'Estimated time', share: 'Share page', noResults: 'No mural found with these filters.'
     }
   }[language];
 
@@ -222,17 +269,25 @@ function App() {
           <div className="stats">
             <strong>{MURALES.length}</strong><span>murales</span>
             <strong>IT/EN</strong><span>guida</span>
-            <strong>Maps</strong><span>navigazione</span>
+            <strong>{routeMinutes} min</strong><span>{labels.estimated}</span>
           </div>
+          <a className="route-btn" href={routeMapLink(MURALES)} target="_blank" rel="noreferrer">{labels.openRoute}</a>
         </section>
 
         <section className="layout" id="mappa">
           <aside className="sidebar" id="schede">
             <h2>{labels.list}</h2>
+            <div className="filters">
+              <input value={query} onChange={e => setQuery(e.target.value)} placeholder={labels.search} />
+              <select value={year} onChange={e => setYear(e.target.value)}>
+                {years.map(y => <option key={y} value={y}>{y === 'all' ? labels.allYears : y}</option>)}
+              </select>
+            </div>
+            {filteredMurales.length === 0 && <p className="empty">{labels.noResults}</p>}
             <div className="stops">
-              {MURALES.map((mural, index) => (
+              {filteredMurales.map((mural) => (
                 <button key={mural.id} className={`stop ${mural.id === selected.id ? 'active' : ''}`} onClick={() => { setSelectedId(mural.id); setExpanded(false); }}>
-                  <span>{index + 1}</span>
+                  <span>{MURALES.findIndex(item => item.id === mural.id) + 1}</span>
                   <div><strong>{mural.title}</strong><small>{mural.artist} · {mural.year}</small></div>
                 </button>
               ))}
@@ -278,6 +333,7 @@ function App() {
             <div className="nav-actions">
               <a href={links.google} target="_blank" rel="noreferrer">{labels.google}</a>
               <a href={links.apple} target="_blank" rel="noreferrer">{labels.apple}</a>
+              <button onClick={() => shareMural(selected)}>{labels.share}</button>
             </div>
 
             <button className="next-stop" onClick={() => { setSelectedId(next.id); setExpanded(false); }}>
