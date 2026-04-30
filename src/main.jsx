@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
 import L from 'leaflet';
@@ -182,10 +182,26 @@ function App() {
   const [expanded, setExpanded] = useState(false);
   const [query, setQuery] = useState('');
   const [year, setYear] = useState('all');
+  const detailRef = useRef(null);
+
+  function openMural(id, options = { scroll: true }) {
+    setSelectedId(id);
+    setExpanded(false);
+    if (options.scroll) {
+      window.setTimeout(() => {
+        detailRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 80);
+    }
+  }
 
   useEffect(() => {
     const idFromHash = window.location.hash.replace('#', '');
-    if (idFromHash && MURALES.some(m => m.id === idFromHash)) setSelectedId(idFromHash);
+    if (idFromHash && MURALES.some(m => m.id === idFromHash)) {
+      setSelectedId(idFromHash);
+      window.setTimeout(() => {
+        detailRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    }
   }, []);
 
   useEffect(() => {
@@ -298,7 +314,7 @@ function App() {
             {filteredMurales.length === 0 && <p className="empty">{labels.noResults}</p>}
             <div className="stops">
               {filteredMurales.map((mural) => (
-                <button key={mural.id} className={`stop ${mural.id === selected.id ? 'active' : ''}`} onClick={() => { setSelectedId(mural.id); setExpanded(false); }}>
+                <button key={mural.id} className={`stop ${mural.id === selected.id ? 'active' : ''}`} onClick={() => openMural(mural.id)}>
                   <span>{MURALES.findIndex(item => item.id === mural.id) + 1}</span>
                   <div><strong>{mural.title}</strong><small>{mural.artist} · {mural.year}</small></div>
                 </button>
@@ -311,8 +327,8 @@ function App() {
               <TileLayer attribution='&copy; OpenStreetMap contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
               <Polyline positions={routeCoords} pathOptions={{ color: '#f97316', weight: 4, opacity: 0.8 }} />
               {MURALES.map((mural, index) => (
-                <Marker key={mural.id} position={mural.coords} icon={pinIcon(index, mural.id === selected.id)} eventHandlers={{ click: () => setSelectedId(mural.id) }}>
-                  <Popup><strong>{mural.title}</strong><br />{mural.artist}<br /><button className="popup-btn" onClick={() => setSelectedId(mural.id)}>Apri scheda</button></Popup>
+                <Marker key={mural.id} position={mural.coords} icon={pinIcon(index, mural.id === selected.id)} eventHandlers={{ click: () => openMural(mural.id) }}>
+                  <Popup><strong>{mural.title}</strong><br />{mural.artist}<br /><button className="popup-btn" onClick={() => openMural(mural.id)}>Apri scheda</button></Popup>
                 </Marker>
               ))}
               <FlyTo coords={selected.coords} />
@@ -320,7 +336,7 @@ function App() {
           </section>
         </section>
 
-        <section className="detail-card">
+        <section className="detail-card" ref={detailRef} tabIndex="-1">
           <div className="detail-image"><img src={selected.image} alt={selected.title} /></div>
           <div className="detail-content">
             <p className="eyebrow">{selectedIndex + 1} / {MURALES.length}</p>
@@ -348,7 +364,7 @@ function App() {
               <button onClick={() => shareMural(selected)}>{labels.share}</button>
             </div>
 
-            <button className="next-stop" onClick={() => { setSelectedId(next.id); setExpanded(false); }}>
+            <button className="next-stop" onClick={() => openMural(next.id)}>
               {labels.next}: <strong>{next.title}</strong>
             </button>
           </div>
