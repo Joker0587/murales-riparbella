@@ -214,21 +214,21 @@ function App() {
       heroTitle: 'Murales di Riparbella',
       heroText: 'Un percorso d’arte urbana tra memoria, paesaggio, scuola e comunità.',
       start: 'Inizia il percorso', map: 'Vedi la mappa', choose: 'Scegli un murale',
-      route: 'Percorso consigliato', routeText: '13 tappe nel borgo, pensate per una visita a piedi.',
+      route: 'Percorso consigliato', routeText: 'Un itinerario nel borgo da vivere a piedi: scegli una tappa dalla mappa o dall'elenco e avvia la navigazione solo verso il murale selezionato.',
       list: 'Tappe', guide: 'Guida interattiva', details: 'Approfondimento', readMore: 'Leggi di più', readLess: 'Riduci testo',
       listen: 'Ascolta guida', google: 'Portami qui con Google Maps', apple: 'Apri in Apple Maps', next: 'Prossima tappa',
       artist: 'Artista', year: 'Anno', place: 'Dove si trova', theme: 'Tema', qr: 'Scheda QR',
-      project: 'Il progetto', projectText: 'Questa web app raccoglie i murales di Riparbella in un itinerario digitale bilingue, con foto, descrizioni e navigazione verso ogni opera.', search: 'Cerca murale, artista o luogo', allYears: 'Tutti gli anni', openRoute: 'Apri percorso completo', estimated: 'Tempo stimato', share: 'Condividi scheda', noResults: 'Nessun murale trovato con questi filtri.'
+      project: 'Il progetto', projectText: 'Questa web app raccoglie i murales di Riparbella in un itinerario digitale bilingue, con foto, descrizioni e navigazione verso ogni opera.', search: 'Cerca murale, artista o luogo', allYears: 'Tutti gli anni', estimated: 'Tempo medio tra tappe', guideLabel: 'Guida bilingue', muralLabel: 'Murales censiti', walkLabel: 'Percorso a piedi', share: 'Condividi scheda', noResults: 'Nessun murale trovato con questi filtri.'
     },
     en: {
       heroTitle: 'Murals of Riparbella',
       heroText: 'An urban art route through memory, landscape, school and community.',
       start: 'Start the route', map: 'View the map', choose: 'Choose a mural',
-      route: 'Suggested route', routeText: '13 stops in the village, designed for a walking visit.',
+      route: 'Suggested route', routeText: 'A walking route through the village: choose a stop from the map or list and start navigation only to the selected mural.',
       list: 'Stops', guide: 'Interactive guide', details: 'More details', readMore: 'Read more', readLess: 'Show less',
       listen: 'Listen to guide', google: 'Take me here with Google Maps', apple: 'Open in Apple Maps', next: 'Next stop',
       artist: 'Artist', year: 'Year', place: 'Location', theme: 'Theme', qr: 'QR page',
-      project: 'The project', projectText: 'This web app brings together the murals of Riparbella in a bilingual digital route, with photos, descriptions and navigation to each artwork.', search: 'Search mural, artist or place', allYears: 'All years', openRoute: 'Open full route', estimated: 'Estimated time', share: 'Share page', noResults: 'No mural found with these filters.'
+      project: 'The project', projectText: 'This web app brings together the murals of Riparbella in a bilingual digital route, with photos, descriptions and navigation to each artwork.', search: 'Search mural, artist or place', allYears: 'All years', estimated: 'Average time between stops', guideLabel: 'Bilingual guide', muralLabel: 'Murals listed', walkLabel: 'Walking route', share: 'Share page', noResults: 'No mural found with these filters.'
     }
   }[language];
 
@@ -266,12 +266,24 @@ function App() {
             <h2>{labels.route}</h2>
             <p>{labels.routeText}</p>
           </div>
-          <div className="stats">
-            <strong>{MURALES.length}</strong><span>murales</span>
-            <strong>IT/EN</strong><span>guida</span>
-            <strong>{routeMinutes} min</strong><span>{labels.estimated}</span>
+          <div className="stats" aria-label="Riepilogo percorso">
+            <div className="stat-item">
+              <strong>{MURALES.length}</strong>
+              <span>{labels.muralLabel}</span>
+            </div>
+            <div className="stat-item">
+              <strong>IT/EN</strong>
+              <span>{labels.guideLabel}</span>
+            </div>
+            <div className="stat-item">
+              <strong>{routeMinutes} min</strong>
+              <span>{labels.estimated}</span>
+            </div>
+            <div className="stat-item soft">
+              <strong>↗</strong>
+              <span>{labels.walkLabel}</span>
+            </div>
           </div>
-          <a className="route-btn" href={routeMapLink(MURALES)} target="_blank" rel="noreferrer">{labels.openRoute}</a>
         </section>
 
         <section className="layout" id="mappa">
