@@ -230,7 +230,7 @@ function App() {
       heroTitle: 'Murales di Riparbella',
       heroText: 'Un percorso d’arte urbana tra memoria, paesaggio, scuola e comunità.',
       start: 'Inizia il percorso', map: 'Vedi la mappa', choose: 'Scegli un murale',
-      route: 'Percorso consigliato', routeText: 'Percorso consigliato', routeText: "Un itinerario nel borgo da vivere a piedi: scegli una tappa dalla mappa o dall'elenco e avvia la navigazione solo verso il murale selezionato.",
+      route: 'Percorso consigliato', routeText: "Un itinerario nel borgo da vivere a piedi: scegli una tappa dalla mappa o dall'elenco e avvia la navigazione solo verso il murale selezionato.",
       list: 'Tappe', guide: 'Guida interattiva', details: 'Approfondimento', readMore: 'Leggi di più', readLess: 'Riduci testo',
       listen: 'Ascolta guida', google: 'Portami qui con Google Maps', apple: 'Apri in Apple Maps', next: 'Prossima tappa',
       artist: 'Artista', year: 'Anno', place: 'Dove si trova', theme: 'Tema', qr: 'Scheda QR',
@@ -375,6 +375,13 @@ function App() {
           <p>{labels.projectText}</p>
           <p className="note">Suggerimento futuro: ogni murale può avere un QR code dedicato che apre direttamente la sua scheda nella web app.</p>
         </section>
+
+        <footer className="site-footer">
+          <p><strong>Web app ideata e realizzata da Francesco Bolognesi</strong></p>
+          <p>per raccontare e valorizzare i murales di Riparbella.</p>
+          <p className="footer-note">Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
+          <p className="footer-version">Versione prototipo — 2026</p>
+        </footer>
       </main>
     </div>
   );

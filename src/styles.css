@@ -151,3 +151,29 @@ h2 { margin: 0; font-size: clamp(1.7rem, 3vw, 2.35rem); letter-spacing: -.04em; 
   .stats { grid-template-columns: 1fr 1fr; }
   .stat-item { min-height: 86px; padding: 14px; }
 }
+
+.site-footer {
+  margin-top: 2rem;
+  padding: 2rem 1rem;
+  border-top: 1px solid rgba(120, 113, 108, 0.24);
+  text-align: center;
+  color: #78716c;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.site-footer p {
+  margin: 0.15rem 0;
+}
+
+.site-footer strong {
+  color: #44403c;
+}
+
+.site-footer .footer-note {
+  margin-top: 1rem;
+}
+
+.site-footer .footer-version {
+  font-size: 0.85rem;
+}
