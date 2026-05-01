@@ -230,7 +230,7 @@ function App() {
       heroTitle: 'Murales di Riparbella',
       heroText: 'Un percorso d’arte urbana tra memoria, paesaggio, scuola e comunità.',
       start: 'Inizia il percorso', map: 'Vedi la mappa', choose: 'Scegli un murale',
-      route: 'Percorso consigliato', routeText: 'Un itinerario nel borgo da vivere a piedi: scegli una tappa dalla mappa o dall’elenco e avvia la navigazione solo verso il murale selezionato.',    list: 'Tappe', guide: 'Guida interattiva', details: 'Approfondimento', readMore: 'Leggi di più', readLess: 'Riduci testo',
+      route: 'Percorso consigliato', routeText: 'Un itinerario nel borgo da vivere a piedi: scegli una tappa dalla mappa o dall'elenco e avvia la navigazione solo verso il murale selezionato.',    list: 'Tappe', guide: 'Guida interattiva', details: 'Approfondimento', readMore: 'Leggi di più', readLess: 'Riduci testo',
       listen: 'Ascolta guida', google: 'Portami qui con Google Maps', apple: 'Apri in Apple Maps', next: 'Prossima tappa',
       artist: 'Artista', year: 'Anno', place: 'Dove si trova', theme: 'Tema', qr: 'Scheda QR',
       project: 'Il progetto', projectText: 'Questa web app raccoglie i murales di Riparbella in un itinerario digitale bilingue, con foto, descrizioni e navigazione verso ogni opera.', search: 'Cerca murale, artista o luogo', allYears: 'Tutti gli anni', estimated: 'Tempo medio tra tappe', guideLabel: 'Guida bilingue', muralLabel: 'Murales censiti', walkLabel: 'Percorso a piedi', share: 'Condividi scheda', noResults: 'Nessun murale trovato con questi filtri.'
