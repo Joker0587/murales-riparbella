@@ -8,7 +8,9 @@
     "@vitejs/plugin-react": "latest",
     "vite": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "leaflet": "latest",
+    "react-leaflet": "latest"
   },
   "devDependencies": {}
 }
