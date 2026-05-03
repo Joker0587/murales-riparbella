@@ -470,3 +470,5 @@ footer p {
 .clickable-image:hover {
   filter: brightness(0.96);
 }
+
+.detail-list{margin:0;padding-left:1.2rem;color:#334155;line-height:1.65}.detail-list li::marker{color:var(--accent-dark)}.compact-details{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 12px}.compact-details span{background:#fff7df;border:1px solid var(--line);color:#6b4b00;border-radius:999px;font-size:12px;font-weight:800;padding:6px 9px}.share-inline{margin-top:10px}.family-card p{margin-top:0}.hunt-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:18px}.hunt-grid span{background:#faf7f0;border:1px solid var(--line);border-radius:16px;padding:12px;font-weight:800;color:#334155}@media(max-width:700px){.hunt-grid{grid-template-columns:1fr}}

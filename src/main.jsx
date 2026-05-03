@@ -15,6 +15,7 @@ const murals = [
     lng: 10.600444,
     image: '/images/la-gioia.jpg',
     tags: ['Paesaggio', 'Natura', 'Identità'],
+    detailsToFind: ['le colline', 'i vigneti e gli oliveti', 'il bosco', 'il mare all’orizzonte', 'l’abbraccio della natura'],
     observe: 'Osserva il borgo come se fosse un autoritratto: colline, vigneti, oliveti, boschi e mare all’orizzonte.',
     directionsNext: 'Scendi verso Piazza Giacomo Matteotti: la prossima tappa è il murale I Lari, sul palazzo davanti al bar.',
     it: 'Un autoritratto poetico di Riparbella: colline, vigneti, oliveti, boschi e panorami verso il mare. L’opera celebra la gioia di vivere nel borgo, circondati dalla natura e dall’abbraccio della comunità.',
@@ -30,6 +31,7 @@ const murals = [
     lng: 10.600194,
     image: '/images/lari.jpg',
     tags: ['Memoria', 'Comunità', 'Protezione'],
+    detailsToFind: ['i tre Lari protettori', 'i colori forti e luminosi', 'il dialogo con l’antico palazzo di giustizia', 'l’idea di protezione della casa'],
     observe: 'Osserva i tre stendardi colorati: sono una reinterpretazione dei Lari, antichi protettori della casa e della famiglia.',
     directionsNext: 'Rimani in Piazza Giacomo Matteotti e spostati di pochi passi verso la facciata principale del palazzo del bar Memoria e desiderio.',
     it: 'L’opera ridà vita al vecchio palazzo di giustizia e alle antiche carceri del paese. Giò Pistone usa colori netti e forti per trasformare la memoria negativa dell’edificio in un’immagine di gioia e libertà. I tre Lari familiaris, protettori della casa e della famiglia nella cultura etrusca e romana, diventano tre presenze simboliche che custodiscono il luogo.',
@@ -45,6 +47,7 @@ const murals = [
     lng: 10.600028,
     image: '/images/memoria-desiderio.jpg',
     tags: ['Memoria', 'Desiderio', 'Mappa emotiva'],
+    detailsToFind: ['la mappa non convenzionale del paese', 'i luoghi della memoria raccontati dai cittadini', 'i desideri disegnati dai ragazzi', 'la legenda sulla facciata laterale'],
     observe: 'Guarda la facciata come fosse una mappa non convenzionale: non indica solo strade, ma ricordi, emozioni e desideri.',
     directionsNext: 'Resta nell’area di Piazza Matteotti: la prossima opera è Amphora, sempre in zona piazza.',
     it: 'Una mappa artistica e non convenzionale di Riparbella, nata dall’ascolto dei cittadini e dal confronto con gli studenti. L’opera intreccia ricordi, luoghi, profumi, emozioni e desideri futuri: dalle panchine come punto d’incontro ai disegni dei ragazzi. La facciata laterale ospita una legenda speciale, fatta di distanze sociali, emotive e politiche.',
@@ -60,6 +63,7 @@ const murals = [
     lng: 10.59986,
     image: '/images/amphora.jpg',
     tags: ['Vino', 'Sgraffito', 'Territorio'],
+    detailsToFind: ['la forma dell’anfora', 'olivi e vigneti', 'la bicromia ispirata allo sgraffito', 'il paesaggio che sembra nascere dal muro'],
     observe: 'Guarda la bicromia e il modo in cui il paesaggio sembra emergere direttamente dalla superficie del muro.',
     directionsNext: 'Prosegui verso il centro espositivo Museo C’ERA per raggiungere Corona Aurea.',
     it: 'Amphora racconta il territorio rurale di Riparbella, con olivi e vigneti. Come un’anfora custodisce il vino e la sua storia, il muro diventa contenitore di immagini che emergono dalla materia. L’opera dialoga con la tradizione toscana dello sgraffito, riprendendone bicromia e sapore compositivo.',
@@ -75,6 +79,7 @@ const murals = [
     lng: 10.598745,
     image: '/images/corona-aurea.jpg',
     tags: ['Etruschi', 'Museo C’ERA', 'Oro'],
+    detailsToFind: ['i riflessi metallici', 'il movimento circolare', 'il richiamo alla corona funeraria', 'le pennellate che sembrano uscire dal muro'],
     observe: 'Cerca il movimento circolare e i riflessi metallici: richiamano la corona funeraria conservata nel Museo C’ERA.',
     directionsNext: 'Scendi verso Piazza Borgo di Sotto: lì trovi L’amore nella pentola.',
     it: 'L’opera rende omaggio alla corona funeraria conservata nel Museo C’ERA. Il riferimento agli Etruschi, all’oro e alla memoria del territorio si unisce a un linguaggio astratto ed energetico. Le pennellate creano un movimento circolare che richiama l’umanità, la bellezza e il dialogo tra passato, presente e futuro.',
@@ -90,6 +95,7 @@ const murals = [
     lng: 10.598239,
     image: '/images/amore-pentola.jpg',
     tags: ['Tradizione', 'Racconti popolari', 'Cinghiale'],
+    detailsToFind: ['la grande pentola', 'il fuoco della notte di Sant’Antonio', 'il cinghiale', 'il cavallo Gino', 'la bandiera sarda'],
     observe: 'Cerca la grande pentola, il fuoco e il cinghiale: sono dettagli che raccontano memoria popolare e cucina del territorio.',
     directionsNext: 'Prosegui verso Piazza Federigo Baldasserini, dove si trova Terra e colori.',
     it: 'Il murale racconta una tradizione popolare della piazza: le donne si riunivano attorno al fuoco nella notte di Sant’Antonio e lasciavano sciogliere il piombo in grandi pentole. Le forme create dal metallo raffreddato venivano interpretate per immaginare il futuro sposo. Nell’opera compaiono anche il cinghiale, i paesaggi, il cavallo Gino e un richiamo alla comunità sarda del territorio.',
@@ -105,6 +111,7 @@ const murals = [
     lng: 10.597198,
     image: '/images/terra-colori.jpg',
     tags: ['Natura', 'Paesaggio', 'Colori'],
+    detailsToFind: ['le onde', 'il sole e la luna', 'l’oliva e i colori del vino', 'la finestra sul paesaggio', 'la lente-faro e la cazzuola'],
     observe: 'Lascia correre lo sguardo tra onde, sole, luna, vegetazione, olive e richiami al vino: è un ritratto astratto del territorio.',
     directionsNext: 'Raggiungi Via della Noce: il percorso continua con Universo Riparbella.',
     it: 'L’opera rappresenta l’essenza di Riparbella con immagini astratte e simboliche: il calore del sole, la freschezza del mare, la mobilità lenta, l’olio, il vino, l’estate e i paesaggi circostanti. Tra forme e colori compaiono onde, sole e luna, vegetazione, una finestra aperta sul panorama, una cazzuola e una lente-faro che guarda verso il territorio.',
@@ -120,6 +127,7 @@ const murals = [
     lng: 10.597914,
     image: '/images/universo-riparbella.jpg',
     tags: ['Scuola', 'Bambini', 'Agenda 2030'],
+    detailsToFind: ['il nastro giallo e azzurro', 'le caselle come un gioco dell’oca', 'i disegni dei bambini', 'i temi dell’Agenda 2030'],
     observe: 'Segui il nastro giallo e azzurro: collega le caselle ideate dai bambini come in un grande gioco dell’oca urbano.',
     directionsNext: 'Prosegui lungo Via della Noce fino a Hunting Hunters.',
     it: 'Nato dal desiderio dei bambini della scuola primaria, il murale trasforma Via della Noce in una sorta di gioco dell’oca dedicato all’Agenda 2030. Una bambina srotola un nastro con i colori di Riparbella, azzurro e giallo, che avvolge le caselle realizzate dai bozzetti degli alunni. Il messaggio è chiaro: Riparbella che insegna.',
@@ -135,6 +143,7 @@ const murals = [
     lng: 10.597916,
     image: '/images/hunting-hunters.jpg',
     tags: ['Natura', 'Animali', 'Ironia'],
+    detailsToFind: ['il pettirosso', 'le gazze ladre', 'l’anello nascosto', 'la trappola', 'il ribaltamento tra cacciatore e preda'],
     observe: 'Individua il pettirosso, le gazze ladre e l’anello nascosto: la scena ribalta con ironia il rapporto tra preda e cacciatore.',
     directionsNext: 'Continua lungo Via della Noce verso l’opera di Aris.',
     it: 'Hitnes dipinge una favola ironica ispirata al mondo animale e alla tradizione venatoria del territorio. Un pettirosso e alcune gazze ladre sembrano ribaltare il rapporto tra preda e cacciatore. Il titolo gioca proprio su questa inversione: chi caccia chi?',
@@ -150,6 +159,7 @@ const murals = [
     lng: 10.59808,
     image: '/images/aris.jpg',
     tags: ['Etruschi', 'Ceramica', 'Pietro Leopoldo'],
+    detailsToFind: ['il vaso etrusco', 'le forme bicrome', 'i profili stilizzati', 'il legame con il Museo C’ERA', 'l’omaggio a Pietro Leopoldo'],
     observe: 'Osserva i profili e le forme bicrome: richiamano il vaso etrusco e lo trasformano in immagine contemporanea.',
     directionsNext: 'Sali verso l’edificio scolastico in Via della Noce 15 per raggiungere Riparbella01.',
     it: 'Aris celebra le origini etrusche di Riparbella e rende omaggio a Pietro Leopoldo di Toscana. L’opera si ispira ai reperti del Museo C’ERA, in particolare ai vasi etruschi, trasformando un antico manufatto in un’immagine contemporanea.',
@@ -165,6 +175,7 @@ const murals = [
     lng: 10.59805,
     image: '/images/riparbella01-moneyless.jpg',
     tags: ['Astrattismo', 'Scuola', 'Musica'],
+    detailsToFind: ['le forme geometriche astratte', 'i richiami al movimento e alla musica', 'i colori volutamente non pieni', 'il riflesso nelle finestre della palestra'],
     observe: 'Nota le linee e le forme astratte: in alcune ore del giorno l’opera si riflette nelle finestre della palestra di fronte.',
     directionsNext: 'Spostati verso Via Gramsci, lungo il muro di cinta della scuola elementare.',
     it: 'Un’opera astratta, realizzata a spray, che dialoga con l’edificio scolastico degli anni Trenta. Richiama le avanguardie, il futurismo, Kandinsky, il movimento e la musica. In alcune ore del giorno il dipinto si riflette nelle finestre della palestra di fronte, creando l’illusione di vetrate dipinte.',
@@ -180,6 +191,7 @@ const murals = [
     lng: 10.598045,
     image: '/images/esperienza-vita.jpg',
     tags: ['Scuola', 'Paesaggio', 'Partecipazione'],
+    detailsToFind: ['l’uva', 'i cinghiali', 'la campagna', 'il mare sullo sfondo', 'i segni lasciati dai bambini'],
     observe: 'Cerca gli elementi naturali del paesaggio di Riparbella: uva, cinghiali, campagna e mare.',
     directionsNext: 'Prosegui in Via Gramsci verso la palestra comunale per l’ultima tappa: Il sonno di Turan.',
     it: 'Il murale nasce da un workshop con i bambini della scuola primaria, che hanno imparato come nasce la street art e hanno partecipato attivamente alla colorazione del muro. L’opera rappresenta gli elementi naturali del paesaggio di Riparbella: uva, cinghiali, campagna e mare sullo sfondo.',
@@ -195,6 +207,7 @@ const murals = [
     lng: 10.598161,
     image: '/images/sonno-turan.jpg',
     tags: ['Liberazione', 'Pace', 'Turan'],
+    detailsToFind: ['la dea Turan', 'il cigno nero', 'il melograno', 'la colomba bianca', 'il profilo della collina e del mare'],
     observe: 'Guarda Turan come una figura sospesa tra memoria e rinascita: amore, pace e liberazione diventano il cuore dell’opera.',
     directionsNext: 'Hai completato il tour. Puoi tornare verso il centro storico o scegliere un parcheggio o un locale dalla guida.',
     it: 'L’opera celebra gli 80 anni dalla Liberazione dal Fascismo attraverso Turan, dea etrusca dell’amore e della vitalità. La dea, sospesa tra memoria e rinascita, irradia un’energia capace di dissolvere le ombre della guerra. Il messaggio diventa universale: amore, pace e liberazione da ogni oppressione.',
@@ -242,6 +255,11 @@ const ui = {
     previous: 'Precedente',
     next: 'Prossima',
     observe: 'Cosa osservare',
+    findDetails: 'Cerca questi dettagli',
+    shareCard: 'Condividi scheda',
+    familyTitle: 'Per bambini e famiglie',
+    familySubtitle: 'Una piccola caccia al dettaglio per osservare i murales con occhi curiosi.',
+    familyIntro: 'Durante il percorso prova a trovare questi elementi nascosti o ricorrenti nelle opere:',
     directions: 'Indicazioni',
     infoDisclaimer: 'Informazioni utili per il visitatore. Orari, aperture e recapiti possono variare: si consiglia di contattare direttamente le attività prima della visita.',
     searchPlaceholder: 'Cerca murale, artista, tema...',
@@ -272,6 +290,11 @@ const ui = {
     previous: 'Previous',
     next: 'Next',
     observe: 'What to notice',
+    findDetails: 'Look for these details',
+    shareCard: 'Share card',
+    familyTitle: 'For children and families',
+    familySubtitle: 'A small detail hunt to explore the murals with curious eyes.',
+    familyIntro: 'During the route, try to find these hidden or recurring elements in the artworks:',
     directions: 'Directions',
     infoDisclaimer: 'Useful visitor information. Opening hours and contacts may change: please contact the businesses directly before your visit.',
     searchPlaceholder: 'Search mural, artist, theme...',
@@ -326,6 +349,25 @@ function App() {
     setSelectedId(id);
     window.history.replaceState(null, '', `#${id}`);
     if (scroll) setTimeout(() => detailsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+  };
+
+
+  const shareMural = async (mural = selectedMural) => {
+    const url = `${window.location.origin}${window.location.pathname}#${mural.id}`;
+    const title = `${mural.title} — Murales di Riparbella`;
+    const text = language === 'it'
+      ? `Scopri il murale "${mural.title}" nel percorso dei murales di Riparbella.`
+      : `Discover the mural "${mural.title}" on the Riparbella mural route.`;
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, text, url });
+        return;
+      } catch (error) {}
+    }
+
+    await navigator.clipboard?.writeText(url);
+    alert(language === 'it' ? 'Link della scheda copiato.' : 'Card link copied.');
   };
 
   const goToStep = (index) => {
@@ -418,6 +460,13 @@ function App() {
                 <h4>{t.observe}</h4>
                 <p>{selectedMural.observe}</p>
               </div>
+
+              <div className="mini-block">
+                <h4>{t.findDetails}</h4>
+                <ul className="detail-list">
+                  {selectedMural.detailsToFind.map((detail) => <li key={detail}>{detail}</li>)}
+                </ul>
+              </div>
               <div className="mini-block">
                 <h4>{t.detail}</h4>
                 <p>{t.readHint}</p>
@@ -433,6 +482,7 @@ function App() {
               <div className="button-row">
                 <a href={navGoogle(selectedMural.lat, selectedMural.lng)} target="_blank" rel="noreferrer" className="primary link">{t.google}</a>
                 <a href={navApple(selectedMural.lat, selectedMural.lng)} target="_blank" rel="noreferrer" className="secondary link">{t.apple}</a>
+                <button className="secondary" onClick={() => shareMural(selectedMural)}>{t.shareCard}</button>
               </div>
 
               <div className="button-row">
@@ -459,10 +509,28 @@ function App() {
                   <p className="step">#{murals.findIndex((m) => m.id === mural.id) + 1}</p>
                   <h3>{mural.title}</h3>
                   <p className="meta">{mural.artist} · {mural.year}</p>
+                  <div className="compact-details">
+                    {mural.detailsToFind.slice(0, 3).map((detail) => <span key={detail}>{detail}</span>)}
+                  </div>
                   <p>{language === 'it' ? mural.it : mural.en}</p>
+                  <button className="secondary small share-inline" onClick={(event) => { event.stopPropagation(); shareMural(mural); }}>{t.shareCard}</button>
                 </div>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section className="section family-section">
+          <div className="section-heading">
+            <p className="kicker">Gioca con i murales</p>
+            <h2>{t.familyTitle}</h2>
+          </div>
+          <div className="text-card family-card">
+            <p>{t.familySubtitle}</p>
+            <p>{t.familyIntro}</p>
+            <div className="hunt-grid">
+              {['un cinghiale', 'un cavallo', 'una colomba', 'un’anfora', 'il mare', 'un pettirosso', 'una gazza ladra', 'un melograno', 'il colore giallo e azzurro', 'una pentola', 'un vaso etrusco', 'un’oliva'].map((item) => <span key={item}>☐ {item}</span>)}
+            </div>
           </div>
         </section>
 

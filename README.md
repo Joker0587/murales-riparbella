@@ -35,3 +35,9 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Aggiunta funzione “Leggi scheda” al posto dell’audioguida.
 - Cliccando sull’immagine del murale selezionato si va alla scheda.
 - Riordinato il tour per seguire meglio l’andamento della strada ed evitare passaggi ripetuti nelle stesse zone.
+
+
+## Novità V9
+- Cerca questi dettagli per ogni murale.
+- Sezione bambini/famiglie con caccia al dettaglio.
+- Pulsante Condividi scheda.
