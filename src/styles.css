@@ -461,3 +461,12 @@ footer p {
     flex-direction: column;
   }
 }
+
+
+.clickable-image {
+  cursor: pointer;
+}
+
+.clickable-image:hover {
+  filter: brightness(0.96);
+}

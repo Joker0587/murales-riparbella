@@ -27,3 +27,11 @@ I recapiti di ristoranti/bar e le informazioni pratiche possono cambiare: verifi
 ## Analytics
 
 Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboard Vercel.
+
+
+## Novità V8
+
+- Rimossa la guida parlata.
+- Aggiunta funzione “Leggi scheda” al posto dell’audioguida.
+- Cliccando sull’immagine del murale selezionato si va alla scheda.
+- Riordinato il tour per seguire meglio l’andamento della strada ed evitare passaggi ripetuti nelle stesse zone.
