@@ -1,0 +1,4 @@
+Carica tutti questi file su GitHub sostituendo quelli esistenti.
+Controlla che package.json e package-lock.json vengano aggiornati.
+Nel repository NON devono rimanere leaflet, react-leaflet o @react-leaflet/core.
+Dopo il commit su Vercel fai Redeploy -> Clear cache and redeploy.
