@@ -260,6 +260,14 @@ const ui = {
     familyTitle: 'Per bambini e famiglie',
     familySubtitle: 'Una piccola caccia al dettaglio per osservare i murales con occhi curiosi.',
     familyIntro: 'Durante il percorso prova a trovare questi elementi nascosti o ricorrenti nelle opere:',
+    visitTipsTitle: 'Consigli per la visita',
+    visitTipsSubtitle: 'Qualche indicazione semplice per vivere meglio il percorso.',
+    projectTitle: 'Il progetto',
+    projectKicker: 'Arte pubblica e comunità',
+    projectText1: 'Il percorso dei murales nasce come progetto di arte pubblica e rigenerazione culturale, con l’obiettivo di raccontare Riparbella attraverso il dialogo tra artisti, cittadini, scuola, memoria storica e paesaggio.',
+    projectText2: 'Le opere trasformano le facciate del paese in un museo a cielo aperto, valorizzando l’identità del borgo: le radici etrusche, la vita agricola, il rapporto con la natura, la presenza del mare all’orizzonte e il ruolo della comunità.',
+    backToTour: 'Torna al tour',
+    readMore: 'Approfondimento',
     directions: 'Indicazioni',
     infoDisclaimer: 'Informazioni utili per il visitatore. Orari, aperture e recapiti possono variare: si consiglia di contattare direttamente le attività prima della visita.',
     searchPlaceholder: 'Cerca murale, artista, tema...',
@@ -295,6 +303,14 @@ const ui = {
     familyTitle: 'For children and families',
     familySubtitle: 'A small detail hunt to explore the murals with curious eyes.',
     familyIntro: 'During the route, try to find these hidden or recurring elements in the artworks:',
+    visitTipsTitle: 'Visit tips',
+    visitTipsSubtitle: 'A few simple suggestions to enjoy the route at its best.',
+    projectTitle: 'The project',
+    projectKicker: 'Public art and community',
+    projectText1: 'The mural route was created as a public art and cultural regeneration project, designed to tell the story of Riparbella through a dialogue between artists, residents, schools, historical memory and landscape.',
+    projectText2: 'The artworks turn the village façades into an open-air museum, highlighting Riparbella’s identity: its Etruscan roots, agricultural life, relationship with nature, the sea on the horizon and the role of the community.',
+    backToTour: 'Back to tour',
+    readMore: 'More details',
     directions: 'Directions',
     infoDisclaimer: 'Useful visitor information. Opening hours and contacts may change: please contact the businesses directly before your visit.',
     searchPlaceholder: 'Search mural, artist, theme...',
@@ -419,6 +435,42 @@ function App() {
           </div>
         </section>
 
+        <section className="section tips-section">
+          <div className="section-heading">
+            <p className="kicker">Prima di partire</p>
+            <h2>{t.visitTipsTitle}</h2>
+          </div>
+          <div className="tips-grid">
+            <article className="tip-card">
+              <strong>45/60 min</strong>
+              <span>Durata consigliata con soste davanti alle opere.</span>
+            </article>
+            <article className="tip-card">
+              <strong>Percorso a piedi</strong>
+              <span>Il tour attraversa il centro storico e segue l’andamento della strada.</span>
+            </article>
+            <article className="tip-card">
+              <strong>Scarpe comode</strong>
+              <span>Il borgo ha salite, discese e scorci da scoprire lentamente.</span>
+            </article>
+            <article className="tip-card">
+              <strong>Rispetto</strong>
+              <span>Alcune opere si trovano su edifici abitati: osserva e fotografa con discrezione.</span>
+            </article>
+          </div>
+        </section>
+
+        <section className="section project-section">
+          <div className="section-heading">
+            <p className="kicker">{t.projectKicker}</p>
+            <h2>{t.projectTitle}</h2>
+          </div>
+          <div className="text-card">
+            <p>{t.projectText1}</p>
+            <p>{t.projectText2}</p>
+          </div>
+        </section>
+
         <section className="section map-section" ref={mapRef}>
           <div className="section-heading">
             <p className="kicker">Pin e tappe</p>
@@ -483,6 +535,7 @@ function App() {
                 <a href={navGoogle(selectedMural.lat, selectedMural.lng)} target="_blank" rel="noreferrer" className="primary link">{t.google}</a>
                 <a href={navApple(selectedMural.lat, selectedMural.lng)} target="_blank" rel="noreferrer" className="secondary link">{t.apple}</a>
                 <button className="secondary" onClick={() => shareMural(selectedMural)}>{t.shareCard}</button>
+                <button className="secondary" onClick={() => tourRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>{t.backToTour}</button>
               </div>
 
               <div className="button-row">
@@ -495,7 +548,7 @@ function App() {
 
         <section className="section" ref={detailsRef}>
           <div className="section-heading">
-            <p className="kicker">Schede opera</p>
+            <p className="kicker">Schede dettagliate</p>
             <h2>{t.list}</h2>
           </div>
 
@@ -513,7 +566,10 @@ function App() {
                     {mural.detailsToFind.slice(0, 3).map((detail) => <span key={detail}>{detail}</span>)}
                   </div>
                   <p>{language === 'it' ? mural.it : mural.en}</p>
-                  <button className="secondary small share-inline" onClick={(event) => { event.stopPropagation(); shareMural(mural); }}>{t.shareCard}</button>
+                  <div className="card-actions">
+                    <button className="secondary small share-inline" onClick={(event) => { event.stopPropagation(); shareMural(mural); }}>{t.shareCard}</button>
+                    <button className="primary small share-inline" onClick={(event) => { event.stopPropagation(); selectMural(mural.id); tourRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.backToTour}</button>
+                  </div>
                 </div>
               </article>
             ))}

@@ -41,3 +41,11 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Cerca questi dettagli per ogni murale.
 - Sezione bambini/famiglie con caccia al dettaglio.
 - Pulsante Condividi scheda.
+
+
+## Novità V10
+
+- Aggiunta sezione “Consigli per la visita”.
+- Aggiunta sezione “Il progetto”.
+- Migliorata la scheda del murale con pulsanti più chiari.
+- Aggiunto pulsante “Torna al tour”.
