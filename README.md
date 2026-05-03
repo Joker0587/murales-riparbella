@@ -1,23 +1,29 @@
-# Murales di Riparbella
+# Murales di Riparbella — V7
 
-Web app React/Vite pronta per Vercel.
+Web app React/Vite per il percorso dei murales di Riparbella.
 
-## Prova in locale
+## Novità V7
 
-```bash
-npm install
-npm run dev
-```
+- Sezione introduttiva “Il percorso”
+- Tour guidato 1–13 con spiegazioni e indicazioni tra le tappe
+- Audioguida con Play, Pausa/Riprendi e Stop
+- Sezione parcheggi con navigazione Google Maps e Apple Maps
+- Sezione ristoranti/bar con telefono, navigazione e chiamata
+- Footer crediti
+- Nessuna dipendenza da CDN di icone esterne
 
-## Pubblicazione su Vercel
+## Deploy Vercel
 
-1. Carica questa cartella su GitHub.
-2. Vai su Vercel > Add New > Project.
-3. Importa il repository.
-4. Impostazioni consigliate:
-   - Framework Preset: Vite
-   - Build Command: npm run build
-   - Output Directory: dist
-5. Clicca Deploy.
+Framework: Vite  
+Build Command: `npm run build`  
+Output Directory: `dist`  
+Install Command: `npm install`
 
-Le immagini sono in `public/images/`.
+## Nota
+
+I recapiti di ristoranti/bar e le informazioni pratiche possono cambiare: verificare prima della pubblicazione ufficiale.
+
+
+## Analytics
+
+Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboard Vercel.

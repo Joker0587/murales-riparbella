@@ -9,8 +9,7 @@
     "vite": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "leaflet": "latest",
-    "react-leaflet": "latest"
+    "@vercel/analytics": "latest"
   },
   "devDependencies": {}
 }
