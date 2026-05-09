@@ -94,3 +94,10 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Corretto il menu superiore: testi in nero e più leggibili.
 - Resi più robusti i pulsanti “Mappa”, “I parcheggi” e “Dove fermarsi”.
 - I pulsanti portano direttamente alle sezioni corrette della pagina.
+
+## Novità V17 — versione 1.17
+
+- Rimossi i vecchi pulsanti e le statistiche sotto al sottotitolo.
+- Spostati “Mappa”, “I parcheggi” e “Dove fermarsi” sotto al testo principale.
+- I pulsanti portano direttamente alle sezioni corrette della pagina.
+- Aggiornato il numero versione nel footer a 1.17.

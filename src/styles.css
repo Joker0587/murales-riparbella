@@ -903,3 +903,45 @@ footer p {
 .practical {
   scroll-margin-top: 28px;
 }
+
+/* V17 - Pulsanti principali sotto al sottotitolo */
+.hero-quick-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+.hero-quick-links button {
+  color: #172033;
+  background: rgba(255,255,255,.94);
+  border: 1px solid rgba(23,32,51,.16);
+  border-radius: 999px;
+  padding: 13px 18px;
+  font-size: 16px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 10px 26px rgba(15,23,42,.09);
+}
+
+.hero-quick-links button:hover,
+.hero-quick-links button:focus {
+  color: #ffffff;
+  background: #172033;
+  border-color: #172033;
+}
+
+.topbar .nav-links {
+  display: none !important;
+}
+
+@media (max-width: 560px) {
+  .hero-quick-links {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .hero-quick-links button {
+    width: 100%;
+  }
+}
