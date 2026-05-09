@@ -243,6 +243,9 @@ const ui = {
     map: 'Mappa del percorso',
     mapIntro: 'Segui le tappe numerate nell’ordine consigliato. Clicca su una tappa per aggiornare la mappa, leggere la scheda o aprire il navigatore.',
     openCard: 'Apri scheda',
+    selectedCardTitle: 'Scheda del murale selezionato',
+    previousStop: 'Tappa precedente',
+    nextStop: 'Tappa successiva',
     list: 'Elenco murales',
     parking: 'Dove parcheggiare',
     food: 'Dove fermarsi',
@@ -288,6 +291,9 @@ const ui = {
     map: 'Route map',
     mapIntro: 'Follow the numbered stops in the suggested order. Click a stop to update the map, read the card or open navigation.',
     openCard: 'Open card',
+    selectedCardTitle: 'Selected mural card',
+    previousStop: 'Previous stop',
+    nextStop: 'Next stop',
     list: 'Mural list',
     parking: 'Where to park',
     food: 'Where to stop',
@@ -483,11 +489,6 @@ function App() {
 
           <div className="map-intro-card">
             <p>{t.mapIntro}</p>
-            <div className="button-row">
-              <a href={navGoogle(selectedMural.lat, selectedMural.lng)} target="_blank" rel="noreferrer" className="primary link">{t.google}</a>
-              <a href={navApple(selectedMural.lat, selectedMural.lng)} target="_blank" rel="noreferrer" className="secondary link">{t.apple}</a>
-              <button className="secondary" onClick={() => detailsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>{t.openCard}</button>
-            </div>
           </div>
 
           <div className="map-layout map-layout-v11">
@@ -511,33 +512,31 @@ function App() {
                     </span>
                   </button>
                   <div className="route-stop-actions">
-                    <button onClick={() => selectMural(mural.id)}>{t.openCard}</button>
+                    <button onClick={() => selectMural(mural.id, false)}>{t.openCard}</button>
                     <a href={navGoogle(mural.lat, mural.lng)} target="_blank" rel="noreferrer">{t.takeMe}</a>
                   </div>
                 </article>
               ))}
             </div>
           </div>
-        </section>
 
-        <section className="section tour-section" ref={tourRef}>
-          <div className="section-heading">
-            <p className="kicker">Tappa {selectedIndex + 1} di {murals.length}</p>
-            <h2>{t.guidedTour}</h2>
-          </div>
-
-          <article className="tour-card">
-            <img src={selectedMural.image} alt={selectedMural.title} className="clickable-image" onClick={() => detailsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })} />
-            <div className="tour-content">
+          <article className="selected-mural-card" ref={detailsRef}>
+            <div className="selected-mural-image-wrap">
+              <img src={selectedMural.image} alt={selectedMural.title} />
+            </div>
+            <div className="selected-mural-content">
+              <p className="kicker">{t.selectedCardTitle}</p>
               <p className="step">Tappa {selectedIndex + 1} di {murals.length}</p>
               <h3>{selectedMural.title}</h3>
               <p className="meta">{selectedMural.artist} · {selectedMural.year}</p>
               <p className="address">⌖ {selectedMural.address}</p>
-              <div className="tags">{selectedMural.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+              <div className="tags">
+                {selectedMural.tags.map((tag) => <span key={tag}>{tag}</span>)}
+              </div>
 
               <div className="mini-block">
                 <h4>{t.observe}</h4>
-                <p>{selectedMural.observe}</p>
+                <p>{selectedMural.observe || selectedMural.it}</p>
               </div>
 
               <div className="mini-block">
@@ -546,37 +545,26 @@ function App() {
                   {selectedMural.detailsToFind.map((detail) => <li key={detail}>{detail}</li>)}
                 </ul>
               </div>
-              <div className="mini-block">
-                <h4>{t.detail}</h4>
-                <p>{t.readHint}</p>
-                <button className="primary small" onClick={() => detailsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
-                  {t.readCard}
-                </button>
-              </div>
-              <div className="mini-block">
-                <h4>{t.nextStop}</h4>
-                <p>{selectedMural.directionsNext}</p>
-              </div>
 
               <div className="button-row">
                 <a href={navGoogle(selectedMural.lat, selectedMural.lng)} target="_blank" rel="noreferrer" className="primary link">{t.google}</a>
                 <a href={navApple(selectedMural.lat, selectedMural.lng)} target="_blank" rel="noreferrer" className="secondary link">{t.apple}</a>
                 <button className="secondary" onClick={() => shareMural(selectedMural)}>{t.shareCard}</button>
-                <button className="secondary" onClick={() => tourRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>{t.backToTour}</button>
               </div>
 
               <div className="button-row">
-                <button className="secondary" onClick={() => goToStep(selectedIndex - 1)}>← {t.previous}</button>
-                <button className="primary" onClick={() => goToStep(selectedIndex + 1)}>{t.next} →</button>
+                <button className="secondary" onClick={() => goToStep(selectedIndex - 1)}>{t.previousStop}</button>
+                <button className="primary" onClick={() => goToStep(selectedIndex + 1)}>{t.nextStop}</button>
               </div>
             </div>
           </article>
         </section>
 
-        <section className="section" ref={detailsRef}>
+        <section className="section compact-list-section">
+
           <div className="section-heading">
-            <p className="kicker">Schede dettagliate</p>
-            <h2>{t.list}</h2>
+            <p className="kicker">Consultazione rapida</p>
+            <h2>Tutte le opere</h2>
           </div>
 
           <input className="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder={t.searchPlaceholder} />
@@ -663,8 +651,9 @@ function App() {
       <footer>
         <p><strong>Web app ideata e realizzata da Francesco Bolognesi</strong></p>
         <p>per raccontare e valorizzare i murales di Riparbella.</p>
+        <p className="footer-project">Progetto digitale dedicato al percorso di arte pubblica del borgo, pensato come guida semplice, consultabile da smartphone durante la visita.</p>
         <p>Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
-        <p>{t.prototype}</p>
+        <p><strong>Versione prototipo — 1.13</strong></p>
       </footer>
     </div>
   );

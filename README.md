@@ -65,3 +65,11 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 
 - Aggiunte miniature fotografiche dei murales nella lista tappe della mappa.
 - Le tappe sono più riconoscibili a colpo d’occhio durante la visita.
+
+
+## Novità V13 — versione 1.13
+
+- Rimossa la sezione separata “Tour guidato”.
+- Inserita la scheda completa del murale direttamente nella sezione “Mappa del percorso”.
+- Compattato l’elenco delle opere per ridurre ripetizioni e alleggerire la navigazione mobile.
+- Aggiornato il piè di pagina con dettaglio del progetto e numero versione 1.13.

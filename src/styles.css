@@ -731,3 +731,81 @@ footer p {
     height: 34px;
   }
 }
+
+
+/* V13 - Progetto semplificato: scheda murale integrata nella mappa */
+.selected-mural-card {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr);
+  gap: 0;
+  overflow: hidden;
+  margin-top: 22px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  box-shadow: 0 18px 45px rgba(15,23,42,.08);
+}
+
+.selected-mural-image-wrap {
+  min-height: 420px;
+  background: #eee7db;
+}
+
+.selected-mural-image-wrap img {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.selected-mural-content {
+  padding: 28px;
+}
+
+.selected-mural-content h3 {
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1;
+  margin: 6px 0 12px;
+}
+
+.compact-list-section .section-heading {
+  margin-bottom: 14px;
+}
+
+.compact-list-section .mural-card p:not(.meta):not(.step) {
+  display: none;
+}
+
+.compact-list-section .mural-card {
+  cursor: pointer;
+}
+
+.footer-project {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #475569;
+}
+
+@media (max-width: 900px) {
+  .selected-mural-card {
+    grid-template-columns: 1fr;
+  }
+
+  .selected-mural-image-wrap,
+  .selected-mural-image-wrap img {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 560px) {
+  .selected-mural-content {
+    padding: 20px;
+  }
+
+  .selected-mural-image-wrap,
+  .selected-mural-image-wrap img {
+    min-height: 240px;
+  }
+}
