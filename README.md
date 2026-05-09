@@ -87,3 +87,10 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Aggiunte nel menu rapido le voci “I parcheggi” e “Dove fermarsi”.
 - I pulsanti del menu portano direttamente alle sezioni corrispondenti.
 - Aggiornato il numero versione nel footer a 1.15.
+
+
+## Novità V16 — versione 1.16
+
+- Corretto il menu superiore: testi in nero e più leggibili.
+- Resi più robusti i pulsanti “Mappa”, “I parcheggi” e “Dove fermarsi”.
+- I pulsanti portano direttamente alle sezioni corrette della pagina.
