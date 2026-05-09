@@ -101,3 +101,10 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Spostati “Mappa”, “I parcheggi” e “Dove fermarsi” sotto al testo principale.
 - I pulsanti portano direttamente alle sezioni corrette della pagina.
 - Aggiornato il numero versione nel footer a 1.17.
+
+
+## Novità V18 — versione 1.18
+
+- Corretti i pulsanti sotto al titolo: ora sono link ad ancora e navigano sempre alle sezioni corrette.
+- Aggiunti ID alle sezioni “Mappa”, “I parcheggi” e “Dove fermarsi”.
+- Aggiornato il numero versione nel footer a 1.18.
