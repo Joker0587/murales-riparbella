@@ -419,9 +419,9 @@ function App() {
             <h1>{t.title}</h1>
             <p className="subtitle">{t.subtitle}</p>
             <div className="hero-quick-links">
-              <a href="#mappa">Mappa</a>
-              <a href="#parcheggi">I parcheggi</a>
-              <a href="#dove-fermarsi">Dove fermarsi</a>
+              <button type="button" onClick={() => scrollToSection('mappa')}>Mappa</button>
+              <button type="button" onClick={() => scrollToSection('parcheggi')}>I parcheggi</button>
+              <button type="button" onClick={() => scrollToSection('dove-fermarsi')}>Dove fermarsi</button>
             </div>
           </div>
           <img src="/images/memoria-desiderio.jpg" alt="Murales Memoria e desiderio" className="hero-image" />
@@ -605,7 +605,7 @@ function App() {
           </div>
         </section>
 
-        <section className="section practical">
+        <section className="section practical" id="parcheggi">
           <div className="section-heading">
             <p className="kicker">Arrivare e ripartire</p>
             <h2>{t.parking}</h2>
@@ -625,7 +625,7 @@ function App() {
           </div>
         </section>
 
-        <section className="section practical">
+        <section className="section practical" id="dove-fermarsi">
           <div className="section-heading">
             <p className="kicker">Bar, ristoranti e pause</p>
             <h2>{t.food}</h2>
@@ -653,7 +653,7 @@ function App() {
         <p>per raccontare e valorizzare i murales di Riparbella.</p>
         <p className="footer-project">Progetto digitale dedicato al percorso di arte pubblica del borgo, pensato come guida semplice, consultabile da smartphone durante la visita.</p>
         <p>Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
-        <p><strong>Versione prototipo — 1.18</strong></p>
+        <p><strong>Versione prototipo — 1.19</strong></p>
       </footer>
     </div>
   );

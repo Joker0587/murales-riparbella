@@ -986,3 +986,40 @@ html {
     width: 100%;
   }
 }
+
+
+/* V19 - Fix definitivo navigazione bottoni hero */
+.hero-quick-links button {
+  color: #172033;
+  background: rgba(255,255,255,.94);
+  border: 1px solid rgba(23,32,51,.16);
+  border-radius: 999px;
+  padding: 13px 18px;
+  font-size: 16px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 10px 26px rgba(15,23,42,.09);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-quick-links button:hover,
+.hero-quick-links button:focus {
+  color: #ffffff;
+  background: #172033;
+  border-color: #172033;
+}
+
+#mappa,
+#parcheggi,
+#dove-fermarsi,
+.scroll-anchor {
+  scroll-margin-top: 32px;
+}
+
+.scroll-anchor {
+  display: block;
+  height: 1px;
+}
