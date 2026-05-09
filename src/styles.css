@@ -1177,3 +1177,46 @@ html {
 .info-card .button-row {
   flex-wrap: wrap;
 }
+
+/* V27 - Dove fermarsi + ottimizzazione mobile */
+.food-intro { margin-bottom: 18px; }
+.food-grid { align-items: stretch; }
+.food-card { display: flex; flex-direction: column; gap: 8px; }
+.food-card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.food-badge {
+  display: inline-flex; align-items: center; border-radius: 999px; padding: 7px 10px;
+  background: #fff4d6; border: 1px solid rgba(164, 100, 18, .18);
+  color: #9a5a00; font-size: 13px; font-weight: 900;
+}
+.food-card .address { color: #475569; line-height: 1.45; }
+.food-buttons { margin-top: auto; padding-top: 10px; }
+.food-buttons .link { min-height: 44px; }
+
+@media (max-width: 760px) {
+  .topbar { padding: 18px 18px 8px; }
+  .hero { padding-top: 18px; }
+  .hero-grid { gap: 26px; }
+  .hero h1 { font-size: clamp(54px, 16vw, 82px); line-height: .92; }
+  .subtitle { font-size: 20px; line-height: 1.35; }
+  .hero-quick-links { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 22px; }
+  .hero-quick-links a { width: 100%; min-height: 48px; padding: 14px 16px; }
+  .hero-card { border-radius: 24px; }
+  .section { padding-left: 18px; padding-right: 18px; }
+  .section-heading h2 { font-size: clamp(34px, 11vw, 52px); line-height: .95; }
+  .map-layout { grid-template-columns: 1fr !important; }
+  .map-box, .leaflet-container { min-height: 360px; }
+  .tour-list { max-height: none; }
+  .selected-mural-card, .extra-place-card, .info-card, .text-card { border-radius: 22px; }
+  .selected-mural-card { grid-template-columns: 1fr !important; }
+  .selected-mural-image img { max-height: 360px; }
+  .button-row, .food-buttons { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .button-row .link, .food-buttons .link, button { width: 100%; justify-content: center; }
+  .practical-grid, .food-grid { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 420px) {
+  .hero h1 { font-size: clamp(48px, 15vw, 62px); }
+  .kicker { letter-spacing: .18em; font-size: 12px; }
+  .food-card-top { align-items: flex-start; }
+  .food-badge { width: fit-content; }
+}

@@ -163,3 +163,10 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Aggiunte note informative, link Maps e pulsante Info per Osteria in Cantina.
 - Gestione migliorata dei locali senza numero di telefono disponibile.
 - Aggiornato il numero versione nel footer a 1.26.
+
+## Novità V27 — versione 1.27
+
+- Rinominato il pulsante “Scopri il borgo” in “Oltre i murales”.
+- Migliorata la sezione “Dove fermarsi” con badge, note e pulsanti più chiari.
+- Aggiunta nota nel footer sul monitoraggio visite tramite Vercel Analytics.
+- Ottimizzata l’esperienza mobile.

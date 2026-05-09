@@ -95,10 +95,10 @@ const murals = [
     lng: 10.598239,
     image: '/images/amore-pentola.jpg',
     tags: ['Tradizione', 'Racconti popolari', 'Cinghiale'],
-    detailsToFind: ['la grande pentola', 'il fuoco della notte di San Giovanni', 'il cinghiale', 'il cavallo Gino', 'la bandiera sarda'],
+    detailsToFind: ['la grande pentola', 'il fuoco della notte di Sant’Antonio', 'il cinghiale', 'il cavallo Gino', 'la bandiera sarda'],
     observe: 'Cerca la grande pentola, il fuoco e il cinghiale: sono dettagli che raccontano memoria popolare e cucina del territorio.',
     directionsNext: 'Prosegui verso Piazza Federigo Baldasserini, dove si trova Terra e colori.',
-    it: 'Il murale racconta una tradizione popolare della piazza: le donne si riunivano attorno al fuoco nella notte di San Giovanni e lasciavano sciogliere il piombo in grandi pentole. Le forme create dal metallo raffreddato venivano interpretate per immaginare il futuro sposo. Nell’opera compaiono anche il cinghiale, i paesaggi, il cavallo Gino e un richiamo alla comunità sarda del territorio.',
+    it: 'Il murale racconta una tradizione popolare della piazza: le donne si riunivano attorno al fuoco nella notte di Sant’Antonio e lasciavano sciogliere il piombo in grandi pentole. Le forme create dal metallo raffreddato venivano interpretate per immaginare il futuro sposo. Nell’opera compaiono anche il cinghiale, i paesaggi, il cavallo Gino e un richiamo alla comunità sarda del territorio.',
     en: 'This mural tells a local tradition from the square: women gathered around the fire on Saint Anthony’s night and melted lead in large pots. Once cooled, the shapes were interpreted to imagine a future husband. The work also includes a wild boar, local landscapes, the horse Gino and a reference to the Sardinian community living in the countryside around Riparbella.'
   },
   {
@@ -225,6 +225,7 @@ const placesToEat = [
   {
     name: 'Piccola Osteria Paperini',
     type: 'Osteria',
+    bestFor: 'Osteria tipica',
     address: 'Riparbella',
     phone: '+393442224407',
     lat: 43.363925,
@@ -233,6 +234,7 @@ const placesToEat = [
   {
     name: 'Bistrot 1986',
     type: 'Bistrot / Ristorante',
+    bestFor: 'Cena e aperitivo',
     address: 'Riparbella',
     phone: '+393791353895',
     lat: 43.365184,
@@ -241,6 +243,7 @@ const placesToEat = [
   {
     name: 'Caffè Perbacco Osteria',
     type: 'Osteria / Caffè',
+    bestFor: 'Osteria e caffè',
     address: 'Riparbella',
     phone: '+393713899789',
     lat: 43.356360,
@@ -249,6 +252,7 @@ const placesToEat = [
   {
     name: 'La Piazzetta Ristorante Pizzeria Griglieria',
     type: 'Ristorante / Pizzeria / Griglieria',
+    bestFor: 'Pizza e griglia',
     address: 'Riparbella',
     phone: '+3905861881268',
     lat: 43.364070,
@@ -257,6 +261,7 @@ const placesToEat = [
   {
     name: 'Jemsi Bar Caffetteria-Aperitivi-Drink',
     type: 'Bar / Caffetteria / Aperitivi',
+    bestFor: 'Caffè e aperitivi',
     address: 'Riparbella',
     phone: '+393761300249',
     lat: 43.364880,
@@ -265,13 +270,15 @@ const placesToEat = [
   {
     name: 'Bar da Libero',
     type: 'Bar / Minimarket',
+    bestFor: 'Pausa veloce',
     address: 'Via della Madonna 14, 56046 Riparbella PI',
-    note: 'Bar e punto di sosta nel borgo. Informazioni online essenziali: indirizzo verificato, telefono non disponibile nelle fonti consultate.',
+    note: 'Bar e punto di sosta nel borgo. Ideale per una pausa durante il percorso. Telefono non disponibile nelle fonti consultate.',
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Bar%20da%20Libero%20Via%20della%20Madonna%2014%20Riparbella'
   },
   {
     name: 'Osteria in Cantina',
     type: 'Osteria / Cucina toscana',
+    bestFor: 'Pranzo o cena',
     address: 'Via XX Settembre 10, 56046 Riparbella PI',
     phone: '+390586699332',
     note: 'Cucina casalinga e familiare di tradizione toscana. Consigliata la prenotazione, soprattutto la sera e nei weekend.',
@@ -555,7 +562,7 @@ function App() {
             <div className="hero-quick-links">
               <a href="#mappa" onClick={(e) => { e.preventDefault(); document.getElementById('mappa')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>Mappa</a>
               <a href="#parcheggi" onClick={(e) => { e.preventDefault(); document.getElementById('parcheggi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>I parcheggi</a>
-              <a href="#oltre-murales" onClick={(e) => { e.preventDefault(); document.getElementById('oltre-murales')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>Scopri il borgo</a>
+              <a href="#oltre-murales" onClick={(e) => { e.preventDefault(); document.getElementById('oltre-murales')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>Oltre i murales</a>
               <a href="#dove-fermarsi" onClick={(e) => { e.preventDefault(); document.getElementById('dove-fermarsi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>Dove fermarsi</a>
             </div>
           </div>
@@ -801,20 +808,26 @@ function App() {
           </div>
         </section>
 
-                <section className="section practical" id="dove-fermarsi">
+                        <section className="section practical food-section" id="dove-fermarsi">
           <div className="section-heading">
             <p className="kicker">Bar, ristoranti e pause</p>
             <h2>{t.food}</h2>
           </div>
-          <div className="practical-grid">
+          <div className="text-card food-intro">
+            <p>Una selezione di bar, osterie e ristoranti dove fermarsi prima, durante o dopo il percorso. Gli orari possono variare: consigliamo sempre di contattare direttamente l’attività prima della visita.</p>
+          </div>
+          <div className="practical-grid food-grid">
             {placesToEat.map((place) => (
-              <article className="info-card" key={place.name}>
-                <p className="type">{place.type}</p>
+              <article className="info-card food-card" key={place.name}>
+                <div className="food-card-top">
+                  <p className="type">{place.type}</p>
+                  {place.bestFor && <span className="food-badge">{place.bestFor}</span>}
+                </div>
                 <h3>{place.name}</h3>
-                <p>{place.address}</p>
+                <p className="address">⌖ {place.address}</p>
                 {place.note && <p className="place-note">{place.note}</p>}
                 {place.phone && <p className="phone">{phoneLabel(place.phone)}</p>}
-                <div className="button-row">
+                <div className="button-row food-buttons">
                   {place.phone && <a className="primary link" href={`tel:${place.phone}`}>{t.call}</a>}
                   <a className={place.phone ? "secondary link" : "primary link"} target="_blank" rel="noreferrer" href={placeMapUrl(place)}>{t.takeMe}</a>
                   {place.website && <a className="secondary link" target="_blank" rel="noreferrer" href={place.website}>Info</a>}
@@ -831,7 +844,7 @@ function App() {
         <p>per raccontare e valorizzare i murales di Riparbella.</p>
         <p className="footer-project">Progetto digitale dedicato al percorso di arte pubblica del borgo, pensato come guida semplice, consultabile da smartphone durante la visita.</p>
         <p>Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
-        <p><strong>Versione prototipo — 1.26</strong></p>
+        <p><strong>Versione prototipo — 1.27<br />Statistiche visite monitorate tramite Vercel Analytics</strong></p>
       </footer>
     </div>
   );
