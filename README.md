@@ -80,3 +80,10 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Il pulsante “Apri scheda” ora porta direttamente alla scheda grande dell’opera selezionata.
 - Aggiunto nella scheda grande il blocco “Descrizione dell’opera”.
 - Aggiornato il numero versione nel footer a 1.14.
+
+
+## Novità V15 — versione 1.15
+
+- Aggiunte nel menu rapido le voci “I parcheggi” e “Dove fermarsi”.
+- I pulsanti del menu portano direttamente alle sezioni corrispondenti.
+- Aggiornato il numero versione nel footer a 1.15.

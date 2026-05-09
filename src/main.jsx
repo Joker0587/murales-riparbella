@@ -407,6 +407,11 @@ function App() {
       <header className="hero">
         <nav className="topbar">
           <div className="brand">Riparbella Murales</div>
+          <div className="nav-links">
+            <button onClick={() => mapRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>Mappa</button>
+            <button onClick={() => parkingRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>I parcheggi</button>
+            <button onClick={() => foodRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>Dove fermarsi</button>
+          </div>
           <div className="lang">
             <button onClick={() => setLanguage('it')} className={language === 'it' ? 'active' : ''}>ITA</button>
             <button onClick={() => setLanguage('en')} className={language === 'en' ? 'active' : ''}>ENG</button>
@@ -658,7 +663,7 @@ function App() {
         <p>per raccontare e valorizzare i murales di Riparbella.</p>
         <p className="footer-project">Progetto digitale dedicato al percorso di arte pubblica del borgo, pensato come guida semplice, consultabile da smartphone durante la visita.</p>
         <p>Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
-        <p><strong>Versione prototipo — 1.14</strong></p>
+        <p><strong>Versione prototipo — 1.15</strong></p>
       </footer>
     </div>
   );

@@ -824,3 +824,55 @@ footer p {
   font-size: 17px;
   line-height: 1.65;
 }
+
+
+/* V15 - Menu rapido */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  margin-right: 12px;
+  flex-wrap: wrap;
+}
+
+.nav-links button {
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.14);
+  color: #fff;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: none;
+  font-size: 14px;
+}
+
+.nav-links button:hover {
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.22);
+}
+
+.practical {
+  scroll-margin-top: 24px;
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    margin: 0;
+    justify-content: flex-start;
+  }
+
+  .nav-links button {
+    flex: 1;
+    min-width: 120px;
+    padding: 10px 9px;
+  }
+}
