@@ -238,7 +238,7 @@ const ui = {
     openMap: 'Vai alla mappa',
     route: 'Il percorso',
     routeText: "I murales del borgo compongono un percorso d’arte diffusa che intreccia memoria, paesaggio, scuola, tradizioni popolari, radici etrusche e desideri futuri. Ogni opera nasce dal dialogo tra artisti, cittadini e territorio, trasformando piazze, strade e facciate in un museo a cielo aperto.",
-    routeText2: 'La guida digitale accompagna il visitatore tappa dopo tappa, con foto, descrizioni, audioguida in italiano e inglese, mappa interattiva e navigazione verso ogni murale.',
+    routeText2: 'La guida digitale accompagna il visitatore tappa dopo tappa, con foto, descrizioni, mappa interattiva e navigazione verso ogni murale.',
     guidedTour: 'Tour guidato',
     map: 'Mappa interattiva',
     list: 'Elenco murales',
