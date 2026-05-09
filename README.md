@@ -116,3 +116,11 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - I pulsanti ora usano una funzione interna di scroll verso le sezioni con ID dedicati.
 - Aggiunti fallback con ancora nel caso il markup della sezione cambi.
 - Aggiornato il numero versione nel footer a 1.19.
+
+
+## Novità V20 — versione 1.20
+
+- Fix definitivo dei tre pulsanti nella hero.
+- I pulsanti sono ora link reali con scroll inline verso le sezioni corrette.
+- Non dipendono più da funzioni esterne che potevano non essere inizializzate.
+- Aggiornato il numero versione nel footer a 1.20.
