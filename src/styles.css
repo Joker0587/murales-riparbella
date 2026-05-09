@@ -1164,3 +1164,16 @@ html {
 .extra-place-card .extra-place-intro {
   margin-bottom: 10px;
 }
+
+
+/* V26 - Dove fermarsi */
+.info-card .place-note {
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #475569;
+}
+
+.info-card .button-row {
+  flex-wrap: wrap;
+}

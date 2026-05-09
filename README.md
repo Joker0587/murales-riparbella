@@ -156,3 +156,10 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Aggiunta nella sezione “Oltre i murales” la scheda del Presepe animato di Riparbella.
 - Inserita foto del presepe, coordinate e pulsanti Maps.
 - Aggiornato il numero versione nel footer a 1.25.
+
+## Novità V26 — versione 1.26
+
+- Aggiunti nella sezione “Dove fermarsi”: Bar da Libero e Osteria in Cantina.
+- Aggiunte note informative, link Maps e pulsante Info per Osteria in Cantina.
+- Gestione migliorata dei locali senza numero di telefono disponibile.
+- Aggiornato il numero versione nel footer a 1.26.
