@@ -502,8 +502,9 @@ function App() {
             <div className="route-list">
               {murals.map((mural, index) => (
                 <article key={mural.id} className={selectedId === mural.id ? 'route-stop active' : 'route-stop'}>
-                  <button className="route-stop-main" onClick={() => selectMural(mural.id, false)}>
+                  <button className="route-stop-main route-stop-main-with-image" onClick={() => selectMural(mural.id, false)}>
                     <span className="route-number">{index + 1}</span>
+                    <img className="route-thumb" src={mural.image} alt={mural.title} loading="lazy" />
                     <span>
                       <strong>{mural.title}</strong>
                       <small>{mural.address}</small>

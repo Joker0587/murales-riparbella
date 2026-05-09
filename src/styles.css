@@ -691,3 +691,43 @@ footer p {
     text-align: center;
   }
 }
+
+
+/* V12 - Miniature murales nella mappa */
+.route-stop-main-with-image {
+  grid-template-columns: 42px 74px 1fr;
+  align-items: center;
+}
+
+.route-thumb {
+  width: 74px;
+  height: 58px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 18px rgba(15,23,42,.08);
+  background: #fff;
+}
+
+.route-stop.active .route-thumb {
+  border-color: rgba(161, 98, 7, .45);
+  box-shadow: 0 10px 24px rgba(161, 98, 7, .18);
+}
+
+@media (max-width: 560px) {
+  .route-stop-main-with-image {
+    grid-template-columns: 36px 68px 1fr;
+    gap: 8px;
+  }
+
+  .route-thumb {
+    width: 68px;
+    height: 52px;
+    border-radius: 12px;
+  }
+
+  .route-number {
+    width: 34px;
+    height: 34px;
+  }
+}

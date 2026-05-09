@@ -59,3 +59,9 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Aggiunti pulsanti “Apri scheda” e “Portami qui” per ogni tappa.
 - Aggiunti pulsanti Google Maps / Apple Maps per la tappa selezionata.
 - Rimosso il riferimento all’audioguida dal testo introduttivo.
+
+
+## Novità V12
+
+- Aggiunte miniature fotografiche dei murales nella lista tappe della mappa.
+- Le tappe sono più riconoscibili a colpo d’occhio durante la visita.
