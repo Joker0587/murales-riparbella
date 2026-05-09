@@ -170,3 +170,23 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Migliorata la sezione “Dove fermarsi” con badge, note e pulsanti più chiari.
 - Aggiunta nota nel footer sul monitoraggio visite tramite Vercel Analytics.
 - Ottimizzata l’esperienza mobile.
+
+## Contatore visite V28 — versione 1.28
+
+Questa versione aggiunge un contatore visite pubblico nel footer.
+
+Per attivarlo su Vercel:
+
+1. Apri il progetto su Vercel.
+2. Vai su Storage / Marketplace.
+3. Aggiungi una integrazione Redis, per esempio Upstash Redis.
+4. Collega lo storage al progetto.
+5. Verifica che nelle Environment Variables siano presenti:
+   - `UPSTASH_REDIS_REST_URL`
+   - `UPSTASH_REDIS_REST_TOKEN`
+6. Fai Redeploy del progetto.
+
+Il contatore usa la route `/api/counter`.
+Conta una visita per browser ogni 24 ore tramite cookie tecnico `mr_visit_counted`.
+
+Se Redis non è configurato, nel footer appare “Da configurare” invece di un errore.

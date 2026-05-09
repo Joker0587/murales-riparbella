@@ -1220,3 +1220,44 @@ html {
   .food-card-top { align-items: flex-start; }
   .food-badge { width: fit-content; }
 }
+
+/* V28 - Contatore visite pubblico */
+.visit-counter {
+  max-width: 520px;
+  margin: 22px auto;
+  padding: 18px 20px;
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.72);
+  box-shadow: 0 12px 30px rgba(15,23,42,.06);
+  display: grid;
+  gap: 6px;
+  text-align: center;
+}
+
+.visit-counter-label {
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+}
+
+.visit-counter strong {
+  font-size: clamp(32px, 8vw, 54px);
+  line-height: 1;
+  color: var(--ink);
+}
+
+.visit-counter-note {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #64748b;
+}
+
+@media (max-width: 560px) {
+  .visit-counter {
+    margin: 18px 0;
+    border-radius: 20px;
+  }
+}

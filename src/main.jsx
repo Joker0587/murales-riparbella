@@ -95,10 +95,10 @@ const murals = [
     lng: 10.598239,
     image: '/images/amore-pentola.jpg',
     tags: ['Tradizione', 'Racconti popolari', 'Cinghiale'],
-    detailsToFind: ['la grande pentola', 'il fuoco della notte di San Giovanni', 'il cinghiale', 'il cavallo Gino', 'la bandiera sarda'],
+    detailsToFind: ['la grande pentola', 'il fuoco della notte di Sant’Antonio', 'il cinghiale', 'il cavallo Gino', 'la bandiera sarda'],
     observe: 'Cerca la grande pentola, il fuoco e il cinghiale: sono dettagli che raccontano memoria popolare e cucina del territorio.',
     directionsNext: 'Prosegui verso Piazza Federigo Baldasserini, dove si trova Terra e colori.',
-    it: 'Il murale racconta una tradizione popolare della piazza: le donne si riunivano attorno al fuoco nella notte di San Giovanni e lasciavano sciogliere il piombo in grandi pentole. Le forme create dal metallo raffreddato venivano interpretate per immaginare il futuro sposo. Nell’opera compaiono anche il cinghiale, i paesaggi, il cavallo Gino e un richiamo alla comunità sarda del territorio.',
+    it: 'Il murale racconta una tradizione popolare della piazza: le donne si riunivano attorno al fuoco nella notte di Sant’Antonio e lasciavano sciogliere il piombo in grandi pentole. Le forme create dal metallo raffreddato venivano interpretate per immaginare il futuro sposo. Nell’opera compaiono anche il cinghiale, i paesaggi, il cavallo Gino e un richiamo alla comunità sarda del territorio.',
     en: 'This mural tells a local tradition from the square: women gathered around the fire on Saint Anthony’s night and melted lead in large pots. Once cooled, the shapes were interpreted to imagine a future husband. The work also includes a wild boar, local landscapes, the horse Gino and a reference to the Sardinian community living in the countryside around Riparbella.'
   },
   {
@@ -489,6 +489,8 @@ function App() {
   const [language, setLanguage] = useState('it');
   const [selectedId, setSelectedId] = useState(() => window.location.hash?.replace('#', '') || murals[0].id);
   const [query, setQuery] = useState('');
+  const [visitorCount, setVisitorCount] = useState(null);
+  const [counterReady, setCounterReady] = useState(false);
   const detailsRef = useRef(null);
   const tourRef = useRef(null);
   const mapRef = useRef(null);
@@ -496,6 +498,35 @@ function App() {
   const t = ui[language];
   const selectedIndex = Math.max(0, murals.findIndex((m) => m.id === selectedId));
   const selectedMural = murals[selectedIndex] || murals[0];
+
+
+  useEffect(() => {
+    let ignore = false;
+
+    async function registerVisit() {
+      try {
+        const response = await fetch('/api/counter', { method: 'POST' });
+        const data = await response.json();
+
+        if (!ignore) {
+          if (typeof data.count === 'number') {
+            setVisitorCount(data.count);
+          }
+          setCounterReady(Boolean(data.configured));
+        }
+      } catch (error) {
+        if (!ignore) {
+          setCounterReady(false);
+        }
+      }
+    }
+
+    registerVisit();
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
 
   const filteredMurals = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -843,8 +874,19 @@ function App() {
         <p><strong>Web app ideata e realizzata da Francesco Bolognesi</strong></p>
         <p>per raccontare e valorizzare i murales di Riparbella.</p>
         <p className="footer-project">Progetto digitale dedicato al percorso di arte pubblica del borgo, pensato come guida semplice, consultabile da smartphone durante la visita.</p>
+        <div className="visit-counter" aria-live="polite">
+          <span className="visit-counter-label">Visitatori della guida</span>
+          {visitorCount !== null ? (
+            <strong>{visitorCount.toLocaleString('it-IT')}</strong>
+          ) : (
+            <strong>{counterReady ? '—' : 'Da configurare'}</strong>
+          )}
+          <span className="visit-counter-note">
+            {counterReady ? 'Conteggio aggiornato in tempo reale' : 'Configura Upstash Redis su Vercel per attivare il contatore pubblico'}
+          </span>
+        </div>
         <p>Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
-        <p><strong>Versione prototipo — 1.27<br />Statistiche visite monitorate tramite Vercel Analytics</strong></p>
+        <p><strong>Versione prototipo — 1.28</strong></p>
       </footer>
     </div>
   );
