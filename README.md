@@ -49,3 +49,13 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Aggiunta sezione “Il progetto”.
 - Migliorata la scheda del murale con pulsanti più chiari.
 - Aggiunto pulsante “Torna al tour”.
+
+
+## Novità V11
+
+- Sistemata la sezione mappa con titolo “Mappa del percorso”.
+- Aggiunto testo introduttivo alla mappa.
+- Aggiunto elenco tappe numerato con indirizzo.
+- Aggiunti pulsanti “Apri scheda” e “Portami qui” per ogni tappa.
+- Aggiunti pulsanti Google Maps / Apple Maps per la tappa selezionata.
+- Rimosso il riferimento all’audioguida dal testo introduttivo.

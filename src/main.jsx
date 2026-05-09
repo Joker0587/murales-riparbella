@@ -95,10 +95,10 @@ const murals = [
     lng: 10.598239,
     image: '/images/amore-pentola.jpg',
     tags: ['Tradizione', 'Racconti popolari', 'Cinghiale'],
-    detailsToFind: ['la grande pentola', 'il fuoco della notte di San Giovanni', 'il cinghiale', 'il cavallo Gino', 'la bandiera sarda'],
+    detailsToFind: ['la grande pentola', 'il fuoco della notte di Sant’Antonio', 'il cinghiale', 'il cavallo Gino', 'la bandiera sarda'],
     observe: 'Cerca la grande pentola, il fuoco e il cinghiale: sono dettagli che raccontano memoria popolare e cucina del territorio.',
     directionsNext: 'Prosegui verso Piazza Federigo Baldasserini, dove si trova Terra e colori.',
-    it: 'Il murale racconta una tradizione popolare della piazza: le donne si riunivano attorno al fuoco nella notte di San Giovanni e lasciavano sciogliere il piombo in grandi pentole. Le forme create dal metallo raffreddato venivano interpretate per immaginare il futuro sposo. Nell’opera compaiono anche il cinghiale, i paesaggi, il cavallo Gino e un richiamo alla comunità sarda del territorio.',
+    it: 'Il murale racconta una tradizione popolare della piazza: le donne si riunivano attorno al fuoco nella notte di Sant’Antonio e lasciavano sciogliere il piombo in grandi pentole. Le forme create dal metallo raffreddato venivano interpretate per immaginare il futuro sposo. Nell’opera compaiono anche il cinghiale, i paesaggi, il cavallo Gino e un richiamo alla comunità sarda del territorio.',
     en: 'This mural tells a local tradition from the square: women gathered around the fire on Saint Anthony’s night and melted lead in large pots. Once cooled, the shapes were interpreted to imagine a future husband. The work also includes a wild boar, local landscapes, the horse Gino and a reference to the Sardinian community living in the countryside around Riparbella.'
   },
   {
@@ -238,9 +238,11 @@ const ui = {
     openMap: 'Vai alla mappa',
     route: 'Il percorso',
     routeText: "I murales del borgo compongono un percorso d’arte diffusa che intreccia memoria, paesaggio, scuola, tradizioni popolari, radici etrusche e desideri futuri. Ogni opera nasce dal dialogo tra artisti, cittadini e territorio, trasformando piazze, strade e facciate in un museo a cielo aperto.",
-    routeText2: 'La guida digitale accompagna il visitatore tappa dopo tappa, con foto, descrizioni, mappa interattiva e navigazione verso ogni murale.',
+    routeText2: 'La guida digitale accompagna il visitatore tappa dopo tappa, con foto, descrizioni, dettagli da osservare, mappa interattiva e navigazione verso ogni murale.',
     guidedTour: 'Tour guidato',
-    map: 'Mappa interattiva',
+    map: 'Mappa del percorso',
+    mapIntro: 'Segui le tappe numerate nell’ordine consigliato. Clicca su una tappa per aggiornare la mappa, leggere la scheda o aprire il navigatore.',
+    openCard: 'Apri scheda',
     list: 'Elenco murales',
     parking: 'Dove parcheggiare',
     food: 'Dove fermarsi',
@@ -281,9 +283,11 @@ const ui = {
     openMap: 'Open the map',
     route: 'The route',
     routeText: 'The murals form an open-air art route through the village, weaving together memory, landscape, school life, local traditions, Etruscan roots and future wishes. Each work comes from a dialogue between artists, residents and the territory.',
-    routeText2: 'This digital guide accompanies visitors step by step with photos, descriptions, an Italian and English audio guide, an interactive map and navigation to each mural.',
+    routeText2: 'This digital guide accompanies visitors step by step with photos, descriptions, details to notice, an interactive map and navigation to each mural.',
     guidedTour: 'Guided tour',
-    map: 'Interactive map',
+    map: 'Route map',
+    mapIntro: 'Follow the numbered stops in the suggested order. Click a stop to update the map, read the card or open navigation.',
+    openCard: 'Open card',
     list: 'Mural list',
     parking: 'Where to park',
     food: 'Where to stop',
@@ -473,21 +477,43 @@ function App() {
 
         <section className="section map-section" ref={mapRef}>
           <div className="section-heading">
-            <p className="kicker">Pin e tappe</p>
+            <p className="kicker">Tappa {selectedIndex + 1} di {murals.length}</p>
             <h2>{t.map}</h2>
           </div>
 
-          <div className="map-layout">
+          <div className="map-intro-card">
+            <p>{t.mapIntro}</p>
+            <div className="button-row">
+              <a href={navGoogle(selectedMural.lat, selectedMural.lng)} target="_blank" rel="noreferrer" className="primary link">{t.google}</a>
+              <a href={navApple(selectedMural.lat, selectedMural.lng)} target="_blank" rel="noreferrer" className="secondary link">{t.apple}</a>
+              <button className="secondary" onClick={() => detailsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>{t.openCard}</button>
+            </div>
+          </div>
+
+          <div className="map-layout map-layout-v11">
             <div className="map-panel">
               <iframe title="Mappa murale selezionato" src={embedMapUrl(selectedMural.lat, selectedMural.lng)} loading="lazy"></iframe>
+              <div className="selected-map-caption">
+                <strong>{selectedIndex + 1}. {selectedMural.title}</strong>
+                <span>{selectedMural.address}</span>
+              </div>
             </div>
-            <div className="pin-list">
+
+            <div className="route-list">
               {murals.map((mural, index) => (
-                <button key={mural.id} onClick={() => selectMural(mural.id)} className={selectedId === mural.id ? 'pin active' : 'pin'}>
-                  <span>{index + 1}</span>
-                  <strong>{mural.title}</strong>
-                  <small>{mural.artist}</small>
-                </button>
+                <article key={mural.id} className={selectedId === mural.id ? 'route-stop active' : 'route-stop'}>
+                  <button className="route-stop-main" onClick={() => selectMural(mural.id, false)}>
+                    <span className="route-number">{index + 1}</span>
+                    <span>
+                      <strong>{mural.title}</strong>
+                      <small>{mural.address}</small>
+                    </span>
+                  </button>
+                  <div className="route-stop-actions">
+                    <button onClick={() => selectMural(mural.id)}>{t.openCard}</button>
+                    <a href={navGoogle(mural.lat, mural.lng)} target="_blank" rel="noreferrer">{t.takeMe}</a>
+                  </div>
+                </article>
               ))}
             </div>
           </div>
