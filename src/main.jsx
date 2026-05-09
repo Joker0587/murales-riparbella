@@ -512,7 +512,7 @@ function App() {
                     </span>
                   </button>
                   <div className="route-stop-actions">
-                    <button onClick={() => selectMural(mural.id, false)}>{t.openCard}</button>
+                    <button onClick={() => selectMural(mural.id, true)}>{t.openCard}</button>
                     <a href={navGoogle(mural.lat, mural.lng)} target="_blank" rel="noreferrer">{t.takeMe}</a>
                   </div>
                 </article>
@@ -532,6 +532,11 @@ function App() {
               <p className="address">⌖ {selectedMural.address}</p>
               <div className="tags">
                 {selectedMural.tags.map((tag) => <span key={tag}>{tag}</span>)}
+              </div>
+
+              <div className="mini-block description-block">
+                <h4>Descrizione dell’opera</h4>
+                <p>{selectedMural.it}</p>
               </div>
 
               <div className="mini-block">
@@ -583,7 +588,7 @@ function App() {
                   <p>{language === 'it' ? mural.it : mural.en}</p>
                   <div className="card-actions">
                     <button className="secondary small share-inline" onClick={(event) => { event.stopPropagation(); shareMural(mural); }}>{t.shareCard}</button>
-                    <button className="primary small share-inline" onClick={(event) => { event.stopPropagation(); selectMural(mural.id); tourRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.backToTour}</button>
+                    <button className="primary small share-inline" onClick={(event) => { event.stopPropagation(); selectMural(mural.id, true); }}>{t.backToTour}</button>
                   </div>
                 </div>
               </article>
@@ -653,7 +658,7 @@ function App() {
         <p>per raccontare e valorizzare i murales di Riparbella.</p>
         <p className="footer-project">Progetto digitale dedicato al percorso di arte pubblica del borgo, pensato come guida semplice, consultabile da smartphone durante la visita.</p>
         <p>Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
-        <p><strong>Versione prototipo — 1.13</strong></p>
+        <p><strong>Versione prototipo — 1.14</strong></p>
       </footer>
     </div>
   );

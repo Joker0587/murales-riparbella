@@ -809,3 +809,18 @@ footer p {
     min-height: 240px;
   }
 }
+
+
+/* V14 - Scheda grande: descrizione e apertura diretta */
+.description-block {
+  background: #ffffff;
+}
+
+.selected-mural-card {
+  scroll-margin-top: 24px;
+}
+
+.selected-mural-content .description-block p {
+  font-size: 17px;
+  line-height: 1.65;
+}

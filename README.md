@@ -73,3 +73,10 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Inserita la scheda completa del murale direttamente nella sezione “Mappa del percorso”.
 - Compattato l’elenco delle opere per ridurre ripetizioni e alleggerire la navigazione mobile.
 - Aggiornato il piè di pagina con dettaglio del progetto e numero versione 1.13.
+
+
+## Novità V14 — versione 1.14
+
+- Il pulsante “Apri scheda” ora porta direttamente alla scheda grande dell’opera selezionata.
+- Aggiunto nella scheda grande il blocco “Descrizione dell’opera”.
+- Aggiornato il numero versione nel footer a 1.14.
