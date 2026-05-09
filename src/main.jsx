@@ -328,6 +328,86 @@ const ui = {
   }
 };
 
+
+const extraPlaces = [
+  {
+    id: 'orologio-torre',
+    title: 'Orologio da torre di Riparbella',
+    category: 'Storia del borgo',
+    address: 'Piazzetta Borgo di Sotto',
+    lat: 43.364128,
+    lng: 10.598266,
+    intro: 'Un punto simbolico del paese, legato alla storia della comunità e alla vita pubblica di Riparbella.',
+    description: `L’abitato di Riparbella, sorto nel XV secolo nei pressi dell’antico borgo distrutto con il castello medievale durante la guerra fra Napoli e Firenze, si raccoglie su una collina a 216 metri d’altitudine, tra poggi olivati e vigneti.
+
+Riparbella fu feudo mediceo e nel 1635 divenne Marchesato sotto la famiglia Carlotti. Il primo orologio pubblico venne collocato nel 1703 sopra una casa di proprietà del marchese Carlotti, situata nella piazza del paese.
+
+La campana che batteva le ore riportava la data 1606 e proveniva dalla torre dell’oratorio della Compagnia in Piazza della Madonna, oggi nella chiesetta della Melatina. In origine si trattava con ogni probabilità di un orologio con suoneria “alla romana”, cioè con scansione di sei ore in sei ore, secondo l’uso del tempo.
+
+Nel 1749, dopo il bando del Granduca di Toscana, l’orologio venne adattato alla suoneria “alla francese”, con il conteggio di dodici ore in dodici ore. Nel corso dei secoli seguirono numerosi interventi di riparazione e manutenzione, affidati a orologiai, artigiani e famiglie locali.
+
+Nel 1864 la casa dove si trovava l’orologio fu abbattuta per allargare la strada verso la chiesa. L’orologio da torre venne quindi collocato sul nuovo Municipio appena costruito. Nel 1867 fu acquistata una nuova macchina di Luigi Toninelli di Cecina, poi posta sulla torretta del nuovo Municipio nel 1885.
+
+Il racconto dell’orologio è anche il racconto di una comunità che, attraverso il tempo, ha continuato a custodire i propri luoghi, i propri suoni e la propria memoria.`,
+    credit: 'Ricerca di Severino Bolognesi, Pontedera 19.01.2019. Ringraziamenti: Dott.ssa Angela Porciani e Dott. Michele Quirici per il contributo alla ricerca.'
+  },
+  {
+    id: 'source-adage',
+    title: 'Source Adage — Una porta per la profumeria',
+    category: 'Profumi, botanica e arte',
+    address: 'Via XX Settembre, 32, Riparbella',
+    lat: 43.364420,
+    lng: 10.599000,
+    website: 'https://www.sourceadage.it/',
+    image: '/images/source-adage-porta.jpg',
+    intro: 'Una tappa sensoriale nel borgo: la porta dipinta racconta il legame tra profumeria, botanica e arte contemporanea.',
+    description: `Ispirata alle incisioni botaniche del Seicento della pittrice fiorentina Anna Maria Vaiani, questa porta decorata aggiunge un nuovo segno alla vivace arte urbana di Riparbella.
+
+I cofondatori e “nasi” del marchio di fragranze di nicchia Source Adage, nato a New York, Robert Dobay e Christopher Draghi, hanno dipinto la porta del magazzino adiacente alla loro boutique, reinterpretando le opere botaniche di Vaiani con una grafica audace e contemporanea.
+
+Il disegno riflette il loro amore per i profumi botanici e dialoga con la facciata rosa del palazzo, sede della profumeria e dello studio. Non è soltanto un elemento decorativo: la porta funziona anche come piccolo indicatore visivo degli orari di apertura. Quando le porte dipinte sono aperte e mostrano il rosa, anche lo showroom è aperto; quando sono chiuse e mostrano il verde, anche la profumeria è chiusa.
+
+Una tappa perfetta per scoprire Riparbella anche attraverso il senso dell’olfatto, tra arte, botanica e profumi.`,
+    credit: 'Testo tratto e rielaborato dai materiali Source Adage.'
+  },
+  {
+    id: 'chiesa-san-giovanni',
+    title: 'Chiesa di San Giovanni Evangelista',
+    category: 'Arte sacra',
+    address: 'Chiesa di San Giovanni Evangelista, Riparbella',
+    lat: 43.364338,
+    lng: 10.598561,
+    image: '/images/chiesa-san-giovanni-ultima-cena.jpg',
+    intro: 'Una tappa di arte sacra nel cuore del borgo, con altari storici e affreschi contemporanei nell’abside.',
+    description: `La Chiesa di San Giovanni Evangelista custodisce diversi elementi di interesse artistico e devozionale.
+
+All’interno si trovano un altare dedicato a San Giovanni Evangelista con statua moderna, un altare della Madonna del Carmelo con statua del Cristo morto e due altari presso il presbiterio con dipinti settecenteschi, tra cui Sant’Antonio Abate, e seicenteschi, tra cui la Madonna Assunta.
+
+L’abside è arricchita da affreschi realizzati nel 1995, che rappresentano l’Ultima Cena e Cristo in gloria. La scena crea un forte punto focale all’interno della chiesa e accompagna lo sguardo verso l’altare, unendo il racconto evangelico alla dimensione spirituale del luogo.
+
+Durante la visita si consiglia di rispettare il silenzio, gli orari di apertura e la funzione religiosa del luogo.`,
+    credit: 'Scheda informativa sulla Chiesa di San Giovanni Evangelista.'
+  },
+  {
+    id: 'presepe-animato',
+    title: 'Presepe animato di Riparbella',
+    category: 'Tradizione e artigianato',
+    address: 'Ex Cinema, Piazza della Madonna 1',
+    lat: 43.365574,
+    lng: 10.600548,
+    image: '/images/presepe-animato-riparbella.jpg',
+    intro: 'Una grande opera artigianale realizzata dai cittadini, con scene animate, antichi mestieri e ambientazioni rurali.',
+    description: `Il Presepe animato di Riparbella si trova nell’ex Cinema in Piazza della Madonna 1 ed è una grande opera artigianale di circa 80 mq, creata grazie al lavoro e alla passione dei cittadini.
+
+Inaugurato il 24 dicembre, ospita oltre 140 statuine animate alte circa 20 cm, impegnate in mestieri tradizionali e scene della vita rurale. Tra le scene rappresentate si trovano lavori casalinghi, battitura del cerchio, pigiatura dell’uva, macina del grano, taglio della legna e molte altre attività legate alla memoria contadina.
+
+L’allestimento è arricchito da effetti luminosi che riproducono le fasi della giornata, dall’alba al tramonto fino alla notte. Sono presenti anche effetti scenici come neve, ghiacciai, laghi, cascate e la stella cometa.
+
+È una tappa particolarmente adatta a famiglie e bambini, ma anche a chi desidera scoprire una tradizione popolare costruita con cura, manualità e spirito di comunità.`,
+    credit: 'Apertura indicativa: dal 24 dicembre al 28 febbraio, 9:00–20:00, con aperture speciali anche a marzo, luglio e agosto. Verificare sempre eventuali aggiornamenti locali.'
+  }
+];
+
 function navGoogle(lat, lng) {
   return `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
 }
@@ -421,6 +501,7 @@ function App() {
             <div className="hero-quick-links">
               <a href="#mappa" onClick={(e) => { e.preventDefault(); document.getElementById('mappa')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>Mappa</a>
               <a href="#parcheggi" onClick={(e) => { e.preventDefault(); document.getElementById('parcheggi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>I parcheggi</a>
+              <a href="#oltre-murales" onClick={(e) => { e.preventDefault(); document.getElementById('oltre-murales')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>Scopri il borgo</a>
               <a href="#dove-fermarsi" onClick={(e) => { e.preventDefault(); document.getElementById('dove-fermarsi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>Dove fermarsi</a>
             </div>
           </div>
@@ -591,6 +672,47 @@ function App() {
           </div>
         </section>
 
+        
+        <section id="oltre-murales" className="section extra-places-section">
+          <div className="section-heading">
+            <p className="kicker">Oltre i murales</p>
+            <h2>Scopri Riparbella oltre i murales</h2>
+          </div>
+          <div className="text-card">
+            <p>Il percorso dei murales può diventare l’occasione per scoprire altri luoghi del borgo: piccoli segni di memoria, arte, tradizione, esperienze sensoriali e vita quotidiana che raccontano Riparbella da prospettive diverse.</p>
+          </div>
+
+          <div className="extra-places-grid">
+            {extraPlaces.map((place) => (
+              <article className="extra-place-card" key={place.id}>
+                {place.image && (
+                  <div className="extra-place-image">
+                    <img src={place.image} alt={place.title} loading="lazy" />
+                  </div>
+                )}
+                <div className="extra-place-head">
+                  <p className="type">{place.category}</p>
+                  <h3>{place.title}</h3>
+                  <p className="address">⌖ {place.address}</p>
+                </div>
+                <p className="extra-place-intro">{place.intro}</p>
+                <details>
+                  <summary>Leggi la storia</summary>
+                  <div className="extra-place-description">
+                    {place.description.split('\n\n').map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                    <p className="credit">{place.credit}</p>
+                  </div>
+                </details>
+                <div className="button-row">
+                  <a href={navGoogle(place.lat, place.lng)} target="_blank" rel="noreferrer" className="primary link">Google Maps</a>
+                  <a href={navApple(place.lat, place.lng)} target="_blank" rel="noreferrer" className="secondary link">Apple Maps</a>
+                  {place.website && <a href={place.website} target="_blank" rel="noreferrer" className="secondary link">Sito web</a>}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="section family-section">
           <div className="section-heading">
             <p className="kicker">Gioca con i murales</p>
@@ -653,7 +775,7 @@ function App() {
         <p>per raccontare e valorizzare i murales di Riparbella.</p>
         <p className="footer-project">Progetto digitale dedicato al percorso di arte pubblica del borgo, pensato come guida semplice, consultabile da smartphone durante la visita.</p>
         <p>Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
-        <p><strong>Versione prototipo — 1.20</strong></p>
+        <p><strong>Versione prototipo — 1.25</strong></p>
       </footer>
     </div>
   );

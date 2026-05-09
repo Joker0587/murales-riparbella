@@ -124,3 +124,35 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - I pulsanti sono ora link reali con scroll inline verso le sezioni corrette.
 - Non dipendono più da funzioni esterne che potevano non essere inizializzate.
 - Aggiornato il numero versione nel footer a 1.20.
+
+## Novità V21 — versione 1.21
+
+- Aggiunta sezione “Oltre i murales”.
+- Inserita la scheda “Orologio da torre di Riparbella” con testo storico, coordinate e pulsanti Maps.
+- Aggiunto pulsante “Scopri il borgo” nella hero.
+- Aggiornato il numero versione nel footer a 1.21.
+
+## Novità V22 — versione 1.22
+
+- Aggiunta nella sezione “Oltre i murales” la scheda “Source Adage — Una porta per la profumeria”.
+- Inserito testo rielaborato sulla porta botanica ispirata ad Anna Maria Vaiani.
+- Aggiunto pulsante “Sito web” per Source Adage.
+- Aggiornato il numero versione nel footer a 1.22.
+
+## Novità V23 — versione 1.23
+
+- Aggiunta la foto della porta Source Adage nella sezione “Oltre i murales”.
+- Aggiornato il numero versione nel footer a 1.23.
+
+## Novità V24 — versione 1.24
+
+- Aggiunta nella sezione “Oltre i murales” la scheda della Chiesa di San Giovanni Evangelista.
+- Inserita foto dell’abside con l’Ultima Cena e Cristo in gloria.
+- Aggiunte coordinate e pulsanti Maps.
+- Aggiornato il numero versione nel footer a 1.24.
+
+## Novità V25 — versione 1.25
+
+- Aggiunta nella sezione “Oltre i murales” la scheda del Presepe animato di Riparbella.
+- Inserita foto del presepe, coordinate e pulsanti Maps.
+- Aggiornato il numero versione nel footer a 1.25.
