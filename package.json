@@ -9,8 +9,7 @@
     "@vitejs/plugin-react": "latest",
     "vite": "latest",
     "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "@upstash/redis": "latest"
+    "react-dom": "18.3.1"
   },
   "devDependencies": {}
 }

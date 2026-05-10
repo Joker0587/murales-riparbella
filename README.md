@@ -171,22 +171,15 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Aggiunta nota nel footer sul monitoraggio visite tramite Vercel Analytics.
 - Ottimizzata l’esperienza mobile.
 
-## Contatore visite V28 — versione 1.28
+## Novità V29 — versione 1.29
 
-Questa versione aggiunge un contatore visite pubblico nel footer.
+- Rimosso il contatore visite con Redis/Upstash.
+- Aggiunto nel footer un piccolo box “Sostieni su Ko-fi”.
+- Inserito link Ko-fi: https://ko-fi.com/francescobolognesi
+- Aggiornato il numero versione nel footer a 1.29.
 
-Per attivarlo su Vercel:
+## Novità V30 — versione 1.30
 
-1. Apri il progetto su Vercel.
-2. Vai su Storage / Marketplace.
-3. Aggiungi una integrazione Redis, per esempio Upstash Redis.
-4. Collega lo storage al progetto.
-5. Verifica che nelle Environment Variables siano presenti:
-   - `UPSTASH_REDIS_REST_URL`
-   - `UPSTASH_REDIS_REST_TOKEN`
-6. Fai Redeploy del progetto.
-
-Il contatore usa la route `/api/counter`.
-Conta una visita per browser ogni 24 ore tramite cookie tecnico `mr_visit_counted`.
-
-Se Redis non è configurato, nel footer appare “Da configurare” invece di un errore.
+- Aggiornato il link Ko-fi nel footer.
+- Nuovo link: https://ko-fi.com/francescobolognesi
+- Aggiornato il numero versione nel footer a 1.30.
