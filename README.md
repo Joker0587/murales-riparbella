@@ -205,3 +205,9 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Uniformate le schede della sezione “Dove fermarsi”.
 - Ogni attività mostra nome, indirizzo, telefono quando disponibile, breve descrizione, pulsante “Chiama” e pulsante “Portami qui”.
 - Per Bar da Libero il telefono non è stato inserito perché non disponibile nelle fonti pubbliche consultate.
+
+## Novità V34 da V33 — versione 1.34
+
+- Versione basata sulla V33 funzionante.
+- Sostituita la foto della porta della profumeria Source Adage con la nuova immagine fornita.
+- Aggiornato il numero versione nel footer a 1.34.
