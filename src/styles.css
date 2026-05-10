@@ -1301,3 +1301,18 @@ html {
     border-radius: 16px;
   }
 }
+
+
+/* V32 - Footer Ko-fi pulito */
+.support-box-small {
+  max-width: 620px;
+  padding: 12px 16px;
+}
+
+.support-box-small p {
+  margin: 0;
+}
+
+.support-box-small a {
+  display: none;
+}

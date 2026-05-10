@@ -95,10 +95,10 @@ const murals = [
     lng: 10.598239,
     image: '/images/amore-pentola.jpg',
     tags: ['Tradizione', 'Racconti popolari', 'Cinghiale'],
-    detailsToFind: ['la grande pentola', 'il fuoco della notte di San Giovanni', 'il cinghiale', 'il cavallo Gino', 'la bandiera sarda'],
+    detailsToFind: ['la grande pentola', 'il fuoco della notte di Sant’Antonio', 'il cinghiale', 'il cavallo Gino', 'la bandiera sarda'],
     observe: 'Cerca la grande pentola, il fuoco e il cinghiale: sono dettagli che raccontano memoria popolare e cucina del territorio.',
     directionsNext: 'Prosegui verso Piazza Federigo Baldasserini, dove si trova Terra e colori.',
-    it: 'Il murale racconta una tradizione popolare della piazza: le donne si riunivano attorno al fuoco nella notte di San Giovanni e lasciavano sciogliere il piombo in grandi pentole. Le forme create dal metallo raffreddato venivano interpretate per immaginare il futuro sposo. Nell’opera compaiono anche il cinghiale, i paesaggi, il cavallo Gino e un richiamo alla comunità sarda del territorio.',
+    it: 'Il murale racconta una tradizione popolare della piazza: le donne si riunivano attorno al fuoco nella notte di Sant’Antonio e lasciavano sciogliere il piombo in grandi pentole. Le forme create dal metallo raffreddato venivano interpretate per immaginare il futuro sposo. Nell’opera compaiono anche il cinghiale, i paesaggi, il cavallo Gino e un richiamo alla comunità sarda del territorio.',
     en: 'This mural tells a local tradition from the square: women gathered around the fire on Saint Anthony’s night and melted lead in large pots. Once cooled, the shapes were interpreted to imagine a future husband. The work also includes a wild boar, local landscapes, the horse Gino and a reference to the Sardinian community living in the countryside around Riparbella.'
   },
   {
@@ -844,11 +844,10 @@ function App() {
         <p>per raccontare e valorizzare i murales di Riparbella.</p>
         <p className="footer-project">Progetto digitale dedicato al percorso di arte pubblica del borgo, pensato come guida semplice, consultabile da smartphone durante la visita.</p>
         <div className="support-box support-box-small">
-          <p>Guida gratuita · Se vuoi, puoi sostenere il progetto con un caffè.</p>
-          <a href="https://ko-fi.com/francescobolognesi" target="_blank" rel="noreferrer">Offri un caffè</a>
+          <p>Guida gratuita · Se vuoi, puoi sostenere il progetto con un caffè usando il pulsante Ko-fi in basso.</p>
         </div>
         <p>Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
-        <p><strong>Versione prototipo — 1.31</strong></p>
+        <p><strong>Versione prototipo — 1.32</strong></p>
       </footer>
     </div>
   );

@@ -191,3 +191,10 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Reso il box Ko-fi nel footer più piccolo e discreto.
 - Testo pulsante widget aggiornato in italiano: “Offri un caffè”.
 - Aggiornato il numero versione nel footer a 1.31.
+
+## Novità V32 — versione 1.32
+
+- Rimosso il pulsante “Offri un caffè” dal box centrale del footer.
+- Lasciato solo il widget ufficiale Ko-fi flottante in basso.
+- Aggiornato il testo del footer per indicare il pulsante Ko-fi in basso.
+- Aggiornato il numero versione nel footer a 1.32.
