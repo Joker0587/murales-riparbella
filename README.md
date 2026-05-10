@@ -183,3 +183,11 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Aggiornato il link Ko-fi nel footer.
 - Nuovo link: https://ko-fi.com/francescobolognesi
 - Aggiornato il numero versione nel footer a 1.30.
+
+## Novità V31 — versione 1.31
+
+- Aggiunto il widget ufficiale Ko-fi floating-chat.
+- Il riquadro donazione si apre direttamente nella web app.
+- Reso il box Ko-fi nel footer più piccolo e discreto.
+- Testo pulsante widget aggiornato in italiano: “Offri un caffè”.
+- Aggiornato il numero versione nel footer a 1.31.

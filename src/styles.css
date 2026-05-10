@@ -1269,3 +1269,35 @@ html {
     width: 100%;
   }
 }
+
+
+/* V31 - Ko-fi discreto */
+.support-box-small {
+  max-width: 560px;
+  margin: 18px auto;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.52);
+  box-shadow: none;
+}
+
+.support-box-small p {
+  font-size: 14px;
+  line-height: 1.45;
+  margin: 0 0 8px;
+  color: #475569;
+}
+
+.support-box-small a {
+  margin-top: 4px;
+  padding: 9px 14px;
+  font-size: 14px;
+  background: #172033;
+}
+
+@media (max-width: 560px) {
+  .support-box-small {
+    padding: 14px;
+    border-radius: 16px;
+  }
+}
