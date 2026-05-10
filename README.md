@@ -211,3 +211,14 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Versione basata sulla V33 funzionante.
 - Sostituita la foto della porta della profumeria Source Adage con la nuova immagine fornita.
 - Aggiornato il numero versione nel footer a 1.34.
+
+## Novità V35 — testo L’amore nella pentola
+
+- Aggiornati tag, dettagli da cercare, testo “Cosa osservare”, indicazioni per la tappa successiva e descrizioni IT/EN del murale “L’amore nella pentola”.
+- Aggiornato il numero versione nel footer a 1.35.
+
+## Novità V36 — versione 1.36
+
+- Inserite le foto dei locali nella sezione “Dove fermarsi”.
+- Aggiornate le schede di Piccola Osteria Paperini, Bistrot 1986, Caffè Perbacco Osteria, La Piazzetta, Jemsi Bar, Bar da Libero e Osteria in Cantina.
+- Aggiornato il numero versione nel footer a 1.36.

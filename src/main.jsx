@@ -100,6 +100,7 @@ const murals = [
     directionsNext: 'Prosegui verso Piazza Federigo Baldasserini, dove si trova Terra e colori.',
     it: 'Il murale racconta una tradizione popolare della piazza: le donne si riunivano attorno al fuoco nella notte di San Giovanni e lasciavano sciogliere il piombo in grandi pentole. Le forme create dal metallo raffreddato venivano interpretate per immaginare il futuro sposo. Nell’opera compaiono anche il cinghiale, i paesaggi, il cavallo Gino e un richiamo alla comunità sarda del territorio.',
     en: 'This mural tells a local tradition from the square: women gathered around the fire on Saint Anthony’s night and melted lead in large pots. Once cooled, the shapes were interpreted to imagine a future husband. The work also includes a wild boar, local landscapes, the horse Gino and a reference to the Sardinian community living in the countryside around Riparbella.'
+    en: 'This mural tells a local tradition from the square: women gathered around the fire on Saint Anthony’s night and melted lead in large pots. Once cooled, the shapes were interpreted to imagine a future husband. The work also includes a wild boar, local landscapes, the horse Gino and a reference to the Sardinian community living in the countryside around Riparbella.',
   },
   {
     id: 'terra-colori',
@@ -226,6 +227,7 @@ const placesToEat = [
     name: 'Piccola Osteria Paperini',
     type: 'Osteria',
     bestFor: 'Cucina toscana e mediterranea',
+    image: '/images/piccola-osteria-paperini.jpg',
     address: 'Piazza Federico Baldasserini, 7, 56046 Riparbella PI',
     phone: '+393442224407',
     note: 'Una piccola osteria nel cuore del borgo, ideale per una pausa curata tra piatti toscani, proposte mediterranee e atmosfera raccolta.',
@@ -236,6 +238,7 @@ const placesToEat = [
     name: 'Bistrot 1986',
     type: 'Bistrot / Ristorante',
     bestFor: 'Pranzo, cena e sapori toscani',
+    image: '/images/bistrot-1986.jpg',
     address: 'Via della Madonna, 4, 56046 Riparbella PI',
     phone: '+393791353895',
     note: 'Un bistrot accogliente vicino al percorso, adatto per fermarsi a pranzo o a cena con cucina italiana, toscana e piatti di mare.',
@@ -246,6 +249,7 @@ const placesToEat = [
     name: 'Caffè Perbacco Osteria',
     type: 'Bar / Osteria',
     bestFor: 'Colazione, pranzo e aperitivo',
+    image: '/images/caffe-perbacco.jpg',
     address: 'Località San Martino, 56046 Riparbella PI',
     phone: '+393713899789',
     note: 'Un punto versatile per caffè, cappuccino, aperitivo o una sosta informale con cucina italiana e toscana.',
@@ -256,6 +260,7 @@ const placesToEat = [
     name: 'La Piazzetta Ristorante Pizzeria Griglieria',
     type: 'Ristorante / Pizzeria / Griglieria',
     bestFor: 'Pizza, griglia e terrazza',
+    image: '/images/la-piazzetta.jpg',
     address: 'Via di Piazzetta, 2, 56046 Riparbella PI',
     phone: '+3905861881268',
     note: 'Locale tipico con proposta di pizzeria, griglia e cucina italiana: una tappa comoda nel borgo, anche per famiglie e gruppi.',
@@ -266,6 +271,7 @@ const placesToEat = [
     name: 'Jemsi Bar Caffetteria-Aperitivi-Drink',
     type: 'Bar / Caffetteria',
     bestFor: 'Caffè, aperitivi e drink',
+    image: '/images/jemsi-bar.jpg',
     address: 'Piazza Giacomo Matteotti, 11, 56046 Riparbella PI',
     phone: '+393761300249',
     note: 'Bar centrale e pratico durante il percorso: perfetto per una colazione, una bibita fresca o un aperitivo dopo la visita.',
@@ -276,6 +282,7 @@ const placesToEat = [
     name: 'Bar da Libero',
     type: 'Bar',
     bestFor: 'Pausa veloce nel borgo',
+    image: '/images/bar-da-libero.jpg',
     address: 'Via della Madonna, 14, 56046 Riparbella PI',
     phone: '',
     note: 'Un bar di paese, semplice e comodo per una sosta veloce durante la passeggiata. Telefono non disponibile nelle fonti pubbliche consultate.',
@@ -285,6 +292,7 @@ const placesToEat = [
     name: 'Osteria in Cantina',
     type: 'Osteria / Cucina toscana',
     bestFor: 'Cucina casalinga e tradizione',
+    image: '/images/osteria-in-cantina.jpg',
     address: 'Via XX Settembre, 10, 56046 Riparbella PI',
     phone: '+390586699332',
     note: 'Osteria intima e molto apprezzata per la cucina casalinga toscana, i piatti della tradizione e l’atmosfera familiare.',
@@ -861,7 +869,7 @@ function App() {
           <p>Guida gratuita · Se vuoi, puoi sostenere il progetto con un caffè usando il pulsante Ko-fi in basso.</p>
         </div>
         <p>Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
-        <p><strong>Versione prototipo — 1.34</strong></p>
+        <p><strong>Versione prototipo — 1.36</strong></p>
       </footer>
     </div>
   );
