@@ -222,3 +222,8 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Inserite le foto dei locali nella sezione “Dove fermarsi”.
 - Aggiornate le schede di Piccola Osteria Paperini, Bistrot 1986, Caffè Perbacco Osteria, La Piazzetta, Jemsi Bar, Bar da Libero e Osteria in Cantina.
 - Aggiornato il numero versione nel footer a 1.36.
+
+## Fix V36.1
+
+- Corretto errore di sintassi nel murale “L’amore nella pentola”.
+- Mantenute le foto dei locali nella sezione “Dove fermarsi”.
