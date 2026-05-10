@@ -9,5 +9,21 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-</body>
+
+    <!-- Ko-fi floating donation widget -->
+    <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+    <script>
+      window.addEventListener('load', function () {
+        if (window.kofiWidgetOverlay) {
+          window.kofiWidgetOverlay.draw('francescobolognesi', {
+            'type': 'floating-chat',
+            'floating-chat.donateButton.text': 'Offri un caffè',
+            'floating-chat.donateButton.background-color': '#172033',
+            'floating-chat.donateButton.text-color': '#ffffff'
+          });
+        }
+      });
+    </script>
+
+  </body>
 </html>

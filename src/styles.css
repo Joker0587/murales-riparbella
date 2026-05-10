@@ -1362,31 +1362,3 @@ html {
     border-radius: 18px;
   }
 }
-
-/* V34 - Ko-fi widget normale nel footer */
-.kofi-widget-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 48px;
-  margin-top: 10px;
-}
-
-.kofi-widget-container iframe,
-.kofi-widget-container img {
-  max-width: 100%;
-}
-
-.kofi-widget-container a {
-  margin: 0 !important;
-}
-
-.support-box-small {
-  text-align: center;
-}
-
-@media (max-width: 560px) {
-  .kofi-widget-container {
-    width: 100%;
-  }
-}
