@@ -198,3 +198,17 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Lasciato solo il widget ufficiale Ko-fi flottante in basso.
 - Aggiornato il testo del footer per indicare il pulsante Ko-fi in basso.
 - Aggiornato il numero versione nel footer a 1.32.
+
+## Novità V33 — versione 1.33
+
+- Inserita la foto dell’Orologio da torre nella sezione “Oltre i Murales”.
+- Uniformate le schede della sezione “Dove fermarsi”.
+- Ogni attività mostra nome, indirizzo, telefono quando disponibile, breve descrizione, pulsante “Chiama” e pulsante “Portami qui”.
+- Per Bar da Libero il telefono non è stato inserito perché non disponibile nelle fonti pubbliche consultate.
+
+## Novità V34 — versione 1.34
+
+- Sostituito il floating button Ko-fi con il widget normale.
+- Il widget Ko-fi è ora posizionato dentro il footer, nel box “Guida gratuita”.
+- Testo pulsante Ko-fi impostato su “Offri un caffè”.
+- Aggiornato il numero versione nel footer a 1.34.

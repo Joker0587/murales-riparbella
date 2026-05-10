@@ -95,10 +95,10 @@ const murals = [
     lng: 10.598239,
     image: '/images/amore-pentola.jpg',
     tags: ['Tradizione', 'Racconti popolari', 'Cinghiale'],
-    detailsToFind: ['la grande pentola', 'il fuoco della notte di San Giovanni', 'il cinghiale', 'il cavallo Gino', 'la bandiera sarda'],
+    detailsToFind: ['la grande pentola', 'il fuoco della notte di Sant’Antonio', 'il cinghiale', 'il cavallo Gino', 'la bandiera sarda'],
     observe: 'Cerca la grande pentola, il fuoco e il cinghiale: sono dettagli che raccontano memoria popolare e cucina del territorio.',
     directionsNext: 'Prosegui verso Piazza Federigo Baldasserini, dove si trova Terra e colori.',
-    it: 'Il murale racconta una tradizione popolare della piazza: le donne si riunivano attorno al fuoco nella notte di San Giovanni e lasciavano sciogliere il piombo in grandi pentole. Le forme create dal metallo raffreddato venivano interpretate per immaginare il futuro sposo. Nell’opera compaiono anche il cinghiale, i paesaggi, il cavallo Gino e un richiamo alla comunità sarda del territorio.',
+    it: 'Il murale racconta una tradizione popolare della piazza: le donne si riunivano attorno al fuoco nella notte di Sant’Antonio e lasciavano sciogliere il piombo in grandi pentole. Le forme create dal metallo raffreddato venivano interpretate per immaginare il futuro sposo. Nell’opera compaiono anche il cinghiale, i paesaggi, il cavallo Gino e un richiamo alla comunità sarda del territorio.',
     en: 'This mural tells a local tradition from the square: women gathered around the fire on Saint Anthony’s night and melted lead in large pots. Once cooled, the shapes were interpreted to imagine a future husband. The work also includes a wild boar, local landscapes, the horse Gino and a reference to the Sardinian community living in the countryside around Riparbella.'
   },
   {
@@ -225,63 +225,69 @@ const placesToEat = [
   {
     name: 'Piccola Osteria Paperini',
     type: 'Osteria',
-    bestFor: 'Osteria tipica',
-    address: 'Riparbella',
+    bestFor: 'Cucina toscana e mediterranea',
+    address: 'Piazza Federico Baldasserini, 7, 56046 Riparbella PI',
     phone: '+393442224407',
-    lat: 43.363925,
-    lng: 10.597250
+    note: 'Una piccola osteria nel cuore del borgo, ideale per una pausa curata tra piatti toscani, proposte mediterranee e atmosfera raccolta.',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Piccola%20Osteria%20Paperini%20Piazza%20Baldasserini%207%20Riparbella',
+    website: 'https://piccolaosteriapaperini.eatbu.com/'
   },
   {
     name: 'Bistrot 1986',
     type: 'Bistrot / Ristorante',
-    bestFor: 'Cena e aperitivo',
-    address: 'Riparbella',
+    bestFor: 'Pranzo, cena e sapori toscani',
+    address: 'Via della Madonna, 4, 56046 Riparbella PI',
     phone: '+393791353895',
-    lat: 43.365184,
-    lng: 10.600322
+    note: 'Un bistrot accogliente vicino al percorso, adatto per fermarsi a pranzo o a cena con cucina italiana, toscana e piatti di mare.',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Bistrot%201986%20Via%20della%20Madonna%204%20Riparbella',
+    website: 'https://www.facebook.com/Bistrot1986/'
   },
   {
     name: 'Caffè Perbacco Osteria',
-    type: 'Osteria / Caffè',
-    bestFor: 'Osteria e caffè',
-    address: 'Riparbella',
+    type: 'Bar / Osteria',
+    bestFor: 'Colazione, pranzo e aperitivo',
+    address: 'Località San Martino, 56046 Riparbella PI',
     phone: '+393713899789',
-    lat: 43.356360,
-    lng: 10.605300
+    note: 'Un punto versatile per caffè, cappuccino, aperitivo o una sosta informale con cucina italiana e toscana.',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Caff%C3%A8%20Perbacco%20Osteria%20Localit%C3%A0%20San%20Martino%20Riparbella',
+    website: 'https://www.tripadvisor.it/Restaurant_Review-g652041-d17339812-Reviews-Caffe_Per_Bacco_Osteria-Riparbella_Province_of_Pisa_Tuscany.html'
   },
   {
     name: 'La Piazzetta Ristorante Pizzeria Griglieria',
     type: 'Ristorante / Pizzeria / Griglieria',
-    bestFor: 'Pizza e griglia',
-    address: 'Riparbella',
+    bestFor: 'Pizza, griglia e terrazza',
+    address: 'Via di Piazzetta, 2, 56046 Riparbella PI',
     phone: '+3905861881268',
-    lat: 43.364070,
-    lng: 10.597500
+    note: 'Locale tipico con proposta di pizzeria, griglia e cucina italiana: una tappa comoda nel borgo, anche per famiglie e gruppi.',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=La%20Piazzetta%20Ristorante%20Pizzeria%20Griglieria%20Via%20di%20Piazzetta%202%20Riparbella',
+    website: 'https://lapiazzettariparbella.my.canva.site/'
   },
   {
     name: 'Jemsi Bar Caffetteria-Aperitivi-Drink',
-    type: 'Bar / Caffetteria / Aperitivi',
-    bestFor: 'Caffè e aperitivi',
-    address: 'Riparbella',
+    type: 'Bar / Caffetteria',
+    bestFor: 'Caffè, aperitivi e drink',
+    address: 'Piazza Giacomo Matteotti, 11, 56046 Riparbella PI',
     phone: '+393761300249',
-    lat: 43.364880,
-    lng: 10.599950
+    note: 'Bar centrale e pratico durante il percorso: perfetto per una colazione, una bibita fresca o un aperitivo dopo la visita.',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Jemsi%20Bar%20Caffetteria%20Aperitivi%20Drink%20Piazza%20Giacomo%20Matteotti%2011%20Riparbella',
+    website: 'https://www.facebook.com/'
   },
   {
     name: 'Bar da Libero',
-    type: 'Bar / Minimarket',
-    bestFor: 'Pausa veloce',
-    address: 'Via della Madonna 14, 56046 Riparbella PI',
-    note: 'Bar e punto di sosta nel borgo. Ideale per una pausa durante il percorso. Telefono non disponibile nelle fonti consultate.',
+    type: 'Bar',
+    bestFor: 'Pausa veloce nel borgo',
+    address: 'Via della Madonna, 14, 56046 Riparbella PI',
+    phone: '',
+    note: 'Un bar di paese, semplice e comodo per una sosta veloce durante la passeggiata. Telefono non disponibile nelle fonti pubbliche consultate.',
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Bar%20da%20Libero%20Via%20della%20Madonna%2014%20Riparbella'
   },
   {
     name: 'Osteria in Cantina',
     type: 'Osteria / Cucina toscana',
-    bestFor: 'Pranzo o cena',
-    address: 'Via XX Settembre 10, 56046 Riparbella PI',
+    bestFor: 'Cucina casalinga e tradizione',
+    address: 'Via XX Settembre, 10, 56046 Riparbella PI',
     phone: '+390586699332',
-    note: 'Cucina casalinga e familiare di tradizione toscana. Consigliata la prenotazione, soprattutto la sera e nei weekend.',
+    note: 'Osteria intima e molto apprezzata per la cucina casalinga toscana, i piatti della tradizione e l’atmosfera familiare.',
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Osteria%20in%20Cantina%20Via%20XX%20Settembre%2010%20Riparbella',
     website: 'https://www.tripadvisor.it/Restaurant_Review-g652041-d2272107-Reviews-Osteria_In_Cantina-Riparbella_Province_of_Pisa_Tuscany.html'
   }
@@ -396,6 +402,7 @@ const extraPlaces = [
     address: 'Piazzetta Borgo di Sotto',
     lat: 43.364128,
     lng: 10.598266,
+    image: '/images/orologio-torre-riparbella.jpg',
     intro: 'Un punto simbolico del paese, legato alla storia della comunità e alla vita pubblica di Riparbella.',
     description: `L’abitato di Riparbella, sorto nel XV secolo nei pressi dell’antico borgo distrutto con il castello medievale durante la guerra fra Napoli e Firenze, si raccoglie su una collina a 216 metri d’altitudine, tra poggi olivati e vigneti.
 
@@ -496,6 +503,42 @@ function App() {
   const t = ui[language];
   const selectedIndex = Math.max(0, murals.findIndex((m) => m.id === selectedId));
   const selectedMural = murals[selectedIndex] || murals[0];
+
+
+  useEffect(() => {
+    const container = document.getElementById('kofi-widget-container');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://storage.ko-fi.com/cdn/widget/Widget_2.js';
+    script.async = true;
+
+    script.onload = () => {
+      if (window.kofiwidget2 && container) {
+        const previousWrite = document.write;
+        document.write = (html) => {
+          container.insertAdjacentHTML('beforeend', html);
+        };
+
+        try {
+          window.kofiwidget2.init('Offri un caffè', '#172033', 'D1D31Z9GAW');
+          window.kofiwidget2.draw();
+        } finally {
+          document.write = previousWrite;
+        }
+      }
+    };
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+      if (container) container.innerHTML = '';
+    };
+  }, []);
 
   const filteredMurals = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -819,6 +862,13 @@ function App() {
           <div className="practical-grid food-grid">
             {placesToEat.map((place) => (
               <article className="info-card food-card" key={place.name}>
+                <div className="food-visual" aria-hidden="true">
+                  {place.image ? (
+                    <img src={place.image} alt="" loading="lazy" />
+                  ) : (
+                    <span>{place.name.split(' ').slice(0, 2).map((word) => word[0]).join('')}</span>
+                  )}
+                </div>
                 <div className="food-card-top">
                   <p className="type">{place.type}</p>
                   {place.bestFor && <span className="food-badge">{place.bestFor}</span>}
@@ -826,7 +876,7 @@ function App() {
                 <h3>{place.name}</h3>
                 <p className="address">⌖ {place.address}</p>
                 {place.note && <p className="place-note">{place.note}</p>}
-                {place.phone && <p className="phone">{phoneLabel(place.phone)}</p>}
+                {place.phone ? <p className="phone">{phoneLabel(place.phone)}</p> : <p className="phone muted">Telefono non disponibile</p>}
                 <div className="button-row food-buttons">
                   {place.phone && <a className="primary link" href={`tel:${place.phone}`}>{t.call}</a>}
                   <a className={place.phone ? "secondary link" : "primary link"} target="_blank" rel="noreferrer" href={placeMapUrl(place)}>{t.takeMe}</a>
@@ -844,10 +894,11 @@ function App() {
         <p>per raccontare e valorizzare i murales di Riparbella.</p>
         <p className="footer-project">Progetto digitale dedicato al percorso di arte pubblica del borgo, pensato come guida semplice, consultabile da smartphone durante la visita.</p>
         <div className="support-box support-box-small">
-          <p>Guida gratuita · Se vuoi, puoi sostenere il progetto con un caffè usando il pulsante Ko-fi in basso.</p>
+          <p>Guida gratuita · Se vuoi, puoi sostenere il progetto con un caffè.</p>
+          <div id="kofi-widget-container" className="kofi-widget-container" aria-label="Sostieni il progetto su Ko-fi"></div>
         </div>
         <p>Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
-        <p><strong>Versione prototipo — 1.32</strong></p>
+        <p><strong>Versione prototipo — 1.34</strong></p>
       </footer>
     </div>
   );

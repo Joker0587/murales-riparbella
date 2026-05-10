@@ -1316,3 +1316,77 @@ html {
 .support-box-small a {
   display: none;
 }
+
+/* V33 - Schede uniformi dove fermarsi + foto orologio */
+.food-card {
+  overflow: hidden;
+}
+
+.food-visual {
+  height: 118px;
+  border-radius: 22px;
+  margin-bottom: 16px;
+  background:
+    radial-gradient(circle at 25% 25%, rgba(190, 126, 29, 0.22), transparent 34%),
+    linear-gradient(135deg, rgba(255, 248, 232, 0.95), rgba(233, 241, 237, 0.9));
+  border: 1px solid rgba(190, 126, 29, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #172133;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+}
+
+.food-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 22px;
+  display: block;
+}
+
+.phone.muted {
+  opacity: 0.72;
+  font-style: italic;
+}
+
+.extra-place-image img {
+  object-fit: cover;
+}
+
+@media (max-width: 720px) {
+  .food-visual {
+    height: 96px;
+    border-radius: 18px;
+  }
+}
+
+/* V34 - Ko-fi widget normale nel footer */
+.kofi-widget-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 48px;
+  margin-top: 10px;
+}
+
+.kofi-widget-container iframe,
+.kofi-widget-container img {
+  max-width: 100%;
+}
+
+.kofi-widget-container a {
+  margin: 0 !important;
+}
+
+.support-box-small {
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .kofi-widget-container {
+    width: 100%;
+  }
+}
