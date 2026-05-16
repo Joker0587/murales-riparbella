@@ -1362,3 +1362,101 @@ html {
     border-radius: 18px;
   }
 }
+
+/* V38 - percorso visitato e prossima tappa */
+.progress-section .progress-card {
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(190, 126, 29, 0.18);
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow: 0 18px 50px rgba(23, 33, 51, 0.08);
+}
+
+.progress-copy {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+
+.progress-copy strong {
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  color: #172133;
+}
+
+.progress-copy span {
+  max-width: 560px;
+  color: #5f6d82;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.progress-meter {
+  height: 14px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(23, 33, 51, 0.08);
+  border: 1px solid rgba(23, 33, 51, 0.08);
+}
+
+.progress-meter span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #be7e1d, #172133);
+  transition: width 0.35s ease;
+}
+
+.progress-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.route-stop.visited {
+  border-color: rgba(190, 126, 29, 0.38);
+}
+
+.visited-pill,
+.inline-visited {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: 6px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(190, 126, 29, 0.14);
+  color: #8a560d;
+  font-style: normal;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.inline-visited {
+  margin-top: 0;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.next-direction {
+  background: linear-gradient(135deg, rgba(190, 126, 29, 0.10), rgba(255, 255, 255, 0.72));
+}
+
+@media (max-width: 720px) {
+  .progress-copy {
+    display: block;
+  }
+
+  .progress-copy span {
+    display: block;
+    margin-top: 8px;
+  }
+
+  .progress-actions button {
+    width: 100%;
+  }
+}

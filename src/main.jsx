@@ -151,14 +151,14 @@ const murals = [
   },
   {
     id: 'aris',
-    title: 'La Chimera',
+    title: 'Omaggio a Pietro Leopoldo',
     artist: 'Aris',
     year: '2025',
     address: 'Via della Noce',
     lat: 43.363711,
     lng: 10.59808,
     image: '/images/aris.jpg',
-    tags: ['Etruschi', 'Ceramica', 'La Chimera'],
+    tags: ['Etruschi', 'Ceramica', 'Pietro Leopoldo'],
     detailsToFind: ['il vaso etrusco', 'le forme bicrome', 'i profili stilizzati', 'il legame con il Museo C’ERA', 'l’omaggio a Pietro Leopoldo'],
     observe: 'Osserva i profili e le forme bicrome: richiamano il vaso etrusco e lo trasformano in immagine contemporanea.',
     directionsNext: 'Sali verso l’edificio scolastico in Via della Noce 15 per raggiungere Riparbella01.',
@@ -528,6 +528,15 @@ function App() {
   const t = ui[language];
   const selectedIndex = Math.max(0, murals.findIndex((m) => m.id === selectedId));
   const selectedMural = murals[selectedIndex] || murals[0];
+  const [visitedIds, setVisitedIds] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('riparbellaVisitedMurals') || '[]');
+    } catch (error) {
+      return [];
+    }
+  });
+  const visitedCount = visitedIds.length;
+  const progressPercent = Math.round((visitedCount / murals.length) * 100);
 
   const filteredMurals = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -544,11 +553,25 @@ function App() {
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('riparbellaVisitedMurals', JSON.stringify(visitedIds));
+  }, [visitedIds]);
+
   const selectMural = (id, scroll = true) => {
     setSelectedId(id);
     window.history.replaceState(null, '', `#${id}`);
     if (scroll) setTimeout(() => detailsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
   };
+
+  const toggleVisited = (id = selectedMural.id) => {
+    setVisitedIds((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]);
+  };
+
+  const resetVisited = () => {
+    setVisitedIds([]);
+  };
+
+  const isVisited = (id) => visitedIds.includes(id);
 
 
   const shareMural = async (mural = selectedMural) => {
@@ -639,6 +662,26 @@ function App() {
           </div>
         </section>
 
+        <section className="section progress-section">
+          <div className="section-heading">
+            <p className="kicker">Il tuo percorso</p>
+            <h2>Segna le tappe visitate</h2>
+          </div>
+          <div className="progress-card">
+            <div className="progress-copy">
+              <strong>{visitedCount} / {murals.length} murales visti</strong>
+              <span>Usa il pulsante “Vista” nelle schede per tenere traccia del tour direttamente dal tuo smartphone.</span>
+            </div>
+            <div className="progress-meter" aria-label={`Percorso completato al ${progressPercent}%`}>
+              <span style={{ width: `${progressPercent}%` }}></span>
+            </div>
+            <div className="progress-actions">
+              <button className="primary" onClick={() => toggleVisited(selectedMural.id)}>{isVisited(selectedMural.id) ? 'Segna come da rivedere' : 'Segna tappa vista'}</button>
+              <button className="secondary" onClick={resetVisited}>Azzera percorso</button>
+            </div>
+          </div>
+        </section>
+
         <section className="section project-section">
           <div className="section-heading">
             <p className="kicker">{t.projectKicker}</p>
@@ -671,13 +714,14 @@ function App() {
 
             <div className="route-list">
               {murals.map((mural, index) => (
-                <article key={mural.id} className={selectedId === mural.id ? 'route-stop active' : 'route-stop'}>
+                <article key={mural.id} className={`${selectedId === mural.id ? 'route-stop active' : 'route-stop'} ${isVisited(mural.id) ? 'visited' : ''}`}>
                   <button className="route-stop-main route-stop-main-with-image" onClick={() => selectMural(mural.id, false)}>
                     <span className="route-number">{index + 1}</span>
                     <img className="route-thumb" src={mural.image} alt={mural.title} loading="lazy" />
                     <span>
                       <strong>{mural.title}</strong>
                       <small>{mural.address}</small>
+                      {isVisited(mural.id) && <em className="visited-pill">Vista</em>}
                     </span>
                   </button>
                   <div className="route-stop-actions">
@@ -720,9 +764,17 @@ function App() {
                 </ul>
               </div>
 
+              {selectedMural.directionsNext && (
+                <div className="mini-block next-direction">
+                  <h4>Verso la prossima tappa</h4>
+                  <p>{selectedMural.directionsNext}</p>
+                </div>
+              )}
+
               <div className="button-row">
                 <a href={navGoogle(selectedMural.lat, selectedMural.lng)} target="_blank" rel="noreferrer" className="primary link">{t.google}</a>
                 <a href={navApple(selectedMural.lat, selectedMural.lng)} target="_blank" rel="noreferrer" className="secondary link">{t.apple}</a>
+                <button className={isVisited(selectedMural.id) ? 'primary' : 'secondary'} onClick={() => toggleVisited(selectedMural.id)}>{isVisited(selectedMural.id) ? 'Vista ✓' : 'Segna vista'}</button>
                 <button className="secondary" onClick={() => shareMural(selectedMural)}>{t.shareCard}</button>
               </div>
 
@@ -748,7 +800,7 @@ function App() {
               <article key={mural.id} className={selectedId === mural.id ? 'mural-card selected' : 'mural-card'} onClick={() => selectMural(mural.id)}>
                 <img src={mural.image} alt={mural.title} />
                 <div>
-                  <p className="step">#{murals.findIndex((m) => m.id === mural.id) + 1}</p>
+                  <p className="step">#{murals.findIndex((m) => m.id === mural.id) + 1} {isVisited(mural.id) && <span className="inline-visited">Vista</span>}</p>
                   <h3>{mural.title}</h3>
                   <p className="meta">{mural.artist} · {mural.year}</p>
                   <div className="compact-details">
@@ -886,7 +938,7 @@ function App() {
           <p>Guida gratuita · Se vuoi, puoi sostenere il progetto con un caffè usando il pulsante Ko-fi in basso.</p>
         </div>
         <p>Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
-        <p><strong>Versione prototipo — 1.37</strong></p>
+        <p><strong>Versione prototipo — 1.38</strong></p>
       </footer>
     </div>
   );
