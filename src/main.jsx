@@ -151,14 +151,14 @@ const murals = [
   },
   {
     id: 'aris',
-    title: 'La Chimera',
+    title: 'Omaggio a Pietro Leopoldo',
     artist: 'Aris',
     year: '2025',
     address: 'Via della Noce',
     lat: 43.363711,
     lng: 10.59808,
     image: '/images/aris.jpg',
-    tags: ['Etruschi', 'Ceramica', 'La Chimera'],
+    tags: ['Etruschi', 'Ceramica', 'Pietro Leopoldo'],
     detailsToFind: ['il vaso etrusco', 'le forme bicrome', 'i profili stilizzati', 'il legame con il Museo C’ERA', 'l’omaggio a Pietro Leopoldo'],
     observe: 'Osserva i profili e le forme bicrome: richiamano il vaso etrusco e lo trasformano in immagine contemporanea.',
     directionsNext: 'Sali verso l’edificio scolastico in Via della Noce 15 per raggiungere Riparbella01.',
@@ -442,6 +442,24 @@ Il disegno riflette il loro amore per i profumi botanici e dialoga con la faccia
 
 Una tappa perfetta per scoprire Riparbella anche attraverso il senso dell’olfatto, tra arte, botanica e profumi.`,
     credit: 'Testo tratto e rielaborato dai materiali Source Adage.'
+  },
+  {
+    id: 'cera-riparbella-antica',
+    title: 'C’ERA — Centro Espositivo Riparbella Antica',
+    category: 'Archeologia e memoria etrusca',
+    address: 'Riparbella',
+    lat: 43.364493,
+    lng: 10.599207,
+    image: '/images/cera-corona-aurea.jpg',
+    intro: 'Una tappa preziosa per scoprire le radici più antiche del borgo e il legame tra arte contemporanea, archeologia e territorio.',
+    description: `Il C’ERA — Centro Espositivo Riparbella Antica è una tappa preziosa per scoprire le radici più antiche del borgo e del suo territorio.
+
+Il centro raccoglie reperti provenienti dall’area archeologica di Belora, testimonianza della presenza etrusca e romana nella zona di Riparbella. Oggetti di uso quotidiano, corredi funerari, ceramiche, balsamari e piccoli manufatti raccontano la vita, i riti e la cultura di chi abitava queste terre molti secoli fa.
+
+Tra gli elementi più suggestivi spicca la corona aurea da Belora, un reperto di grande fascino che richiama il mondo simbolico e rituale dell’antichità. Le sue foglie dorate raccontano una storia fatta di memoria, bellezza e legame con la terra.
+
+Visitare il C’ERA significa completare il percorso dei murales con uno sguardo più profondo: l’arte contemporanea sulle facciate del borgo dialoga con la storia antica custodita all’interno del centro espositivo.`,
+    credit: 'Scheda dedicata al C’ERA — Centro Espositivo Riparbella Antica e ai reperti provenienti dall’area di Belora.'
   },
   {
     id: 'chiesa-san-giovanni',
@@ -868,7 +886,7 @@ function App() {
           <p>Guida gratuita · Se vuoi, puoi sostenere il progetto con un caffè usando il pulsante Ko-fi in basso.</p>
         </div>
         <p>Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
-        <p><strong>Versione prototipo — 1.36.1</strong></p>
+        <p><strong>Versione prototipo — 1.37</strong></p>
       </footer>
     </div>
   );
