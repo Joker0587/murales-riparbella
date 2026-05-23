@@ -151,14 +151,14 @@ const murals = [
   },
   {
     id: 'aris',
-    title: 'La Chimera',
+    title: 'Omaggio a Pietro Leopoldo',
     artist: 'Aris',
     year: '2025',
     address: 'Via della Noce',
     lat: 43.363711,
     lng: 10.59808,
-    image: '/images/aris.jpg',
-    tags: ['Etruschi', 'Ceramica', 'La Chimera'],
+    image: '/images/aris.jpg?v=39',
+    tags: ['Etruschi', 'Ceramica', 'Pietro Leopoldo'],
     detailsToFind: ['il vaso etrusco', 'le forme bicrome', 'i profili stilizzati', 'il legame con il Museo C’ERA', 'l’omaggio a Pietro Leopoldo'],
     observe: 'Osserva i profili e le forme bicrome: richiamano il vaso etrusco e lo trasformano in immagine contemporanea.',
     directionsNext: 'Sali verso l’edificio scolastico in Via della Noce 15 per raggiungere Riparbella01.',
@@ -173,7 +173,7 @@ const murals = [
     address: 'Via della Noce 15, facciata laterale edificio scolastico',
     lat: 43.3639,
     lng: 10.59805,
-    image: '/images/riparbella01-moneyless.jpg',
+    image: '/images/riparbella01-moneyless.jpg?v=39',
     tags: ['Astrattismo', 'Scuola', 'Musica'],
     detailsToFind: ['le forme geometriche astratte', 'i richiami al movimento e alla musica', 'i colori volutamente non pieni', 'il riflesso nelle finestre della palestra'],
     observe: 'Nota le linee e le forme astratte: in alcune ore del giorno l’opera si riflette nelle finestre della palestra di fronte.',
@@ -205,7 +205,7 @@ const murals = [
     address: 'Via Gramsci, palestra comunale',
     lat: 43.363456,
     lng: 10.598161,
-    image: '/images/sonno-turan.jpg',
+    image: '/images/sonno-turan.jpg?v=39',
     tags: ['Liberazione', 'Pace', 'Turan'],
     detailsToFind: ['la dea Turan', 'il cigno nero', 'il melograno', 'la colomba bianca', 'il profilo della collina e del mare'],
     observe: 'Guarda Turan come una figura sospesa tra memoria e rinascita: amore, pace e liberazione diventano il cuore dell’opera.',
@@ -938,7 +938,7 @@ function App() {
           <p>Guida gratuita · Se vuoi, puoi sostenere il progetto con un caffè usando il pulsante Ko-fi in basso.</p>
         </div>
         <p>Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
-        <p><strong>Versione prototipo — 1.38</strong></p>
+        <p><strong>Versione prototipo — 1.39</strong></p>
       </footer>
     </div>
   );
