@@ -13,7 +13,7 @@ const murals = [
     address: 'Piazza della Madonna',
     lat: 43.365343,
     lng: 10.600444,
-    image: '/images/la-gioia.jpg',
+    image: '/images/la-gioia.jpg?v=41',
     tags: ['Paesaggio', 'Natura', 'Identità'],
     detailsToFind: ['le colline', 'i vigneti e gli oliveti', 'il bosco', 'il mare all’orizzonte', 'l’abbraccio della natura'],
     observe: 'Osserva il borgo come se fosse un autoritratto: colline, vigneti, oliveti, boschi e mare all’orizzonte.',
@@ -109,7 +109,7 @@ const murals = [
     address: 'Piazza Federigo Baldasserini',
     lat: 43.363962,
     lng: 10.597198,
-    image: '/images/terra-colori.jpg',
+    image: '/images/terra-colori.jpg?v=41',
     tags: ['Natura', 'Paesaggio', 'Colori'],
     detailsToFind: ['le onde', 'il sole e la luna', 'l’oliva e i colori del vino', 'la finestra sul paesaggio', 'la lente-faro e la cazzuola'],
     observe: 'Lascia correre lo sguardo tra onde, sole, luna, vegetazione, olive e richiami al vino: è un ritratto astratto del territorio.',
@@ -938,7 +938,7 @@ function App() {
           <p>Guida gratuita · Se vuoi, puoi sostenere il progetto con un caffè usando il pulsante Ko-fi in basso.</p>
         </div>
         <p>Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
-        <p><strong>Versione prototipo — 1.40</strong></p>
+        <p><strong>Versione prototipo — 1.41</strong></p>
       </footer>
     </div>
   );
