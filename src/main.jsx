@@ -97,7 +97,7 @@ const murals = [
     detailsToFind: ['la grande pentola', 'il fuoco della notte di San Giovanni', 'il cinghiale', 'il cavallo Gino', 'la bandiera sarda'],
     observe: 'Cerca la grande pentola, il fuoco e il cinghiale: sono dettagli che raccontano memoria popolare e cucina del territorio.',
     directionsNext: 'Prosegui verso Piazza Federigo Baldasserini, dove si trova Terra e colori.',
-    it: `In Piazza Borgo di Sotto il murale di Zed1 racconta una storia popolare tramandata dagli abitanti. Durante la notte di San Giovanni, le donne si riunivano attorno al fuoco e scioglievano il piombo in grandi pentole; le forme ottenute venivano poi interpretate per immaginare il futuro sposo. L’opera mescola rito, ironia e vita quotidiana: accanto alla pentola compaiono il cinghiale, il cavallo Gino, il paesaggio e un omaggio alla comunità sarda.`,
+    it: `In Piazza Borgo di Sotto il murale di Zed1 racconta una storia popolare tramandata dagli abitanti. Durante la notte di Sant’Antonio, le donne si riunivano attorno al fuoco e scioglievano il piombo in grandi pentole; le forme ottenute venivano poi interpretate per immaginare il futuro sposo. L’opera mescola rito, ironia e vita quotidiana: accanto alla pentola compaiono il cinghiale, il cavallo Gino, il paesaggio e un omaggio alla comunità sarda.`,
     en: `In Piazza Borgo di Sotto, Zed1’s mural tells a folk story passed down by local residents. On Saint Anthony’s night, women gathered around the fire and melted lead in large pots; once cooled, the shapes were interpreted to imagine a future husband. The work blends ritual, humour and everyday life: alongside the pot you can spot the wild boar, the horse Gino, the landscape and a tribute to the Sardinian community.`
   },
   {
@@ -327,7 +327,6 @@ const ui = {
     google: 'Google Maps',
     apple: 'Apple Maps',
     call: 'Chiama',
-    nextStop: 'Prossima tappa',
     previous: 'Precedente',
     next: 'Prossima',
     observe: 'Cosa osservare',
@@ -364,7 +363,6 @@ const ui = {
     openCard: 'Open card',
     selectedCardTitle: 'Selected mural card',
     previousStop: 'Previous stop',
-    nextStop: 'Next stop',
     list: 'Mural list',
     parking: 'Where to park',
     food: 'Where to stop',
@@ -375,7 +373,6 @@ const ui = {
     google: 'Google Maps',
     apple: 'Apple Maps',
     call: 'Call',
-    nextStop: 'Next stop',
     previous: 'Previous',
     next: 'Next',
     observe: 'What to notice',
@@ -934,10 +931,13 @@ function App() {
         <p>per raccontare e valorizzare i murales di Riparbella.</p>
         <p className="footer-project">Progetto digitale dedicato al percorso di arte pubblica del borgo, pensato come guida semplice, consultabile da smartphone durante la visita.</p>
         <div className="support-box support-box-small">
-          <p>Guida gratuita · Se vuoi, puoi sostenere il progetto con un caffè usando il pulsante Ko-fi in basso.</p>
+          <p>Guida gratuita · Se vuoi, puoi sostenere il progetto con un caffè.</p>
+          <a className="kofi-footer-button" href="https://ko-fi.com/D1D31Z9GAW" target="_blank" rel="noreferrer" aria-label="Sostieni il progetto su Ko-fi">
+            <img height="36" style={{ border: 0, height: 36 }} src="https://storage.ko-fi.com/cdn/kofi6.png?v=6" alt="Buy Me a Coffee at ko-fi.com" />
+          </a>
         </div>
         <p>Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
-        <p><strong>Versione prototipo — 1.44</strong></p>
+        <p><strong>Versione prototipo — 1.46</strong></p>
       </footer>
     </div>
   );
@@ -946,6 +946,5 @@ function App() {
 createRoot(document.getElementById('root')).render(
   <>
     <App />
-    
   </>
 );

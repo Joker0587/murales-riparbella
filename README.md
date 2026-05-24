@@ -227,13 +227,3 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 
 - Corretto errore di sintassi nel murale “L’amore nella pentola”.
 - Mantenute le foto dei locali nella sezione “Dove fermarsi”.
-
-## Ripartenza stabile V44
-
-Questa versione riparte dalla V44 funzionante.
-Pulizie applicate:
-- rimossi riferimenti ad Analytics;
-- rimossi script Ko-fi flottanti/widget problematici;
-- rimosso package-lock per evitare registry interni;
-- aggiunto `.npmrc` con registry pubblico npm;
-- mantenuta versione app 1.44.
