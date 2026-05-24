@@ -514,6 +514,11 @@ function phoneLabel(phone) {
 }
 
 function App() {
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   const [language, setLanguage] = useState('it');
   const [selectedId, setSelectedId] = useState(() => window.location.hash?.replace('#', '') || murals[0].id);
   const [query, setQuery] = useState('');
@@ -596,7 +601,6 @@ function App() {
 
   return (
     <div className="app">
-      <div className="reading-progress" style={{ width: `${scrollProgress}%` }} aria-hidden="true" />
       <header className="hero">
         <nav className="topbar">
           <div className="brand">Riparbella Murales</div>
@@ -933,6 +937,19 @@ function App() {
           <p className="disclaimer">{t.infoDisclaimer}</p>
         </section>
       </main>
+
+
+      <section className="mobile-action-panel" aria-label="Azioni rapide per smartphone">
+        <button type="button" className="mobile-action-button primary" onClick={() => scrollToSection('tour')}>
+          Inizia il tour
+        </button>
+        <button type="button" className="mobile-action-button" onClick={() => scrollToSection('map')}>
+          Apri la mappa
+        </button>
+        <button type="button" className="mobile-action-button" onClick={() => scrollToSection('extra')}>
+          Oltre i murales
+        </button>
+      </section>
 
       <footer>
         <p><strong>Web app ideata e realizzata da Francesco Bolognesi</strong></p>
