@@ -5,12 +5,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vercel/analytics": "latest",
     "@vitejs/plugin-react": "latest",
+    "vite": "latest",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
-  "devDependencies": {
-    "vite": "5.4.11",
-    "@vitejs/plugin-react": "4.3.4"
-  }
+  "devDependencies": {}
 }

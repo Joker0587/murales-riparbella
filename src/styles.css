@@ -1460,3 +1460,276 @@ html {
     width: 100%;
   }
 }
+
+.kofi-footer-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.kofi-footer-button img {
+  display: block;
+  max-width: 100%;
+}
+
+.support-box-small {
+  padding: 18px 22px;
+}
+
+.support-box-small p {
+  margin-bottom: 8px;
+}
+
+/* V46 — Mobile polish: effetto liquid glass stile app */
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.58);
+  --glass-bg-strong: rgba(255, 255, 255, 0.76);
+  --glass-border: rgba(255, 255, 255, 0.72);
+  --glass-shadow: 0 18px 55px rgba(20, 33, 51, 0.14), inset 0 1px 0 rgba(255,255,255,.75);
+  --glass-blur: blur(18px) saturate(1.25);
+}
+
+.hero-card,
+.tour-card,
+.map-section,
+.parking-card,
+.stop-card,
+.place-card,
+.extra-card,
+.modal-card,
+.footer-box,
+.detail-panel,
+.route-card,
+.child-card,
+.visit-card,
+.info-card {
+  background: linear-gradient(145deg, rgba(255,255,255,.82), rgba(255,255,255,.52));
+  border: 1px solid rgba(255,255,255,.72);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.hero-image,
+.tour-image,
+.card-image,
+.extra-image,
+.stop-image,
+.place-image,
+.map-wrap,
+.leaflet-container {
+  box-shadow: 0 22px 65px rgba(23, 32, 47, .16);
+}
+
+.btn,
+button,
+.lang-btn,
+.hero-nav-button,
+.action-btn,
+.map-button,
+.share-btn {
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active,
+button:active,
+.lang-btn:active,
+.hero-nav-button:active,
+.action-btn:active,
+.map-button:active,
+.share-btn:active {
+  transform: scale(.965);
+}
+
+.hero-nav-button,
+.action-btn,
+.map-button,
+.share-btn,
+.lang-btn,
+.kofi-link {
+  box-shadow: 0 10px 28px rgba(21, 31, 49, .12), inset 0 1px 0 rgba(255,255,255,.74);
+}
+
+.hero-nav-button:not(.primary),
+.lang-btn:not(.active),
+.action-btn.secondary,
+.map-button.secondary,
+.share-btn {
+  background: rgba(255,255,255,.72);
+  border-color: rgba(255,255,255,.92);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+}
+
+.section-title,
+.hero-title,
+.modal-title {
+  text-wrap: balance;
+}
+
+@media (max-width: 760px) {
+  body {
+    background:
+      radial-gradient(circle at 12% 2%, rgba(255, 211, 115, .28), transparent 34%),
+      radial-gradient(circle at 88% 10%, rgba(127, 200, 190, .22), transparent 32%),
+      #f7f0e7;
+  }
+
+  .app-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(247,240,231,.62);
+    backdrop-filter: blur(20px) saturate(1.35);
+    -webkit-backdrop-filter: blur(20px) saturate(1.35);
+    border-bottom: 1px solid rgba(255,255,255,.55);
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 18px;
+  }
+
+  .hero-grid {
+    gap: 24px;
+  }
+
+  .hero-title {
+    letter-spacing: -0.07em;
+    line-height: .9;
+  }
+
+  .hero-nav {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .hero-nav-button {
+    width: 100%;
+    justify-content: center;
+    min-height: 54px;
+    border-radius: 999px;
+    font-size: 1rem;
+  }
+
+  .tour-card,
+  .parking-card,
+  .stop-card,
+  .place-card,
+  .extra-card,
+  .footer-box {
+    border-radius: 28px;
+  }
+
+  .tour-card {
+    overflow: hidden;
+  }
+
+  .tour-content,
+  .extra-content,
+  .place-content,
+  .stop-content {
+    padding: 18px;
+  }
+
+  .tour-image,
+  .extra-image,
+  .place-image,
+  .stop-image {
+    border-radius: 24px;
+  }
+
+  .card-actions,
+  .place-actions,
+  .stop-actions,
+  .extra-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .action-btn,
+  .map-button,
+  .share-btn {
+    width: 100%;
+    min-height: 52px;
+    justify-content: center;
+    border-radius: 999px;
+  }
+
+  .map-layout {
+    gap: 16px;
+  }
+
+  .map-list {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 2px 2px 14px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .map-list > * {
+    min-width: 82%;
+    scroll-snap-align: start;
+  }
+
+  .map-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .modal-card {
+    width: calc(100vw - 18px);
+    max-height: calc(100dvh - 18px);
+    border-radius: 30px 30px 0 0;
+    animation: sheetIn .24s ease-out both;
+  }
+
+  .modal-body {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .modal-close {
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.78);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .footer-box {
+    padding: 20px 16px;
+  }
+
+  .kofi-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.72);
+  }
+}
+
+@keyframes sheetIn {
+  from { transform: translateY(32px); opacity: .72; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .001ms !important;
+  }
+}
