@@ -97,7 +97,7 @@ const murals = [
     detailsToFind: ['la grande pentola', 'il fuoco della notte di San Giovanni', 'il cinghiale', 'il cavallo Gino', 'la bandiera sarda'],
     observe: 'Cerca la grande pentola, il fuoco e il cinghiale: sono dettagli che raccontano memoria popolare e cucina del territorio.',
     directionsNext: 'Prosegui verso Piazza Federigo Baldasserini, dove si trova Terra e colori.',
-    it: `In Piazza Borgo di Sotto il murale di Zed1 racconta una storia popolare tramandata dagli abitanti. Durante la notte di San Giovanni, le donne si riunivano attorno al fuoco e scioglievano il piombo in grandi pentole; le forme ottenute venivano poi interpretate per immaginare il futuro sposo. L’opera mescola rito, ironia e vita quotidiana: accanto alla pentola compaiono il cinghiale, il cavallo Gino, il paesaggio e un omaggio alla comunità sarda.`,
+    it: `In Piazza Borgo di Sotto il murale di Zed1 racconta una storia popolare tramandata dagli abitanti. Durante la notte di Sant’Antonio, le donne si riunivano attorno al fuoco e scioglievano il piombo in grandi pentole; le forme ottenute venivano poi interpretate per immaginare il futuro sposo. L’opera mescola rito, ironia e vita quotidiana: accanto alla pentola compaiono il cinghiale, il cavallo Gino, il paesaggio e un omaggio alla comunità sarda.`,
     en: `In Piazza Borgo di Sotto, Zed1’s mural tells a folk story passed down by local residents. On Saint Anthony’s night, women gathered around the fire and melted lead in large pots; once cooled, the shapes were interpreted to imagine a future husband. The work blends ritual, humour and everyday life: alongside the pot you can spot the wild boar, the horse Gino, the landscape and a tribute to the Sardinian community.`
   },
   {
@@ -327,7 +327,6 @@ const ui = {
     google: 'Google Maps',
     apple: 'Apple Maps',
     call: 'Chiama',
-    nextStop: 'Prossima tappa',
     previous: 'Precedente',
     next: 'Prossima',
     observe: 'Cosa osservare',
@@ -375,7 +374,6 @@ const ui = {
     google: 'Google Maps',
     apple: 'Apple Maps',
     call: 'Call',
-    nextStop: 'Next stop',
     previous: 'Previous',
     next: 'Next',
     observe: 'What to notice',
@@ -946,6 +944,5 @@ function App() {
 createRoot(document.getElementById('root')).render(
   <>
     <App />
-    
   </>
 );
