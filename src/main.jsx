@@ -621,6 +621,13 @@ function App() {
         </div>
       </header>
 
+      <nav className="mobile-dock" aria-label="Navigazione rapida">
+        <a href="#mappa" onClick={(e) => { e.preventDefault(); document.getElementById('mappa')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>🗺️<span>Mappa</span></a>
+        <a href="#tour" onClick={(e) => { e.preventDefault(); document.getElementById('tour')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>🚶<span>Tour</span></a>
+        <a href="#oltre-murales" onClick={(e) => { e.preventDefault(); document.getElementById('oltre-murales')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>✨<span>Oltre</span></a>
+        <a href="#dove-fermarsi" onClick={(e) => { e.preventDefault(); document.getElementById('dove-fermarsi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>☕<span>Soste</span></a>
+      </nav>
+
       <main>
         <section className="section route-section">
           <div className="section-heading">
@@ -658,7 +665,7 @@ function App() {
           </div>
         </section>
 
-        <section className="section progress-section">
+        <section id="tour" className="section progress-section">
           <div className="section-heading">
             <p className="kicker">Il tuo percorso</p>
             <h2>Segna le tappe visitate</h2>
@@ -937,7 +944,7 @@ function App() {
           </a>
         </div>
         <p>Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
-        <p><strong>Versione prototipo — 1.46</strong></p>
+        <p><strong>Versione prototipo — 1.47</strong></p>
       </footer>
     </div>
   );

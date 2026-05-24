@@ -227,3 +227,9 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 
 - Corretto errore di sintassi nel murale “L’amore nella pentola”.
 - Mantenute le foto dei locali nella sezione “Dove fermarsi”.
+
+
+## Novità V47 — versione 1.47
+- Migliorata l’esperienza smartphone con navigazione rapida fissa in basso.
+- Schede più leggibili su mobile con effetto liquid glass, pulsanti più grandi e layout ottimizzato.
+- Corretto il pacchetto per evitare installazioni pesanti o dipendenze non necessarie.

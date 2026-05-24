@@ -1733,3 +1733,96 @@ button:active,
     transition-duration: .001ms !important;
   }
 }
+
+/* V47 — Mobile experience polish */
+html { scroll-behavior: smooth; }
+section, .map-section, .tour-section, .extra-section, .parking-section, .food-section { scroll-margin-top: 18px; }
+.mobile-dock { display: none; }
+
+@media (max-width: 760px) {
+  body { padding-bottom: 92px; }
+  .app-shell { overflow-x: hidden; }
+  .topbar { padding: 16px 18px 8px; align-items: center; }
+  .brand { font-size: 1rem; letter-spacing: -0.02em; }
+  .lang-switch { gap: 8px; }
+  .lang-switch button { min-height: 40px; min-width: 52px; padding: 10px 14px; border-radius: 999px; }
+
+  .hero { padding: 22px 18px 34px; grid-template-columns: 1fr; gap: 22px; min-height: auto; }
+  .hero h1 { font-size: clamp(3rem, 18vw, 5.6rem); line-height: .84; letter-spacing: -0.09em; }
+  .hero .eyebrow { font-size: .72rem; letter-spacing: .24em; }
+  .hero .subtitle { font-size: 1.12rem; line-height: 1.35; max-width: 94%; }
+  .hero-card { border-radius: 28px; box-shadow: 0 18px 55px rgba(17,24,39,.16); }
+  .hero-card img { max-height: 245px; object-fit: cover; }
+  .hero-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+  .hero-actions a, .hero-actions button { min-height: 52px; padding: 14px 16px; font-size: .98rem; justify-content: center; }
+
+  .mobile-dock {
+    position: fixed;
+    left: max(12px, env(safe-area-inset-left));
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+    z-index: 9999;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    padding: 10px;
+    border-radius: 26px;
+    background: rgba(255,255,255,.72);
+    border: 1px solid rgba(255,255,255,.85);
+    box-shadow: 0 16px 45px rgba(17,24,39,.2);
+    backdrop-filter: blur(22px) saturate(145%);
+    -webkit-backdrop-filter: blur(22px) saturate(145%);
+  }
+  .mobile-dock a {
+    min-height: 54px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    color: #172033;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 1.05rem;
+    background: rgba(255,255,255,.5);
+    border: 1px solid rgba(229,215,194,.65);
+  }
+  .mobile-dock span { font-size: .72rem; line-height: 1; }
+  .mobile-dock a:active { transform: scale(.96); background: rgba(255,248,231,.9); }
+
+  .section-header, .split-section, .project-section, .tour-section, .map-section, .parking-section, .food-section, .extra-section { padding-left: 18px; padding-right: 18px; }
+  h2 { font-size: clamp(2rem, 12vw, 3.25rem); letter-spacing: -0.07em; }
+  .intro-card, .project-card, .tour-card, .detail-card, .map-card, .glass-card, .stop-card, .place-card, .parking-card {
+    border-radius: 28px !important;
+    background: rgba(255,255,255,.72) !important;
+    border: 1px solid rgba(255,255,255,.78) !important;
+    box-shadow: 0 18px 50px rgba(17,24,39,.12) !important;
+    backdrop-filter: blur(18px) saturate(135%);
+    -webkit-backdrop-filter: blur(18px) saturate(135%);
+  }
+  .tour-card { grid-template-columns: 1fr; overflow: hidden; }
+  .tour-card img, .detail-card img { width: 100%; max-height: 310px; object-fit: cover; border-radius: 24px; }
+  .tour-info, .detail-content { padding: 20px; }
+  .detail-grid, .extra-grid, .food-grid, .parking-grid { grid-template-columns: 1fr !important; gap: 14px; }
+  .map-layout { grid-template-columns: 1fr !important; gap: 14px; }
+  .map-box { min-height: 360px; border-radius: 28px; overflow: hidden; }
+  .mural-list { max-height: 430px; overflow: auto; padding-bottom: 6px; }
+  .mural-list-card { gap: 12px; padding: 12px; border-radius: 22px; }
+  .mural-list-card img, .list-thumb { width: 78px !important; height: 78px !important; border-radius: 18px; object-fit: cover; flex: 0 0 auto; }
+
+  button, .primary, .secondary, .outline, a.button, .card-actions a, .card-actions button { min-height: 48px; touch-action: manipulation; }
+  .card-actions, .detail-actions, .tour-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .card-actions .wide, .detail-actions .wide, .tour-actions .wide { grid-column: 1 / -1; }
+  .footer { padding: 34px 18px 112px; }
+}
+
+@media (prefers-reduced-motion: no-preference) and (max-width: 760px) {
+  .hero-card, .intro-card, .tour-card, .detail-card, .map-card, .place-card, .parking-card {
+    animation: softRise .45s ease both;
+  }
+  @keyframes softRise {
+    from { opacity: 0; transform: translateY(14px) scale(.985); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+}
