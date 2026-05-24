@@ -228,14 +228,12 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Corretto errore di sintassi nel murale “L’amore nella pentola”.
 - Mantenute le foto dei locali nella sezione “Dove fermarsi”.
 
-## Fix V45.1 Ko-fi pulito
+## Ripartenza stabile V44
 
-- Rimosso lo script/widget flottante Ko-fi.
-- Inserito solo il bottone Ko-fi nel footer.
-- Pacchetto ricreato senza `node_modules` e senza `dist`.
-
-## Fix V45.2 npm registry
-
-- Rimosso `package-lock.json` perché conteneva URL di registry interni/non pubblici.
-- Aggiunto `.npmrc` con `registry=https://registry.npmjs.org/`.
-- Bloccate versioni stabili di React e Vite per evitare installazioni non compatibili.
+Questa versione riparte dalla V44 funzionante.
+Pulizie applicate:
+- rimossi riferimenti ad Analytics;
+- rimossi script Ko-fi flottanti/widget problematici;
+- rimosso package-lock per evitare registry interni;
+- aggiunto `.npmrc` con registry pubblico npm;
+- mantenuta versione app 1.44.

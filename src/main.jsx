@@ -1,5 +1,5 @@
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
@@ -934,13 +934,10 @@ function App() {
         <p>per raccontare e valorizzare i murales di Riparbella.</p>
         <p className="footer-project">Progetto digitale dedicato al percorso di arte pubblica del borgo, pensato come guida semplice, consultabile da smartphone durante la visita.</p>
         <div className="support-box support-box-small">
-          <p>Guida gratuita · Se vuoi, puoi sostenere il progetto con un caffè.</p>
-          <a className="kofi-footer-button" href="https://ko-fi.com/D1D31Z9GAW" target="_blank" rel="noreferrer">
-            <img height="36" style={{ border: 0, height: 36 }} src="https://storage.ko-fi.com/cdn/kofi6.png?v=6" alt="Buy Me a Coffee at ko-fi.com" />
-          </a>
+          <p>Guida gratuita · Se vuoi, puoi sostenere il progetto con un caffè usando il pulsante Ko-fi in basso.</p>
         </div>
         <p>Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
-        <p><strong>Versione prototipo — 1.45.1</strong></p>
+        <p><strong>Versione prototipo — 1.44</strong></p>
       </footer>
     </div>
   );
@@ -949,6 +946,6 @@ function App() {
 createRoot(document.getElementById('root')).render(
   <>
     <App />
-
+    
   </>
 );
