@@ -1482,3 +1482,22 @@ html {
 .support-box-small p {
   margin-bottom: 8px;
 }
+
+/* V45.1 - Ko-fi solo bottone footer */
+.kofi-footer-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.kofi-footer-button img {
+  display: block;
+  height: 36px;
+  border: 0;
+}
+
+.support-box-small {
+  text-align: center;
+}
