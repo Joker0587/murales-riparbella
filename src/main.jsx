@@ -730,6 +730,7 @@ function App() {
   const [locationStatus, setLocationStatus] = useState('idle');
   const [smartRoute, setSmartRoute] = useState([]);
   const [routeMode, setRouteMode] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   const [language, setLanguage] = useState('it');
   const [selectedId, setSelectedId] = useState(() => window.location.hash?.replace('#', '') || murals[0].id);
@@ -763,7 +764,31 @@ function App() {
       if (murals.some((m) => m.id === id)) setSelectedId(id);
     };
     window.addEventListener('hashchange', onHash);
-    
+  return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('riparbellaVisitedMurals', JSON.stringify(visitedIds));
+  }, [visitedIds]);
+
+
+  useEffect(() => {
+    const updateScrollProgress = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? Math.min(100, Math.max(0, (scrollTop / docHeight) * 100)) : 0;
+      setScrollProgress(progress);
+    };
+
+    updateScrollProgress();
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    window.addEventListener('resize', updateScrollProgress);
+    return () => {
+      window.removeEventListener('scroll', updateScrollProgress);
+      window.removeEventListener('resize', updateScrollProgress);
+    };
+  }, []);
+
   const startSmartRoute = () => {
     if (!navigator.geolocation) {
       setLocationStatus('unsupported');
@@ -786,8 +811,8 @@ function App() {
         setRouteMode(true);
         setLocationStatus('ready');
 
-        if (nearestRoute[0]) {
-          setSelectedIndex(Math.max(0, murals.findIndex((mural) => mural.id === nearestRoute[0].id)));
+        if (nearestRoute[0] && murals.some((mural) => mural.id === nearestRoute[0].id)) {
+          selectMural(nearestRoute[0].id, false);
         }
 
         setTimeout(() => {
@@ -811,13 +836,6 @@ function App() {
     setLocationStatus('idle');
   };
 
-
-  return () => window.removeEventListener('hashchange', onHash);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('riparbellaVisitedMurals', JSON.stringify(visitedIds));
-  }, [visitedIds]);
 
   const selectMural = (id, scroll = true) => {
     setSelectedId(id);
@@ -1262,7 +1280,7 @@ function App() {
           </a>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 1.51</strong></p>
+        <p><strong>{t.versionLabel} — 1.51.3</strong></p>
       </footer>
     </div>
   );

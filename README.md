@@ -266,3 +266,10 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Aggiunto `engines.node = 20.x`.
 - Confermato `.npmrc` con registry pubblico.
 - Nessun `package-lock.json` incluso.
+
+## V51.3 — build fix
+
+- Corretto errore build causato da funzioni del percorso smart inserite nel blocco sbagliato.
+- Aggiunto stato mancante per la barra di avanzamento.
+- Rimossa cartella di lavoro annidata finita nello ZIP.
+- Aggiornata versione a 1.51.3.

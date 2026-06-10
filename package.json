@@ -1,8 +1,11 @@
 {
   "name": "murales-riparbella",
-  "version": "1.51.2",
+  "version": "1.51.3",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -17,8 +20,5 @@
   "devDependencies": {
     "@vitejs/plugin-react": "4.3.4",
     "vite": "5.4.11"
-  },
-  "engines": {
-    "node": "20.x"
   }
 }
