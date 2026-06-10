@@ -252,3 +252,10 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Tradotte le parti ancora fisse in italiano: percorso smart, progresso, footer, Oltre i murales e Dove fermarsi.
 - Aggiunti testi inglesi per le schede extra e per le schede dei locali.
 - Aggiornato il footer alla versione 1.51.
+
+## V51.1 — npm install fix
+
+- Package.json ripulito e stabilizzato.
+- Aggiunto `.npmrc` con registry pubblico npm.
+- Rimosso `package-lock.json` per evitare vecchi riferimenti a registry interni/proxy.
+- Rimossi eventuali riferimenti a `@vercel/analytics`.
