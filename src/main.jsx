@@ -5,13 +5,6 @@ import './styles.css';
 
 
 
-
-const getLocalized = (item, field, language) => {
-  if (!item) return '';
-  const localizedField = language === 'en' ? `${field}En` : field;
-  return item[localizedField] || item[field] || '';
-};
-
 const toRad = (value) => (value * Math.PI) / 180;
 
 const getDistanceMeters = (a, b) => {
@@ -289,97 +282,76 @@ const placesToEat = [
   {
     name: 'Piccola Osteria Paperini',
     type: 'Osteria',
-    typeEn: 'Osteria',
     bestFor: 'Cucina toscana e mediterranea',
-    bestForEn: 'Tuscan and Mediterranean cuisine',
     image: '/images/piccola-osteria-paperini.jpg',
     address: 'Piazza Federico Baldasserini, 7, 56046 Riparbella PI',
     phone: '+393442224407',
     note: 'Una piccola osteria nel cuore del borgo, ideale per una pausa curata tra piatti toscani, proposte mediterranee e atmosfera raccolta.',
-    noteEn: 'A small osteria in the heart of the village, ideal for a refined stop with Tuscan dishes, Mediterranean flavours and an intimate atmosphere.',
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Piccola%20Osteria%20Paperini%20Piazza%20Baldasserini%207%20Riparbella',
     website: 'https://piccolaosteriapaperini.eatbu.com/'
   },
   {
     name: 'Bistrot 1986',
     type: 'Bistrot / Ristorante',
-    typeEn: 'Bistro / Restaurant',
     bestFor: 'Pranzo, cena e sapori toscani',
-    bestForEn: 'Lunch, dinner and Tuscan flavours',
     image: '/images/bistrot-1986.jpg',
     address: 'Via della Madonna, 4, 56046 Riparbella PI',
     phone: '+393791353895',
     note: 'Un bistrot accogliente vicino al percorso, adatto per fermarsi a pranzo o a cena con cucina italiana, toscana e piatti di mare.',
-    noteEn: 'A welcoming bistro close to the route, suitable for lunch or dinner with Italian, Tuscan and seafood dishes.',
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Bistrot%201986%20Via%20della%20Madonna%204%20Riparbella',
     website: 'https://www.facebook.com/Bistrot1986/'
   },
   {
     name: 'Caffè Perbacco Osteria',
     type: 'Bar / Osteria',
-    typeEn: 'Bar / Osteria',
     bestFor: 'Colazione, pranzo e aperitivo',
-    bestForEn: 'Breakfast, lunch and aperitif',
     image: '/images/caffe-perbacco.jpg',
     address: 'Località San Martino, 56046 Riparbella PI',
     phone: '+393713899789',
     note: 'Un punto versatile per caffè, cappuccino, aperitivo o una sosta informale con cucina italiana e toscana.',
-    noteEn: 'A versatile stop for coffee, cappuccino, aperitifs or an informal break with Italian and Tuscan cuisine.',
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Caff%C3%A8%20Perbacco%20Osteria%20Localit%C3%A0%20San%20Martino%20Riparbella',
     website: 'https://www.tripadvisor.it/Restaurant_Review-g652041-d17339812-Reviews-Caffe_Per_Bacco_Osteria-Riparbella_Province_of_Pisa_Tuscany.html'
   },
   {
     name: 'La Piazzetta Ristorante Pizzeria Griglieria',
     type: 'Ristorante / Pizzeria / Griglieria',
-    typeEn: 'Restaurant / Pizzeria / Grill',
     bestFor: 'Pizza, griglia e terrazza',
-    bestForEn: 'Pizza, grill and terrace',
     image: '/images/la-piazzetta.jpg',
     address: 'Via di Piazzetta, 2, 56046 Riparbella PI',
     phone: '+3905861881268',
     note: 'Locale tipico con proposta di pizzeria, griglia e cucina italiana: una tappa comoda nel borgo, anche per famiglie e gruppi.',
-    noteEn: 'A typical place offering pizza, grilled dishes and Italian cuisine: a convenient stop in the village, also for families and groups.',
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=La%20Piazzetta%20Ristorante%20Pizzeria%20Griglieria%20Via%20di%20Piazzetta%202%20Riparbella',
     website: 'https://lapiazzettariparbella.my.canva.site/'
   },
   {
     name: 'Jemsi Bar Caffetteria-Aperitivi-Drink',
     type: 'Bar / Caffetteria',
-    typeEn: 'Bar / Coffee shop',
     bestFor: 'Caffè, aperitivi e drink',
-    bestForEn: 'Coffee, aperitifs and drinks',
     image: '/images/jemsi-bar.jpg',
     address: 'Piazza Giacomo Matteotti, 11, 56046 Riparbella PI',
     phone: '+393761300249',
     note: 'Bar centrale e pratico durante il percorso: perfetto per una colazione, una bibita fresca o un aperitivo dopo la visita.',
-    noteEn: 'A central and practical bar along the route: perfect for breakfast, a fresh drink or an aperitif after the visit.',
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Jemsi%20Bar%20Caffetteria%20Aperitivi%20Drink%20Piazza%20Giacomo%20Matteotti%2011%20Riparbella',
     website: 'https://www.facebook.com/'
   },
   {
     name: 'Bar da Libero',
     type: 'Bar',
-    typeEn: 'Bar',
     bestFor: 'Pausa veloce nel borgo',
-    bestForEn: 'Quick break in the village',
     image: '/images/bar-da-libero.jpg',
     address: 'Via della Madonna, 14, 56046 Riparbella PI',
     phone: '',
     note: 'Un bar di paese, semplice e comodo per una sosta veloce durante la passeggiata. Telefono non disponibile nelle fonti pubbliche consultate.',
-    noteEn: 'A simple village bar, convenient for a quick stop during the walk. Phone number not available from public sources.',
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Bar%20da%20Libero%20Via%20della%20Madonna%2014%20Riparbella'
   },
   {
     name: 'Osteria in Cantina',
     type: 'Osteria / Cucina toscana',
-    typeEn: 'Osteria / Tuscan cuisine',
     bestFor: 'Cucina casalinga e tradizione',
-    bestForEn: 'Homestyle cooking and tradition',
     image: '/images/osteria-in-cantina.jpg',
     address: 'Via XX Settembre, 10, 56046 Riparbella PI',
     phone: '+390586699332',
     note: 'Osteria intima e molto apprezzata per la cucina casalinga toscana, i piatti della tradizione e l’atmosfera familiare.',
-    noteEn: 'An intimate osteria appreciated for homestyle Tuscan cooking, traditional dishes and a familiar atmosphere.',
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Osteria%20in%20Cantina%20Via%20XX%20Settembre%2010%20Riparbella',
     website: 'https://www.tripadvisor.it/Restaurant_Review-g652041-d2272107-Reviews-Osteria_In_Cantina-Riparbella_Province_of_Pisa_Tuscany.html'
   }
@@ -445,7 +417,7 @@ const ui = {
     go: 'Vai',
     progressKicker: 'Il tuo percorso',
     progressTitle: 'Segna le tappe visitate',
-    progressSeen: '{t.progressSeen}',
+    progressSeen: 'murales visti',
     progressHint: 'Usa il pulsante “Vista” nelle schede per tenere traccia del tour direttamente dal tuo smartphone.',
     progressAria: 'Percorso completato al',
     markReview: 'Segna come da rivedere',
@@ -453,13 +425,15 @@ const ui = {
     seen: 'Vista',
     nextDirectionTitle: 'Verso la prossima tappa',
     beyondHero: 'Oltre i murales',
-    stopsKicker: 'Bar, ristoranti e pause',
-    foodIntro: 'Una selezione di bar, osterie e ristoranti dove fermarsi prima, durante o dopo il percorso. Gli orari possono variare: consigliamo sempre di contattare direttamente l’attività prima della visita.',
-    phoneUnavailable: 'Telefono non disponibile',
+    parkingShort: 'I parcheggi',
+    quickNav: 'Navigazione rapida',
     extraKicker: 'Oltre i murales',
     extraTitle: 'Scopri Riparbella oltre i murales',
     extraIntro: 'Il percorso dei murales può diventare l’occasione per scoprire altri luoghi del borgo: piccoli segni di memoria, arte, tradizione, esperienze sensoriali e vita quotidiana che raccontano Riparbella da prospettive diverse.',
     readStory: 'Leggi la storia',
+    stopsKicker: 'Bar, ristoranti e pause',
+    foodIntro: 'Una selezione di bar, osterie e ristoranti dove fermarsi prima, durante o dopo il percorso. Gli orari possono variare: consigliamo sempre di contattare direttamente l’attività prima della visita.',
+    phoneUnavailable: 'Telefono non disponibile',
     footerMade: 'Web app ideata e realizzata da Francesco Bolognesi',
     footerPurpose: 'per raccontare e valorizzare i murales di Riparbella.',
     footerProject: 'Progetto digitale dedicato al percorso di arte pubblica del borgo, pensato come guida semplice, consultabile da smartphone durante la visita.',
@@ -515,7 +489,7 @@ const ui = {
     infoDisclaimer: 'Useful visitor information. Opening hours and contacts may change: please contact the businesses directly before your visit.',
     smartRouteKicker: 'Custom route',
     smartRouteTitle: 'Start from where you are',
-    smartRouteText: 'Turn on location: the guide will order the stops starting from the closest point to you. Perfect if you are already in the village and want to avoid unnecessary walking.',
+    smartRouteText: 'Turn on location: the guide will order the stops from the closest point to you. Perfect if you are already in the village and want to avoid unnecessary walking.',
     smartRouteLoading: 'Finding your position…',
     smartRouteButton: 'Create route from here',
     smartRouteReset: 'Back to the classic tour',
@@ -535,13 +509,15 @@ const ui = {
     seen: 'Seen',
     nextDirectionTitle: 'Towards the next stop',
     beyondHero: 'Beyond the murals',
-    stopsKicker: 'Bars, restaurants and breaks',
-    foodIntro: 'A selection of bars, osterias and restaurants where you can stop before, during or after the route. Opening hours may vary: we recommend contacting each place directly before your visit.',
-    phoneUnavailable: 'Phone not available',
+    parkingShort: 'Parking',
+    quickNav: 'Quick navigation',
     extraKicker: 'Beyond the murals',
     extraTitle: 'Discover Riparbella beyond the murals',
     extraIntro: 'The mural route is also a chance to discover other places in the village: small signs of memory, art, tradition, sensory experiences and everyday life that tell Riparbella from different perspectives.',
     readStory: 'Read the story',
+    stopsKicker: 'Bars, restaurants and breaks',
+    foodIntro: 'A selection of bars, osterias and restaurants where you can stop before, during or after the route. Opening hours may vary: we recommend contacting each place directly before your visit.',
+    phoneUnavailable: 'Phone not available',
     footerMade: 'Web app designed and created by Francesco Bolognesi',
     footerPurpose: 'to tell and enhance the murals of Riparbella.',
     footerProject: 'A digital project dedicated to the village’s public art route, designed as a simple guide to use from your smartphone during the visit.',
@@ -560,13 +536,11 @@ const extraPlaces = [
     id: 'orologio-torre',
     title: 'Orologio da torre di Riparbella',
     category: 'Storia del borgo',
-    categoryEn: 'Village history',
     address: 'Piazzetta Borgo di Sotto',
     lat: 43.364128,
     lng: 10.598266,
     image: '/images/orologio-torre-riparbella.jpg',
     intro: 'Un punto simbolico del paese, legato alla storia della comunità e alla vita pubblica di Riparbella.',
-    introEn: 'A symbolic landmark linked to the history of the community and the public life of Riparbella.',
     description: `L’abitato di Riparbella, sorto nel XV secolo nei pressi dell’antico borgo distrutto con il castello medievale durante la guerra fra Napoli e Firenze, si raccoglie su una collina a 216 metri d’altitudine, tra poggi olivati e vigneti.
 
 Riparbella fu feudo mediceo e nel 1635 divenne Marchesato sotto la famiglia Carlotti. Il primo orologio pubblico venne collocato nel 1703 sopra una casa di proprietà del marchese Carlotti, situata nella piazza del paese.
@@ -578,28 +552,18 @@ Nel 1749, dopo il bando del Granduca di Toscana, l’orologio venne adattato all
 Nel 1864 la casa dove si trovava l’orologio fu abbattuta per allargare la strada verso la chiesa. L’orologio da torre venne quindi collocato sul nuovo Municipio appena costruito. Nel 1867 fu acquistata una nuova macchina di Luigi Toninelli di Cecina, poi posta sulla torretta del nuovo Municipio nel 1885.
 
 Il racconto dell’orologio è anche il racconto di una comunità che, attraverso il tempo, ha continuato a custodire i propri luoghi, i propri suoni e la propria memoria.`,
-    descriptionEn: `The tower clock tells a piece of Riparbella’s public history. The first public clock was installed in 1703 on a house owned by Marquis Carlotti, in the village square.
-
-Its bell, dated 1606, marked the hours for the community. Over the centuries the mechanism was repaired and adapted several times, following changes in the way public clocks measured time.
-
-In 1864 the building that hosted the clock was demolished to widen the road towards the church. The clock was then moved to the newly built Town Hall, where it continued to mark the rhythm of village life.
-
-This stop is a small journey through civic memory: a reminder of how time, sound and community have shaped the identity of Riparbella.`,
     credit: 'Ricerca di Severino Bolognesi, Pontedera 19.01.2019. Ringraziamenti: Dott.ssa Angela Porciani e Dott. Michele Quirici per il contributo alla ricerca.'
-    creditEn: 'Research by Severino Bolognesi, Pontedera 19.01.2019. Thanks to Dr Angela Porciani and Dr Michele Quirici for their contribution.',
   },
   {
     id: 'source-adage',
     title: 'Source Adage — Una porta per la profumeria',
     category: 'Profumi, botanica e arte',
-    categoryEn: 'Perfume, botanicals and art',
     address: 'Via XX Settembre, 32, Riparbella',
     lat: 43.364420,
     lng: 10.599000,
     website: 'https://www.sourceadage.it/',
     image: '/images/source-adage-porta.jpg',
     intro: 'Una tappa sensoriale nel borgo: la porta dipinta racconta il legame tra profumeria, botanica e arte contemporanea.',
-    introEn: 'A sensory stop in the village: the painted door tells the link between perfumery, botanicals and contemporary art.',
     description: `Ispirata alle incisioni botaniche del Seicento della pittrice fiorentina Anna Maria Vaiani, questa porta decorata aggiunge un nuovo segno alla vivace arte urbana di Riparbella.
 
 I cofondatori e “nasi” del marchio di fragranze di nicchia Source Adage, nato a New York, Robert Dobay e Christopher Draghi, hanno dipinto la porta del magazzino adiacente alla loro boutique, reinterpretando le opere botaniche di Vaiani con una grafica audace e contemporanea.
@@ -607,28 +571,17 @@ I cofondatori e “nasi” del marchio di fragranze di nicchia Source Adage, nat
 Il disegno riflette il loro amore per i profumi botanici e dialoga con la facciata rosa del palazzo, sede della profumeria e dello studio. Non è soltanto un elemento decorativo: la porta funziona anche come piccolo indicatore visivo degli orari di apertura. Quando le porte dipinte sono aperte e mostrano il rosa, anche lo showroom è aperto; quando sono chiuse e mostrano il verde, anche la profumeria è chiusa.
 
 Una tappa perfetta per scoprire Riparbella anche attraverso il senso dell’olfatto, tra arte, botanica e profumi.`,
-    descriptionEn: `Inspired by the seventeenth-century botanical engravings of Florentine artist Anna Maria Vaiani, this decorated door adds a contemporary sign to Riparbella’s urban art.
-
-Robert Dobay and Christopher Draghi, founders and perfumers of the niche fragrance brand Source Adage, painted the warehouse door next to their boutique, reinterpreting Vaiani’s botanical works with a bold visual language.
-
-The design reflects their love for botanical scents and dialogues with the pink façade of the building. It is not only decorative: the door also acts as a visual sign for opening hours. When the painted doors are open and show pink, the showroom is open; when they are closed and show green, the perfumery is closed.
-
-A perfect stop to discover Riparbella through the sense of smell as well as sight.`,
     credit: 'Testo tratto e rielaborato dai materiali Source Adage.'
-    creditEn: 'Text adapted from Source Adage materials.',
   },
   {
     id: 'cera-riparbella-antica',
     title: 'C’ERA — Centro Espositivo Riparbella Antica',
-    titleEn: 'C’ERA — Riparbella Ancient Exhibition Centre',
     category: 'Archeologia e memoria etrusca',
-    categoryEn: 'Archaeology and Etruscan memory',
     address: 'Riparbella',
     lat: 43.364493,
     lng: 10.599207,
     image: '/images/cera-corona-aurea.jpg',
     intro: 'Una tappa preziosa per scoprire le radici più antiche del borgo e il legame tra arte contemporanea, archeologia e territorio.',
-    introEn: 'A precious stop to discover the oldest roots of the village and its territory.',
     description: `Il C’ERA — Centro Espositivo Riparbella Antica è una tappa preziosa per scoprire le radici più antiche del borgo e del suo territorio.
 
 Il centro raccoglie reperti provenienti dall’area archeologica di Belora, testimonianza della presenza etrusca e romana nella zona di Riparbella. Oggetti di uso quotidiano, corredi funerari, ceramiche, balsamari e piccoli manufatti raccontano la vita, i riti e la cultura di chi abitava queste terre molti secoli fa.
@@ -636,28 +589,17 @@ Il centro raccoglie reperti provenienti dall’area archeologica di Belora, test
 Tra gli elementi più suggestivi spicca la corona aurea da Belora, un reperto di grande fascino che richiama il mondo simbolico e rituale dell’antichità. Le sue foglie dorate raccontano una storia fatta di memoria, bellezza e legame con la terra.
 
 Visitare il C’ERA significa completare il percorso dei murales con uno sguardo più profondo: l’arte contemporanea sulle facciate del borgo dialoga con la storia antica custodita all’interno del centro espositivo.`,
-    descriptionEn: `C’ERA — Riparbella Ancient Exhibition Centre preserves archaeological finds from the Belora area and tells the Etruscan and Roman roots of the territory.
-
-Everyday objects, funerary goods, ceramics, glass vessels and small artefacts reveal the life, rituals and culture of the ancient communities that inhabited these lands.
-
-One of the most evocative pieces is the golden crown from Belora, a fascinating object connected to the symbolic and ritual world of antiquity.
-
-Visiting C’ERA completes the mural route with a deeper perspective: contemporary art painted on the village walls enters into dialogue with the ancient history preserved inside the exhibition centre.`,
     credit: 'Scheda dedicata al C’ERA — Centro Espositivo Riparbella Antica e ai reperti provenienti dall’area di Belora.'
-    creditEn: 'Information card on C’ERA — Riparbella Ancient Exhibition Centre.',
   },
   {
     id: 'chiesa-san-giovanni',
     title: 'Chiesa di San Giovanni Evangelista',
-    titleEn: 'Church of Saint John the Evangelist',
     category: 'Arte sacra',
-    categoryEn: 'Sacred art',
     address: 'Chiesa di San Giovanni Evangelista, Riparbella',
     lat: 43.364338,
     lng: 10.598561,
     image: '/images/chiesa-san-giovanni-ultima-cena.jpg',
     intro: 'Una tappa di arte sacra nel cuore del borgo, con altari storici e affreschi contemporanei nell’abside.',
-    introEn: 'A sacred art stop in the heart of the village, with historic altars and contemporary frescoes in the apse.',
     description: `La Chiesa di San Giovanni Evangelista custodisce diversi elementi di interesse artistico e devozionale.
 
 All’interno si trovano un altare dedicato a San Giovanni Evangelista con statua moderna, un altare della Madonna del Carmelo con statua del Cristo morto e due altari presso il presbiterio con dipinti settecenteschi, tra cui Sant’Antonio Abate, e seicenteschi, tra cui la Madonna Assunta.
@@ -665,28 +607,17 @@ All’interno si trovano un altare dedicato a San Giovanni Evangelista con statu
 L’abside è arricchita da affreschi realizzati nel 1995, che rappresentano l’Ultima Cena e Cristo in gloria. La scena crea un forte punto focale all’interno della chiesa e accompagna lo sguardo verso l’altare, unendo il racconto evangelico alla dimensione spirituale del luogo.
 
 Durante la visita si consiglia di rispettare il silenzio, gli orari di apertura e la funzione religiosa del luogo.`,
-    descriptionEn: `The Church of Saint John the Evangelist preserves several artistic and devotional elements.
-
-Inside you can find an altar dedicated to Saint John the Evangelist with a modern statue, an altar of Our Lady of Mount Carmel with a statue of the dead Christ, and two altars near the presbytery with eighteenth- and seventeenth-century paintings.
-
-The apse is enriched by frescoes painted in 1995, depicting the Last Supper and Christ in glory. The scene creates a strong focal point inside the church and leads the eye towards the altar.
-
-During the visit, please respect silence, opening hours and the religious nature of the place.`,
     credit: 'Scheda informativa sulla Chiesa di San Giovanni Evangelista.'
-    creditEn: 'Information card on the Church of Saint John the Evangelist.',
   },
   {
     id: 'presepe-animato',
     title: 'Presepe animato di Riparbella',
-    titleEn: 'Animated Nativity Scene of Riparbella',
     category: 'Tradizione e artigianato',
-    categoryEn: 'Tradition and craftsmanship',
     address: 'Ex Cinema, Piazza della Madonna 1',
     lat: 43.365574,
     lng: 10.600548,
     image: '/images/presepe-animato-riparbella.jpg',
     intro: 'Una grande opera artigianale realizzata dai cittadini, con scene animate, antichi mestieri e ambientazioni rurali.',
-    introEn: 'A large handcrafted work created by local residents, with animated scenes, ancient crafts and rural settings.',
     description: `Il Presepe animato di Riparbella si trova nell’ex Cinema in Piazza della Madonna 1 ed è una grande opera artigianale di circa 80 mq, creata grazie al lavoro e alla passione dei cittadini.
 
 Inaugurato il 24 dicembre, ospita oltre 140 statuine animate alte circa 20 cm, impegnate in mestieri tradizionali e scene della vita rurale. Tra le scene rappresentate si trovano lavori casalinghi, battitura del cerchio, pigiatura dell’uva, macina del grano, taglio della legna e molte altre attività legate alla memoria contadina.
@@ -694,15 +625,7 @@ Inaugurato il 24 dicembre, ospita oltre 140 statuine animate alte circa 20 cm, i
 L’allestimento è arricchito da effetti luminosi che riproducono le fasi della giornata, dall’alba al tramonto fino alla notte. Sono presenti anche effetti scenici come neve, ghiacciai, laghi, cascate e la stella cometa.
 
 È una tappa particolarmente adatta a famiglie e bambini, ma anche a chi desidera scoprire una tradizione popolare costruita con cura, manualità e spirito di comunità.`,
-    descriptionEn: `The Animated Nativity Scene of Riparbella is located in the former cinema in Piazza della Madonna 1. It is a large handcrafted work of around 80 square metres, created thanks to the dedication of local residents.
-
-It features more than 140 animated figurines, about 20 cm high, engaged in traditional crafts and rural scenes: household work, grape pressing, grinding grain, cutting wood and many other activities linked to farming memory.
-
-The setting is enriched by light effects that recreate the phases of the day, from dawn to sunset and night, together with scenic effects such as snow, lakes, waterfalls and the comet star.
-
-It is a particularly suitable stop for families and children, but also for anyone interested in local tradition and community craftsmanship.`,
     credit: 'Apertura indicativa: dal 24 dicembre al 28 febbraio, 9:00–20:00, con aperture speciali anche a marzo, luglio e agosto. Verificare sempre eventuali aggiornamenti locali.'
-    creditEn: 'Indicative opening: from 24 December to 28 February, 9:00–20:00, with special openings also in March, July and August. Always check local updates.',
   }
 ];
 
@@ -764,7 +687,7 @@ function App() {
       if (murals.some((m) => m.id === id)) setSelectedId(id);
     };
     window.addEventListener('hashchange', onHash);
-  return () => window.removeEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
   }, []);
 
   useEffect(() => {
@@ -896,8 +819,8 @@ function App() {
             <h1>{t.title}</h1>
             <p className="subtitle">{t.subtitle}</p>
             <div className="hero-quick-links">
-              <a href="#mappa" onClick={(e) => { e.preventDefault(); document.getElementById('mappa')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.map}</a>
-              <a href="#parcheggi" onClick={(e) => { e.preventDefault(); document.getElementById('parcheggi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.parking}</a>
+              <a href="#mappa" onClick={(e) => { e.preventDefault(); document.getElementById('mappa')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>Mappa</a>
+              <a href="#parcheggi" onClick={(e) => { e.preventDefault(); document.getElementById('parcheggi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.parkingShort}</a>
               <a href="#oltre-murales" onClick={(e) => { e.preventDefault(); document.getElementById('oltre-murales')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.beyondHero}</a>
               <a href="#dove-fermarsi" onClick={(e) => { e.preventDefault(); document.getElementById('dove-fermarsi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.food}</a>
             </div>
@@ -906,8 +829,8 @@ function App() {
         </div>
       </header>
 
-      <nav className="mobile-dock" aria-label={language === "en" ? "Quick navigation" : "Navigazione rapida"}>
-        <a href="#mappa" onClick={(e) => { e.preventDefault(); document.getElementById('mappa')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>🗺️<span>{t.map}</span></a>
+      <nav className="mobile-dock" aria-label={t.quickNav}>
+        <a href="#mappa" onClick={(e) => { e.preventDefault(); document.getElementById('mappa')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>🗺️<span>Mappa</span></a>
         <a href="#tour" onClick={(e) => { e.preventDefault(); document.getElementById('tour')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>🚶<span>Tour</span></a>
         <a href="#oltre-murales" onClick={(e) => { e.preventDefault(); document.getElementById('oltre-murales')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>✨<span>Oltre</span></a>
         <a href="#dove-fermarsi" onClick={(e) => { e.preventDefault(); document.getElementById('dove-fermarsi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>☕<span>Soste</span></a>
@@ -988,8 +911,8 @@ function App() {
                   <span className="route-number">{index + 1}</span>
                   {point.image && <img src={point.image} alt="" loading="lazy" />}
                   <div>
-                    <strong>{getLocalized(point, 'title', language)}</strong>
-                    <small>{point.address || getLocalized(point, 'category', language)}</small>
+                    <strong>{point.title}</strong>
+                    <small>{point.address || point.category}</small>
                     <em>{index === 0 ? t.nearestStop : `+ ${formatDistance(point.distanceFromPrevious)}`}</em>
                   </div>
                   <a className="route-mini-button" href={mapsDirectionsUrl(index === 0 ? userPosition : smartRoute[index - 1], point)} target="_blank" rel="noreferrer">
@@ -1171,20 +1094,20 @@ function App() {
               <article className="extra-place-card" key={place.id}>
                 {place.image && (
                   <div className="extra-place-image">
-                    <img src={place.image} alt={getLocalized(place, 'title', language)} loading="lazy" />
+                    <img src={place.image} alt={place.title} loading="lazy" />
                   </div>
                 )}
                 <div className="extra-place-head">
-                  <p className="type">{getLocalized(place, 'category', language)}</p>
-                  <h3>{getLocalized(place, 'title', language)}</h3>
+                  <p className="type">{place.category}</p>
+                  <h3>{place.title}</h3>
                   <p className="address">⌖ {place.address}</p>
                 </div>
-                <p className="extra-place-intro">{getLocalized(place, 'intro', language)}</p>
+                <p className="extra-place-intro">{place.intro}</p>
                 <details>
                   <summary>{t.readStory}</summary>
                   <div className="extra-place-description">
-                    {getLocalized(place, 'description', language).split('\n\n').map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-                    <p className="credit">{getLocalized(place, 'credit', language)}</p>
+                    {place.description.split('\n\n').map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                    <p className="credit">{place.credit}</p>
                   </div>
                 </details>
                 <div className="button-row">
@@ -1250,12 +1173,12 @@ function App() {
                   )}
                 </div>
                 <div className="food-card-top">
-                  <p className="type">{getLocalized(place, 'type', language)}</p>
-                  {getLocalized(place, 'bestFor', language) && <span className="food-badge">{getLocalized(place, 'bestFor', language)}</span>}
+                  <p className="type">{place.type}</p>
+                  {place.bestFor && <span className="food-badge">{place.bestFor}</span>}
                 </div>
                 <h3>{place.name}</h3>
                 <p className="address">⌖ {place.address}</p>
-                {getLocalized(place, 'note', language) && <p className="place-note">{getLocalized(place, 'note', language)}</p>}
+                {place.note && <p className="place-note">{place.note}</p>}
                 {place.phone ? <p className="phone">{phoneLabel(place.phone)}</p> : <p className="phone muted">{t.phoneUnavailable}</p>}
                 <div className="button-row food-buttons">
                   {place.phone && <a className="primary link" href={`tel:${place.phone}`}>{t.call}</a>}
@@ -1280,7 +1203,7 @@ function App() {
           </a>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 1.51.3</strong></p>
+        <p><strong>{t.versionLabel} — 1.52</strong></p>
       </footer>
     </div>
   );

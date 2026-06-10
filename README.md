@@ -247,29 +247,5 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Il percorso su misura ora mostra solo le tappe ordinate dalla posizione dell’utente.
 - Aggiornato il footer alla versione 1.50.
 
-## Novità V51 — bilingue completo
-
-- Tradotte le parti ancora fisse in italiano: percorso smart, progresso, footer, Oltre i murales e Dove fermarsi.
-- Aggiunti testi inglesi per le schede extra e per le schede dei locali.
-- Aggiornato il footer alla versione 1.51.
-
-## V51.1 — npm install fix
-
-- Package.json ripulito e stabilizzato.
-- Aggiunto `.npmrc` con registry pubblico npm.
-- Rimosso `package-lock.json` per evitare vecchi riferimenti a registry interni/proxy.
-- Rimossi eventuali riferimenti a `@vercel/analytics`.
-
-## V51.2 — Vercel install fix
-
-- Aggiunto `vercel.json` per forzare `npm install` dal registry pubblico npm.
-- Aggiunto `engines.node = 20.x`.
-- Confermato `.npmrc` con registry pubblico.
-- Nessun `package-lock.json` incluso.
-
-## V51.3 — build fix
-
-- Corretto errore build causato da funzioni del percorso smart inserite nel blocco sbagliato.
-- Aggiunto stato mancante per la barra di avanzamento.
-- Rimossa cartella di lavoro annidata finita nello ZIP.
-- Aggiornata versione a 1.51.3.
+## V52 — bilingue stabile
+Ripartenza dalla V50, correzione Percorso Smart e traduzione delle principali parti fisse dell'interfaccia.
