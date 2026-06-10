@@ -259,3 +259,10 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Aggiunto `.npmrc` con registry pubblico npm.
 - Rimosso `package-lock.json` per evitare vecchi riferimenti a registry interni/proxy.
 - Rimossi eventuali riferimenti a `@vercel/analytics`.
+
+## V51.2 — Vercel install fix
+
+- Aggiunto `vercel.json` per forzare `npm install` dal registry pubblico npm.
+- Aggiunto `engines.node = 20.x`.
+- Confermato `.npmrc` con registry pubblico.
+- Nessun `package-lock.json` incluso.
