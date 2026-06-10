@@ -249,3 +249,9 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 
 ## V52 — bilingue stabile
 Ripartenza dalla V50, correzione Percorso Smart e traduzione delle principali parti fisse dell'interfaccia.
+
+## V53 — white screen fix
+Corretto possibile errore runtime dopo build OK: percorso smart riposizionato, fallback traduzioni e protezioni UI.
+
+## V53.1 — white screen fix definitivo
+Ripristinate le funzioni startSmartRoute/resetSmartRoute richiamate dalla UI.

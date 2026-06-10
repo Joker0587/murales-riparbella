@@ -408,12 +408,12 @@ const ui = {
     smartRouteText: 'Attiva la posizione: la guida ordina le tappe partendo dal punto più vicino a te. Perfetto se arrivi già nel borgo e vuoi evitare giri inutili.',
     smartRouteLoading: 'Sto cercando la tua posizione…',
     smartRouteButton: 'Crea percorso da qui',
-    smartRouteReset: '{t.smartRouteReset}',
+    smartRouteReset: '{safeT('smartRouteReset', 'Torna al tour classico')}',
     locationDenied: 'Posizione non disponibile: controlla i permessi del browser e riprova.',
     locationUnsupported: 'Il tuo dispositivo non supporta la geolocalizzazione.',
     yourPosition: 'La tua posizione',
     routeStartPoint: 'Punto di partenza del percorso',
-    nearestStop: t.nearestStop,
+    nearestStop: safeT('nearestStop', 'tappa più vicina'),
     go: 'Vai',
     progressKicker: 'Il tuo percorso',
     progressTitle: 'Segna le tappe visitate',
@@ -662,7 +662,8 @@ function App() {
   const tourRef = useRef(null);
   const mapRef = useRef(null);
 
-  const t = ui[language];
+  const t = ui[language] || ui.it;
+  const safeT = (key, fallback = '') => t?.[key] || ui.it?.[key] || fallback;
   const selectedIndex = Math.max(0, murals.findIndex((m) => m.id === selectedId));
   const selectedMural = murals[selectedIndex] || murals[0];
   const [visitedIds, setVisitedIds] = useState(() => {
@@ -712,6 +713,13 @@ function App() {
     };
   }, []);
 
+  const selectMural = (id, scroll = true) => {
+    setSelectedId(id);
+    window.history.replaceState(null, '', `#${id}`);
+    if (scroll) setTimeout(() => detailsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+  };
+
+
   const startSmartRoute = () => {
     if (!navigator.geolocation) {
       setLocationStatus('unsupported');
@@ -759,12 +767,6 @@ function App() {
     setLocationStatus('idle');
   };
 
-
-  const selectMural = (id, scroll = true) => {
-    setSelectedId(id);
-    window.history.replaceState(null, '', `#${id}`);
-    if (scroll) setTimeout(() => detailsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
-  };
 
   const toggleVisited = (id = selectedMural.id) => {
     setVisitedIds((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]);
@@ -820,8 +822,8 @@ function App() {
             <p className="subtitle">{t.subtitle}</p>
             <div className="hero-quick-links">
               <a href="#mappa" onClick={(e) => { e.preventDefault(); document.getElementById('mappa')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>Mappa</a>
-              <a href="#parcheggi" onClick={(e) => { e.preventDefault(); document.getElementById('parcheggi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.parkingShort}</a>
-              <a href="#oltre-murales" onClick={(e) => { e.preventDefault(); document.getElementById('oltre-murales')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.beyondHero}</a>
+              <a href="#parcheggi" onClick={(e) => { e.preventDefault(); document.getElementById('parcheggi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{safeT('parkingShort', 'I parcheggi')}</a>
+              <a href="#oltre-murales" onClick={(e) => { e.preventDefault(); document.getElementById('oltre-murales')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{safeT('beyondHero', 'Oltre i murales')}</a>
               <a href="#dove-fermarsi" onClick={(e) => { e.preventDefault(); document.getElementById('dove-fermarsi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.food}</a>
             </div>
           </div>
@@ -829,7 +831,7 @@ function App() {
         </div>
       </header>
 
-      <nav className="mobile-dock" aria-label={t.quickNav}>
+      <nav className="mobile-dock" aria-label={safeT('quickNav', 'Navigazione rapida')}>
         <a href="#mappa" onClick={(e) => { e.preventDefault(); document.getElementById('mappa')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>🗺️<span>Mappa</span></a>
         <a href="#tour" onClick={(e) => { e.preventDefault(); document.getElementById('tour')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>🚶<span>Tour</span></a>
         <a href="#oltre-murales" onClick={(e) => { e.preventDefault(); document.getElementById('oltre-murales')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>✨<span>Oltre</span></a>
@@ -877,33 +879,33 @@ function App() {
         <section id="tour-smart" className="smart-route-panel liquid-panel">
           <div className="smart-route-glow" aria-hidden="true"></div>
           <div className="smart-route-copy">
-            <p className="eyebrow">{t.smartRouteKicker}</p>
-            <h2>{t.smartRouteTitle}</h2>
-            <p>{t.smartRouteText}</p>
+            <p className="eyebrow">{safeT('smartRouteKicker', 'Percorso su misura')}</p>
+            <h2>{safeT('smartRouteTitle', 'Parti da dove sei')}</h2>
+            <p>{safeT('smartRouteText', 'Attiva la posizione per creare il percorso più vicino a te.')}</p>
           </div>
           <div className="smart-route-actions">
             <button className="primary smart-route-button" type="button" onClick={startSmartRoute}>
-              {locationStatus === 'loading' ? t.smartRouteLoading : t.smartRouteButton}
+              {locationStatus === 'loading' ? safeT('smartRouteLoading', 'Sto cercando la tua posizione…') : safeT('smartRouteButton', 'Crea percorso da qui')}
             </button>
             {routeMode && (
               <button className="secondary smart-route-button" type="button" onClick={resetSmartRoute}>
-                {t.smartRouteReset}
+                {safeT('smartRouteReset', 'Torna al tour classico')}
               </button>
             )}
           </div>
           {locationStatus === 'denied' && (
-            <p className="route-message">{t.locationDenied}</p>
+            <p className="route-message">{safeT('locationDenied', 'Posizione non disponibile.')}</p>
           )}
           {locationStatus === 'unsupported' && (
-            <p className="route-message">{t.locationUnsupported}</p>
+            <p className="route-message">{safeT('locationUnsupported', 'Geolocalizzazione non supportata.')}</p>
           )}
           {routeMode && smartRoute.length > 0 && (
             <div className="smart-route-list">
               <div className="route-start">
                 <span className="route-dot route-dot-user"></span>
                 <div>
-                  <strong>{t.yourPosition}</strong>
-                  <small>{t.routeStartPoint}</small>
+                  <strong>{safeT('yourPosition', 'La tua posizione')}</strong>
+                  <small>{safeT('routeStartPoint', 'Punto di partenza del percorso')}</small>
                 </div>
               </div>
               {smartRoute.slice(0, 6).map((point, index) => (
@@ -913,7 +915,7 @@ function App() {
                   <div>
                     <strong>{point.title}</strong>
                     <small>{point.address || point.category}</small>
-                    <em>{index === 0 ? t.nearestStop : `+ ${formatDistance(point.distanceFromPrevious)}`}</em>
+                    <em>{index === 0 ? safeT('nearestStop', 'tappa più vicina') : `+ ${formatDistance(point.distanceFromPrevious)}`}</em>
                   </div>
                   <a className="route-mini-button" href={mapsDirectionsUrl(index === 0 ? userPosition : smartRoute[index - 1], point)} target="_blank" rel="noreferrer">
                     Vai
@@ -926,15 +928,15 @@ function App() {
 
 <section id="tour" className="section progress-section">
           <div className="section-heading">
-            <p className="kicker">{t.progressKicker}</p>
-            <h2>{t.progressTitle}</h2>
+            <p className="kicker">{safeT('progressKicker', 'Il tuo percorso')}</p>
+            <h2>{safeT('progressTitle', 'Segna le tappe visitate')}</h2>
           </div>
           <div className="progress-card">
             <div className="progress-copy">
-              <strong>{visitedCount} / {murals.length} {t.progressSeen}</strong>
-              <span>{t.progressHint}</span>
+              <strong>{visitedCount} / {murals.length} {safeT('progressSeen', 'murales visti')}</strong>
+              <span>{safeT('progressHint', 'Usa il pulsante Vista per tenere traccia del tour.')}</span>
             </div>
-            <div className="progress-meter" aria-label={`${t.progressAria} ${progressPercent}%`}>
+            <div className="progress-meter" aria-label={`${safeT('progressAria', 'Percorso completato al')} ${progressPercent}%`}>
               <span style={{ width: `${progressPercent}%` }}></span>
             </div>
             <div className="progress-actions">
@@ -1028,7 +1030,7 @@ function App() {
 
               {selectedMural.directionsNext && (
                 <div className="mini-block next-direction">
-                  <h4>{t.nextDirectionTitle}</h4>
+                  <h4>{safeT('nextDirectionTitle', 'Verso la prossima tappa')}</h4>
                   <p>{selectedMural.directionsNext}</p>
                 </div>
               )}
@@ -1082,11 +1084,11 @@ function App() {
         
         <section id="oltre-murales" className="section extra-places-section">
           <div className="section-heading">
-            <p className="kicker">{t.beyondHero}</p>
-            <h2>{t.extraTitle}</h2>
+            <p className="kicker">{safeT('beyondHero', 'Oltre i murales')}</p>
+            <h2>{safeT('extraTitle', 'Scopri Riparbella oltre i murales')}</h2>
           </div>
           <div className="text-card">
-            <p>{t.extraIntro}</p>
+            <p>{safeT('extraIntro', 'Scopri altri luoghi del borgo oltre ai murales.')}</p>
           </div>
 
           <div className="extra-places-grid">
@@ -1104,7 +1106,7 @@ function App() {
                 </div>
                 <p className="extra-place-intro">{place.intro}</p>
                 <details>
-                  <summary>{t.readStory}</summary>
+                  <summary>{safeT('readStory', 'Leggi la storia')}</summary>
                   <div className="extra-place-description">
                     {place.description.split('\n\n').map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                     <p className="credit">{place.credit}</p>
@@ -1156,11 +1158,11 @@ function App() {
 
                         <section className="section practical food-section" id="dove-fermarsi">
           <div className="section-heading">
-            <p className="kicker">{t.stopsKicker}</p>
+            <p className="kicker">{safeT('stopsKicker', 'Bar, ristoranti e pause')}</p>
             <h2>{t.food}</h2>
           </div>
           <div className="text-card food-intro">
-            <p>{t.foodIntro}</p>
+            <p>{safeT('foodIntro', 'Una selezione di bar, osterie e ristoranti dove fermarsi.')}</p>
           </div>
           <div className="practical-grid food-grid">
             {placesToEat.map((place) => (
@@ -1179,7 +1181,7 @@ function App() {
                 <h3>{place.name}</h3>
                 <p className="address">⌖ {place.address}</p>
                 {place.note && <p className="place-note">{place.note}</p>}
-                {place.phone ? <p className="phone">{phoneLabel(place.phone)}</p> : <p className="phone muted">{t.phoneUnavailable}</p>}
+                {place.phone ? <p className="phone">{phoneLabel(place.phone)}</p> : <p className="phone muted">{safeT('phoneUnavailable', 'Telefono non disponibile')}</p>}
                 <div className="button-row food-buttons">
                   {place.phone && <a className="primary link" href={`tel:${place.phone}`}>{t.call}</a>}
                   <a className={place.phone ? "secondary link" : "primary link"} target="_blank" rel="noreferrer" href={placeMapUrl(place)}>{t.takeMe}</a>
@@ -1193,17 +1195,17 @@ function App() {
       </main>
 
       <footer>
-        <p><strong>{t.footerMade}</strong></p>
-        <p>{t.footerPurpose}</p>
-        <p className="footer-project">{t.footerProject}</p>
+        <p><strong>{safeT('footerMade', 'Web app ideata e realizzata da Francesco Bolognesi')}</strong></p>
+        <p>{safeT('footerPurpose', 'per raccontare e valorizzare i murales di Riparbella.')}</p>
+        <p className="footer-project">{safeT('footerProject', 'Progetto digitale dedicato al percorso di arte pubblica del borgo.')}</p>
         <div className="support-box support-box-small">
-          <p>{t.supportText}</p>
-          <a className="kofi-footer-button" href="https://ko-fi.com/D1D31Z9GAW" target="_blank" rel="noreferrer" aria-label={t.kofiAria}>
+          <p>{safeT('supportText', 'Guida gratuita · Puoi sostenere il progetto con un caffè.')}</p>
+          <a className="kofi-footer-button" href="https://ko-fi.com/D1D31Z9GAW" target="_blank" rel="noreferrer" aria-label={safeT('kofiAria', 'Sostieni il progetto su Ko-fi')}>
             <img height="36" style={{ border: 0, height: 36 }} src="https://storage.ko-fi.com/cdn/kofi6.png?v=6" alt="Buy Me a Coffee at ko-fi.com" />
           </a>
         </div>
-        <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 1.52</strong></p>
+        <p>{safeT('rightsText', 'Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.')}</p>
+        <p><strong>{safeT('versionLabel', language === 'en' ? 'Prototype version' : 'Versione prototipo')} — 1.53.1</strong></p>
       </footer>
     </div>
   );
