@@ -234,21 +234,11 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Schede più leggibili su mobile con effetto liquid glass, pulsanti più grandi e layout ottimizzato.
 - Corretto il pacchetto per evitare installazioni pesanti o dipendenze non necessarie.
 
-## Novità V49 — Percorso smart
+## V48 - Smartphone experience plus
 
-- Aggiunta sezione “Percorso su misura”.
-- L’utente può usare la posizione del telefono per creare un itinerario ordinato dal punto più vicino.
-- Aggiunto finale consigliato con rientro verso Camping Bocca di Cecina.
-- Migliorati micro-effetti mobile, tap feedback e schede liquid glass.
-
-## Novità V50 — Percorso smart senza finale
-
-- Rimosso il blocco “Finale consigliato”.
-- Il percorso su misura ora mostra solo le tappe ordinate dalla posizione dell’utente.
-- Aggiornato il footer alla versione 1.50.
-
-## Novità V51 — bilingue completo
-
-- Tradotte le parti ancora fisse in italiano: percorso smart, progresso, footer, Oltre i murales e Dove fermarsi.
-- Aggiunti testi inglesi per le schede extra e per le schede dei locali.
-- Aggiornato il footer alla versione 1.51.
+- Aggiunto `type: module` in package.json per eliminare il warning ESM/CommonJS.
+- Migliorata l'usabilità mobile con pulsanti più grandi e aree touch più comode.
+- Aggiunto pannello rapido mobile “Inizia il tour / Apri la mappa / Oltre i murales”.
+- Rafforzato effetto liquid glass su card e navigazione mobile.
+- Migliorati scroll, safe-area iPhone, leggibilità e micro-interazioni da smartphone.
+- Aggiornato footer a versione 1.48.

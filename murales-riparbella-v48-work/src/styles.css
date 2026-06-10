@@ -1827,372 +1827,211 @@ section, .map-section, .tour-section, .extra-section, .parking-section, .food-se
   }
 }
 
-/* V48 - rifinitura smartphone: navigazione rapida, progress e liquid glass più leggero */
-.reading-progress{
-  position:fixed;
-  top:0;
-  left:0;
-  height:4px;
-  z-index:9999;
-  background:linear-gradient(90deg,#1f2937,#b7791f,#f6d365);
-  box-shadow:0 0 18px rgba(183,121,31,.35);
-  transition:width .12s linear;
+
+/* V48 - Smartphone experience plus */
+:root {
+  --tap-size: 48px;
+  --glass-bg-strong: rgba(255, 255, 255, 0.78);
+  --glass-border: rgba(255, 255, 255, 0.62);
 }
 
-.mobile-bottom-dock{
-  display:none;
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
-@media (max-width: 760px){
-  html{ scroll-padding-top:18px; }
-  body{ padding-bottom:calc(86px + env(safe-area-inset-bottom)); }
-  .hero{
-    padding-top:22px;
-  }
-  .hero-content{
-    gap:24px;
-  }
-  .hero h1{
-    letter-spacing:-0.07em;
-    line-height:.9;
-  }
-  .hero-card,
-  .tour-card,
-  .place-card,
-  .food-card,
-  .parking-card,
-  .map-card,
-  .panel,
-  .details-panel,
-  .route-card{
-    background:rgba(255,255,255,.72) !important;
-    border:1px solid rgba(255,255,255,.7) !important;
-    box-shadow:0 20px 60px rgba(15,23,42,.10), inset 0 1px 0 rgba(255,255,255,.75) !important;
-    backdrop-filter: blur(20px) saturate(1.18);
-    -webkit-backdrop-filter: blur(20px) saturate(1.18);
-  }
-  .section{
-    padding-left:16px;
-    padding-right:16px;
-  }
-  .section-title,
-  .progress-section h2,
-  .map-section h2,
-  .extra-places-section h2,
-  .practical h2{
-    font-size:clamp(2rem, 9vw, 3rem);
-    letter-spacing:-.05em;
-  }
-  .tour-grid,
-  .extra-grid,
-  .food-grid,
-  .parking-grid{
-    grid-template-columns:1fr !important;
-    gap:14px;
-  }
-  .tour-card{
-    overflow:hidden;
-    transform:translateZ(0);
-  }
-  .tour-card img,
-  .place-card img,
-  .food-card img{
-    min-height:220px;
-    object-fit:cover;
-  }
-  .tour-copy,
-  .place-copy,
-  .food-copy{
-    padding:18px !important;
-  }
-  .button-row,
-  .actions,
-  .card-actions{
-    gap:10px;
-  }
-  button,
-  .btn,
-  .pill-link{
-    min-height:44px;
-    touch-action:manipulation;
-  }
-  .hero-actions{
-    position:sticky;
-    top:10px;
-    z-index:12;
-    padding:8px;
-    border-radius:999px;
-    background:rgba(255,255,255,.62);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-    box-shadow:0 14px 34px rgba(15,23,42,.10);
-    width:max-content;
-    max-width:100%;
-  }
-  .mobile-bottom-dock{
-    position:fixed;
-    left:10px;
-    right:10px;
-    bottom:calc(10px + env(safe-area-inset-bottom));
-    z-index:9998;
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:6px;
-    padding:8px;
-    border-radius:26px;
-    background:rgba(255,255,255,.76);
-    border:1px solid rgba(255,255,255,.82);
-    box-shadow:0 18px 55px rgba(15,23,42,.22), inset 0 1px 0 rgba(255,255,255,.9);
-    backdrop-filter:blur(24px) saturate(1.2);
-    -webkit-backdrop-filter:blur(24px) saturate(1.2);
-  }
-  .mobile-bottom-dock button{
-    appearance:none;
-    border:0;
-    background:transparent;
-    color:#172033;
-    border-radius:18px;
-    font-weight:800;
-    font-size:18px;
-    padding:8px 2px 6px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    line-height:1;
-  }
-  .mobile-bottom-dock button:active{
-    background:rgba(23,32,51,.10);
-    transform:scale(.96);
-  }
-  .mobile-bottom-dock span{
-    margin-top:5px;
-    font-size:10px;
-    letter-spacing:-.01em;
-    white-space:nowrap;
-  }
-  .footer{
-    padding-bottom:115px;
-  }
+body {
+  overscroll-behavior-y: contain;
 }
 
-@media (prefers-reduced-motion: no-preference){
-  .tour-card,
-  .place-card,
-  .food-card,
-  .parking-card{
-    transition:transform .22s ease, box-shadow .22s ease;
-  }
-  .tour-card:active,
-  .place-card:active,
-  .food-card:active,
-  .parking-card:active{
-    transform:scale(.985);
-  }
+button,
+a,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* V49 - Percorso smart + micro effetti smartphone */
-.smart-route-panel {
-  position: relative;
-  overflow: hidden;
-  margin: 28px auto;
-  padding: 22px;
-  border-radius: 32px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.76), rgba(255,255,255,0.42));
-  border: 1px solid rgba(255,255,255,0.55);
-  box-shadow: 0 24px 70px rgba(18, 28, 44, 0.14);
-  backdrop-filter: blur(22px) saturate(1.25);
-  -webkit-backdrop-filter: blur(22px) saturate(1.25);
+button:active,
+.button:active,
+.primary:active,
+.secondary:active,
+.link:active,
+.mobile-action-button:active {
+  transform: scale(0.985);
 }
 
-.smart-route-glow {
-  position: absolute;
-  width: 210px;
-  height: 210px;
-  right: -60px;
-  top: -70px;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(114,164,242,0.48), rgba(244,178,60,0.08) 58%, transparent 70%);
-  filter: blur(6px);
-  pointer-events: none;
+img {
+  max-width: 100%;
 }
 
-.smart-route-copy {
-  position: relative;
-  z-index: 1;
-}
-
-.smart-route-copy h2 {
-  margin: 4px 0 8px;
-  font-size: clamp(1.6rem, 7vw, 2.55rem);
-  letter-spacing: -0.04em;
-}
-
-.smart-route-copy p {
-  max-width: 720px;
-}
-
-.smart-route-actions {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 18px;
-}
-
-.smart-route-button {
-  min-height: 48px;
-  border-radius: 999px;
-  transform: translateZ(0);
-  transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
-}
-
-.smart-route-button:active,
-.route-mini-button:active,
-.bottom-nav a:active,
-button:active {
-  transform: scale(0.97);
-}
-
-.route-message {
-  margin-top: 14px;
-  padding: 12px 14px;
-  border-radius: 18px;
-  background: rgba(255, 243, 220, 0.8);
-  color: #6b4200;
-}
-
-.smart-route-list {
-  display: grid;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.route-start,
-.route-end-card,
-.route-step-card {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 12px;
-  align-items: center;
-  padding: 12px;
-  border-radius: 24px;
-  background: rgba(255,255,255,0.72);
-  border: 1px solid rgba(255,255,255,0.58);
-  box-shadow: 0 10px 30px rgba(18,28,44,0.08);
-}
-
-.route-step-card img {
-  width: 54px;
-  height: 54px;
-  object-fit: cover;
-  border-radius: 18px;
-  box-shadow: 0 8px 18px rgba(18,28,44,0.15);
-}
-
-.route-number,
-.route-dot {
-  display: inline-flex;
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  color: white;
-  background: linear-gradient(135deg, #172033, #355070);
-}
-
-.route-dot {
-  width: 18px;
-  height: 18px;
-  background: #f4b23c;
-  box-shadow: 0 0 0 7px rgba(244,178,60,0.15);
-}
-
-.route-dot-user {
-  background: #72a4f2;
-  box-shadow: 0 0 0 7px rgba(114,164,242,0.16);
-}
-
-.route-step-card strong,
-.route-start strong,
-.route-end-card strong {
-  display: block;
-  line-height: 1.1;
-}
-
-.route-step-card small,
-.route-start small,
-.route-end-card small {
-  display: block;
-  color: rgba(23,32,51,0.64);
-  margin-top: 3px;
-}
-
-.route-step-card em {
-  display: inline-block;
-  margin-top: 4px;
-  font-size: .78rem;
-  color: #8a5600;
-  font-style: normal;
-  font-weight: 700;
-}
-
-.route-mini-button {
-  text-decoration: none;
-  color: #172033;
-  font-weight: 800;
-  padding: 9px 12px;
-  border-radius: 999px;
-  background: rgba(244,178,60,0.22);
-  border: 1px solid rgba(244,178,60,0.42);
-  white-space: nowrap;
-}
-
-@media (max-width: 720px) {
+@media (max-width: 780px) {
   body {
-    -webkit-tap-highlight-color: transparent;
+    padding-bottom: max(86px, env(safe-area-inset-bottom));
   }
 
-  .smart-route-panel {
-    margin: 18px 12px;
-    padding: 18px;
-    border-radius: 28px;
+  .hero,
+  .intro,
+  .section,
+  section {
+    scroll-margin-top: 18px;
   }
 
-  .smart-route-actions {
+  .app,
+  main {
+    overflow-x: hidden;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 22px;
+  }
+
+  .hero h1,
+  h1 {
+    font-size: clamp(2.25rem, 12vw, 4.25rem);
+    line-height: 0.94;
+    letter-spacing: -0.07em;
+  }
+
+  h2 {
+    font-size: clamp(1.7rem, 7vw, 2.6rem);
+    letter-spacing: -0.04em;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .hero-actions,
+  .button-row,
+  .food-buttons,
+  .card-actions {
     display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 
-  .smart-route-button {
+  .hero-actions a,
+  .hero-actions button,
+  .button-row a,
+  .button-row button,
+  .food-buttons a,
+  .food-buttons button,
+  .card-actions a,
+  .card-actions button,
+  .primary,
+  .secondary,
+  .link {
+    min-height: var(--tap-size);
     width: 100%;
     justify-content: center;
+    border-radius: 999px;
+    font-size: 0.98rem;
   }
 
-  .route-start,
-  .route-end-card,
-  .route-step-card {
-    grid-template-columns: auto 52px 1fr auto;
+  .mobile-action-panel {
+    position: sticky;
+    bottom: max(14px, env(safe-area-inset-bottom));
+    z-index: 80;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin: 28px auto 12px;
+    width: min(94vw, 520px);
     padding: 10px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.68);
+    box-shadow: 0 18px 48px rgba(20, 28, 44, 0.18);
+    backdrop-filter: blur(22px) saturate(1.35);
+    -webkit-backdrop-filter: blur(22px) saturate(1.35);
+  }
+
+  .mobile-action-button {
+    min-height: 46px;
+    border: 1px solid rgba(23, 32, 51, 0.10);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.78);
+    color: #172033;
+    font-weight: 800;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+  }
+
+  .mobile-action-button.primary {
+    background: #172033;
+    color: #fff;
+  }
+
+  .info-card,
+  .mural-card,
+  .extra-card,
+  .food-card,
+  .parking-card,
+  .detail-card {
+    border-radius: 28px;
+    background: var(--glass-bg-strong);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 14px 42px rgba(23, 32, 51, 0.10);
+    backdrop-filter: blur(18px) saturate(1.25);
+    -webkit-backdrop-filter: blur(18px) saturate(1.25);
+  }
+
+  .mural-card,
+  .food-card,
+  .extra-card {
+    transform: translateZ(0);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+
+  .mural-card:active,
+  .food-card:active,
+  .extra-card:active {
+    transform: scale(0.992);
+    box-shadow: 0 8px 26px rgba(23, 32, 51, 0.12);
+  }
+
+  .mural-card img,
+  .extra-card img,
+  .food-visual,
+  .extra-place-image,
+  .card-image,
+  .detail-image {
     border-radius: 22px;
   }
 
-  .route-start,
-  .route-end-card {
-    grid-template-columns: auto 1fr auto;
+  .map-panel,
+  .leaflet-container {
+    min-height: 380px;
+    border-radius: 28px;
+    overflow: hidden;
   }
 
-  .route-step-card img {
-    width: 52px;
-    height: 52px;
+  .bottom-nav,
+  .mobile-bottom-nav {
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+    background: rgba(255,255,255,0.76);
+    backdrop-filter: blur(22px) saturate(1.35);
+    -webkit-backdrop-filter: blur(22px) saturate(1.35);
   }
 
-  .route-mini-button {
-    padding: 8px 10px;
-    font-size: .88rem;
+  .footer,
+  footer {
+    padding-bottom: 115px;
   }
 }
 
-/* V50 - rimosso finale consigliato dal percorso smart */
+@media (min-width: 781px) {
+  .mobile-action-panel {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+  }
+}
