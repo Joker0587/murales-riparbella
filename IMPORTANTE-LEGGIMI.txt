@@ -1,4 +1,9 @@
-Carica tutti questi file su GitHub sostituendo quelli esistenti.
-Controlla che package.json e package-lock.json vengano aggiornati.
-Nel repository NON devono rimanere leaflet, react-leaflet o @react-leaflet/core.
-Dopo il commit su Vercel fai Redeploy -> Clear cache and redeploy.
+ISTRUZIONI RIPARTENZA DA c9df55e
+
+1. Carica questi file su GitHub.
+2. Controlla che la cartella src contenga main.jsx e styles.css.
+3. Se nel repository esiste package-lock.json, eliminalo.
+4. Non cancellare la cartella public/images se è già presente nel repository: serve per le foto.
+5. Su Vercel fai Redeploy -> Clear cache and redeploy.
+
+Questa è una base pulita per ripartire senza Liquid Glass, senza traduzioni forzate e senza modifiche rischiose.
