@@ -291,3 +291,9 @@ Questa versione evita sia il bug npm `Exit handler never called` sia l'errore pn
 - Le schede murale ora mostrano descrizione, cosa osservare, dettagli da cercare e prossima tappa in inglese quando è selezionata la lingua ENG.
 - Tradotti altri testi fissi: consultazione rapida, tutte le opere, azzera percorso, prima di partire.
 - Nessuna modifica a Yarn/Vercel.
+
+## V44.9.1 — fix build
+
+- Corretto errore di sintassi: mancava una virgola dopo il campo `en` nelle schede murales.
+- Traduzioni V44.9 mantenute.
+- Configurazione Yarn/Vercel invariata.

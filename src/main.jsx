@@ -18,7 +18,7 @@ const murals = [
     observe: 'Osserva il borgo come se fosse un autoritratto: colline, vigneti, oliveti, boschi e mare all’orizzonte.',
     directionsNext: 'Scendi verso Piazza Giacomo Matteotti: la prossima tappa è il murale I Lari, sul palazzo davanti al bar.',
     it: `La visita può iniziare da Piazza della Madonna, davanti a un’opera che sembra aprire una finestra sul paesaggio di Riparbella. Vinci trasforma la facciata in un racconto del borgo: le colline, i vigneti, gli oliveti e il mare all’orizzonte diventano un autoritratto poetico del paese. Fermati qualche istante: il murale non descrive solo un panorama, ma la sensazione di vivere in un luogo raccolto, luminoso e abbracciato dalla natura.`,
-    en: `The visit can begin in Piazza della Madonna, in front of a mural that feels like a window onto Riparbella’s landscape. Vinci turns the façade into a portrait of the village: hills, vineyards, olive groves and the sea on the horizon become a poetic self-portrait of the town. Take a moment here: the work is not just a view, but the feeling of living in a bright, intimate place embraced by nature.`
+    en: `The visit can begin in Piazza della Madonna, in front of a mural that feels like a window onto Riparbella’s landscape. Vinci turns the façade into a portrait of the village: hills, vineyards, olive groves and the sea on the horizon become a poetic self-portrait of the town. Take a moment here: the work is not just a view, but the feeling of living in a bright, intimate place embraced by nature.`,
     tagsEn: ["Landscape", "Nature", "Identity"],
     detailsToFindEn: ["the hills", "vineyards and olive groves", "the woodland", "the sea on the horizon", "nature’s embrace"],
     observeEn: "Look at the village as if it were a self-portrait: hills, vineyards, olive groves, woods and the sea on the horizon.",
@@ -38,7 +38,7 @@ const murals = [
     observe: 'Osserva i tre stendardi colorati: sono una reinterpretazione dei Lari, antichi protettori della casa e della famiglia.',
     directionsNext: 'Rimani in Piazza Giacomo Matteotti e spostati di pochi passi verso la facciata principale del palazzo del bar Memoria e desiderio.',
     it: `In Piazza Matteotti, Giò Pistone interviene su un edificio carico di memoria: l’antico palazzo di giustizia con le sue carceri. L’artista sceglie colori pieni, netti, quasi festosi, per trasformare un passato severo in un’immagine di protezione e rinascita. I tre Lari, antichi spiriti custodi della casa e della famiglia, vegliano oggi sulla piazza come presenze benevole: un invito a guardare il borgo con occhi nuovi.`,
-    en: `In Piazza Matteotti, Giò Pistone works on a building filled with memory: the old courthouse and its former jail. The artist uses bold, joyful colours to turn a severe past into an image of protection and renewal. The three Lares, ancient guardians of home and family, now watch over the square as benevolent presences: an invitation to see the village with fresh eyes.`
+    en: `In Piazza Matteotti, Giò Pistone works on a building filled with memory: the old courthouse and its former jail. The artist uses bold, joyful colours to turn a severe past into an image of protection and renewal. The three Lares, ancient guardians of home and family, now watch over the square as benevolent presences: an invitation to see the village with fresh eyes.`,
     tagsEn: ["Memory", "Community", "Protection"],
     detailsToFindEn: ["the three protective Lares", "the strong bright colours", "the dialogue with the old courthouse", "the idea of protecting the home"],
     observeEn: "Look at the three colourful banners: they reinterpret the Lares, ancient protectors of the home and family.",
@@ -58,7 +58,7 @@ const murals = [
     observe: 'Guarda la facciata come fosse una mappa non convenzionale: non indica solo strade, ma ricordi, emozioni e desideri.',
     directionsNext: 'Resta nell’area di Piazza Matteotti: la prossima opera è Amphora, sempre in zona piazza.',
     it: `Questa grande facciata è una mappa sentimentale di Riparbella. Daniel Muñoz parte dalla vista dall’alto del paese, ma al posto di una cartografia tradizionale inserisce ricordi, profumi, abitudini e desideri raccolti parlando con cittadini e studenti. Avvicinandoti, cerca i piccoli segni: raccontano panchine, sapori, storie familiari e sogni futuri. È una mappa da leggere lentamente, più con la memoria che con l’orientamento.`,
-    en: `This large façade is an emotional map of Riparbella. Daniel Muñoz starts from an aerial view of the village, but instead of a traditional map he fills it with memories, scents, habits and wishes gathered from residents and students. Look closely for the small signs: they speak of benches, flavours, family stories and future dreams. It is a map to read slowly, with memory more than direction.`
+    en: `This large façade is an emotional map of Riparbella. Daniel Muñoz starts from an aerial view of the village, but instead of a traditional map he fills it with memories, scents, habits and wishes gathered from residents and students. Look closely for the small signs: they speak of benches, flavours, family stories and future dreams. It is a map to read slowly, with memory more than direction.`,
     tagsEn: ["Memory", "Desire", "Emotional map"],
     detailsToFindEn: ["the unconventional map of the village", "places of memory told by residents", "the wishes drawn by children", "the legend on the side façade"],
     observeEn: "Look at the façade as if it were an unconventional map: it does not show only streets, but memories, emotions and wishes.",
@@ -78,7 +78,7 @@ const murals = [
     observe: 'Guarda la bicromia e il modo in cui il paesaggio sembra emergere direttamente dalla superficie del muro.',
     directionsNext: 'Prosegui verso il centro espositivo Museo C’ERA per raggiungere Corona Aurea.',
     it: `Amphora racconta la campagna riparbellina attraverso un linguaggio essenziale e raffinato. Tellas guarda agli olivi, ai vigneti e alla tradizione agricola del territorio, richiamando l’anfora come contenitore di vino, memoria e paesaggio. La bicromia rimanda allo sgraffito toscano: sembra che l’opera non sia stata semplicemente dipinta sul muro, ma sia emersa dalla sua stessa materia.`,
-    en: `Amphora tells the story of Riparbella’s countryside through an elegant, essential visual language. Tellas looks to olive trees, vineyards and the area’s farming tradition, using the amphora as a vessel for wine, memory and landscape. The two-tone composition recalls Tuscan sgraffito: the work seems not simply painted on the wall, but emerging from the wall itself.`
+    en: `Amphora tells the story of Riparbella’s countryside through an elegant, essential visual language. Tellas looks to olive trees, vineyards and the area’s farming tradition, using the amphora as a vessel for wine, memory and landscape. The two-tone composition recalls Tuscan sgraffito: the work seems not simply painted on the wall, but emerging from the wall itself.`,
     tagsEn: ["Wine", "Sgraffito", "Territory"],
     detailsToFindEn: ["the amphora shape", "olive trees and vineyards", "the two-colour style inspired by sgraffito", "the landscape that seems to emerge from the wall"],
     observeEn: "Notice the two-colour effect and the way the landscape seems to emerge directly from the wall surface.",
@@ -98,7 +98,7 @@ const murals = [
     observe: 'Cerca il movimento circolare e i riflessi metallici: richiamano la corona funeraria conservata nel Museo C’ERA.',
     directionsNext: 'Scendi verso Piazza Borgo di Sotto: lì trovi L’amore nella pentola.',
     it: `Davanti a questa opera, il filo che unisce arte urbana e storia etrusca diventa evidente. Giorgio Bartocci si ispira alla preziosa corona funeraria conservata al Museo C’ERA e la traduce in un movimento vorticoso di segni, colori e riflessi metallici. L’opera cambia con la luce e invita a osservare il muro come una reliquia contemporanea: un omaggio alla memoria, alla bellezza e alla continuità fra passato e presente.`,
-    en: `Here, the link between street art and Etruscan history becomes clear. Giorgio Bartocci takes inspiration from the precious funerary crown preserved at the C’ERA Museum and translates it into a swirling movement of marks, colours and metallic reflections. The work changes with the light and invites you to see the wall as a contemporary relic: a tribute to memory, beauty and the continuity between past and present.`
+    en: `Here, the link between street art and Etruscan history becomes clear. Giorgio Bartocci takes inspiration from the precious funerary crown preserved at the C’ERA Museum and translates it into a swirling movement of marks, colours and metallic reflections. The work changes with the light and invites you to see the wall as a contemporary relic: a tribute to memory, beauty and the continuity between past and present.`,
     tagsEn: ["Etruscans", "C’ERA Museum", "Gold"],
     detailsToFindEn: ["metallic reflections", "the circular movement", "the reference to the funerary crown", "brushstrokes that seem to come out of the wall"],
     observeEn: "Look for the circular movement and metallic reflections: they recall the funerary crown preserved in the C’ERA Museum.",
@@ -118,7 +118,7 @@ const murals = [
     observe: 'Cerca la grande pentola, il fuoco e il cinghiale: sono dettagli che raccontano memoria popolare e cucina del territorio.',
     directionsNext: 'Prosegui verso Piazza Federigo Baldasserini, dove si trova Terra e colori.',
     it: `In Piazza Borgo di Sotto il murale di Zed1 racconta una storia popolare tramandata dagli abitanti. Durante la notte di Sant’Antonio, le donne si riunivano attorno al fuoco e scioglievano il piombo in grandi pentole; le forme ottenute venivano poi interpretate per immaginare il futuro sposo. L’opera mescola rito, ironia e vita quotidiana: accanto alla pentola compaiono il cinghiale, il cavallo Gino, il paesaggio e un omaggio alla comunità sarda.`,
-    en: `In Piazza Borgo di Sotto, Zed1’s mural tells a folk story passed down by local residents. On Saint Anthony’s night, women gathered around the fire and melted lead in large pots; once cooled, the shapes were interpreted to imagine a future husband. The work blends ritual, humour and everyday life: alongside the pot you can spot the wild boar, the horse Gino, the landscape and a tribute to the Sardinian community.`
+    en: `In Piazza Borgo di Sotto, Zed1’s mural tells a folk story passed down by local residents. On Saint Anthony’s night, women gathered around the fire and melted lead in large pots; once cooled, the shapes were interpreted to imagine a future husband. The work blends ritual, humour and everyday life: alongside the pot you can spot the wild boar, the horse Gino, the landscape and a tribute to the Sardinian community.`,
     tagsEn: ["Tradition", "Folk tales", "Wild boar"],
     detailsToFindEn: ["the large pot", "the fire of Saint John’s night", "the wild boar", "the horse Gino", "the Sardinian flag"],
     observeEn: "Look for the large pot, the fire and the wild boar: they are details that tell of folk memory and local food traditions.",
@@ -138,7 +138,7 @@ const murals = [
     observe: 'Lascia correre lo sguardo tra onde, sole, luna, vegetazione, olive e richiami al vino: è un ritratto astratto del territorio.',
     directionsNext: 'Raggiungi Via della Noce: il percorso continua con Universo Riparbella.',
     it: `Questa tappa è un’esplosione di energia. Mina Hamada e Zosen Bandido traducono Riparbella in forme morbide, simboli e colori caldi: il sole, il mare, l’olio, il vino, la vegetazione e l’arrivo nel borgo si intrecciano in una composizione vivace. Osserva l’opera come un grande mosaico contemporaneo: ogni elemento racconta una sensazione del territorio più che una semplice immagine.`,
-    en: `This stop is an explosion of energy. Mina Hamada and Zosen Bandido translate Riparbella into soft shapes, symbols and warm colours: sun, sea, olive oil, wine, vegetation and the entrance to the village all flow together in a lively composition. Look at the work as a contemporary mosaic: each element conveys a feeling of the territory rather than a literal image.`
+    en: `This stop is an explosion of energy. Mina Hamada and Zosen Bandido translate Riparbella into soft shapes, symbols and warm colours: sun, sea, olive oil, wine, vegetation and the entrance to the village all flow together in a lively composition. Look at the work as a contemporary mosaic: each element conveys a feeling of the territory rather than a literal image.`,
     tagsEn: ["Nature", "Landscape", "Colours"],
     detailsToFindEn: ["the waves", "the sun and the moon", "the olive and the colours of wine", "the window onto the landscape", "the lens-lighthouse and the trowel"],
     observeEn: "Let your eyes move through waves, sun, moon, vegetation, olives and references to wine: it is an abstract portrait of the territory.",
@@ -158,7 +158,7 @@ const murals = [
     observe: 'Segui il nastro giallo e azzurro: collega le caselle ideate dai bambini come in un grande gioco dell’oca urbano.',
     directionsNext: 'Prosegui lungo Via della Noce fino a Hunting Hunters.',
     it: `Via della Noce diventa qui un percorso dentro l’immaginazione dei bambini. Nato da un laboratorio con la scuola primaria, il murale trasforma la strada in una sorta di gioco dell’oca dedicato all’Agenda 2030 e al futuro sostenibile. Seguendo il nastro giallo e azzurro, si incontrano idee, disegni e messaggi: è una tappa da percorrere camminando piano, quasi come se il paese stesso insegnasse.`,
-    en: `Here, Via della Noce becomes a path through children’s imagination. Created through a workshop with the primary school, the mural turns the street into a board-game-like route dedicated to the 2030 Agenda and a sustainable future. Follow the yellow and blue ribbon to discover ideas, drawings and messages: this is a stop to walk slowly, as if the village itself were teaching.`
+    en: `Here, Via della Noce becomes a path through children’s imagination. Created through a workshop with the primary school, the mural turns the street into a board-game-like route dedicated to the 2030 Agenda and a sustainable future. Follow the yellow and blue ribbon to discover ideas, drawings and messages: this is a stop to walk slowly, as if the village itself were teaching.`,
     tagsEn: ["School", "Children", "Agenda 2030"],
     detailsToFindEn: ["the yellow and blue ribbon", "the squares like a board game", "children’s drawings", "the themes of the 2030 Agenda"],
     observeEn: "Follow the yellow and blue ribbon: it connects the squares designed by children like a large urban board game.",
@@ -178,7 +178,7 @@ const murals = [
     observe: 'Individua il pettirosso, le gazze ladre e l’anello nascosto: la scena ribalta con ironia il rapporto tra preda e cacciatore.',
     directionsNext: 'Continua lungo Via della Noce verso l’opera di Aris.',
     it: `Hitnes porta nel borgo una piccola favola animale, ironica e un po’ misteriosa. Tra pettirossi, gazze ladre e richiami alla caccia, il murale ribalta i ruoli consueti: chi osserva non sa più con certezza chi sia il cacciatore e chi la preda. Cerca l’anello nascosto e lasciati guidare dalla domanda che l’opera suggerisce: la natura sta subendo l’uomo o sta imparando a tendergli un tranello?`,
-    en: `Hitnes brings to the village a small animal fable, both ironic and mysterious. Among robins, magpies and references to hunting, the mural reverses the usual roles: the viewer is no longer sure who is the hunter and who is the prey. Look for the hidden ring and follow the question the work suggests: is nature being hunted by humans, or is it learning how to set a trap?`
+    en: `Hitnes brings to the village a small animal fable, both ironic and mysterious. Among robins, magpies and references to hunting, the mural reverses the usual roles: the viewer is no longer sure who is the hunter and who is the prey. Look for the hidden ring and follow the question the work suggests: is nature being hunted by humans, or is it learning how to set a trap?`,
     tagsEn: ["Nature", "Animals", "Irony"],
     detailsToFindEn: ["the robin", "the magpies", "the hidden ring", "the trap", "the reversal between hunter and prey"],
     observeEn: "Find the robin, the magpies and the hidden ring: the scene ironically reverses the relationship between prey and hunter.",
@@ -198,7 +198,7 @@ const murals = [
     observe: 'Osserva i profili e le forme bicrome: richiamano il vaso etrusco e lo trasformano in immagine contemporanea.',
     directionsNext: 'Sali verso l’edificio scolastico in Via della Noce 15 per raggiungere Riparbella01.',
     it: `La Chimera guarda alle radici etrusche di Riparbella con uno sguardo contemporaneo. Aris prende ispirazione dai reperti del Museo C’ERA, in particolare dai vasi antichi, e li trasforma in profili e forme bicrome dal forte impatto grafico. L’opera è anche un omaggio a Pietro Leopoldo di Toscana e al suo interesse per la civiltà etrusca: un ponte visivo fra archeologia, ricerca e arte urbana.`,
-    en: `La Chimera looks at Riparbella’s Etruscan roots through a contemporary lens. Aris draws inspiration from the finds preserved at the C’ERA Museum, especially ancient vases, transforming them into striking two-tone profiles and shapes. The work also pays tribute to Pietro Leopoldo of Tuscany and his interest in Etruscan civilisation: a visual bridge between archaeology, research and urban art.`
+    en: `La Chimera looks at Riparbella’s Etruscan roots through a contemporary lens. Aris draws inspiration from the finds preserved at the C’ERA Museum, especially ancient vases, transforming them into striking two-tone profiles and shapes. The work also pays tribute to Pietro Leopoldo of Tuscany and his interest in Etruscan civilisation: a visual bridge between archaeology, research and urban art.`,
     tagsEn: ["Etruscans", "Ceramics", "Pietro Leopoldo"],
     detailsToFindEn: ["the Etruscan vase", "the two-colour forms", "the stylised profiles", "the link with the C’ERA Museum", "the tribute to Pietro Leopoldo"],
     observeEn: "Notice the profiles and two-colour forms: they recall the Etruscan vase and turn it into a contemporary image.",
@@ -218,7 +218,7 @@ const murals = [
     observe: 'Nota le linee e le forme astratte: in alcune ore del giorno l’opera si riflette nelle finestre della palestra di fronte.',
     directionsNext: 'Spostati verso Via Gramsci, lungo il muro di cinta della scuola elementare.',
     it: `Sulla facciata della scuola, Moneyless realizza l’opera più astratta del percorso. Linee, pieni e vuoti dialogano con l’architettura degli anni Trenta e richiamano movimento, musica e avanguardie. La particolarità più poetica si scopre in certi momenti della giornata: i colori si riflettono sulle finestre della palestra di fronte, creando l’illusione di vetrate dipinte.`,
-    en: `On the school façade, Moneyless creates the most abstract work of the route. Lines, solids and voids interact with the 1930s architecture and evoke movement, music and the avant-garde. Its most poetic feature appears at certain times of day: the colours reflect on the windows of the gym opposite, creating the illusion of painted glass.`
+    en: `On the school façade, Moneyless creates the most abstract work of the route. Lines, solids and voids interact with the 1930s architecture and evoke movement, music and the avant-garde. Its most poetic feature appears at certain times of day: the colours reflect on the windows of the gym opposite, creating the illusion of painted glass.`,
     tagsEn: ["Abstraction", "School", "Music"],
     detailsToFindEn: ["abstract geometric shapes", "references to movement and music", "deliberately incomplete colours", "the reflection in the gym windows"],
     observeEn: "Notice the lines and abstract shapes: at certain times of day the work is reflected in the gym windows opposite.",
@@ -238,7 +238,7 @@ const murals = [
     observe: 'Cerca gli elementi naturali del paesaggio di Riparbella: uva, cinghiali, campagna e mare.',
     directionsNext: 'Prosegui in Via Gramsci verso la palestra comunale per l’ultima tappa: Il sonno di Turan.',
     it: `Questo murale conserva l’entusiasmo dei bambini che lo hanno realizzato insieme agli artisti. Nato da un workshop con la scuola primaria, racconta il paesaggio di Riparbella attraverso uva, cinghiali, campagna e mare. Il titolo nasce dalle parole dei bambini stessi: per loro è stata davvero “l’esperienza più bella della nostra vita”. È una tappa semplice e affettuosa, dove l’arte pubblica diventa partecipazione.`,
-    en: `This mural preserves the enthusiasm of the children who helped create it with the artists. Born from a workshop with the primary school, it tells Riparbella’s landscape through grapes, wild boars, countryside and sea. The title comes from the children’s own words: for them it truly was “the most beautiful experience of our life.” It is a warm, simple stop where public art becomes participation.`
+    en: `This mural preserves the enthusiasm of the children who helped create it with the artists. Born from a workshop with the primary school, it tells Riparbella’s landscape through grapes, wild boars, countryside and sea. The title comes from the children’s own words: for them it truly was “the most beautiful experience of our life.” It is a warm, simple stop where public art becomes participation.`,
     tagsEn: ["School", "Landscape", "Participation"],
     detailsToFindEn: ["grapes", "wild boars", "the countryside", "the sea in the background", "the marks left by children"],
     observeEn: "Look for the natural elements of Riparbella’s landscape: grapes, wild boars, countryside and sea.",
@@ -258,7 +258,7 @@ const murals = [
     observe: 'Guarda Turan come una figura sospesa tra memoria e rinascita: amore, pace e liberazione diventano il cuore dell’opera.',
     directionsNext: 'Hai completato il tour. Puoi tornare verso il centro storico o scegliere un parcheggio o un locale dalla guida.',
     it: `Sulle pareti della palestra comunale, Vesod dedica un’opera intensa alla Liberazione e alla pace. Turan, dea etrusca dell’amore e della vitalità, riposa come sospesa tra memoria e rinascita; al suo risveglio, l’energia dell’amore sembra dissolvere le ombre della guerra. Il profilo della dea dialoga con la collina e il mare, trasformando il murale in un grande simbolo di protezione per la comunità.`,
-    en: `On the walls of the municipal gym, Vesod dedicates a powerful work to Liberation and peace. Turan, the Etruscan goddess of love and vitality, rests suspended between memory and rebirth; when she awakens, the energy of love seems to dissolve the shadows of war. Her profile echoes the hill and the sea, turning the mural into a symbol of protection for the community.`
+    en: `On the walls of the municipal gym, Vesod dedicates a powerful work to Liberation and peace. Turan, the Etruscan goddess of love and vitality, rests suspended between memory and rebirth; when she awakens, the energy of love seems to dissolve the shadows of war. Her profile echoes the hill and the sea, turning the mural into a symbol of protection for the community.`,
     tagsEn: ["Liberation", "Peace", "Turan"],
     detailsToFindEn: ["the goddess Turan", "the black swan", "the pomegranate", "the white dove", "the outline of the hill and the sea"],
     observeEn: "Look at Turan as a figure suspended between memory and rebirth: love, peace and liberation are at the heart of the work.",
@@ -1115,7 +1115,7 @@ function App() {
           <p>{t.supportText}</p>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 1.44.9</strong></p>
+        <p><strong>{t.versionLabel} — 1.44.9.1</strong></p>
       </footer>
     </div>
   );
