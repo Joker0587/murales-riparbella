@@ -271,3 +271,23 @@ Questa versione evita sia il bug npm `Exit handler never called` sia l'errore pn
 - Base funzionante V44.5 mantenuta.
 - Aggiunte traduzioni alle parti fisse ancora in italiano: navigazione, progresso, Oltre i murales, Dove fermarsi e footer.
 - Nessuna modifica alla logica dell'app o al package manager.
+
+## V44.7 — traduzioni mancanti leggere
+
+- Base funzionante V44.6 mantenuta.
+- Tradotte ulteriori micro-parti fisse dell'interfaccia.
+- Nessuna modifica a package manager, logica, dati o grafica.
+
+## V44.8 — fix traduzioni da screenshot
+
+- Tradotte le card “Visit tips” rimaste in italiano.
+- Tradotte etichette scheda murale: tappa, descrizione opera, cosa osservare.
+- Sistemato testo Ko-fi dove possibile.
+- Base Yarn funzionante invariata.
+
+## V44.9 — traduzioni complete schede murales
+
+- Base funzionante V44.8 mantenuta.
+- Le schede murale ora mostrano descrizione, cosa osservare, dettagli da cercare e prossima tappa in inglese quando è selezionata la lingua ENG.
+- Tradotti altri testi fissi: consultazione rapida, tutte le opere, azzera percorso, prima di partire.
+- Nessuna modifica a Yarn/Vercel.
