@@ -303,3 +303,9 @@ Questa versione evita sia il bug npm `Exit handler never called` sia l'errore pn
 - Tradotte in inglese le schede della sezione “Oltre i murales”.
 - Titoli, categorie, introduzioni, testi lunghi e crediti cambiano in base alla lingua selezionata.
 - Base Yarn/Vercel invariata.
+
+## V44.10.1 — fix build Oltre i murales
+
+- Corretto errore di sintassi: mancava una virgola prima dei campi `titleEn` nella sezione “Oltre i murales”.
+- Traduzioni V44.10 mantenute.
+- Configurazione Yarn/Vercel invariata.
