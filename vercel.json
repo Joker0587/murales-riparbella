@@ -1,5 +1,5 @@
 {
-  "installCommand": "npm install --registry=https://registry.npmjs.org/ --no-audit --no-fund",
+  "installCommand": "npx npm@10.8.2 install --registry=https://registry.npmjs.org/ --no-audit --no-fund",
   "buildCommand": "npm run build",
   "framework": "vite"
 }

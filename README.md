@@ -227,3 +227,21 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 
 - Corretto errore di sintassi nel murale “L’amore nella pentola”.
 - Mantenute le foto dei locali nella sezione “Dove fermarsi”.
+
+
+## Ripartenza stabile V44.1
+
+Base scelta per ripartire in modo sicuro.
+
+- Build fix V44.1 mantenuto.
+- Rimossi `package-lock.json`, `node_modules`, `dist`, `.DS_Store`.
+- Aggiunti `.npmrc` e `vercel.json` per usare il registry pubblico npm.
+- Package React/Vite stabilizzato.
+- Versione aggiornata a 1.44.2.
+
+## V44.3 — Fix Node 24 / npm
+
+- Forzato Node 20 con `engines`, `.nvmrc` e `.node-version`.
+- Forzato npm 10.8.2 con `packageManager` e comando Vercel.
+- Rimosso `package-lock.json`.
+- Configurazione pensata per evitare l'errore npm `Exit handler never called`.

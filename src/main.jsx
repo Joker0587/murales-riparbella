@@ -935,7 +935,7 @@ function App() {
           <p>Guida gratuita · Se vuoi, puoi sostenere il progetto con un caffè usando il pulsante Ko-fi in basso.</p>
         </div>
         <p>Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
-        <p><strong>Versione prototipo — 1.44</strong></p>
+        <p><strong>Versione prototipo — 1.44.3</strong></p>
       </footer>
     </div>
   );
