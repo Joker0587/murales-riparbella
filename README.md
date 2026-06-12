@@ -265,3 +265,9 @@ Questa versione evita sia il bug npm `Exit handler never called` sia l'errore pn
 - Nessun package-lock / pnpm-lock / yarn.lock incluso
 - Install command Vercel: pulizia node_modules + yarn install
 - Build command Vercel: yarn build
+
+## V44.6 — traduzioni interfaccia
+
+- Base funzionante V44.5 mantenuta.
+- Aggiunte traduzioni alle parti fisse ancora in italiano: navigazione, progresso, Oltre i murales, Dove fermarsi e footer.
+- Nessuna modifica alla logica dell'app o al package manager.

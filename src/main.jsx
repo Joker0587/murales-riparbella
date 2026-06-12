@@ -345,6 +345,31 @@ const ui = {
     readMore: 'Approfondimento',
     directions: 'Indicazioni',
     infoDisclaimer: 'Informazioni utili per il visitatore. Orari, aperture e recapiti possono variare: si consiglia di contattare direttamente le attività prima della visita.',
+    progressKicker: 'Il tuo percorso',
+    progressTitle: 'Segna le tappe visitate',
+    progressSeen: 'murales visti',
+    progressHint: 'Usa il pulsante “Vista” nelle schede per tenere traccia del tour direttamente dal tuo smartphone.',
+    progressAria: 'Percorso completato al',
+    markReview: 'Segna come da rivedere',
+    markSeen: 'Segna come vista',
+    seen: 'Vista',
+    navMap: 'Mappa',
+    navParking: 'I parcheggi',
+    navBeyond: 'Oltre i murales',
+    navFood: 'Dove fermarsi',
+    extraKicker: 'Oltre i murales',
+    extraTitle: 'Scopri Riparbella oltre i murales',
+    extraIntro: 'Il percorso dei murales può diventare l’occasione per scoprire altri luoghi del borgo: piccoli segni di memoria, arte, tradizione, esperienze sensoriali e vita quotidiana che raccontano Riparbella da prospettive diverse.',
+    readStory: 'Leggi la storia',
+    foodKicker: 'Bar, ristoranti e pause',
+    foodIntro: 'Una selezione di bar, osterie e ristoranti dove fermarsi prima, durante o dopo il percorso. Gli orari possono variare: consigliamo sempre di contattare direttamente l’attività prima della visita.',
+    phoneUnavailable: 'Telefono non disponibile',
+    footerMade: 'Web app ideata e realizzata da Francesco Bolognesi',
+    footerPurpose: 'per raccontare e valorizzare i murales di Riparbella.',
+    footerProject: 'Progetto digitale dedicato al percorso di arte pubblica del borgo, pensato come guida semplice, consultabile da smartphone durante la visita.',
+    supportText: 'Guida gratuita · Se vuoi, puoi sostenere il progetto con un caffè usando il pulsante Ko-fi in basso.',
+    rightsText: 'Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.',
+    versionLabel: 'Versione prototipo',
     searchPlaceholder: 'Cerca murale, artista, tema...',
     prototype: 'Versione prototipo — 2026'
   },
@@ -392,6 +417,31 @@ const ui = {
     readMore: 'More details',
     directions: 'Directions',
     infoDisclaimer: 'Useful visitor information. Opening hours and contacts may change: please contact the businesses directly before your visit.',
+    progressKicker: 'Your route',
+    progressTitle: 'Mark visited stops',
+    progressSeen: 'murals seen',
+    progressHint: 'Use the “Seen” button in the cards to keep track of your tour directly from your smartphone.',
+    progressAria: 'Route completed at',
+    markReview: 'Mark to revisit',
+    markSeen: 'Mark as seen',
+    seen: 'Seen',
+    navMap: 'Map',
+    navParking: 'Parking',
+    navBeyond: 'Beyond the murals',
+    navFood: 'Where to stop',
+    extraKicker: 'Beyond the murals',
+    extraTitle: 'Discover Riparbella beyond the murals',
+    extraIntro: 'The mural route is also a chance to discover other places in the village: small signs of memory, art, tradition, sensory experiences and everyday life that tell Riparbella from different perspectives.',
+    readStory: 'Read the story',
+    foodKicker: 'Bars, restaurants and breaks',
+    foodIntro: 'A selection of bars, osterias and restaurants where you can stop before, during or after the route. Opening hours may vary: we recommend contacting each place directly before your visit.',
+    phoneUnavailable: 'Phone not available',
+    footerMade: 'Web app designed and created by Francesco Bolognesi',
+    footerPurpose: 'to tell and enhance the murals of Riparbella.',
+    footerProject: 'A digital project dedicated to the village’s public art route, designed as a simple guide to use from your smartphone during the visit.',
+    supportText: 'Free guide · If you like, you can support the project with a coffee using the Ko-fi button below.',
+    rightsText: 'Texts, images and artworks belong to their respective authors and rights holders.',
+    versionLabel: 'Prototype version',
     searchPlaceholder: 'Search mural, artist, theme...',
     prototype: 'Prototype version — 2026'
   }
@@ -612,10 +662,10 @@ function App() {
             <h1>{t.title}</h1>
             <p className="subtitle">{t.subtitle}</p>
             <div className="hero-quick-links">
-              <a href="#mappa" onClick={(e) => { e.preventDefault(); document.getElementById('mappa')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>Mappa</a>
-              <a href="#parcheggi" onClick={(e) => { e.preventDefault(); document.getElementById('parcheggi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>I parcheggi</a>
-              <a href="#oltre-murales" onClick={(e) => { e.preventDefault(); document.getElementById('oltre-murales')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>Oltre i murales</a>
-              <a href="#dove-fermarsi" onClick={(e) => { e.preventDefault(); document.getElementById('dove-fermarsi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>Dove fermarsi</a>
+              <a href="#mappa" onClick={(e) => { e.preventDefault(); document.getElementById('mappa')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navMap}</a>
+              <a href="#parcheggi" onClick={(e) => { e.preventDefault(); document.getElementById('parcheggi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navParking}</a>
+              <a href="#oltre-murales" onClick={(e) => { e.preventDefault(); document.getElementById('oltre-murales')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navBeyond}</a>
+              <a href="#dove-fermarsi" onClick={(e) => { e.preventDefault(); document.getElementById('dove-fermarsi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navFood}</a>
             </div>
           </div>
           <img src="/images/memoria-desiderio.jpg" alt="Murales Memoria e desiderio" className="hero-image" />
@@ -661,15 +711,15 @@ function App() {
 
         <section className="section progress-section">
           <div className="section-heading">
-            <p className="kicker">Il tuo percorso</p>
-            <h2>Segna le tappe visitate</h2>
+            <p className="kicker">{t.progressKicker}</p>
+            <h2>{t.progressTitle}</h2>
           </div>
           <div className="progress-card">
             <div className="progress-copy">
-              <strong>{visitedCount} / {murals.length} murales visti</strong>
-              <span>Usa il pulsante “Vista” nelle schede per tenere traccia del tour direttamente dal tuo smartphone.</span>
+              <strong>{visitedCount} / {murals.length} {t.progressSeen}</strong>
+              <span>{t.progressHint}</span>
             </div>
-            <div className="progress-meter" aria-label={`Percorso completato al ${progressPercent}%`}>
+            <div className="progress-meter" aria-label={`${t.progressAria} ${progressPercent}%`}>
               <span style={{ width: `${progressPercent}%` }}></span>
             </div>
             <div className="progress-actions">
@@ -817,11 +867,11 @@ function App() {
         
         <section id="oltre-murales" className="section extra-places-section">
           <div className="section-heading">
-            <p className="kicker">Oltre i murales</p>
-            <h2>Scopri Riparbella oltre i murales</h2>
+            <p className="kicker">{t.extraKicker}</p>
+            <h2>{t.extraTitle}</h2>
           </div>
           <div className="text-card">
-            <p>Il percorso dei murales può diventare l’occasione per scoprire altri luoghi del borgo: piccoli segni di memoria, arte, tradizione, esperienze sensoriali e vita quotidiana che raccontano Riparbella da prospettive diverse.</p>
+            <p>{t.extraIntro}</p>
           </div>
 
           <div className="extra-places-grid">
@@ -839,7 +889,7 @@ function App() {
                 </div>
                 <p className="extra-place-intro">{place.intro}</p>
                 <details>
-                  <summary>Leggi la storia</summary>
+                  <summary>{t.readStory}</summary>
                   <div className="extra-place-description">
                     {place.description.split('\n\n').map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                     <p className="credit">{place.credit}</p>
@@ -891,11 +941,11 @@ function App() {
 
                         <section className="section practical food-section" id="dove-fermarsi">
           <div className="section-heading">
-            <p className="kicker">Bar, ristoranti e pause</p>
+            <p className="kicker">{t.foodKicker}</p>
             <h2>{t.food}</h2>
           </div>
           <div className="text-card food-intro">
-            <p>Una selezione di bar, osterie e ristoranti dove fermarsi prima, durante o dopo il percorso. Gli orari possono variare: consigliamo sempre di contattare direttamente l’attività prima della visita.</p>
+            <p>{t.foodIntro}</p>
           </div>
           <div className="practical-grid food-grid">
             {placesToEat.map((place) => (
@@ -914,7 +964,7 @@ function App() {
                 <h3>{place.name}</h3>
                 <p className="address">⌖ {place.address}</p>
                 {place.note && <p className="place-note">{place.note}</p>}
-                {place.phone ? <p className="phone">{phoneLabel(place.phone)}</p> : <p className="phone muted">Telefono non disponibile</p>}
+                {place.phone ? <p className="phone">{phoneLabel(place.phone)}</p> : <p className="phone muted">{t.phoneUnavailable}</p>}
                 <div className="button-row food-buttons">
                   {place.phone && <a className="primary link" href={`tel:${place.phone}`}>{t.call}</a>}
                   <a className={place.phone ? "secondary link" : "primary link"} target="_blank" rel="noreferrer" href={placeMapUrl(place)}>{t.takeMe}</a>
@@ -928,14 +978,14 @@ function App() {
       </main>
 
       <footer>
-        <p><strong>Web app ideata e realizzata da Francesco Bolognesi</strong></p>
-        <p>per raccontare e valorizzare i murales di Riparbella.</p>
-        <p className="footer-project">Progetto digitale dedicato al percorso di arte pubblica del borgo, pensato come guida semplice, consultabile da smartphone durante la visita.</p>
+        <p><strong>{t.footerMade}</strong></p>
+        <p>{t.footerPurpose}</p>
+        <p className="footer-project">{t.footerProject}</p>
         <div className="support-box support-box-small">
-          <p>Guida gratuita · Se vuoi, puoi sostenere il progetto con un caffè usando il pulsante Ko-fi in basso.</p>
+          <p>{t.supportText}</p>
         </div>
-        <p>Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
-        <p><strong>Versione prototipo — 1.44.5</strong></p>
+        <p>{t.rightsText}</p>
+        <p><strong>{t.versionLabel} — 1.44.6</strong></p>
       </footer>
     </div>
   );
