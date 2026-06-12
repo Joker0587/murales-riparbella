@@ -229,29 +229,77 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Mantenute le foto dei locali nella sezione “Dove fermarsi”.
 
 
-## Novità V47 — versione 1.47
-- Migliorata l’esperienza smartphone con navigazione rapida fissa in basso.
-- Schede più leggibili su mobile con effetto liquid glass, pulsanti più grandi e layout ottimizzato.
-- Corretto il pacchetto per evitare installazioni pesanti o dipendenze non necessarie.
+## Ripartenza stabile V44.1
 
-## Novità V49 — Percorso smart
+Base scelta per ripartire in modo sicuro.
 
-- Aggiunta sezione “Percorso su misura”.
-- L’utente può usare la posizione del telefono per creare un itinerario ordinato dal punto più vicino.
-- Aggiunto finale consigliato con rientro verso Camping Bocca di Cecina.
-- Migliorati micro-effetti mobile, tap feedback e schede liquid glass.
+- Build fix V44.1 mantenuto.
+- Rimossi `package-lock.json`, `node_modules`, `dist`, `.DS_Store`.
+- Aggiunti `.npmrc` e `vercel.json` per usare il registry pubblico npm.
+- Package React/Vite stabilizzato.
+- Versione aggiornata a 1.44.2.
 
-## Novità V50 — Percorso smart senza finale
+## V44.3 — Fix Node 24 / npm
 
-- Rimosso il blocco “Finale consigliato”.
-- Il percorso su misura ora mostra solo le tappe ordinate dalla posizione dell’utente.
-- Aggiornato il footer alla versione 1.50.
+- Forzato Node 20 con `engines`, `.nvmrc` e `.node-version`.
+- Forzato npm 10.8.2 con `packageManager` e comando Vercel.
+- Rimosso `package-lock.json`.
+- Configurazione pensata per evitare l'errore npm `Exit handler never called`.
 
-## V52 — bilingue stabile
-Ripartenza dalla V50, correzione Percorso Smart e traduzione delle principali parti fisse dell'interfaccia.
+## V44.4 — pnpm install fix
 
-## V53 — white screen fix
-Corretto possibile errore runtime dopo build OK: percorso smart riposizionato, fallback traduzioni e protezioni UI.
+Questa versione evita il bug npm `Exit handler never called` usando pnpm su Vercel.
 
-## V53.1 — white screen fix definitivo
-Ripristinate le funzioni startSmartRoute/resetSmartRoute richiamate dalla UI.
+- Package manager: pnpm 9.15.4
+- Node: 20.x
+- Nessun package-lock.json
+- Install command Vercel: pnpm install
+- Build command Vercel: pnpm run build
+
+## V44.5 — Yarn install fix
+
+Questa versione evita sia il bug npm `Exit handler never called` sia l'errore pnpm `ERR_INVALID_THIS`.
+
+- Package manager: Yarn classic 1.22.22
+- Node: 20.x
+- Nessun package-lock / pnpm-lock / yarn.lock incluso
+- Install command Vercel: pulizia node_modules + yarn install
+- Build command Vercel: yarn build
+
+## V44.6 — traduzioni interfaccia
+
+- Base funzionante V44.5 mantenuta.
+- Aggiunte traduzioni alle parti fisse ancora in italiano: navigazione, progresso, Oltre i murales, Dove fermarsi e footer.
+- Nessuna modifica alla logica dell'app o al package manager.
+
+## V44.7 — traduzioni mancanti leggere
+
+- Base funzionante V44.6 mantenuta.
+- Tradotte ulteriori micro-parti fisse dell'interfaccia.
+- Nessuna modifica a package manager, logica, dati o grafica.
+
+## V44.8 — fix traduzioni da screenshot
+
+- Tradotte le card “Visit tips” rimaste in italiano.
+- Tradotte etichette scheda murale: tappa, descrizione opera, cosa osservare.
+- Sistemato testo Ko-fi dove possibile.
+- Base Yarn funzionante invariata.
+
+## V44.9 — traduzioni complete schede murales
+
+- Base funzionante V44.8 mantenuta.
+- Le schede murale ora mostrano descrizione, cosa osservare, dettagli da cercare e prossima tappa in inglese quando è selezionata la lingua ENG.
+- Tradotti altri testi fissi: consultazione rapida, tutte le opere, azzera percorso, prima di partire.
+- Nessuna modifica a Yarn/Vercel.
+
+## V44.9.1 — fix build
+
+- Corretto errore di sintassi: mancava una virgola dopo il campo `en` nelle schede murales.
+- Traduzioni V44.9 mantenute.
+- Configurazione Yarn/Vercel invariata.
+
+## V44.10 — traduzione Oltre i murales
+
+- Tradotte in inglese le schede della sezione “Oltre i murales”.
+- Titoli, categorie, introduzioni, testi lunghi e crediti cambiano in base alla lingua selezionata.
+- Base Yarn/Vercel invariata.
