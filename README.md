@@ -245,3 +245,13 @@ Base scelta per ripartire in modo sicuro.
 - Forzato npm 10.8.2 con `packageManager` e comando Vercel.
 - Rimosso `package-lock.json`.
 - Configurazione pensata per evitare l'errore npm `Exit handler never called`.
+
+## V44.4 — pnpm install fix
+
+Questa versione evita il bug npm `Exit handler never called` usando pnpm su Vercel.
+
+- Package manager: pnpm 9.15.4
+- Node: 20.x
+- Nessun package-lock.json
+- Install command Vercel: pnpm install
+- Build command Vercel: pnpm run build

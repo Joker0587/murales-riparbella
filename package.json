@@ -1,12 +1,11 @@
 {
   "name": "murales-riparbella",
-  "version": "1.44.3",
+  "version": "1.44.4",
   "private": true,
   "type": "module",
-  "packageManager": "npm@10.8.2",
+  "packageManager": "pnpm@9.15.4",
   "engines": {
-    "node": "20.x",
-    "npm": "10.x"
+    "node": "20.x"
   },
   "scripts": {
     "dev": "vite",
