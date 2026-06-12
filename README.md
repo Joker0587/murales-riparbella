@@ -255,3 +255,13 @@ Questa versione evita il bug npm `Exit handler never called` usando pnpm su Verc
 - Nessun package-lock.json
 - Install command Vercel: pnpm install
 - Build command Vercel: pnpm run build
+
+## V44.5 — Yarn install fix
+
+Questa versione evita sia il bug npm `Exit handler never called` sia l'errore pnpm `ERR_INVALID_THIS`.
+
+- Package manager: Yarn classic 1.22.22
+- Node: 20.x
+- Nessun package-lock / pnpm-lock / yarn.lock incluso
+- Install command Vercel: pulizia node_modules + yarn install
+- Build command Vercel: yarn build
