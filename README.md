@@ -343,10 +343,17 @@ Questa versione evita sia il bug npm `Exit handler never called` sia l'errore pn
 - Rimossa la sezione “Consultazione rapida / Tutte le opere”, considerata ridondante dopo le schede fluttuanti.
 - Nessuna modifica a Yarn/Vercel.
 
-## V44.15.2 — Tappa più vicina safe
+## V44.15 — Tappe smart manuali
 
-- Ripartenza dalla V44.14 funzionante.
-- Aggiunta funzione minima “Trova la tappa più vicina”.
-- Non riordina il percorso e non modifica la logica delle schede.
-- Se la posizione viene concessa, seleziona il murale più vicino.
+- Aggiunti percorsi smart manuali senza GPS.
+- Tour completo, breve 30 min, arte e panorama, Etruschi e memoria, con bambini.
+- Nessuna geolocalizzazione.
+- Nessuna API esterna.
+- Configurazione Yarn/Vercel invariata.
+
+## V44.15.1 — fix tappe smart manuali
+
+- Corretto errore runtime che causava schermata bianca.
+- Inserito correttamente lo stato `activeSmartRouteId`.
+- Le tappe smart restano manuali, senza GPS e senza geolocalizzazione.
 - Configurazione Yarn/Vercel invariata.

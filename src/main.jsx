@@ -358,22 +358,6 @@ const getExtraText = (place, field, language) => {
   return language === 'en' ? (place[englishField] || place[field] || '') : (place[field] || '');
 };
 
-
-const distanceKmSafe = (from, to) => {
-  const toRad = (value) => (value * Math.PI) / 180;
-  const earthRadius = 6371;
-  const dLat = toRad(to.lat - from.lat);
-  const dLng = toRad(to.lng - from.lng);
-  const lat1 = toRad(from.lat);
-  const lat2 = toRad(to.lat);
-
-  const a =
-    Math.sin(dLat / 2) ** 2 +
-    Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
-
-  return earthRadius * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-};
-
 const ui = {
   it: {
     heroKicker: 'Guida digitale interattiva',
@@ -475,18 +459,31 @@ const ui = {
     artworkDescription: 'Descrizione dell’opera',
     whatToNotice: 'Cosa osservare',
     offerCoffee: 'Offri un caffè',
+    quickConsultation: 'Consultazione rapida',
+    allWorks: 'Tutte le opere',
     nextDirectionTitle: 'Verso la prossima tappa',
     seenDone: 'Vista ✓',
     markSeenShort: 'Segna vista',
     clearRoute: 'Azzera percorso',
     beforeStartKicker: 'Prima di partire',
     projectKickerVisible: 'Arte pubblica e comunità',
-    nearestCardTitle: 'Tappa più vicina',
-    nearestCardText: 'Usa la posizione del telefono per aprire il murale più vicino a te.',
-    nearestButton: 'Trova la tappa più vicina',
-    nearestLoading: 'Controllo la posizione…',
-    nearestReady: 'Tappa più vicina trovata',
-    nearestDenied: 'Posizione non disponibile. Puoi continuare con il percorso normale.',
+    smartStopsKicker: 'Tappe smart',
+    smartStopsTitle: 'Scegli il tuo tour',
+    smartStopsText: 'Percorsi leggeri pensati per visitare il borgo senza perdersi in troppo scroll.',
+    smartRouteComplete: 'Tour completo',
+    smartRouteCompleteText: 'Tutte le tappe, nell’ordine consigliato.',
+    smartRouteShort: 'Tour breve 30 min',
+    smartRouteShortText: 'Le tappe essenziali per una visita rapida.',
+    smartRoutePanorama: 'Arte e panorama',
+    smartRoutePanoramaText: 'Opere legate a paesaggio, natura e scorci del borgo.',
+    smartRouteEtruscan: 'Etruschi e memoria',
+    smartRouteEtruscanText: 'Un percorso tra archeologia, identità e memoria.',
+    smartRouteFamily: 'Con bambini',
+    smartRouteFamilyText: 'Tappe più immediate, curiose e adatte ai più piccoli.',
+    activeSmartRoute: 'Percorso selezionato',
+    smartRouteStops: 'tappe',
+    startSmartRoute: 'Apri prima tappa',
+    resetSmartRouteManual: 'Mostra tour completo',
     searchPlaceholder: 'Cerca murale, artista, tema...',
     prototype: 'Versione prototipo — 2026'
   },
@@ -590,23 +587,65 @@ const ui = {
     artworkDescription: 'Artwork description',
     whatToNotice: 'What to notice',
     offerCoffee: 'Buy me a coffee',
+    quickConsultation: 'Quick reference',
+    allWorks: 'All artworks',
     nextDirectionTitle: 'Towards the next stop',
     seenDone: 'Seen ✓',
     markSeenShort: 'Mark as seen',
     clearRoute: 'Reset route',
     beforeStartKicker: 'Before you start',
     projectKickerVisible: 'Public art and community',
-    nearestCardTitle: 'Closest stop',
-    nearestCardText: 'Use your phone location to open the mural closest to you.',
-    nearestButton: 'Find the closest stop',
-    nearestLoading: 'Checking your position…',
-    nearestReady: 'Closest stop found',
-    nearestDenied: 'Position not available. You can continue with the normal route.',
+    smartStopsKicker: 'Smart stops',
+    smartStopsTitle: 'Choose your tour',
+    smartStopsText: 'Light routes designed to explore the village without too much scrolling.',
+    smartRouteComplete: 'Full tour',
+    smartRouteCompleteText: 'All stops in the suggested order.',
+    smartRouteShort: 'Short 30 min tour',
+    smartRouteShortText: 'The essential stops for a quick visit.',
+    smartRoutePanorama: 'Art and views',
+    smartRoutePanoramaText: 'Artworks linked to landscape, nature and village views.',
+    smartRouteEtruscan: 'Etruscans and memory',
+    smartRouteEtruscanText: 'A route through archaeology, identity and memory.',
+    smartRouteFamily: 'With children',
+    smartRouteFamilyText: 'More immediate, playful and child-friendly stops.',
+    activeSmartRoute: 'Selected route',
+    smartRouteStops: 'stops',
+    startSmartRoute: 'Open first stop',
+    resetSmartRouteManual: 'Show full tour',
     searchPlaceholder: 'Search mural, artist, theme...',
     prototype: 'Prototype version — 2026'
   }
 };
 
+
+
+const smartRoutesManual = [
+  {
+    id: 'complete',
+    emoji: '🧭',
+    stops: ['gioia', 'lari', 'memoria', 'amphora', 'corona', 'amore', 'terra-colori', 'universo', 'hitnes', 'aris', 'riparbella01', 'esperienza', 'turan']
+  },
+  {
+    id: 'short',
+    emoji: '⚡',
+    stops: ['gioia', 'lari', 'amphora', 'amore', 'turan']
+  },
+  {
+    id: 'panorama',
+    emoji: '🌿',
+    stops: ['gioia', 'terra-colori', 'amphora', 'riparbella01', 'turan']
+  },
+  {
+    id: 'etruscan',
+    emoji: '🏺',
+    stops: ['corona', 'aris', 'turan', 'memoria', 'amphora']
+  },
+  {
+    id: 'family',
+    emoji: '👨‍👩‍👧',
+    stops: ['universo', 'esperienza', 'amore', 'hitnes', 'lari']
+  }
+];
 
 const extraPlaces = [
   {
@@ -752,6 +791,7 @@ function phoneLabel(phone) {
 function App() {
   const [language, setLanguage] = useState('it');
   const [selectedId, setSelectedId] = useState(() => window.location.hash?.replace('#', '') || murals[0].id);
+  const [activeSmartRouteId, setActiveSmartRouteId] = useState('complete');
   const [query, setQuery] = useState('');
   const [isMuralSheetOpen, setIsMuralSheetOpen] = useState(false);
   const detailsRef = useRef(null);
@@ -771,11 +811,24 @@ function App() {
   const visitedCount = visitedIds.length;
   const progressPercent = Math.round((visitedCount / murals.length) * 100);
 
-  const filteredMurals = useMemo(() => {
+  
+  const activeSmartRoute = smartRoutesManual.find((route) => route.id === activeSmartRouteId) || smartRoutesManual[0];
+  const visibleMurals = activeSmartRoute.stops
+    .map((id) => murals.find((mural) => mural.id === id))
+    .filter(Boolean);
+
+  const selectSmartRoute = (routeId) => {
+    const route = smartRoutesManual.find((item) => item.id === routeId) || smartRoutesManual[0];
+    setActiveSmartRouteId(route.id);
+    setSelectedId(route.stops[0] || murals[0].id);
+  };
+
+  const filteredMurals = (() => {
     const q = query.trim().toLowerCase();
-    if (!q) return murals;
-    return murals.filter((m) => `${m.title} ${m.artist} ${m.address} ${m.tags.join(' ')}`.toLowerCase().includes(q));
-  }, [query]);
+    const source = visibleMurals || murals;
+    if (!q) return source;
+    return source.filter((m) => `${m.title} ${m.artist} ${m.address} ${m.tags.join(' ')}`.toLowerCase().includes(q));
+  })();
 
   useEffect(() => {
     const onHash = () => {
@@ -830,48 +883,6 @@ function App() {
     selectMural(murals[safe].id, false);
     setIsMuralSheetOpen(true);
   };
-
-
-  const findNearestMuralSafe = () => {
-    if (!navigator.geolocation) {
-      setNearestStatus('denied');
-      return;
-    }
-
-    setNearestStatus('loading');
-
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const userPosition = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-
-        const nearestMural = murals.reduce((closest, mural) => {
-          const currentDistance = distanceKmSafe(userPosition, mural);
-          const closestDistance = distanceKmSafe(userPosition, closest);
-          return currentDistance < closestDistance ? mural : closest;
-        }, murals[0]);
-
-        setSelectedId(nearestMural.id);
-        setNearestTitle(nearestMural.title);
-        setNearestStatus('ready');
-
-        window.setTimeout(() => {
-          document.getElementById('mappa')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 150);
-      },
-      () => {
-        setNearestStatus('denied');
-      },
-      {
-        enableHighAccuracy: true,
-        timeout: 9000,
-        maximumAge: 60000
-      }
-    );
-  };
-
 
   return (
     <div className="app">
@@ -969,18 +980,47 @@ function App() {
         </section>
 
         
-        <section className="section nearest-safe-section">
-          <div className="nearest-safe-card">
+        <section className="section smart-stops-section">
+          <div className="section-heading">
+            <p className="kicker">{t.smartStopsKicker}</p>
+            <h2>{t.smartStopsTitle}</h2>
+          </div>
+          <div className="text-card smart-stops-intro">
+            <p>{t.smartStopsText}</p>
+          </div>
+          <div className="smart-route-grid">
+            {smartRoutesManual.map((route) => {
+              const labels = {
+                complete: [t.smartRouteComplete, t.smartRouteCompleteText],
+                short: [t.smartRouteShort, t.smartRouteShortText],
+                panorama: [t.smartRoutePanorama, t.smartRoutePanoramaText],
+                etruscan: [t.smartRouteEtruscan, t.smartRouteEtruscanText],
+                family: [t.smartRouteFamily, t.smartRouteFamilyText]
+              };
+              const [title, text] = labels[route.id] || labels.complete;
+              const isActive = activeSmartRouteId === route.id;
+              return (
+                <button
+                  key={route.id}
+                  className={isActive ? 'smart-route-card active' : 'smart-route-card'}
+                  onClick={() => selectSmartRoute(route.id)}
+                >
+                  <span className="smart-route-emoji">{route.emoji}</span>
+                  <span>
+                    <strong>{title}</strong>
+                    <em>{text}</em>
+                    <small>{route.stops.length} {t.smartRouteStops}</small>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+          <div className="smart-route-active-card">
             <div>
-              <p className="kicker">{t.nearestCardTitle}</p>
-              <h2>{t.nearestCardTitle}</h2>
-              <p>{t.nearestCardText}</p>
-              {nearestStatus === 'ready' && <p className="nearest-safe-status success">{t.nearestReady}: <strong>{nearestTitle}</strong></p>}
-              {nearestStatus === 'denied' && <p className="nearest-safe-status warning">{t.nearestDenied}</p>}
+              <p className="kicker">{t.activeSmartRoute}</p>
+              <strong>{visibleMurals.map((mural) => mural.title).join(' → ')}</strong>
             </div>
-            <button className="primary" onClick={findNearestMuralSafe} disabled={nearestStatus === 'loading'}>
-              {nearestStatus === 'loading' ? t.nearestLoading : t.nearestButton}
-            </button>
+            <button className="primary" onClick={() => setSelectedId(visibleMurals[0]?.id || murals[0].id)}>{t.startSmartRoute}</button>
           </div>
         </section>
 
@@ -1094,28 +1134,31 @@ function App() {
 
           <div className="extra-places-grid">
             {extraPlaces.map((place) => (
-              <details className="extra-accordion-card" key={place.id}>
-                <summary className="extra-accordion-summary">
-                  {place.image && <img src={place.image} alt={getExtraText(place, 'title', language)} loading="lazy" />}
-                  <span>
-                    <small>{getExtraText(place, 'category', language)}</small>
-                    <strong>{getExtraText(place, 'title', language)}</strong>
-                    <em>{getExtraText(place, 'intro', language)}</em>
-                  </span>
-                </summary>
-
-                <div className="extra-accordion-body">
-                  <p className="address">⌖ {place.address}</p>
-                  {getExtraText(place, 'description', language).split('\n\n').map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-                  <p className="credit">{getExtraText(place, 'credit', language)}</p>
-
-                  <div className="button-row">
-                    <a href={navGoogle(place.lat, place.lng)} target="_blank" rel="noreferrer" className="primary link">{t.google}</a>
-                    <a href={navApple(place.lat, place.lng)} target="_blank" rel="noreferrer" className="secondary link">{t.apple}</a>
-                    {place.website && <a href={place.website} target="_blank" rel="noreferrer" className="secondary link">Website</a>}
+              <article className="extra-place-card" key={place.id}>
+                {place.image && (
+                  <div className="extra-place-image">
+                    <img src={place.image} alt={getExtraText(place, 'title', language)} loading="lazy" />
                   </div>
+                )}
+                <div className="extra-place-head">
+                  <p className="type">{getExtraText(place, 'category', language)}</p>
+                  <h3>{getExtraText(place, 'title', language)}</h3>
+                  <p className="address">⌖ {place.address}</p>
                 </div>
-              </details>
+                <p className="extra-place-intro">{getExtraText(place, 'intro', language)}</p>
+                <details>
+                  <summary>{t.readStory}</summary>
+                  <div className="extra-place-description">
+                    {getExtraText(place, 'description', language).split('\n\n').map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                    <p className="credit">{getExtraText(place, 'credit', language)}</p>
+                  </div>
+                </details>
+                <div className="button-row">
+                  <a href={navGoogle(place.lat, place.lng)} target="_blank" rel="noreferrer" className="primary link">Google Maps</a>
+                  <a href={navApple(place.lat, place.lng)} target="_blank" rel="noreferrer" className="secondary link">Apple Maps</a>
+                  {place.website && <a href={place.website} target="_blank" rel="noreferrer" className="secondary link">Sito web</a>}
+                </div>
+              </article>
             ))}
           </div>
         </section>
@@ -1208,7 +1251,7 @@ function App() {
           <p>{t.supportText}</p>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 1.44.15.2</strong></p>
+        <p><strong>{t.versionLabel} — 1.44.15.1</strong></p>
       </footer>
     </div>
   );
