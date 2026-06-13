@@ -309,3 +309,22 @@ Questa versione evita sia il bug npm `Exit handler never called` sia l'errore pn
 - Corretto errore di sintassi: mancava una virgola prima dei campi `titleEn` nella sezione “Oltre i murales”.
 - Traduzioni V44.10 mantenute.
 - Configurazione Yarn/Vercel invariata.
+
+## V44.11 — Mobile light
+
+- Migliorata usabilità da smartphone con sole modifiche CSS.
+- Menu mobile più comodo.
+- Pulsanti più grandi.
+- Spaziature migliori nelle schede.
+- Immagine murale più compatta.
+- Ko-fi meno invasivo su mobile.
+- Nessun percorso smart aggiunto.
+- Configurazione Yarn/Vercel invariata.
+
+## V44.12 — Mobile evidente
+
+- Aggiunta vera barra fissa in basso su smartphone.
+- Modifiche mobile più visibili: immagini più compatte, pulsanti grandi, card più leggibili.
+- CSS più mirato con selettori compatibili con la struttura reale dell’app.
+- Ko-fi reso meno invasivo su smartphone.
+- Nessuna modifica al package manager, alle traduzioni o alla logica principale.

@@ -1138,6 +1138,14 @@ function App() {
         </section>
       </main>
 
+
+      <nav className="bottom-mobile-nav" aria-label={t.quickNav || 'Navigazione rapida'}>
+        <a href="#mappa" onClick={(e) => { e.preventDefault(); document.getElementById('mappa')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navMap || t.map}</a>
+        <a href="#parcheggi" onClick={(e) => { e.preventDefault(); document.getElementById('parcheggi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navParking || t.parking}</a>
+        <a href="#oltre-murales" onClick={(e) => { e.preventDefault(); document.getElementById('oltre-murales')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navBeyond || 'Oltre'}</a>
+        <a href="#dove-fermarsi" onClick={(e) => { e.preventDefault(); document.getElementById('dove-fermarsi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navFood || t.food}</a>
+      </nav>
+
       <footer>
         <p><strong>{t.footerMade}</strong></p>
         <p>{t.footerPurpose}</p>
@@ -1146,7 +1154,7 @@ function App() {
           <p>{t.supportText}</p>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 1.44.10.1</strong></p>
+        <p><strong>{t.versionLabel} — 1.44.12</strong></p>
       </footer>
     </div>
   );

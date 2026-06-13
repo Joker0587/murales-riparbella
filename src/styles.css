@@ -1460,3 +1460,628 @@ html {
     width: 100%;
   }
 }
+
+
+/* V44.11 — Mobile light UX */
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 18px;
+  }
+
+  body {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .app {
+    overflow-x: hidden;
+  }
+
+  .hero {
+    padding-top: 14px;
+  }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    margin: 0 10px 12px;
+    padding: 10px 12px;
+    border-radius: 22px;
+    background: rgba(255, 252, 244, 0.86);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 10px 28px rgba(30, 38, 55, 0.08);
+  }
+
+  .brand {
+    font-size: 0.82rem;
+  }
+
+  .lang button {
+    min-width: 42px;
+    min-height: 36px;
+    border-radius: 999px;
+    font-weight: 800;
+  }
+
+  .hero-grid {
+    gap: 18px;
+    padding-inline: 14px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.25rem, 13vw, 4.2rem);
+    line-height: 0.94;
+    letter-spacing: -0.06em;
+    margin-bottom: 14px;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .hero-actions a,
+  .hero-actions button,
+  .button-row a,
+  .button-row button,
+  .primary,
+  .secondary,
+  .link {
+    min-height: 48px;
+    padding: 13px 16px;
+    border-radius: 18px;
+    font-size: 0.96rem;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-image {
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 24px;
+  }
+
+  .section {
+    padding-inline: 14px;
+    margin-block: 34px;
+  }
+
+  .section-heading {
+    margin-bottom: 16px;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(2rem, 10vw, 3.2rem);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+  }
+
+  .kicker {
+    font-size: 0.74rem;
+    letter-spacing: 0.22em;
+  }
+
+  .text-card,
+  .progress-card,
+  .info-card,
+  .extra-place-card,
+  .mural-card,
+  .detail-content,
+  .mini-block,
+  .tip-card {
+    border-radius: 24px;
+  }
+
+  .text-card {
+    padding: 22px;
+  }
+
+  .tips-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .tip-card {
+    min-height: auto;
+    padding: 18px;
+  }
+
+  .progress-card {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .progress-copy {
+    display: grid;
+    gap: 8px;
+  }
+
+  .progress-copy strong {
+    font-size: clamp(1.8rem, 10vw, 3rem);
+  }
+
+  .progress-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .detail-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    border-radius: 28px;
+    overflow: hidden;
+  }
+
+  .detail-card img,
+  .detail-image,
+  .detail-card > img {
+    width: 100%;
+    max-height: 320px;
+    min-height: 210px;
+    object-fit: cover;
+    border-radius: 0;
+  }
+
+  .detail-content {
+    padding: 20px;
+    border-radius: 0;
+  }
+
+  .detail-content h2 {
+    font-size: clamp(2rem, 11vw, 3.4rem);
+    line-height: 0.98;
+    margin-bottom: 10px;
+  }
+
+  .detail-meta,
+  .tags {
+    gap: 8px;
+  }
+
+  .tags span,
+  .visited-badge {
+    padding: 8px 11px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+  }
+
+  .mini-block {
+    padding: 17px;
+    margin-top: 12px;
+  }
+
+  .mini-block p,
+  .mini-block li {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .button-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .cards-grid,
+  .extra-places-grid,
+  .practical-grid,
+  .food-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .mural-card {
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    gap: 13px;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .mural-card img {
+    width: 88px;
+    height: 88px;
+    border-radius: 18px;
+    object-fit: cover;
+  }
+
+  .mural-card h3 {
+    font-size: 1.05rem;
+    line-height: 1.15;
+  }
+
+  .extra-place-card {
+    overflow: hidden;
+  }
+
+  .extra-place-image img,
+  .food-visual img {
+    max-height: 220px;
+    object-fit: cover;
+  }
+
+  .search {
+    min-height: 48px;
+    border-radius: 18px;
+    font-size: 1rem;
+    padding: 0 16px;
+  }
+
+  footer {
+    padding: 28px 18px 88px;
+    text-align: center;
+  }
+
+  .support-box,
+  .support-box-small {
+    margin-inline: auto;
+  }
+}
+
+/* Dock mobile più comodo */
+@media (max-width: 760px) {
+  .quick-nav,
+  .mobile-dock,
+  .hero-actions {
+    scrollbar-width: none;
+  }
+
+  .quick-nav::-webkit-scrollbar,
+  .mobile-dock::-webkit-scrollbar,
+  .hero-actions::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-dock {
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    bottom: 12px;
+    z-index: 50;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+    padding: 8px;
+    border-radius: 24px;
+    background: rgba(20, 28, 42, 0.84);
+    box-shadow: 0 18px 44px rgba(12, 18, 30, 0.26);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .mobile-dock a,
+  .mobile-dock button {
+    color: #fff;
+    min-height: 42px;
+    border-radius: 17px;
+    padding: 8px 6px;
+    font-size: 0.74rem;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: none;
+    background: rgba(255,255,255,0.08);
+  }
+}
+
+/* Ko-fi meno invasivo da smartphone */
+@media (max-width: 760px) {
+  iframe[src*="ko-fi"],
+  div[id*="kofi"],
+  .kofi-widget-overlay,
+  .floatingchat-container-wrap,
+  .floating-chat-kofi-popup-iframe,
+  .floatingchat-container,
+  .support-box iframe {
+    transform: scale(0.82);
+    transform-origin: bottom left;
+  }
+
+  .kofi-footer-button img {
+    height: 32px !important;
+  }
+
+  body .floatingchat-container-wrap {
+    left: 8px !important;
+    bottom: 76px !important;
+    right: auto !important;
+  }
+}
+
+/* Micro feedback tap */
+@media (max-width: 760px) {
+  a,
+  button,
+  .mural-card,
+  .extra-place-card,
+  .info-card {
+    transition: transform .16s ease, box-shadow .16s ease, opacity .16s ease;
+  }
+
+  a:active,
+  button:active,
+  .mural-card:active,
+  .extra-place-card:active,
+  .info-card:active {
+    transform: scale(0.98);
+  }
+}
+
+
+/* V44.12 — MOBILE EVIDENTE: modifiche visibili davvero */
+.bottom-mobile-nav {
+  display: none;
+}
+
+@media (max-width: 820px) {
+  body {
+    padding-bottom: 96px !important;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .bottom-mobile-nav {
+    position: fixed;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    z-index: 9999;
+    padding: 8px;
+    border-radius: 26px;
+    background: rgba(21, 28, 42, 0.94);
+    box-shadow: 0 18px 50px rgba(0,0,0,0.34);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .bottom-mobile-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    border-radius: 18px;
+    color: #fff;
+    background: rgba(255,255,255,0.12);
+    text-decoration: none;
+    font-weight: 850;
+    font-size: 0.76rem;
+    line-height: 1.05;
+    text-align: center;
+  }
+
+  .bottom-mobile-nav a:active {
+    transform: scale(0.96);
+    background: rgba(255,255,255,0.22);
+  }
+
+  header.hero,
+  .hero {
+    padding: 16px 12px 24px !important;
+  }
+
+  .topbar,
+  header nav:first-child {
+    position: sticky !important;
+    top: 8px !important;
+    z-index: 1000 !important;
+    border-radius: 22px !important;
+    padding: 10px 12px !important;
+    background: rgba(255,255,255,0.90) !important;
+    box-shadow: 0 10px 28px rgba(20,30,45,0.14) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+  }
+
+  h1 {
+    font-size: clamp(2.55rem, 15vw, 4.7rem) !important;
+    line-height: 0.90 !important;
+    letter-spacing: -0.075em !important;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 10vw, 3.3rem) !important;
+    line-height: 0.96 !important;
+    letter-spacing: -0.055em !important;
+  }
+
+  .hero-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .hero-image,
+  .hero img {
+    max-height: 230px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    border-radius: 26px !important;
+  }
+
+  .hero-actions,
+  .button-row,
+  .progress-actions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .hero-actions > *,
+  .button-row > *,
+  .progress-actions > *,
+  button,
+  a.primary,
+  a.secondary,
+  .primary,
+  .secondary,
+  .link {
+    min-height: 50px !important;
+    border-radius: 18px !important;
+    padding: 13px 16px !important;
+    font-size: 1rem !important;
+    font-weight: 850 !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  .section,
+  main section {
+    padding-left: 13px !important;
+    padding-right: 13px !important;
+    margin-top: 34px !important;
+    margin-bottom: 34px !important;
+  }
+
+  .text-card,
+  .progress-card,
+  .detail-card,
+  .mural-card,
+  .info-card,
+  .extra-place-card,
+  .mini-block,
+  .tip-card,
+  article {
+    border-radius: 24px !important;
+  }
+
+  .text-card,
+  .progress-card,
+  .mini-block,
+  .tip-card {
+    padding: 18px !important;
+  }
+
+  .detail-card {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    overflow: hidden !important;
+    border-radius: 28px !important;
+  }
+
+  .detail-card > img,
+  .detail-card img:first-child,
+  .detail-image {
+    width: 100% !important;
+    max-height: 245px !important;
+    min-height: 190px !important;
+    object-fit: cover !important;
+    border-radius: 0 !important;
+  }
+
+  .detail-content {
+    padding: 18px !important;
+  }
+
+  .detail-content h2,
+  .detail-card h2 {
+    font-size: clamp(2.05rem, 11vw, 3.35rem) !important;
+    line-height: 0.95 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .cards-grid,
+  .extra-places-grid,
+  .practical-grid,
+  .food-grid,
+  .tips-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 13px !important;
+  }
+
+  .mural-card {
+    display: grid !important;
+    grid-template-columns: 92px 1fr !important;
+    gap: 12px !important;
+    align-items: center !important;
+    padding: 10px !important;
+  }
+
+  .mural-card img {
+    width: 92px !important;
+    height: 92px !important;
+    object-fit: cover !important;
+    border-radius: 18px !important;
+  }
+
+  .mural-card h3 {
+    font-size: 1.05rem !important;
+    line-height: 1.12 !important;
+    margin: 0 0 4px !important;
+  }
+
+  .tags,
+  .detail-meta {
+    gap: 7px !important;
+  }
+
+  .tags span,
+  .visited-badge {
+    padding: 8px 10px !important;
+    font-size: 0.78rem !important;
+    border-radius: 999px !important;
+  }
+
+  .extra-place-image img,
+  .food-visual img,
+  .info-card img,
+  .extra-place-card img {
+    max-height: 210px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .search {
+    min-height: 50px !important;
+    border-radius: 18px !important;
+    padding: 0 16px !important;
+    font-size: 1rem !important;
+  }
+
+  footer {
+    padding: 28px 16px 110px !important;
+  }
+
+  .support-box,
+  .support-box-small {
+    transform: scale(0.92);
+    transform-origin: center;
+  }
+
+  iframe[src*="ko-fi"],
+  div[id*="kofi"],
+  .floatingchat-container-wrap,
+  .floatingchat-container,
+  .kofi-widget-overlay {
+    transform: scale(0.78) !important;
+    transform-origin: bottom left !important;
+    left: 8px !important;
+    bottom: 84px !important;
+    right: auto !important;
+  }
+
+  a:active,
+  button:active,
+  .mural-card:active,
+  .extra-place-card:active,
+  .info-card:active {
+    transform: scale(0.98);
+  }
+}
+
+@media (min-width: 821px) {
+  .bottom-mobile-nav {
+    display: none !important;
+  }
+}
