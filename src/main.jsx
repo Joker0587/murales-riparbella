@@ -358,23 +358,6 @@ const getExtraText = (place, field, language) => {
   return language === 'en' ? (place[englishField] || place[field] || '') : (place[field] || '');
 };
 
-
-const distanceKm = (a, b) => {
-  const toRad = (value) => (value * Math.PI) / 180;
-  const radius = 6371;
-  const dLat = toRad(b.lat - a.lat);
-  const dLng = toRad(b.lng - a.lng);
-  const lat1 = toRad(a.lat);
-  const lat2 = toRad(b.lat);
-
-  const haversine =
-    Math.sin(dLat / 2) ** 2 +
-    Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
-
-  return radius * 2 * Math.atan2(Math.sqrt(haversine), Math.sqrt(1 - haversine));
-};
-
-
 const ui = {
   it: {
     heroKicker: 'Guida digitale interattiva',
@@ -476,20 +459,31 @@ const ui = {
     artworkDescription: 'Descrizione dell’opera',
     whatToNotice: 'Cosa osservare',
     offerCoffee: 'Offri un caffè',
+    quickConsultation: 'Consultazione rapida',
+    allWorks: 'Tutte le opere',
     nextDirectionTitle: 'Verso la prossima tappa',
     seenDone: 'Vista ✓',
     markSeenShort: 'Segna vista',
     clearRoute: 'Azzera percorso',
     beforeStartKicker: 'Prima di partire',
     projectKickerVisible: 'Arte pubblica e comunità',
-    smartRouteTitle: 'Percorso smart',
-    smartRouteText: 'Trova il murale più vicino alla tua posizione e apri subito la sua scheda.',
-    smartRouteButton: 'Crea percorso dalla mia posizione',
-    smartRouteLoading: 'Calcolo la posizione…',
-    smartRouteReady: 'Tappa più vicina trovata',
-    smartRouteDenied: 'Posizione non disponibile. Puoi usare il percorso originale.',
-    smartRouteReset: 'Torna al percorso originale',
-    nearestStop: 'Tappa più vicina',
+    smartStopsKicker: 'Tappe smart',
+    smartStopsTitle: 'Scegli il tuo tour',
+    smartStopsText: 'Percorsi leggeri pensati per visitare il borgo senza perdersi in troppo scroll.',
+    smartRouteComplete: 'Tour completo',
+    smartRouteCompleteText: 'Tutte le tappe, nell’ordine consigliato.',
+    smartRouteShort: 'Tour breve 30 min',
+    smartRouteShortText: 'Le tappe essenziali per una visita rapida.',
+    smartRoutePanorama: 'Arte e panorama',
+    smartRoutePanoramaText: 'Opere legate a paesaggio, natura e scorci del borgo.',
+    smartRouteEtruscan: 'Etruschi e memoria',
+    smartRouteEtruscanText: 'Un percorso tra archeologia, identità e memoria.',
+    smartRouteFamily: 'Con bambini',
+    smartRouteFamilyText: 'Tappe più immediate, curiose e adatte ai più piccoli.',
+    activeSmartRoute: 'Percorso selezionato',
+    smartRouteStops: 'tappe',
+    startSmartRoute: 'Apri prima tappa',
+    resetSmartRouteManual: 'Mostra tour completo',
     searchPlaceholder: 'Cerca murale, artista, tema...',
     prototype: 'Versione prototipo — 2026'
   },
@@ -593,25 +587,65 @@ const ui = {
     artworkDescription: 'Artwork description',
     whatToNotice: 'What to notice',
     offerCoffee: 'Buy me a coffee',
+    quickConsultation: 'Quick reference',
+    allWorks: 'All artworks',
     nextDirectionTitle: 'Towards the next stop',
     seenDone: 'Seen ✓',
     markSeenShort: 'Mark as seen',
     clearRoute: 'Reset route',
     beforeStartKicker: 'Before you start',
     projectKickerVisible: 'Public art and community',
-    smartRouteTitle: 'Smart route',
-    smartRouteText: 'Find the mural closest to your current position and open its card immediately.',
-    smartRouteButton: 'Create route from my position',
-    smartRouteLoading: 'Checking your position…',
-    smartRouteReady: 'Closest stop found',
-    smartRouteDenied: 'Position not available. You can still use the original route.',
-    smartRouteReset: 'Back to original route',
-    nearestStop: 'Closest stop',
+    smartStopsKicker: 'Smart stops',
+    smartStopsTitle: 'Choose your tour',
+    smartStopsText: 'Light routes designed to explore the village without too much scrolling.',
+    smartRouteComplete: 'Full tour',
+    smartRouteCompleteText: 'All stops in the suggested order.',
+    smartRouteShort: 'Short 30 min tour',
+    smartRouteShortText: 'The essential stops for a quick visit.',
+    smartRoutePanorama: 'Art and views',
+    smartRoutePanoramaText: 'Artworks linked to landscape, nature and village views.',
+    smartRouteEtruscan: 'Etruscans and memory',
+    smartRouteEtruscanText: 'A route through archaeology, identity and memory.',
+    smartRouteFamily: 'With children',
+    smartRouteFamilyText: 'More immediate, playful and child-friendly stops.',
+    activeSmartRoute: 'Selected route',
+    smartRouteStops: 'stops',
+    startSmartRoute: 'Open first stop',
+    resetSmartRouteManual: 'Show full tour',
     searchPlaceholder: 'Search mural, artist, theme...',
     prototype: 'Prototype version — 2026'
   }
 };
 
+
+
+const smartRoutesManual = [
+  {
+    id: 'complete',
+    emoji: '🧭',
+    stops: ['gioia', 'lari', 'memoria', 'amphora', 'corona', 'amore', 'terra-colori', 'universo', 'hitnes', 'aris', 'riparbella01', 'esperienza', 'turan']
+  },
+  {
+    id: 'short',
+    emoji: '⚡',
+    stops: ['gioia', 'lari', 'amphora', 'amore', 'turan']
+  },
+  {
+    id: 'panorama',
+    emoji: '🌿',
+    stops: ['gioia', 'terra-colori', 'amphora', 'riparbella01', 'turan']
+  },
+  {
+    id: 'etruscan',
+    emoji: '🏺',
+    stops: ['corona', 'aris', 'turan', 'memoria', 'amphora']
+  },
+  {
+    id: 'family',
+    emoji: '👨‍👩‍👧',
+    stops: ['universo', 'esperienza', 'amore', 'hitnes', 'lari']
+  }
+];
 
 const extraPlaces = [
   {
@@ -776,6 +810,18 @@ function App() {
   const visitedCount = visitedIds.length;
   const progressPercent = Math.round((visitedCount / murals.length) * 100);
 
+  
+  const activeSmartRoute = smartRoutesManual.find((route) => route.id === activeSmartRouteId) || smartRoutesManual[0];
+  const visibleMurals = activeSmartRoute.stops
+    .map((id) => murals.find((mural) => mural.id === id))
+    .filter(Boolean);
+
+  const selectSmartRoute = (routeId) => {
+    const route = smartRoutesManual.find((item) => item.id === routeId) || smartRoutesManual[0];
+    setActiveSmartRouteId(route.id);
+    setSelectedId(route.stops[0] || murals[0].id);
+  };
+
   const filteredMurals = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return murals;
@@ -835,48 +881,6 @@ function App() {
     selectMural(murals[safe].id, false);
     setIsMuralSheetOpen(true);
   };
-
-
-  const createSmartRoute = () => {
-    if (!navigator.geolocation) {
-      setSmartRouteStatus('denied');
-      return;
-    }
-
-    setSmartRouteStatus('loading');
-
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const userPosition = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-
-        const nearestMural = murals.reduce((closest, mural) => {
-          return distanceKm(userPosition, mural) < distanceKm(userPosition, closest) ? mural : closest;
-        }, murals[0]);
-
-        setSmartRoute(nearestMural);
-        setSelectedId(nearestMural.id);
-        setSmartRouteStatus('ready');
-      },
-      () => {
-        setSmartRouteStatus('denied');
-      },
-      {
-        enableHighAccuracy: true,
-        timeout: 9000,
-        maximumAge: 60000
-      }
-    );
-  };
-
-  const resetSmartRoute = () => {
-    setSmartRoute(null);
-    setSmartRouteStatus('idle');
-    setSelectedId(murals[0].id);
-  };
-
 
   return (
     <div className="app">
@@ -974,21 +978,47 @@ function App() {
         </section>
 
         
-        <section className="section smart-route-section">
-          <div className="smart-route-card">
+        <section className="section smart-stops-section">
+          <div className="section-heading">
+            <p className="kicker">{t.smartStopsKicker}</p>
+            <h2>{t.smartStopsTitle}</h2>
+          </div>
+          <div className="text-card smart-stops-intro">
+            <p>{t.smartStopsText}</p>
+          </div>
+          <div className="smart-route-grid">
+            {smartRoutesManual.map((route) => {
+              const labels = {
+                complete: [t.smartRouteComplete, t.smartRouteCompleteText],
+                short: [t.smartRouteShort, t.smartRouteShortText],
+                panorama: [t.smartRoutePanorama, t.smartRoutePanoramaText],
+                etruscan: [t.smartRouteEtruscan, t.smartRouteEtruscanText],
+                family: [t.smartRouteFamily, t.smartRouteFamilyText]
+              };
+              const [title, text] = labels[route.id] || labels.complete;
+              const isActive = activeSmartRouteId === route.id;
+              return (
+                <button
+                  key={route.id}
+                  className={isActive ? 'smart-route-card active' : 'smart-route-card'}
+                  onClick={() => selectSmartRoute(route.id)}
+                >
+                  <span className="smart-route-emoji">{route.emoji}</span>
+                  <span>
+                    <strong>{title}</strong>
+                    <em>{text}</em>
+                    <small>{route.stops.length} {t.smartRouteStops}</small>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+          <div className="smart-route-active-card">
             <div>
-              <p className="kicker">{t.smartRouteTitle}</p>
-              <h2>{t.smartRouteTitle}</h2>
-              <p>{t.smartRouteText}</p>
-              {smartRouteStatus === 'ready' && <p className="smart-route-status success">{t.smartRouteReady}: <strong>{smartRoute?.title || selectedMural.title}</strong></p>}
-              {smartRouteStatus === 'denied' && <p className="smart-route-status warning">{t.smartRouteDenied}</p>}
+              <p className="kicker">{t.activeSmartRoute}</p>
+              <strong>{visibleMurals.map((mural) => mural.title).join(' → ')}</strong>
             </div>
-            <div className="smart-route-actions">
-              <button className="primary" onClick={createSmartRoute} disabled={smartRouteStatus === 'loading'}>
-                {smartRouteStatus === 'loading' ? t.smartRouteLoading : t.smartRouteButton}
-              </button>
-              {smartRoute && <button className="secondary" onClick={resetSmartRoute}>{t.smartRouteReset}</button>}
-            </div>
+            <button className="primary" onClick={() => setSelectedId(visibleMurals[0]?.id || murals[0].id)}>{t.startSmartRoute}</button>
           </div>
         </section>
 
@@ -1102,28 +1132,31 @@ function App() {
 
           <div className="extra-places-grid">
             {extraPlaces.map((place) => (
-              <details className="extra-accordion-card" key={place.id}>
-                <summary className="extra-accordion-summary">
-                  {place.image && <img src={place.image} alt={getExtraText(place, 'title', language)} loading="lazy" />}
-                  <span>
-                    <small>{getExtraText(place, 'category', language)}</small>
-                    <strong>{getExtraText(place, 'title', language)}</strong>
-                    <em>{getExtraText(place, 'intro', language)}</em>
-                  </span>
-                </summary>
-
-                <div className="extra-accordion-body">
-                  <p className="address">⌖ {place.address}</p>
-                  {getExtraText(place, 'description', language).split('\n\n').map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-                  <p className="credit">{getExtraText(place, 'credit', language)}</p>
-
-                  <div className="button-row">
-                    <a href={navGoogle(place.lat, place.lng)} target="_blank" rel="noreferrer" className="primary link">{t.google}</a>
-                    <a href={navApple(place.lat, place.lng)} target="_blank" rel="noreferrer" className="secondary link">{t.apple}</a>
-                    {place.website && <a href={place.website} target="_blank" rel="noreferrer" className="secondary link">Website</a>}
+              <article className="extra-place-card" key={place.id}>
+                {place.image && (
+                  <div className="extra-place-image">
+                    <img src={place.image} alt={getExtraText(place, 'title', language)} loading="lazy" />
                   </div>
+                )}
+                <div className="extra-place-head">
+                  <p className="type">{getExtraText(place, 'category', language)}</p>
+                  <h3>{getExtraText(place, 'title', language)}</h3>
+                  <p className="address">⌖ {place.address}</p>
                 </div>
-              </details>
+                <p className="extra-place-intro">{getExtraText(place, 'intro', language)}</p>
+                <details>
+                  <summary>{t.readStory}</summary>
+                  <div className="extra-place-description">
+                    {getExtraText(place, 'description', language).split('\n\n').map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                    <p className="credit">{getExtraText(place, 'credit', language)}</p>
+                  </div>
+                </details>
+                <div className="button-row">
+                  <a href={navGoogle(place.lat, place.lng)} target="_blank" rel="noreferrer" className="primary link">Google Maps</a>
+                  <a href={navApple(place.lat, place.lng)} target="_blank" rel="noreferrer" className="secondary link">Apple Maps</a>
+                  {place.website && <a href={place.website} target="_blank" rel="noreferrer" className="secondary link">Sito web</a>}
+                </div>
+              </article>
             ))}
           </div>
         </section>
@@ -1216,7 +1249,7 @@ function App() {
           <p>{t.supportText}</p>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 1.44.15.1</strong></p>
+        <p><strong>{t.versionLabel} — 1.44.15</strong></p>
       </footer>
     </div>
   );

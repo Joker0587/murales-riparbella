@@ -343,17 +343,10 @@ Questa versione evita sia il bug npm `Exit handler never called` sia l'errore pn
 - Rimossa la sezione “Consultazione rapida / Tutte le opere”, considerata ridondante dopo le schede fluttuanti.
 - Nessuna modifica a Yarn/Vercel.
 
-## V44.15 — Percorso smart leggero
+## V44.15 — Tappe smart manuali
 
-- Aggiunto pulsante “Crea percorso dalla mia posizione”.
-- Usa la geolocalizzazione solo su richiesta dell’utente.
-- Parte dal murale più vicino e continua il tour da lì.
-- Aggiunto pulsante per tornare al percorso originale.
-- Nessuna libreria nuova, nessuna API esterna, configurazione Yarn/Vercel invariata.
-
-## V44.15.1 — fix schermata bianca percorso smart
-
-- Corretto possibile errore runtime della V44.15.
-- Il percorso smart ora è più sicuro: trova la tappa più vicina e apre la sua scheda, senza riscrivere l’ordine globale del tour.
-- Geolocalizzazione solo su richiesta.
+- Aggiunti percorsi smart manuali senza GPS.
+- Tour completo, breve 30 min, arte e panorama, Etruschi e memoria, con bambini.
+- Nessuna geolocalizzazione.
+- Nessuna API esterna.
 - Configurazione Yarn/Vercel invariata.
