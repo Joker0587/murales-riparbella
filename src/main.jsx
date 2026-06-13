@@ -729,6 +729,7 @@ function App() {
   const [language, setLanguage] = useState('it');
   const [selectedId, setSelectedId] = useState(() => window.location.hash?.replace('#', '') || murals[0].id);
   const [query, setQuery] = useState('');
+  const [isMuralSheetOpen, setIsMuralSheetOpen] = useState(false);
   const detailsRef = useRef(null);
   const tourRef = useRef(null);
   const mapRef = useRef(null);
@@ -768,7 +769,7 @@ function App() {
   const selectMural = (id, scroll = true) => {
     setSelectedId(id);
     window.history.replaceState(null, '', `#${id}`);
-    if (scroll) setTimeout(() => detailsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+    if (scroll) setIsMuralSheetOpen(true);
   };
 
   const toggleVisited = (id = selectedMural.id) => {
@@ -803,7 +804,7 @@ function App() {
   const goToStep = (index) => {
     const safe = (index + murals.length) % murals.length;
     selectMural(murals[safe].id, false);
-    setTimeout(() => tourRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+    setIsMuralSheetOpen(true);
   };
 
   return (
@@ -909,6 +910,7 @@ function App() {
 
           <div className="map-intro-card">
             <p>{t.mapIntro}</p>
+            <button className="primary open-current-sheet" onClick={() => setIsMuralSheetOpen(true)}>{language === 'it' ? 'Apri scheda tappa' : 'Open stop card'}</button>
           </div>
 
           <div className="map-layout map-layout-v11">
@@ -941,7 +943,10 @@ function App() {
             </div>
           </div>
 
-          <article className="selected-mural-card" ref={detailsRef}>
+          {isMuralSheetOpen && (
+            <div className="mural-sheet-overlay" onClick={() => setIsMuralSheetOpen(false)} role="dialog" aria-modal="true">
+          <article className="selected-mural-card mural-glass-sheet" ref={detailsRef} onClick={(e) => e.stopPropagation()}>
+            <button className="sheet-close" onClick={() => setIsMuralSheetOpen(false)}>{language === 'it' ? 'Chiudi' : 'Close'}</button>
             <div className="selected-mural-image-wrap">
               <img src={selectedMural.image} alt={selectedMural.title} />
             </div>
@@ -992,6 +997,8 @@ function App() {
               </div>
             </div>
           </article>
+            </div>
+          )}
         </section>
 
         <section className="section compact-list-section">
@@ -1014,10 +1021,10 @@ function App() {
                   <div className="compact-details">
                     {mural.detailsToFind.slice(0, 3).map((detail) => <span key={detail}>{detail}</span>)}
                   </div>
-                  <p>{language === 'it' ? mural.it : mural.en}</p>
+                  <p className="mural-card-preview">{(language === 'it' ? mural.it : mural.en).slice(0, 150)}…</p>
                   <div className="card-actions">
                     <button className="secondary small share-inline" onClick={(event) => { event.stopPropagation(); shareMural(mural); }}>{t.shareCard}</button>
-                    <button className="primary small share-inline" onClick={(event) => { event.stopPropagation(); selectMural(mural.id, true); }}>{t.backToTour}</button>
+                    <button className="primary small share-inline" onClick={(event) => { event.stopPropagation(); selectMural(mural.id, true); }}>{language === 'it' ? 'Apri scheda' : 'Open card'}</button>
                   </div>
                 </div>
               </article>
@@ -1154,7 +1161,7 @@ function App() {
           <p>{t.supportText}</p>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 1.44.12</strong></p>
+        <p><strong>{t.versionLabel} — 1.44.13</strong></p>
       </footer>
     </div>
   );

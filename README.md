@@ -328,3 +328,10 @@ Questa versione evita sia il bug npm `Exit handler never called` sia l'errore pn
 - CSS più mirato con selettori compatibili con la struttura reale dell’app.
 - Ko-fi reso meno invasivo su smartphone.
 - Nessuna modifica al package manager, alle traduzioni o alla logica principale.
+
+## V44.13 — Schede fluttuanti murales
+
+- Le schede dei murales si aprono in un pannello fluttuante effetto Liquid Glass.
+- Le card elenco diventano più leggere e aprono la scheda al tocco.
+- Aggiunto pulsante “Apri scheda tappa” nella sezione mappa.
+- Nessuna modifica a traduzioni, Vercel, Yarn o percorso smart.
