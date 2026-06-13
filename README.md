@@ -350,3 +350,10 @@ Questa versione evita sia il bug npm `Exit handler never called` sia l'errore pn
 - Parte dal murale più vicino e continua il tour da lì.
 - Aggiunto pulsante per tornare al percorso originale.
 - Nessuna libreria nuova, nessuna API esterna, configurazione Yarn/Vercel invariata.
+
+## V44.15.1 — fix schermata bianca percorso smart
+
+- Corretto possibile errore runtime della V44.15.
+- Il percorso smart ora è più sicuro: trova la tappa più vicina e apre la sua scheda, senza riscrivere l’ordine globale del tour.
+- Geolocalizzazione solo su richiesta.
+- Configurazione Yarn/Vercel invariata.

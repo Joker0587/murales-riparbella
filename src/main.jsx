@@ -374,17 +374,6 @@ const distanceKm = (a, b) => {
   return radius * 2 * Math.atan2(Math.sqrt(haversine), Math.sqrt(1 - haversine));
 };
 
-const buildSmartRoute = (items, position) => {
-  if (!items?.length || !position) return items;
-
-  const startIndex = items.reduce((bestIndex, item, index) => {
-    const currentDistance = distanceKm(position, item);
-    const bestDistance = distanceKm(position, items[bestIndex]);
-    return currentDistance < bestDistance ? index : bestIndex;
-  }, 0);
-
-  return [...items.slice(startIndex), ...items.slice(0, startIndex)];
-};
 
 const ui = {
   it: {
@@ -494,10 +483,10 @@ const ui = {
     beforeStartKicker: 'Prima di partire',
     projectKickerVisible: 'Arte pubblica e comunità',
     smartRouteTitle: 'Percorso smart',
-    smartRouteText: 'Parti dal murale più vicino alla tua posizione e continua il tour da lì.',
+    smartRouteText: 'Trova il murale più vicino alla tua posizione e apri subito la sua scheda.',
     smartRouteButton: 'Crea percorso dalla mia posizione',
     smartRouteLoading: 'Calcolo la posizione…',
-    smartRouteReady: 'Percorso smart attivo: prima tappa più vicina',
+    smartRouteReady: 'Tappa più vicina trovata',
     smartRouteDenied: 'Posizione non disponibile. Puoi usare il percorso originale.',
     smartRouteReset: 'Torna al percorso originale',
     nearestStop: 'Tappa più vicina',
@@ -611,10 +600,10 @@ const ui = {
     beforeStartKicker: 'Before you start',
     projectKickerVisible: 'Public art and community',
     smartRouteTitle: 'Smart route',
-    smartRouteText: 'Start from the mural closest to your current position and continue the tour from there.',
+    smartRouteText: 'Find the mural closest to your current position and open its card immediately.',
     smartRouteButton: 'Create route from my position',
     smartRouteLoading: 'Checking your position…',
-    smartRouteReady: 'Smart route active: closest stop first',
+    smartRouteReady: 'Closest stop found',
     smartRouteDenied: 'Position not available. You can still use the original route.',
     smartRouteReset: 'Back to original route',
     nearestStop: 'Closest stop',
@@ -775,7 +764,7 @@ function App() {
   const mapRef = useRef(null);
 
   const t = ui[language];
-  const selectedIndex = Math.max(0, routeMurals.findIndex((m) => m.id === selectedId));
+  const selectedIndex = Math.max(0, murals.findIndex((m) => m.id === selectedId));
   const selectedMural = murals[selectedIndex] || murals[0];
   const [visitedIds, setVisitedIds] = useState(() => {
     try {
@@ -785,7 +774,7 @@ function App() {
     }
   });
   const visitedCount = visitedIds.length;
-  const progressPercent = Math.round((visitedCount / routeMurals.length) * 100);
+  const progressPercent = Math.round((visitedCount / murals.length) * 100);
 
   const filteredMurals = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -842,7 +831,7 @@ function App() {
   };
 
   const goToStep = (index) => {
-    const safe = (index + routeMurals.length) % routeMurals.length;
+    const safe = (index + murals.length) % murals.length;
     selectMural(murals[safe].id, false);
     setIsMuralSheetOpen(true);
   };
@@ -862,9 +851,13 @@ function App() {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-        const nextRoute = buildSmartRoute(murals, userPosition);
-        setSmartRoute(nextRoute);
-        setSelectedId(nextRoute[0]?.id || murals[0].id);
+
+        const nearestMural = murals.reduce((closest, mural) => {
+          return distanceKm(userPosition, mural) < distanceKm(userPosition, closest) ? mural : closest;
+        }, murals[0]);
+
+        setSmartRoute(nearestMural);
+        setSelectedId(nearestMural.id);
         setSmartRouteStatus('ready');
       },
       () => {
@@ -956,7 +949,7 @@ function App() {
           </div>
           <div className="progress-card">
             <div className="progress-copy">
-              <strong>{visitedCount} / {routeMurals.length} {t.progressSeen}</strong>
+              <strong>{visitedCount} / {murals.length} {t.progressSeen}</strong>
               <span>{t.progressHint}</span>
             </div>
             <div className="progress-meter" aria-label={`${t.progressAria} ${progressPercent}%`}>
@@ -987,7 +980,7 @@ function App() {
               <p className="kicker">{t.smartRouteTitle}</p>
               <h2>{t.smartRouteTitle}</h2>
               <p>{t.smartRouteText}</p>
-              {smartRouteStatus === 'ready' && <p className="smart-route-status success">{t.smartRouteReady}: <strong>{selectedMural.title}</strong></p>}
+              {smartRouteStatus === 'ready' && <p className="smart-route-status success">{t.smartRouteReady}: <strong>{smartRoute?.title || selectedMural.title}</strong></p>}
               {smartRouteStatus === 'denied' && <p className="smart-route-status warning">{t.smartRouteDenied}</p>}
             </div>
             <div className="smart-route-actions">
@@ -1001,7 +994,7 @@ function App() {
 
         <section id="mappa" className="section map-section" ref={mapRef}>
           <div className="section-heading">
-            <p className="kicker">{t.stopOf} {selectedIndex + 1} {t.of} {routeMurals.length}</p>
+            <p className="kicker">{t.stopOf} {selectedIndex + 1} {t.of} {murals.length}</p>
             <h2>{t.map}</h2>
           </div>
 
@@ -1020,7 +1013,7 @@ function App() {
             </div>
 
             <div className="route-list">
-              {routeMurals.map((mural, index) => (
+              {murals.map((mural, index) => (
                 <article key={mural.id} className={`${selectedId === mural.id ? 'route-stop active' : 'route-stop'} ${isVisited(mural.id) ? 'visited' : ''}`}>
                   <button className="route-stop-main route-stop-main-with-image" onClick={() => selectMural(mural.id, false)}>
                     <span className="route-number">{index + 1}</span>
@@ -1049,7 +1042,7 @@ function App() {
             </div>
             <div className="selected-mural-content">
               <p className="kicker">{t.selectedMuralCard}</p>
-              <p className="step">{t.stopOf} {selectedIndex + 1} {t.of} {routeMurals.length}</p>
+              <p className="step">{t.stopOf} {selectedIndex + 1} {t.of} {murals.length}</p>
               <h3>{selectedMural.title}</h3>
               <p className="meta">{selectedMural.artist} · {selectedMural.year}</p>
               <p className="address">⌖ {selectedMural.address}</p>
@@ -1223,7 +1216,7 @@ function App() {
           <p>{t.supportText}</p>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 1.44.15</strong></p>
+        <p><strong>{t.versionLabel} — 1.44.15.1</strong></p>
       </footer>
     </div>
   );
