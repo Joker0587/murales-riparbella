@@ -358,6 +358,34 @@ const getExtraText = (place, field, language) => {
   return language === 'en' ? (place[englishField] || place[field] || '') : (place[field] || '');
 };
 
+
+const distanceKm = (a, b) => {
+  const toRad = (value) => (value * Math.PI) / 180;
+  const radius = 6371;
+  const dLat = toRad(b.lat - a.lat);
+  const dLng = toRad(b.lng - a.lng);
+  const lat1 = toRad(a.lat);
+  const lat2 = toRad(b.lat);
+
+  const haversine =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
+
+  return radius * 2 * Math.atan2(Math.sqrt(haversine), Math.sqrt(1 - haversine));
+};
+
+const buildSmartRoute = (items, position) => {
+  if (!items?.length || !position) return items;
+
+  const startIndex = items.reduce((bestIndex, item, index) => {
+    const currentDistance = distanceKm(position, item);
+    const bestDistance = distanceKm(position, items[bestIndex]);
+    return currentDistance < bestDistance ? index : bestIndex;
+  }, 0);
+
+  return [...items.slice(startIndex), ...items.slice(0, startIndex)];
+};
+
 const ui = {
   it: {
     heroKicker: 'Guida digitale interattiva',
@@ -459,14 +487,20 @@ const ui = {
     artworkDescription: 'Descrizione dell’opera',
     whatToNotice: 'Cosa osservare',
     offerCoffee: 'Offri un caffè',
-    quickConsultation: 'Consultazione rapida',
-    allWorks: 'Tutte le opere',
     nextDirectionTitle: 'Verso la prossima tappa',
     seenDone: 'Vista ✓',
     markSeenShort: 'Segna vista',
     clearRoute: 'Azzera percorso',
     beforeStartKicker: 'Prima di partire',
     projectKickerVisible: 'Arte pubblica e comunità',
+    smartRouteTitle: 'Percorso smart',
+    smartRouteText: 'Parti dal murale più vicino alla tua posizione e continua il tour da lì.',
+    smartRouteButton: 'Crea percorso dalla mia posizione',
+    smartRouteLoading: 'Calcolo la posizione…',
+    smartRouteReady: 'Percorso smart attivo: prima tappa più vicina',
+    smartRouteDenied: 'Posizione non disponibile. Puoi usare il percorso originale.',
+    smartRouteReset: 'Torna al percorso originale',
+    nearestStop: 'Tappa più vicina',
     searchPlaceholder: 'Cerca murale, artista, tema...',
     prototype: 'Versione prototipo — 2026'
   },
@@ -570,14 +604,20 @@ const ui = {
     artworkDescription: 'Artwork description',
     whatToNotice: 'What to notice',
     offerCoffee: 'Buy me a coffee',
-    quickConsultation: 'Quick reference',
-    allWorks: 'All artworks',
     nextDirectionTitle: 'Towards the next stop',
     seenDone: 'Seen ✓',
     markSeenShort: 'Mark as seen',
     clearRoute: 'Reset route',
     beforeStartKicker: 'Before you start',
     projectKickerVisible: 'Public art and community',
+    smartRouteTitle: 'Smart route',
+    smartRouteText: 'Start from the mural closest to your current position and continue the tour from there.',
+    smartRouteButton: 'Create route from my position',
+    smartRouteLoading: 'Checking your position…',
+    smartRouteReady: 'Smart route active: closest stop first',
+    smartRouteDenied: 'Position not available. You can still use the original route.',
+    smartRouteReset: 'Back to original route',
+    nearestStop: 'Closest stop',
     searchPlaceholder: 'Search mural, artist, theme...',
     prototype: 'Prototype version — 2026'
   }
@@ -729,12 +769,13 @@ function App() {
   const [language, setLanguage] = useState('it');
   const [selectedId, setSelectedId] = useState(() => window.location.hash?.replace('#', '') || murals[0].id);
   const [query, setQuery] = useState('');
+  const [isMuralSheetOpen, setIsMuralSheetOpen] = useState(false);
   const detailsRef = useRef(null);
   const tourRef = useRef(null);
   const mapRef = useRef(null);
 
   const t = ui[language];
-  const selectedIndex = Math.max(0, murals.findIndex((m) => m.id === selectedId));
+  const selectedIndex = Math.max(0, routeMurals.findIndex((m) => m.id === selectedId));
   const selectedMural = murals[selectedIndex] || murals[0];
   const [visitedIds, setVisitedIds] = useState(() => {
     try {
@@ -744,7 +785,7 @@ function App() {
     }
   });
   const visitedCount = visitedIds.length;
-  const progressPercent = Math.round((visitedCount / murals.length) * 100);
+  const progressPercent = Math.round((visitedCount / routeMurals.length) * 100);
 
   const filteredMurals = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -768,7 +809,7 @@ function App() {
   const selectMural = (id, scroll = true) => {
     setSelectedId(id);
     window.history.replaceState(null, '', `#${id}`);
-    if (scroll) setTimeout(() => detailsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+    if (scroll) setIsMuralSheetOpen(true);
   };
 
   const toggleVisited = (id = selectedMural.id) => {
@@ -801,10 +842,48 @@ function App() {
   };
 
   const goToStep = (index) => {
-    const safe = (index + murals.length) % murals.length;
+    const safe = (index + routeMurals.length) % routeMurals.length;
     selectMural(murals[safe].id, false);
-    setTimeout(() => tourRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+    setIsMuralSheetOpen(true);
   };
+
+
+  const createSmartRoute = () => {
+    if (!navigator.geolocation) {
+      setSmartRouteStatus('denied');
+      return;
+    }
+
+    setSmartRouteStatus('loading');
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const userPosition = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        const nextRoute = buildSmartRoute(murals, userPosition);
+        setSmartRoute(nextRoute);
+        setSelectedId(nextRoute[0]?.id || murals[0].id);
+        setSmartRouteStatus('ready');
+      },
+      () => {
+        setSmartRouteStatus('denied');
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 9000,
+        maximumAge: 60000
+      }
+    );
+  };
+
+  const resetSmartRoute = () => {
+    setSmartRoute(null);
+    setSmartRouteStatus('idle');
+    setSelectedId(murals[0].id);
+  };
+
 
   return (
     <div className="app">
@@ -877,7 +956,7 @@ function App() {
           </div>
           <div className="progress-card">
             <div className="progress-copy">
-              <strong>{visitedCount} / {murals.length} {t.progressSeen}</strong>
+              <strong>{visitedCount} / {routeMurals.length} {t.progressSeen}</strong>
               <span>{t.progressHint}</span>
             </div>
             <div className="progress-meter" aria-label={`${t.progressAria} ${progressPercent}%`}>
@@ -901,14 +980,34 @@ function App() {
           </div>
         </section>
 
+        
+        <section className="section smart-route-section">
+          <div className="smart-route-card">
+            <div>
+              <p className="kicker">{t.smartRouteTitle}</p>
+              <h2>{t.smartRouteTitle}</h2>
+              <p>{t.smartRouteText}</p>
+              {smartRouteStatus === 'ready' && <p className="smart-route-status success">{t.smartRouteReady}: <strong>{selectedMural.title}</strong></p>}
+              {smartRouteStatus === 'denied' && <p className="smart-route-status warning">{t.smartRouteDenied}</p>}
+            </div>
+            <div className="smart-route-actions">
+              <button className="primary" onClick={createSmartRoute} disabled={smartRouteStatus === 'loading'}>
+                {smartRouteStatus === 'loading' ? t.smartRouteLoading : t.smartRouteButton}
+              </button>
+              {smartRoute && <button className="secondary" onClick={resetSmartRoute}>{t.smartRouteReset}</button>}
+            </div>
+          </div>
+        </section>
+
         <section id="mappa" className="section map-section" ref={mapRef}>
           <div className="section-heading">
-            <p className="kicker">{t.stopOf} {selectedIndex + 1} {t.of} {murals.length}</p>
+            <p className="kicker">{t.stopOf} {selectedIndex + 1} {t.of} {routeMurals.length}</p>
             <h2>{t.map}</h2>
           </div>
 
           <div className="map-intro-card">
             <p>{t.mapIntro}</p>
+            <button className="primary open-current-sheet" onClick={() => setIsMuralSheetOpen(true)}>{language === 'it' ? 'Apri scheda tappa' : 'Open stop card'}</button>
           </div>
 
           <div className="map-layout map-layout-v11">
@@ -921,7 +1020,7 @@ function App() {
             </div>
 
             <div className="route-list">
-              {murals.map((mural, index) => (
+              {routeMurals.map((mural, index) => (
                 <article key={mural.id} className={`${selectedId === mural.id ? 'route-stop active' : 'route-stop'} ${isVisited(mural.id) ? 'visited' : ''}`}>
                   <button className="route-stop-main route-stop-main-with-image" onClick={() => selectMural(mural.id, false)}>
                     <span className="route-number">{index + 1}</span>
@@ -941,13 +1040,16 @@ function App() {
             </div>
           </div>
 
-          <article className="selected-mural-card" ref={detailsRef}>
+          {isMuralSheetOpen && (
+            <div className="mural-sheet-overlay" onClick={() => setIsMuralSheetOpen(false)} role="dialog" aria-modal="true">
+          <article className="selected-mural-card mural-glass-sheet" ref={detailsRef} onClick={(e) => e.stopPropagation()}>
+            <button className="sheet-close" onClick={() => setIsMuralSheetOpen(false)}>{language === 'it' ? 'Chiudi' : 'Close'}</button>
             <div className="selected-mural-image-wrap">
               <img src={selectedMural.image} alt={selectedMural.title} />
             </div>
             <div className="selected-mural-content">
               <p className="kicker">{t.selectedMuralCard}</p>
-              <p className="step">{t.stopOf} {selectedIndex + 1} {t.of} {murals.length}</p>
+              <p className="step">{t.stopOf} {selectedIndex + 1} {t.of} {routeMurals.length}</p>
               <h3>{selectedMural.title}</h3>
               <p className="meta">{selectedMural.artist} · {selectedMural.year}</p>
               <p className="address">⌖ {selectedMural.address}</p>
@@ -992,40 +1094,10 @@ function App() {
               </div>
             </div>
           </article>
+            </div>
+          )}
         </section>
 
-        <section className="section compact-list-section">
-
-          <div className="section-heading">
-            <p className="kicker">{t.quickConsultation}</p>
-            <h2>{t.allWorks}</h2>
-          </div>
-
-          <input className="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder={t.searchPlaceholder} />
-
-          <div className="cards-grid">
-            {filteredMurals.map((mural, index) => (
-              <article key={mural.id} className={selectedId === mural.id ? 'mural-card selected' : 'mural-card'} onClick={() => selectMural(mural.id)}>
-                <img src={mural.image} alt={mural.title} />
-                <div>
-                  <p className="step">#{murals.findIndex((m) => m.id === mural.id) + 1} {isVisited(mural.id) && <span className="inline-visited">Vista</span>}</p>
-                  <h3>{mural.title}</h3>
-                  <p className="meta">{mural.artist} · {mural.year}</p>
-                  <div className="compact-details">
-                    {mural.detailsToFind.slice(0, 3).map((detail) => <span key={detail}>{detail}</span>)}
-                  </div>
-                  <p>{language === 'it' ? mural.it : mural.en}</p>
-                  <div className="card-actions">
-                    <button className="secondary small share-inline" onClick={(event) => { event.stopPropagation(); shareMural(mural); }}>{t.shareCard}</button>
-                    <button className="primary small share-inline" onClick={(event) => { event.stopPropagation(); selectMural(mural.id, true); }}>{t.backToTour}</button>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        
         <section id="oltre-murales" className="section extra-places-section">
           <div className="section-heading">
             <p className="kicker">{t.extraKicker}</p>
@@ -1037,31 +1109,28 @@ function App() {
 
           <div className="extra-places-grid">
             {extraPlaces.map((place) => (
-              <article className="extra-place-card" key={place.id}>
-                {place.image && (
-                  <div className="extra-place-image">
-                    <img src={place.image} alt={getExtraText(place, 'title', language)} loading="lazy" />
-                  </div>
-                )}
-                <div className="extra-place-head">
-                  <p className="type">{getExtraText(place, 'category', language)}</p>
-                  <h3>{getExtraText(place, 'title', language)}</h3>
+              <details className="extra-accordion-card" key={place.id}>
+                <summary className="extra-accordion-summary">
+                  {place.image && <img src={place.image} alt={getExtraText(place, 'title', language)} loading="lazy" />}
+                  <span>
+                    <small>{getExtraText(place, 'category', language)}</small>
+                    <strong>{getExtraText(place, 'title', language)}</strong>
+                    <em>{getExtraText(place, 'intro', language)}</em>
+                  </span>
+                </summary>
+
+                <div className="extra-accordion-body">
                   <p className="address">⌖ {place.address}</p>
-                </div>
-                <p className="extra-place-intro">{getExtraText(place, 'intro', language)}</p>
-                <details>
-                  <summary>{t.readStory}</summary>
-                  <div className="extra-place-description">
-                    {getExtraText(place, 'description', language).split('\n\n').map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-                    <p className="credit">{getExtraText(place, 'credit', language)}</p>
+                  {getExtraText(place, 'description', language).split('\n\n').map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                  <p className="credit">{getExtraText(place, 'credit', language)}</p>
+
+                  <div className="button-row">
+                    <a href={navGoogle(place.lat, place.lng)} target="_blank" rel="noreferrer" className="primary link">{t.google}</a>
+                    <a href={navApple(place.lat, place.lng)} target="_blank" rel="noreferrer" className="secondary link">{t.apple}</a>
+                    {place.website && <a href={place.website} target="_blank" rel="noreferrer" className="secondary link">Website</a>}
                   </div>
-                </details>
-                <div className="button-row">
-                  <a href={navGoogle(place.lat, place.lng)} target="_blank" rel="noreferrer" className="primary link">Google Maps</a>
-                  <a href={navApple(place.lat, place.lng)} target="_blank" rel="noreferrer" className="secondary link">Apple Maps</a>
-                  {place.website && <a href={place.website} target="_blank" rel="noreferrer" className="secondary link">Sito web</a>}
                 </div>
-              </article>
+              </details>
             ))}
           </div>
         </section>
@@ -1138,6 +1207,14 @@ function App() {
         </section>
       </main>
 
+
+      <nav className="bottom-mobile-nav" aria-label={t.quickNav || 'Navigazione rapida'}>
+        <a href="#mappa" onClick={(e) => { e.preventDefault(); document.getElementById('mappa')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navMap || t.map}</a>
+        <a href="#parcheggi" onClick={(e) => { e.preventDefault(); document.getElementById('parcheggi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navParking || t.parking}</a>
+        <a href="#oltre-murales" onClick={(e) => { e.preventDefault(); document.getElementById('oltre-murales')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navBeyond || 'Oltre'}</a>
+        <a href="#dove-fermarsi" onClick={(e) => { e.preventDefault(); document.getElementById('dove-fermarsi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navFood || t.food}</a>
+      </nav>
+
       <footer>
         <p><strong>{t.footerMade}</strong></p>
         <p>{t.footerPurpose}</p>
@@ -1146,7 +1223,7 @@ function App() {
           <p>{t.supportText}</p>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 1.44.11</strong></p>
+        <p><strong>{t.versionLabel} — 1.44.15</strong></p>
       </footer>
     </div>
   );

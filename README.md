@@ -320,3 +320,33 @@ Questa versione evita sia il bug npm `Exit handler never called` sia l'errore pn
 - Ko-fi meno invasivo su mobile.
 - Nessun percorso smart aggiunto.
 - Configurazione Yarn/Vercel invariata.
+
+## V44.12 — Mobile evidente
+
+- Aggiunta vera barra fissa in basso su smartphone.
+- Modifiche mobile più visibili: immagini più compatte, pulsanti grandi, card più leggibili.
+- CSS più mirato con selettori compatibili con la struttura reale dell’app.
+- Ko-fi reso meno invasivo su smartphone.
+- Nessuna modifica al package manager, alle traduzioni o alla logica principale.
+
+## V44.13 — Schede fluttuanti murales
+
+- Le schede dei murales si aprono in un pannello fluttuante effetto Liquid Glass.
+- Le card elenco diventano più leggere e aprono la scheda al tocco.
+- Aggiunto pulsante “Apri scheda tappa” nella sezione mappa.
+- Nessuna modifica a traduzioni, Vercel, Yarn o percorso smart.
+
+## V44.14 — Oltre i murales ad accordion
+
+- La sezione “Oltre i murales” è stata alleggerita con schede accordion.
+- I testi lunghi si aprono solo al tocco.
+- Rimossa la sezione “Consultazione rapida / Tutte le opere”, considerata ridondante dopo le schede fluttuanti.
+- Nessuna modifica a Yarn/Vercel.
+
+## V44.15 — Percorso smart leggero
+
+- Aggiunto pulsante “Crea percorso dalla mia posizione”.
+- Usa la geolocalizzazione solo su richiesta dell’utente.
+- Parte dal murale più vicino e continua il tour da lì.
+- Aggiunto pulsante per tornare al percorso originale.
+- Nessuna libreria nuova, nessuna API esterna, configurazione Yarn/Vercel invariata.
