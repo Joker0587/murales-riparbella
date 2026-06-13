@@ -2261,3 +2261,150 @@ html {
     z-index: 3;
   }
 }
+
+
+/* V44.14 — Oltre i murales ad accordion */
+.extra-places-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.extra-accordion-card {
+  border: 1px solid rgba(30, 38, 55, 0.10);
+  border-radius: 28px;
+  overflow: hidden;
+  background: rgba(255, 252, 244, 0.78);
+  box-shadow: 0 16px 40px rgba(22, 30, 44, 0.08);
+}
+
+.extra-accordion-card[open] {
+  background: rgba(255, 252, 244, 0.92);
+  box-shadow: 0 24px 60px rgba(22, 30, 44, 0.13);
+}
+
+.extra-accordion-summary {
+  cursor: pointer;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 12px;
+}
+
+.extra-accordion-summary::-webkit-details-marker {
+  display: none;
+}
+
+.extra-accordion-summary img {
+  width: 112px;
+  height: 96px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.extra-accordion-summary span {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  padding-right: 26px;
+  position: relative;
+}
+
+.extra-accordion-summary span::after {
+  content: '+';
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(20, 28, 42, 0.08);
+  font-weight: 900;
+  font-size: 1.15rem;
+}
+
+.extra-accordion-card[open] .extra-accordion-summary span::after {
+  content: '–';
+}
+
+.extra-accordion-summary small {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.66rem;
+  font-weight: 850;
+  opacity: 0.62;
+}
+
+.extra-accordion-summary strong {
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.extra-accordion-summary em {
+  font-style: normal;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  opacity: 0.76;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.extra-accordion-body {
+  padding: 2px 22px 22px;
+  display: grid;
+  gap: 12px;
+}
+
+.extra-accordion-body p {
+  margin: 0;
+  line-height: 1.62;
+}
+
+.extra-accordion-body .credit {
+  font-size: 0.86rem;
+  opacity: 0.70;
+  border-top: 1px solid rgba(30, 38, 55, 0.10);
+  padding-top: 12px;
+}
+
+@media (max-width: 760px) {
+  .extra-places-grid {
+    gap: 11px !important;
+  }
+
+  .extra-accordion-card {
+    border-radius: 24px;
+  }
+
+  .extra-accordion-summary {
+    grid-template-columns: 86px 1fr;
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .extra-accordion-summary img {
+    width: 86px;
+    height: 78px;
+    border-radius: 17px;
+  }
+
+  .extra-accordion-summary strong {
+    font-size: 1.05rem;
+  }
+
+  .extra-accordion-summary em {
+    font-size: 0.86rem;
+    -webkit-line-clamp: 2;
+  }
+
+  .extra-accordion-body {
+    padding: 4px 16px 18px;
+  }
+}

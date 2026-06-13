@@ -459,8 +459,6 @@ const ui = {
     artworkDescription: 'Descrizione dell’opera',
     whatToNotice: 'Cosa osservare',
     offerCoffee: 'Offri un caffè',
-    quickConsultation: 'Consultazione rapida',
-    allWorks: 'Tutte le opere',
     nextDirectionTitle: 'Verso la prossima tappa',
     seenDone: 'Vista ✓',
     markSeenShort: 'Segna vista',
@@ -570,8 +568,6 @@ const ui = {
     artworkDescription: 'Artwork description',
     whatToNotice: 'What to notice',
     offerCoffee: 'Buy me a coffee',
-    quickConsultation: 'Quick reference',
-    allWorks: 'All artworks',
     nextDirectionTitle: 'Towards the next stop',
     seenDone: 'Seen ✓',
     markSeenShort: 'Mark as seen',
@@ -1001,38 +997,6 @@ function App() {
           )}
         </section>
 
-        <section className="section compact-list-section">
-
-          <div className="section-heading">
-            <p className="kicker">{t.quickConsultation}</p>
-            <h2>{t.allWorks}</h2>
-          </div>
-
-          <input className="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder={t.searchPlaceholder} />
-
-          <div className="cards-grid">
-            {filteredMurals.map((mural, index) => (
-              <article key={mural.id} className={selectedId === mural.id ? 'mural-card selected' : 'mural-card'} onClick={() => selectMural(mural.id)}>
-                <img src={mural.image} alt={mural.title} />
-                <div>
-                  <p className="step">#{murals.findIndex((m) => m.id === mural.id) + 1} {isVisited(mural.id) && <span className="inline-visited">Vista</span>}</p>
-                  <h3>{mural.title}</h3>
-                  <p className="meta">{mural.artist} · {mural.year}</p>
-                  <div className="compact-details">
-                    {mural.detailsToFind.slice(0, 3).map((detail) => <span key={detail}>{detail}</span>)}
-                  </div>
-                  <p className="mural-card-preview">{(language === 'it' ? mural.it : mural.en).slice(0, 150)}…</p>
-                  <div className="card-actions">
-                    <button className="secondary small share-inline" onClick={(event) => { event.stopPropagation(); shareMural(mural); }}>{t.shareCard}</button>
-                    <button className="primary small share-inline" onClick={(event) => { event.stopPropagation(); selectMural(mural.id, true); }}>{language === 'it' ? 'Apri scheda' : 'Open card'}</button>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        
         <section id="oltre-murales" className="section extra-places-section">
           <div className="section-heading">
             <p className="kicker">{t.extraKicker}</p>
@@ -1044,31 +1008,28 @@ function App() {
 
           <div className="extra-places-grid">
             {extraPlaces.map((place) => (
-              <article className="extra-place-card" key={place.id}>
-                {place.image && (
-                  <div className="extra-place-image">
-                    <img src={place.image} alt={getExtraText(place, 'title', language)} loading="lazy" />
-                  </div>
-                )}
-                <div className="extra-place-head">
-                  <p className="type">{getExtraText(place, 'category', language)}</p>
-                  <h3>{getExtraText(place, 'title', language)}</h3>
+              <details className="extra-accordion-card" key={place.id}>
+                <summary className="extra-accordion-summary">
+                  {place.image && <img src={place.image} alt={getExtraText(place, 'title', language)} loading="lazy" />}
+                  <span>
+                    <small>{getExtraText(place, 'category', language)}</small>
+                    <strong>{getExtraText(place, 'title', language)}</strong>
+                    <em>{getExtraText(place, 'intro', language)}</em>
+                  </span>
+                </summary>
+
+                <div className="extra-accordion-body">
                   <p className="address">⌖ {place.address}</p>
-                </div>
-                <p className="extra-place-intro">{getExtraText(place, 'intro', language)}</p>
-                <details>
-                  <summary>{t.readStory}</summary>
-                  <div className="extra-place-description">
-                    {getExtraText(place, 'description', language).split('\n\n').map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-                    <p className="credit">{getExtraText(place, 'credit', language)}</p>
+                  {getExtraText(place, 'description', language).split('\n\n').map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                  <p className="credit">{getExtraText(place, 'credit', language)}</p>
+
+                  <div className="button-row">
+                    <a href={navGoogle(place.lat, place.lng)} target="_blank" rel="noreferrer" className="primary link">{t.google}</a>
+                    <a href={navApple(place.lat, place.lng)} target="_blank" rel="noreferrer" className="secondary link">{t.apple}</a>
+                    {place.website && <a href={place.website} target="_blank" rel="noreferrer" className="secondary link">Website</a>}
                   </div>
-                </details>
-                <div className="button-row">
-                  <a href={navGoogle(place.lat, place.lng)} target="_blank" rel="noreferrer" className="primary link">Google Maps</a>
-                  <a href={navApple(place.lat, place.lng)} target="_blank" rel="noreferrer" className="secondary link">Apple Maps</a>
-                  {place.website && <a href={place.website} target="_blank" rel="noreferrer" className="secondary link">Sito web</a>}
                 </div>
-              </article>
+              </details>
             ))}
           </div>
         </section>
@@ -1161,7 +1122,7 @@ function App() {
           <p>{t.supportText}</p>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 1.44.13</strong></p>
+        <p><strong>{t.versionLabel} — 1.44.14</strong></p>
       </footer>
     </div>
   );
