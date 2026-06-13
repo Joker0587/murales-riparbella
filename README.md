@@ -342,3 +342,11 @@ Questa versione evita sia il bug npm `Exit handler never called` sia l'errore pn
 - I testi lunghi si aprono solo al tocco.
 - Rimossa la sezione “Consultazione rapida / Tutte le opere”, considerata ridondante dopo le schede fluttuanti.
 - Nessuna modifica a Yarn/Vercel.
+
+## V44.15.2 — Tappa più vicina safe
+
+- Ripartenza dalla V44.14 funzionante.
+- Aggiunta funzione minima “Trova la tappa più vicina”.
+- Non riordina il percorso e non modifica la logica delle schede.
+- Se la posizione viene concessa, seleziona il murale più vicino.
+- Configurazione Yarn/Vercel invariata.

@@ -2408,3 +2408,63 @@ html {
     padding: 4px 16px 18px;
   }
 }
+
+
+/* V44.15.2 — Tappa più vicina safe */
+.nearest-safe-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  align-items: center;
+  padding: 24px;
+  border-radius: 30px;
+  border: 1px solid rgba(30, 38, 55, 0.10);
+  background: rgba(255, 252, 244, 0.84);
+  box-shadow: 0 18px 54px rgba(18, 28, 42, 0.10);
+}
+
+.nearest-safe-card h2 {
+  margin: 0 0 8px;
+}
+
+.nearest-safe-card p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.nearest-safe-card button {
+  min-width: 240px;
+}
+
+.nearest-safe-card button:disabled {
+  opacity: 0.72;
+  cursor: wait;
+}
+
+.nearest-safe-status {
+  margin-top: 12px !important;
+  padding: 11px 13px;
+  border-radius: 16px;
+  font-weight: 750;
+}
+
+.nearest-safe-status.success {
+  background: rgba(62, 156, 98, 0.14);
+}
+
+.nearest-safe-status.warning {
+  background: rgba(214, 143, 55, 0.16);
+}
+
+@media (max-width: 760px) {
+  .nearest-safe-card {
+    grid-template-columns: 1fr;
+    padding: 19px;
+    border-radius: 26px;
+  }
+
+  .nearest-safe-card button {
+    width: 100%;
+    min-width: 0;
+  }
+}

@@ -358,6 +358,22 @@ const getExtraText = (place, field, language) => {
   return language === 'en' ? (place[englishField] || place[field] || '') : (place[field] || '');
 };
 
+
+const distanceKmSafe = (from, to) => {
+  const toRad = (value) => (value * Math.PI) / 180;
+  const earthRadius = 6371;
+  const dLat = toRad(to.lat - from.lat);
+  const dLng = toRad(to.lng - from.lng);
+  const lat1 = toRad(from.lat);
+  const lat2 = toRad(to.lat);
+
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
+
+  return earthRadius * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+};
+
 const ui = {
   it: {
     heroKicker: 'Guida digitale interattiva',
@@ -465,6 +481,12 @@ const ui = {
     clearRoute: 'Azzera percorso',
     beforeStartKicker: 'Prima di partire',
     projectKickerVisible: 'Arte pubblica e comunità',
+    nearestCardTitle: 'Tappa più vicina',
+    nearestCardText: 'Usa la posizione del telefono per aprire il murale più vicino a te.',
+    nearestButton: 'Trova la tappa più vicina',
+    nearestLoading: 'Controllo la posizione…',
+    nearestReady: 'Tappa più vicina trovata',
+    nearestDenied: 'Posizione non disponibile. Puoi continuare con il percorso normale.',
     searchPlaceholder: 'Cerca murale, artista, tema...',
     prototype: 'Versione prototipo — 2026'
   },
@@ -574,6 +596,12 @@ const ui = {
     clearRoute: 'Reset route',
     beforeStartKicker: 'Before you start',
     projectKickerVisible: 'Public art and community',
+    nearestCardTitle: 'Closest stop',
+    nearestCardText: 'Use your phone location to open the mural closest to you.',
+    nearestButton: 'Find the closest stop',
+    nearestLoading: 'Checking your position…',
+    nearestReady: 'Closest stop found',
+    nearestDenied: 'Position not available. You can continue with the normal route.',
     searchPlaceholder: 'Search mural, artist, theme...',
     prototype: 'Prototype version — 2026'
   }
@@ -803,6 +831,48 @@ function App() {
     setIsMuralSheetOpen(true);
   };
 
+
+  const findNearestMuralSafe = () => {
+    if (!navigator.geolocation) {
+      setNearestStatus('denied');
+      return;
+    }
+
+    setNearestStatus('loading');
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const userPosition = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+
+        const nearestMural = murals.reduce((closest, mural) => {
+          const currentDistance = distanceKmSafe(userPosition, mural);
+          const closestDistance = distanceKmSafe(userPosition, closest);
+          return currentDistance < closestDistance ? mural : closest;
+        }, murals[0]);
+
+        setSelectedId(nearestMural.id);
+        setNearestTitle(nearestMural.title);
+        setNearestStatus('ready');
+
+        window.setTimeout(() => {
+          document.getElementById('mappa')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 150);
+      },
+      () => {
+        setNearestStatus('denied');
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 9000,
+        maximumAge: 60000
+      }
+    );
+  };
+
+
   return (
     <div className="app">
       <header className="hero">
@@ -895,6 +965,22 @@ function App() {
           <div className="text-card">
             <p>{t.projectText1}</p>
             <p>{t.projectText2}</p>
+          </div>
+        </section>
+
+        
+        <section className="section nearest-safe-section">
+          <div className="nearest-safe-card">
+            <div>
+              <p className="kicker">{t.nearestCardTitle}</p>
+              <h2>{t.nearestCardTitle}</h2>
+              <p>{t.nearestCardText}</p>
+              {nearestStatus === 'ready' && <p className="nearest-safe-status success">{t.nearestReady}: <strong>{nearestTitle}</strong></p>}
+              {nearestStatus === 'denied' && <p className="nearest-safe-status warning">{t.nearestDenied}</p>}
+            </div>
+            <button className="primary" onClick={findNearestMuralSafe} disabled={nearestStatus === 'loading'}>
+              {nearestStatus === 'loading' ? t.nearestLoading : t.nearestButton}
+            </button>
           </div>
         </section>
 
@@ -1122,7 +1208,7 @@ function App() {
           <p>{t.supportText}</p>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 1.44.14</strong></p>
+        <p><strong>{t.versionLabel} — 1.44.15.2</strong></p>
       </footer>
     </div>
   );
