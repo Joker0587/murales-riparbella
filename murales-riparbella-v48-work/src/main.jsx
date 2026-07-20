@@ -18,11 +18,7 @@ const murals = [
     observe: 'Osserva il borgo come se fosse un autoritratto: colline, vigneti, oliveti, boschi e mare all’orizzonte.',
     directionsNext: 'Scendi verso Piazza Giacomo Matteotti: la prossima tappa è il murale I Lari, sul palazzo davanti al bar.',
     it: `La visita può iniziare da Piazza della Madonna, davanti a un’opera che sembra aprire una finestra sul paesaggio di Riparbella. Vinci trasforma la facciata in un racconto del borgo: le colline, i vigneti, gli oliveti e il mare all’orizzonte diventano un autoritratto poetico del paese. Fermati qualche istante: il murale non descrive solo un panorama, ma la sensazione di vivere in un luogo raccolto, luminoso e abbracciato dalla natura.`,
-    en: `The visit can begin in Piazza della Madonna, in front of a mural that feels like a window onto Riparbella’s landscape. Vinci turns the façade into a portrait of the village: hills, vineyards, olive groves and the sea on the horizon become a poetic self-portrait of the town. Take a moment here: the work is not just a view, but the feeling of living in a bright, intimate place embraced by nature.`,
-    tagsEn: ["Landscape", "Nature", "Identity"],
-    detailsToFindEn: ["the hills", "vineyards and olive groves", "the woodland", "the sea on the horizon", "nature’s embrace"],
-    observeEn: "Look at the village as if it were a self-portrait: hills, vineyards, olive groves, woods and the sea on the horizon.",
-    directionsNextEn: "Walk down towards Piazza Giacomo Matteotti: the next stop is I Lari, on the building opposite the bar.",
+    en: `The visit can begin in Piazza della Madonna, in front of a mural that feels like a window onto Riparbella’s landscape. Vinci turns the façade into a portrait of the village: hills, vineyards, olive groves and the sea on the horizon become a poetic self-portrait of the town. Take a moment here: the work is not just a view, but the feeling of living in a bright, intimate place embraced by nature.`
   },
   {
     id: 'lari',
@@ -38,11 +34,7 @@ const murals = [
     observe: 'Osserva i tre stendardi colorati: sono una reinterpretazione dei Lari, antichi protettori della casa e della famiglia.',
     directionsNext: 'Rimani in Piazza Giacomo Matteotti e spostati di pochi passi verso la facciata principale del palazzo del bar Memoria e desiderio.',
     it: `In Piazza Matteotti, Giò Pistone interviene su un edificio carico di memoria: l’antico palazzo di giustizia con le sue carceri. L’artista sceglie colori pieni, netti, quasi festosi, per trasformare un passato severo in un’immagine di protezione e rinascita. I tre Lari, antichi spiriti custodi della casa e della famiglia, vegliano oggi sulla piazza come presenze benevole: un invito a guardare il borgo con occhi nuovi.`,
-    en: `In Piazza Matteotti, Giò Pistone works on a building filled with memory: the old courthouse and its former jail. The artist uses bold, joyful colours to turn a severe past into an image of protection and renewal. The three Lares, ancient guardians of home and family, now watch over the square as benevolent presences: an invitation to see the village with fresh eyes.`,
-    tagsEn: ["Memory", "Community", "Protection"],
-    detailsToFindEn: ["the three protective Lares", "the strong bright colours", "the dialogue with the old courthouse", "the idea of protecting the home"],
-    observeEn: "Look at the three colourful banners: they reinterpret the Lares, ancient protectors of the home and family.",
-    directionsNextEn: "Stay in Piazza Giacomo Matteotti and move a few steps towards the main façade of the building of the bar Memoria e desiderio.",
+    en: `In Piazza Matteotti, Giò Pistone works on a building filled with memory: the old courthouse and its former jail. The artist uses bold, joyful colours to turn a severe past into an image of protection and renewal. The three Lares, ancient guardians of home and family, now watch over the square as benevolent presences: an invitation to see the village with fresh eyes.`
   },
   {
     id: 'memoria',
@@ -58,11 +50,7 @@ const murals = [
     observe: 'Guarda la facciata come fosse una mappa non convenzionale: non indica solo strade, ma ricordi, emozioni e desideri.',
     directionsNext: 'Resta nell’area di Piazza Matteotti: la prossima opera è Amphora, sempre in zona piazza.',
     it: `Questa grande facciata è una mappa sentimentale di Riparbella. Daniel Muñoz parte dalla vista dall’alto del paese, ma al posto di una cartografia tradizionale inserisce ricordi, profumi, abitudini e desideri raccolti parlando con cittadini e studenti. Avvicinandoti, cerca i piccoli segni: raccontano panchine, sapori, storie familiari e sogni futuri. È una mappa da leggere lentamente, più con la memoria che con l’orientamento.`,
-    en: `This large façade is an emotional map of Riparbella. Daniel Muñoz starts from an aerial view of the village, but instead of a traditional map he fills it with memories, scents, habits and wishes gathered from residents and students. Look closely for the small signs: they speak of benches, flavours, family stories and future dreams. It is a map to read slowly, with memory more than direction.`,
-    tagsEn: ["Memory", "Desire", "Emotional map"],
-    detailsToFindEn: ["the unconventional map of the village", "places of memory told by residents", "the wishes drawn by children", "the legend on the side façade"],
-    observeEn: "Look at the façade as if it were an unconventional map: it does not show only streets, but memories, emotions and wishes.",
-    directionsNextEn: "Stay around Piazza Matteotti: the next work is Amphora, still near the square.",
+    en: `This large façade is an emotional map of Riparbella. Daniel Muñoz starts from an aerial view of the village, but instead of a traditional map he fills it with memories, scents, habits and wishes gathered from residents and students. Look closely for the small signs: they speak of benches, flavours, family stories and future dreams. It is a map to read slowly, with memory more than direction.`
   },
   {
     id: 'amphora',
@@ -78,11 +66,7 @@ const murals = [
     observe: 'Guarda la bicromia e il modo in cui il paesaggio sembra emergere direttamente dalla superficie del muro.',
     directionsNext: 'Prosegui verso il centro espositivo Museo C’ERA per raggiungere Corona Aurea.',
     it: `Amphora racconta la campagna riparbellina attraverso un linguaggio essenziale e raffinato. Tellas guarda agli olivi, ai vigneti e alla tradizione agricola del territorio, richiamando l’anfora come contenitore di vino, memoria e paesaggio. La bicromia rimanda allo sgraffito toscano: sembra che l’opera non sia stata semplicemente dipinta sul muro, ma sia emersa dalla sua stessa materia.`,
-    en: `Amphora tells the story of Riparbella’s countryside through an elegant, essential visual language. Tellas looks to olive trees, vineyards and the area’s farming tradition, using the amphora as a vessel for wine, memory and landscape. The two-tone composition recalls Tuscan sgraffito: the work seems not simply painted on the wall, but emerging from the wall itself.`,
-    tagsEn: ["Wine", "Sgraffito", "Territory"],
-    detailsToFindEn: ["the amphora shape", "olive trees and vineyards", "the two-colour style inspired by sgraffito", "the landscape that seems to emerge from the wall"],
-    observeEn: "Notice the two-colour effect and the way the landscape seems to emerge directly from the wall surface.",
-    directionsNextEn: "Continue towards the C’ERA exhibition centre to reach Corona Aurea.",
+    en: `Amphora tells the story of Riparbella’s countryside through an elegant, essential visual language. Tellas looks to olive trees, vineyards and the area’s farming tradition, using the amphora as a vessel for wine, memory and landscape. The two-tone composition recalls Tuscan sgraffito: the work seems not simply painted on the wall, but emerging from the wall itself.`
   },
   {
     id: 'corona',
@@ -98,11 +82,7 @@ const murals = [
     observe: 'Cerca il movimento circolare e i riflessi metallici: richiamano la corona funeraria conservata nel Museo C’ERA.',
     directionsNext: 'Scendi verso Piazza Borgo di Sotto: lì trovi L’amore nella pentola.',
     it: `Davanti a questa opera, il filo che unisce arte urbana e storia etrusca diventa evidente. Giorgio Bartocci si ispira alla preziosa corona funeraria conservata al Museo C’ERA e la traduce in un movimento vorticoso di segni, colori e riflessi metallici. L’opera cambia con la luce e invita a osservare il muro come una reliquia contemporanea: un omaggio alla memoria, alla bellezza e alla continuità fra passato e presente.`,
-    en: `Here, the link between street art and Etruscan history becomes clear. Giorgio Bartocci takes inspiration from the precious funerary crown preserved at the C’ERA Museum and translates it into a swirling movement of marks, colours and metallic reflections. The work changes with the light and invites you to see the wall as a contemporary relic: a tribute to memory, beauty and the continuity between past and present.`,
-    tagsEn: ["Etruscans", "C’ERA Museum", "Gold"],
-    detailsToFindEn: ["metallic reflections", "the circular movement", "the reference to the funerary crown", "brushstrokes that seem to come out of the wall"],
-    observeEn: "Look for the circular movement and metallic reflections: they recall the funerary crown preserved in the C’ERA Museum.",
-    directionsNextEn: "Walk down towards Piazza Borgo di Sotto: there you will find L’amore nella pentola.",
+    en: `Here, the link between street art and Etruscan history becomes clear. Giorgio Bartocci takes inspiration from the precious funerary crown preserved at the C’ERA Museum and translates it into a swirling movement of marks, colours and metallic reflections. The work changes with the light and invites you to see the wall as a contemporary relic: a tribute to memory, beauty and the continuity between past and present.`
   },
   {
     id: 'amore',
@@ -117,12 +97,8 @@ const murals = [
     detailsToFind: ['la grande pentola', 'il fuoco della notte di San Giovanni', 'il cinghiale', 'il cavallo Gino', 'la bandiera sarda'],
     observe: 'Cerca la grande pentola, il fuoco e il cinghiale: sono dettagli che raccontano memoria popolare e cucina del territorio.',
     directionsNext: 'Prosegui verso Piazza Federigo Baldasserini, dove si trova Terra e colori.',
-    it: `In Piazza Borgo di Sotto il murale di Zed1 racconta una storia popolare tramandata dagli abitanti. Durante la notte di San Giovanni, le donne si riunivano attorno al fuoco e scioglievano il piombo in grandi pentole; le forme ottenute venivano poi interpretate per immaginare il futuro sposo. L’opera mescola rito, ironia e vita quotidiana: accanto alla pentola compaiono il cinghiale, il cavallo Gino, il paesaggio e un omaggio alla comunità sarda.`,
-    en: `In Piazza Borgo di Sotto, Zed1’s mural tells a folk story passed down by local residents. On Saint Giovanni’s night, women gathered around the fire and melted lead in large pots; once cooled, the shapes were interpreted to imagine a future husband. The work blends ritual, humour and everyday life: alongside the pot you can spot the wild boar, the horse Gino, the landscape and a tribute to the Sardinian community.`,
-    tagsEn: ["Tradition", "Folk tales", "Wild boar"],
-    detailsToFindEn: ["the large pot", "the fire of Saint John’s night", "the wild boar", "the horse Gino", "the Sardinian flag"],
-    observeEn: "Look for the large pot, the fire and the wild boar: they are details that tell of folk memory and local food traditions.",
-    directionsNextEn: "Continue towards Piazza Federigo Baldasserini, where Terra e colori is located.",
+    it: `In Piazza Borgo di Sotto il murale di Zed1 racconta una storia popolare tramandata dagli abitanti. Durante la notte di Sant’Antonio, le donne si riunivano attorno al fuoco e scioglievano il piombo in grandi pentole; le forme ottenute venivano poi interpretate per immaginare il futuro sposo. L’opera mescola rito, ironia e vita quotidiana: accanto alla pentola compaiono il cinghiale, il cavallo Gino, il paesaggio e un omaggio alla comunità sarda.`,
+    en: `In Piazza Borgo di Sotto, Zed1’s mural tells a folk story passed down by local residents. On Saint Anthony’s night, women gathered around the fire and melted lead in large pots; once cooled, the shapes were interpreted to imagine a future husband. The work blends ritual, humour and everyday life: alongside the pot you can spot the wild boar, the horse Gino, the landscape and a tribute to the Sardinian community.`
   },
   {
     id: 'terra-colori',
@@ -138,11 +114,7 @@ const murals = [
     observe: 'Lascia correre lo sguardo tra onde, sole, luna, vegetazione, olive e richiami al vino: è un ritratto astratto del territorio.',
     directionsNext: 'Raggiungi Via della Noce: il percorso continua con Universo Riparbella.',
     it: `Questa tappa è un’esplosione di energia. Mina Hamada e Zosen Bandido traducono Riparbella in forme morbide, simboli e colori caldi: il sole, il mare, l’olio, il vino, la vegetazione e l’arrivo nel borgo si intrecciano in una composizione vivace. Osserva l’opera come un grande mosaico contemporaneo: ogni elemento racconta una sensazione del territorio più che una semplice immagine.`,
-    en: `This stop is an explosion of energy. Mina Hamada and Zosen Bandido translate Riparbella into soft shapes, symbols and warm colours: sun, sea, olive oil, wine, vegetation and the entrance to the village all flow together in a lively composition. Look at the work as a contemporary mosaic: each element conveys a feeling of the territory rather than a literal image.`,
-    tagsEn: ["Nature", "Landscape", "Colours"],
-    detailsToFindEn: ["the waves", "the sun and the moon", "the olive and the colours of wine", "the window onto the landscape", "the lens-lighthouse and the trowel"],
-    observeEn: "Let your eyes move through waves, sun, moon, vegetation, olives and references to wine: it is an abstract portrait of the territory.",
-    directionsNextEn: "Reach Via della Noce: the route continues with Universo Riparbella.",
+    en: `This stop is an explosion of energy. Mina Hamada and Zosen Bandido translate Riparbella into soft shapes, symbols and warm colours: sun, sea, olive oil, wine, vegetation and the entrance to the village all flow together in a lively composition. Look at the work as a contemporary mosaic: each element conveys a feeling of the territory rather than a literal image.`
   },
   {
     id: 'universo',
@@ -158,11 +130,7 @@ const murals = [
     observe: 'Segui il nastro giallo e azzurro: collega le caselle ideate dai bambini come in un grande gioco dell’oca urbano.',
     directionsNext: 'Prosegui lungo Via della Noce fino a Hunting Hunters.',
     it: `Via della Noce diventa qui un percorso dentro l’immaginazione dei bambini. Nato da un laboratorio con la scuola primaria, il murale trasforma la strada in una sorta di gioco dell’oca dedicato all’Agenda 2030 e al futuro sostenibile. Seguendo il nastro giallo e azzurro, si incontrano idee, disegni e messaggi: è una tappa da percorrere camminando piano, quasi come se il paese stesso insegnasse.`,
-    en: `Here, Via della Noce becomes a path through children’s imagination. Created through a workshop with the primary school, the mural turns the street into a board-game-like route dedicated to the 2030 Agenda and a sustainable future. Follow the yellow and blue ribbon to discover ideas, drawings and messages: this is a stop to walk slowly, as if the village itself were teaching.`,
-    tagsEn: ["School", "Children", "Agenda 2030"],
-    detailsToFindEn: ["the yellow and blue ribbon", "the squares like a board game", "children’s drawings", "the themes of the 2030 Agenda"],
-    observeEn: "Follow the yellow and blue ribbon: it connects the squares designed by children like a large urban board game.",
-    directionsNextEn: "Continue along Via della Noce to Hunting Hunters.",
+    en: `Here, Via della Noce becomes a path through children’s imagination. Created through a workshop with the primary school, the mural turns the street into a board-game-like route dedicated to the 2030 Agenda and a sustainable future. Follow the yellow and blue ribbon to discover ideas, drawings and messages: this is a stop to walk slowly, as if the village itself were teaching.`
   },
   {
     id: 'hitnes',
@@ -178,11 +146,7 @@ const murals = [
     observe: 'Individua il pettirosso, le gazze ladre e l’anello nascosto: la scena ribalta con ironia il rapporto tra preda e cacciatore.',
     directionsNext: 'Continua lungo Via della Noce verso l’opera di Aris.',
     it: `Hitnes porta nel borgo una piccola favola animale, ironica e un po’ misteriosa. Tra pettirossi, gazze ladre e richiami alla caccia, il murale ribalta i ruoli consueti: chi osserva non sa più con certezza chi sia il cacciatore e chi la preda. Cerca l’anello nascosto e lasciati guidare dalla domanda che l’opera suggerisce: la natura sta subendo l’uomo o sta imparando a tendergli un tranello?`,
-    en: `Hitnes brings to the village a small animal fable, both ironic and mysterious. Among robins, magpies and references to hunting, the mural reverses the usual roles: the viewer is no longer sure who is the hunter and who is the prey. Look for the hidden ring and follow the question the work suggests: is nature being hunted by humans, or is it learning how to set a trap?`,
-    tagsEn: ["Nature", "Animals", "Irony"],
-    detailsToFindEn: ["the robin", "the magpies", "the hidden ring", "the trap", "the reversal between hunter and prey"],
-    observeEn: "Find the robin, the magpies and the hidden ring: the scene ironically reverses the relationship between prey and hunter.",
-    directionsNextEn: "Continue along Via della Noce towards the work by Aris.",
+    en: `Hitnes brings to the village a small animal fable, both ironic and mysterious. Among robins, magpies and references to hunting, the mural reverses the usual roles: the viewer is no longer sure who is the hunter and who is the prey. Look for the hidden ring and follow the question the work suggests: is nature being hunted by humans, or is it learning how to set a trap?`
   },
   {
     id: 'aris',
@@ -198,11 +162,7 @@ const murals = [
     observe: 'Osserva i profili e le forme bicrome: richiamano il vaso etrusco e lo trasformano in immagine contemporanea.',
     directionsNext: 'Sali verso l’edificio scolastico in Via della Noce 15 per raggiungere Riparbella01.',
     it: `La Chimera guarda alle radici etrusche di Riparbella con uno sguardo contemporaneo. Aris prende ispirazione dai reperti del Museo C’ERA, in particolare dai vasi antichi, e li trasforma in profili e forme bicrome dal forte impatto grafico. L’opera è anche un omaggio a Pietro Leopoldo di Toscana e al suo interesse per la civiltà etrusca: un ponte visivo fra archeologia, ricerca e arte urbana.`,
-    en: `La Chimera looks at Riparbella’s Etruscan roots through a contemporary lens. Aris draws inspiration from the finds preserved at the C’ERA Museum, especially ancient vases, transforming them into striking two-tone profiles and shapes. The work also pays tribute to Pietro Leopoldo of Tuscany and his interest in Etruscan civilisation: a visual bridge between archaeology, research and urban art.`,
-    tagsEn: ["Etruscans", "Ceramics", "Pietro Leopoldo"],
-    detailsToFindEn: ["the Etruscan vase", "the two-colour forms", "the stylised profiles", "the link with the C’ERA Museum", "the tribute to Pietro Leopoldo"],
-    observeEn: "Notice the profiles and two-colour forms: they recall the Etruscan vase and turn it into a contemporary image.",
-    directionsNextEn: "Walk up towards the school building in Via della Noce 15 to reach Riparbella01.",
+    en: `La Chimera looks at Riparbella’s Etruscan roots through a contemporary lens. Aris draws inspiration from the finds preserved at the C’ERA Museum, especially ancient vases, transforming them into striking two-tone profiles and shapes. The work also pays tribute to Pietro Leopoldo of Tuscany and his interest in Etruscan civilisation: a visual bridge between archaeology, research and urban art.`
   },
   {
     id: 'riparbella01',
@@ -218,11 +178,7 @@ const murals = [
     observe: 'Nota le linee e le forme astratte: in alcune ore del giorno l’opera si riflette nelle finestre della palestra di fronte.',
     directionsNext: 'Spostati verso Via Gramsci, lungo il muro di cinta della scuola elementare.',
     it: `Sulla facciata della scuola, Moneyless realizza l’opera più astratta del percorso. Linee, pieni e vuoti dialogano con l’architettura degli anni Trenta e richiamano movimento, musica e avanguardie. La particolarità più poetica si scopre in certi momenti della giornata: i colori si riflettono sulle finestre della palestra di fronte, creando l’illusione di vetrate dipinte.`,
-    en: `On the school façade, Moneyless creates the most abstract work of the route. Lines, solids and voids interact with the 1930s architecture and evoke movement, music and the avant-garde. Its most poetic feature appears at certain times of day: the colours reflect on the windows of the gym opposite, creating the illusion of painted glass.`,
-    tagsEn: ["Abstraction", "School", "Music"],
-    detailsToFindEn: ["abstract geometric shapes", "references to movement and music", "deliberately incomplete colours", "the reflection in the gym windows"],
-    observeEn: "Notice the lines and abstract shapes: at certain times of day the work is reflected in the gym windows opposite.",
-    directionsNextEn: "Move towards Via Gramsci, along the boundary wall of the primary school.",
+    en: `On the school façade, Moneyless creates the most abstract work of the route. Lines, solids and voids interact with the 1930s architecture and evoke movement, music and the avant-garde. Its most poetic feature appears at certain times of day: the colours reflect on the windows of the gym opposite, creating the illusion of painted glass.`
   },
   {
     id: 'esperienza',
@@ -238,11 +194,7 @@ const murals = [
     observe: 'Cerca gli elementi naturali del paesaggio di Riparbella: uva, cinghiali, campagna e mare.',
     directionsNext: 'Prosegui in Via Gramsci verso la palestra comunale per l’ultima tappa: Il sonno di Turan.',
     it: `Questo murale conserva l’entusiasmo dei bambini che lo hanno realizzato insieme agli artisti. Nato da un workshop con la scuola primaria, racconta il paesaggio di Riparbella attraverso uva, cinghiali, campagna e mare. Il titolo nasce dalle parole dei bambini stessi: per loro è stata davvero “l’esperienza più bella della nostra vita”. È una tappa semplice e affettuosa, dove l’arte pubblica diventa partecipazione.`,
-    en: `This mural preserves the enthusiasm of the children who helped create it with the artists. Born from a workshop with the primary school, it tells Riparbella’s landscape through grapes, wild boars, countryside and sea. The title comes from the children’s own words: for them it truly was “the most beautiful experience of our life.” It is a warm, simple stop where public art becomes participation.`,
-    tagsEn: ["School", "Landscape", "Participation"],
-    detailsToFindEn: ["grapes", "wild boars", "the countryside", "the sea in the background", "the marks left by children"],
-    observeEn: "Look for the natural elements of Riparbella’s landscape: grapes, wild boars, countryside and sea.",
-    directionsNextEn: "Continue along Via Gramsci towards the municipal gym for the final stop: Il sonno di Turan.",
+    en: `This mural preserves the enthusiasm of the children who helped create it with the artists. Born from a workshop with the primary school, it tells Riparbella’s landscape through grapes, wild boars, countryside and sea. The title comes from the children’s own words: for them it truly was “the most beautiful experience of our life.” It is a warm, simple stop where public art becomes participation.`
   },
   {
     id: 'turan',
@@ -258,11 +210,7 @@ const murals = [
     observe: 'Guarda Turan come una figura sospesa tra memoria e rinascita: amore, pace e liberazione diventano il cuore dell’opera.',
     directionsNext: 'Hai completato il tour. Puoi tornare verso il centro storico o scegliere un parcheggio o un locale dalla guida.',
     it: `Sulle pareti della palestra comunale, Vesod dedica un’opera intensa alla Liberazione e alla pace. Turan, dea etrusca dell’amore e della vitalità, riposa come sospesa tra memoria e rinascita; al suo risveglio, l’energia dell’amore sembra dissolvere le ombre della guerra. Il profilo della dea dialoga con la collina e il mare, trasformando il murale in un grande simbolo di protezione per la comunità.`,
-    en: `On the walls of the municipal gym, Vesod dedicates a powerful work to Liberation and peace. Turan, the Etruscan goddess of love and vitality, rests suspended between memory and rebirth; when she awakens, the energy of love seems to dissolve the shadows of war. Her profile echoes the hill and the sea, turning the mural into a symbol of protection for the community.`,
-    tagsEn: ["Liberation", "Peace", "Turan"],
-    detailsToFindEn: ["the goddess Turan", "the black swan", "the pomegranate", "the white dove", "the outline of the hill and the sea"],
-    observeEn: "Look at Turan as a figure suspended between memory and rebirth: love, peace and liberation are at the heart of the work.",
-    directionsNextEn: "You have completed the tour. You can return towards the historic centre or choose a car park or a place to stop from the guide.",
+    en: `On the walls of the municipal gym, Vesod dedicates a powerful work to Liberation and peace. Turan, the Etruscan goddess of love and vitality, rests suspended between memory and rebirth; when she awakens, the energy of love seems to dissolve the shadows of war. Her profile echoes the hill and the sea, turning the mural into a symbol of protection for the community.`
   }
 ];
 
@@ -335,7 +283,7 @@ const placesToEat = [
     image: '/images/bar-da-libero.jpg',
     address: 'Via della Madonna, 14, 56046 Riparbella PI',
     phone: '',
-    note: 'Un bar di paese, semplice e comodo per una sosta veloce durante la passeggiata. {t.phoneUnavailable || t.noPhone} nelle fonti pubbliche consultate.',
+    note: 'Un bar di paese, semplice e comodo per una sosta veloce durante la passeggiata. Telefono non disponibile nelle fonti pubbliche consultate.',
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Bar%20da%20Libero%20Via%20della%20Madonna%2014%20Riparbella'
   },
   {
@@ -351,12 +299,6 @@ const placesToEat = [
   }
 ];
 
-
-
-const getExtraText = (place, field, language) => {
-  const englishField = `${field}En`;
-  return language === 'en' ? (place[englishField] || place[field] || '') : (place[field] || '');
-};
 
 const ui = {
   it: {
@@ -403,87 +345,6 @@ const ui = {
     readMore: 'Approfondimento',
     directions: 'Indicazioni',
     infoDisclaimer: 'Informazioni utili per il visitatore. Orari, aperture e recapiti possono variare: si consiglia di contattare direttamente le attività prima della visita.',
-    progressKicker: 'Il tuo percorso',
-    progressTitle: 'Segna le tappe visitate',
-    progressSeen: 'murales visti',
-    progressHint: 'Usa il pulsante “Vista” nelle schede per tenere traccia del tour direttamente dal tuo smartphone.',
-    progressAria: 'Percorso completato al',
-    markReview: 'Segna come da rivedere',
-    markSeen: 'Segna come vista',
-    seen: 'Vista',
-    navMap: 'Mappa',
-    navParking: 'I parcheggi',
-    navBeyond: 'Oltre i murales',
-    navFood: 'Dove fermarsi',
-    extraKicker: 'Oltre i murales',
-    extraTitle: 'Scopri Riparbella oltre i murales',
-    extraIntro: 'Il percorso dei murales può diventare l’occasione per scoprire altri luoghi del borgo: piccoli segni di memoria, arte, tradizione, esperienze sensoriali e vita quotidiana che raccontano Riparbella da prospettive diverse.',
-    readStory: 'Leggi la storia',
-    foodKicker: 'Bar, ristoranti e pause',
-    foodIntro: 'Una selezione di bar, osterie e ristoranti dove fermarsi prima, durante o dopo il percorso. Gli orari possono variare: consigliamo sempre di contattare direttamente l’attività prima della visita.',
-    phoneUnavailable: 'Telefono non disponibile',
-    footerMade: 'Web app ideata e realizzata da Francesco Bolognesi',
-    footerPurpose: 'per raccontare e valorizzare i murales di Riparbella.',
-    footerProject: 'Progetto digitale dedicato al percorso di arte pubblica del borgo, pensato come guida semplice, consultabile da smartphone durante la visita.',
-    supportText: 'Guida gratuita · Se vuoi, puoi sostenere il progetto con un caffè usando il pulsante Ko-fi in basso.',
-    rightsText: 'Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.',
-    versionLabel: 'Versione prototipo',
-    routeKicker: 'Riparbella si racconta sui muri',
-    visitTimeTitle: 'Tempo di visita',
-    visitTimeText: 'Il percorso completo richiede circa 45–60 minuti, senza contare le soste.',
-    walkTitle: 'A piedi nel borgo',
-    walkText: 'Le tappe sono vicine tra loro e si raggiungono comodamente camminando.',
-    respectTitle: 'Rispetto dei luoghi',
-    respectText: 'Molti murales si trovano su edifici abitati: osserva e fotografa con discrezione.',
-    detailsTitle: 'Dettagli da osservare',
-    selectedStopLabel: 'Tappa selezionata',
-    yearLabel: 'Anno',
-    themeLabel: 'Tema',
-    artistLabel: 'Artista',
-    addressLabel: 'Luogo',
-    noPhone: 'Telefono non disponibile',
-    infoButton: 'Info',
-    openNavigation: 'Apri navigatore',
-    kofiButton: 'Sostieni il progetto',
-    visitCard1Title: '45/60 min',
-    visitCard1Text: 'Durata consigliata con soste davanti alle opere.',
-    visitCard2Title: 'Percorso a piedi',
-    visitCard2Text: 'Il tour attraversa il centro storico e segue l’andamento della strada.',
-    visitCard3Title: 'Scarpe comode',
-    visitCard3Text: 'Il borgo ha salite, discese e scorci da scoprire lentamente.',
-    visitCard4Title: 'Rispetto',
-    visitCard4Text: 'Alcune opere si trovano su edifici abitati: osserva e fotografa con discrezione.',
-    selectedMuralCard: 'Scheda del murale selezionato',
-    stopOf: 'Tappa',
-    of: 'di',
-    artworkDescription: 'Descrizione dell’opera',
-    whatToNotice: 'Cosa osservare',
-    offerCoffee: 'Offri un caffè',
-    quickConsultation: 'Consultazione rapida',
-    allWorks: 'Tutte le opere',
-    nextDirectionTitle: 'Verso la prossima tappa',
-    seenDone: 'Vista ✓',
-    markSeenShort: 'Segna vista',
-    clearRoute: 'Azzera percorso',
-    beforeStartKicker: 'Prima di partire',
-    projectKickerVisible: 'Arte pubblica e comunità',
-    smartStopsKicker: 'Tappe smart',
-    smartStopsTitle: 'Scegli il tuo tour',
-    smartStopsText: 'Percorsi leggeri pensati per visitare il borgo senza perdersi in troppo scroll.',
-    smartRouteComplete: 'Tour completo',
-    smartRouteCompleteText: 'Tutte le tappe, nell’ordine consigliato.',
-    smartRouteShort: 'Tour breve 30 min',
-    smartRouteShortText: 'Le tappe essenziali per una visita rapida.',
-    smartRoutePanorama: 'Arte e panorama',
-    smartRoutePanoramaText: 'Opere legate a paesaggio, natura e scorci del borgo.',
-    smartRouteEtruscan: 'Etruschi e memoria',
-    smartRouteEtruscanText: 'Un percorso tra archeologia, identità e memoria.',
-    smartRouteFamily: 'Con bambini',
-    smartRouteFamilyText: 'Tappe più immediate, curiose e adatte ai più piccoli.',
-    activeSmartRoute: 'Percorso selezionato',
-    smartRouteStops: 'tappe',
-    startSmartRoute: 'Apri prima tappa',
-    resetSmartRouteManual: 'Mostra tour completo',
     searchPlaceholder: 'Cerca murale, artista, tema...',
     prototype: 'Versione prototipo — 2026'
   },
@@ -502,7 +363,6 @@ const ui = {
     openCard: 'Open card',
     selectedCardTitle: 'Selected mural card',
     previousStop: 'Previous stop',
-    nextStop: 'Next stop',
     list: 'Mural list',
     parking: 'Where to park',
     food: 'Where to stop',
@@ -531,121 +391,11 @@ const ui = {
     readMore: 'More details',
     directions: 'Directions',
     infoDisclaimer: 'Useful visitor information. Opening hours and contacts may change: please contact the businesses directly before your visit.',
-    progressKicker: 'Your route',
-    progressTitle: 'Mark visited stops',
-    progressSeen: 'murals seen',
-    progressHint: 'Use the “Seen” button in the cards to keep track of your tour directly from your smartphone.',
-    progressAria: 'Route completed at',
-    markReview: 'Mark to revisit',
-    markSeen: 'Mark as seen',
-    seen: 'Seen',
-    navMap: 'Map',
-    navParking: 'Parking',
-    navBeyond: 'Beyond the murals',
-    navFood: 'Where to stop',
-    extraKicker: 'Beyond the murals',
-    extraTitle: 'Discover Riparbella beyond the murals',
-    extraIntro: 'The mural route is also a chance to discover other places in the village: small signs of memory, art, tradition, sensory experiences and everyday life that tell Riparbella from different perspectives.',
-    readStory: 'Read the story',
-    foodKicker: 'Bars, restaurants and breaks',
-    foodIntro: 'A selection of bars, osterias and restaurants where you can stop before, during or after the route. Opening hours may vary: we recommend contacting each place directly before your visit.',
-    phoneUnavailable: 'Phone not available',
-    footerMade: 'Web app designed and created by Francesco Bolognesi',
-    footerPurpose: 'to tell and enhance the murals of Riparbella.',
-    footerProject: 'A digital project dedicated to the village’s public art route, designed as a simple guide to use from your smartphone during the visit.',
-    supportText: 'Free guide · If you like, you can support the project with a coffee using the Ko-fi button below.',
-    rightsText: 'Texts, images and artworks belong to their respective authors and rights holders.',
-    versionLabel: 'Prototype version',
-    routeKicker: 'Riparbella tells its story on the walls',
-    visitTimeTitle: 'Visit time',
-    visitTimeText: 'The full route takes about 45–60 minutes, not including stops.',
-    walkTitle: 'Walking through the village',
-    walkText: 'The stops are close to each other and can be easily reached on foot.',
-    respectTitle: 'Respect the places',
-    respectText: 'Many murals are on inhabited buildings: observe and take photos with discretion.',
-    detailsTitle: 'Details to notice',
-    selectedStopLabel: 'Selected stop',
-    yearLabel: 'Year',
-    themeLabel: 'Theme',
-    artistLabel: 'Artist',
-    addressLabel: 'Place',
-    noPhone: 'Phone not available',
-    infoButton: 'Info',
-    openNavigation: 'Open navigation',
-    kofiButton: 'Support the project',
-    visitCard1Title: '45/60 min',
-    visitCard1Text: 'Suggested duration including short stops in front of the artworks.',
-    visitCard2Title: 'Walking route',
-    visitCard2Text: 'The tour crosses the historic centre and follows the natural slope of the streets.',
-    visitCard3Title: 'Comfortable shoes',
-    visitCard3Text: 'The village has climbs, descents and viewpoints to discover slowly.',
-    visitCard4Title: 'Respect',
-    visitCard4Text: 'Some artworks are on inhabited buildings: observe and take photos with discretion.',
-    selectedMuralCard: 'Selected mural card',
-    stopOf: 'Stop',
-    of: 'of',
-    artworkDescription: 'Artwork description',
-    whatToNotice: 'What to notice',
-    offerCoffee: 'Buy me a coffee',
-    quickConsultation: 'Quick reference',
-    allWorks: 'All artworks',
-    nextDirectionTitle: 'Towards the next stop',
-    seenDone: 'Seen ✓',
-    markSeenShort: 'Mark as seen',
-    clearRoute: 'Reset route',
-    beforeStartKicker: 'Before you start',
-    projectKickerVisible: 'Public art and community',
-    smartStopsKicker: 'Smart stops',
-    smartStopsTitle: 'Choose your tour',
-    smartStopsText: 'Light routes designed to explore the village without too much scrolling.',
-    smartRouteComplete: 'Full tour',
-    smartRouteCompleteText: 'All stops in the suggested order.',
-    smartRouteShort: 'Short 30 min tour',
-    smartRouteShortText: 'The essential stops for a quick visit.',
-    smartRoutePanorama: 'Art and views',
-    smartRoutePanoramaText: 'Artworks linked to landscape, nature and village views.',
-    smartRouteEtruscan: 'Etruscans and memory',
-    smartRouteEtruscanText: 'A route through archaeology, identity and memory.',
-    smartRouteFamily: 'With children',
-    smartRouteFamilyText: 'More immediate, playful and child-friendly stops.',
-    activeSmartRoute: 'Selected route',
-    smartRouteStops: 'stops',
-    startSmartRoute: 'Open first stop',
-    resetSmartRouteManual: 'Show full tour',
     searchPlaceholder: 'Search mural, artist, theme...',
     prototype: 'Prototype version — 2026'
   }
 };
 
-
-
-const smartRoutesManual = [
-  {
-    id: 'complete',
-    emoji: '🧭',
-    stops: ['gioia', 'lari', 'memoria', 'amphora', 'corona', 'amore', 'terra-colori', 'universo', 'hitnes', 'aris', 'riparbella01', 'esperienza', 'turan']
-  },
-  {
-    id: 'short',
-    emoji: '⚡',
-    stops: ['gioia', 'lari', 'amphora', 'amore', 'turan']
-  },
-  {
-    id: 'panorama',
-    emoji: '🌿',
-    stops: ['gioia', 'terra-colori', 'amphora', 'riparbella01', 'turan']
-  },
-  {
-    id: 'etruscan',
-    emoji: '🏺',
-    stops: ['corona', 'aris', 'turan', 'memoria', 'amphora']
-  },
-  {
-    id: 'family',
-    emoji: '👨‍👩‍👧',
-    stops: ['universo', 'esperienza', 'amore', 'hitnes', 'lari']
-  }
-];
 
 const extraPlaces = [
   {
@@ -668,12 +418,7 @@ Nel 1749, dopo il bando del Granduca di Toscana, l’orologio venne adattato all
 Nel 1864 la casa dove si trovava l’orologio fu abbattuta per allargare la strada verso la chiesa. L’orologio da torre venne quindi collocato sul nuovo Municipio appena costruito. Nel 1867 fu acquistata una nuova macchina di Luigi Toninelli di Cecina, poi posta sulla torretta del nuovo Municipio nel 1885.
 
 Il racconto dell’orologio è anche il racconto di una comunità che, attraverso il tempo, ha continuato a custodire i propri luoghi, i propri suoni e la propria memoria.`,
-    credit: 'Ricerca di Severino Bolognesi, Pontedera 19.01.2019. Ringraziamenti: Dott.ssa Angela Porciani e Dott. Michele Quirici per il contributo alla ricerca.',
-    titleEn: "Riparbella Tower Clock",
-    categoryEn: "Village history",
-    introEn: "A symbolic place in the village, linked to the history of the community and Riparbella’s public life.",
-    descriptionEn: "Riparbella, rebuilt in the 15th century near the old settlement destroyed together with the medieval castle during the war between Naples and Florence, stands on a hill 216 metres above sea level, among olive groves and vineyards.\n\nRiparbella was a Medici fief and in 1635 became a Marquisate under the Carlotti family. The first public clock was installed in 1703 above a house owned by Marquis Carlotti, located in the village square.\n\nThe bell that marked the hours bore the date 1606 and came from the tower of the Compagnia oratory in Piazza della Madonna, today located in the small church of Melatina. Originally it was most likely a clock with “Roman-style” striking, marking time in six-hour cycles according to the custom of the period.\n\nIn 1749, following an order by the Grand Duke of Tuscany, the clock was adapted to “French-style” striking, counting twelve-hour cycles. Over the centuries, many repairs and maintenance works followed, carried out by clockmakers, craftsmen and local families.\n\nIn 1864 the house where the clock stood was demolished to widen the road towards the church. The tower clock was then moved to the newly built Town Hall. In 1867 a new mechanism by Luigi Toninelli of Cecina was purchased, and in 1885 it was placed on the small tower of the new Town Hall.\n\nThe story of the clock is also the story of a community that, through time, has continued to preserve its places, its sounds and its memory.",
-    creditEn: "Research by Severino Bolognesi, Pontedera 19.01.2019. Thanks to Dr Angela Porciani and Dr Michele Quirici for their contribution to the research.",
+    credit: 'Ricerca di Severino Bolognesi, Pontedera 19.01.2019. Ringraziamenti: Dott.ssa Angela Porciani e Dott. Michele Quirici per il contributo alla ricerca.'
   },
   {
     id: 'source-adage',
@@ -692,12 +437,7 @@ I cofondatori e “nasi” del marchio di fragranze di nicchia Source Adage, nat
 Il disegno riflette il loro amore per i profumi botanici e dialoga con la facciata rosa del palazzo, sede della profumeria e dello studio. Non è soltanto un elemento decorativo: la porta funziona anche come piccolo indicatore visivo degli orari di apertura. Quando le porte dipinte sono aperte e mostrano il rosa, anche lo showroom è aperto; quando sono chiuse e mostrano il verde, anche la profumeria è chiusa.
 
 Una tappa perfetta per scoprire Riparbella anche attraverso il senso dell’olfatto, tra arte, botanica e profumi.`,
-    credit: 'Testo tratto e rielaborato dai materiali Source Adage.',
-    titleEn: "Source Adage — A door for the perfumery",
-    categoryEn: "Perfumes, botany and art",
-    introEn: "A sensory stop in the village: the painted door tells the connection between fragrance, botany and art.",
-    descriptionEn: "Inspired by the seventeenth-century botanical engravings of Florentine artist Anna Maria Vaiani, this decorated door adds a contemporary sign to Riparbella’s urban route.\n\nRobert Dobay and Christopher Draghi, founders and perfumers of the niche fragrance brand Source Adage, painted the warehouse door next to their boutique, reinterpreting Vaiani’s botanical works with a bold visual language.\n\nThe design reflects their love of botanical scents and dialogues with the pink façade of the building. It is not only decorative: the door also acts as a visual sign for opening hours. When the painted doors are open and show pink, the showroom is open; when they are closed and show green, the perfumery is closed.\n\nA perfect stop to discover Riparbella not only with your eyes, but also through the sense of smell.",
-    creditEn: "Text adapted from Source Adage materials.",
+    credit: 'Testo tratto e rielaborato dai materiali Source Adage.'
   },
   {
     id: 'cera-riparbella-antica',
@@ -715,12 +455,7 @@ Il centro raccoglie reperti provenienti dall’area archeologica di Belora, test
 Tra gli elementi più suggestivi spicca la corona aurea da Belora, un reperto di grande fascino che richiama il mondo simbolico e rituale dell’antichità. Le sue foglie dorate raccontano una storia fatta di memoria, bellezza e legame con la terra.
 
 Visitare il C’ERA significa completare il percorso dei murales con uno sguardo più profondo: l’arte contemporanea sulle facciate del borgo dialoga con la storia antica custodita all’interno del centro espositivo.`,
-    credit: 'Scheda dedicata al C’ERA — Centro Espositivo Riparbella Antica e ai reperti provenienti dall’area di Belora.',
-    titleEn: "C’ERA — Riparbella Ancient Exhibition Centre",
-    categoryEn: "Archaeology and Etruscan memory",
-    introEn: "A precious stop to discover the oldest roots of the village and its territory.",
-    descriptionEn: "C’ERA — Riparbella Ancient Exhibition Centre preserves archaeological finds from the Belora area and tells the Etruscan and Roman roots of the territory.\n\nEveryday objects, funerary goods, ceramics, glass vessels and small artefacts reveal the life, rituals and culture of the ancient communities that inhabited these lands.\n\nOne of the most evocative pieces is the golden crown from Belora, a fascinating object connected to the symbolic and ritual world of antiquity.\n\nVisiting C’ERA completes the mural route with a deeper perspective: contemporary art painted on the village walls enters into dialogue with the ancient history preserved inside the exhibition centre.",
-    creditEn: "Information card on C’ERA — Riparbella Ancient Exhibition Centre.",
+    credit: 'Scheda dedicata al C’ERA — Centro Espositivo Riparbella Antica e ai reperti provenienti dall’area di Belora.'
   },
   {
     id: 'chiesa-san-giovanni',
@@ -738,12 +473,7 @@ All’interno si trovano un altare dedicato a San Giovanni Evangelista con statu
 L’abside è arricchita da affreschi realizzati nel 1995, che rappresentano l’Ultima Cena e Cristo in gloria. La scena crea un forte punto focale all’interno della chiesa e accompagna lo sguardo verso l’altare, unendo il racconto evangelico alla dimensione spirituale del luogo.
 
 Durante la visita si consiglia di rispettare il silenzio, gli orari di apertura e la funzione religiosa del luogo.`,
-    credit: 'Scheda informativa sulla Chiesa di San Giovanni Evangelista.',
-    titleEn: "Church of Saint John the Evangelist",
-    categoryEn: "Sacred art",
-    introEn: "A sacred art stop in the heart of the village, with historic altars and contemporary frescoes in the apse.",
-    descriptionEn: "The Church of Saint John the Evangelist preserves several artistic and devotional elements.\n\nInside, visitors can see an altar dedicated to Saint John the Evangelist with a modern statue, an altar of Our Lady of Mount Carmel with a statue of the dead Christ, and two altars near the presbytery with eighteenth- and seventeenth-century paintings.\n\nThe apse is enriched by frescoes painted in 1995, depicting the Last Supper and Christ in glory. The scene creates a strong focal point inside the church and draws the eye towards the altar.\n\nDuring the visit, please respect silence, opening hours and the religious nature of the place.",
-    creditEn: "Information card on the Church of Saint John the Evangelist.",
+    credit: 'Scheda informativa sulla Chiesa di San Giovanni Evangelista.'
   },
   {
     id: 'presepe-animato',
@@ -761,12 +491,7 @@ Inaugurato il 24 dicembre, ospita oltre 140 statuine animate alte circa 20 cm, i
 L’allestimento è arricchito da effetti luminosi che riproducono le fasi della giornata, dall’alba al tramonto fino alla notte. Sono presenti anche effetti scenici come neve, ghiacciai, laghi, cascate e la stella cometa.
 
 È una tappa particolarmente adatta a famiglie e bambini, ma anche a chi desidera scoprire una tradizione popolare costruita con cura, manualità e spirito di comunità.`,
-    credit: 'Apertura indicativa: dal 24 dicembre al 28 febbraio, 9:00–20:00, con aperture speciali anche a marzo, luglio e agosto. Verificare sempre eventuali aggiornamenti locali.',
-    titleEn: "Animated Nativity Scene of Riparbella",
-    categoryEn: "Tradition and craftsmanship",
-    introEn: "A large handcrafted work created by local residents, with animated scenes, ancient trades and rural settings.",
-    descriptionEn: "The Animated Nativity Scene of Riparbella is located in the former cinema in Piazza della Madonna 1. It is a large handcrafted work of around 80 square metres, created thanks to the dedication of local residents.\n\nIt features more than 140 animated figurines, about 20 cm high, engaged in traditional crafts and rural scenes: household work, grape pressing, grinding grain, cutting wood and many other activities linked to farming memory.\n\nThe setting is enriched by light effects that recreate the phases of the day, from dawn to sunset and night, together with scenic effects such as snow, lakes, waterfalls and the comet star.\n\nIt is a particularly suitable stop for families and children, but also for anyone interested in local tradition and community craftsmanship.",
-    creditEn: "Indicative opening: from 24 December to 28 February, 9:00–20:00, with special openings also in March, July and August. Always check local updates.",
+    credit: 'Apertura indicativa: dal 24 dicembre al 28 febbraio, 9:00–20:00, con aperture speciali anche a marzo, luglio e agosto. Verificare sempre eventuali aggiornamenti locali.'
   }
 ];
 
@@ -789,11 +514,14 @@ function phoneLabel(phone) {
 }
 
 function App() {
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   const [language, setLanguage] = useState('it');
   const [selectedId, setSelectedId] = useState(() => window.location.hash?.replace('#', '') || murals[0].id);
-  const [activeSmartRouteId, setActiveSmartRouteId] = useState('complete');
   const [query, setQuery] = useState('');
-  const [isMuralSheetOpen, setIsMuralSheetOpen] = useState(false);
   const detailsRef = useRef(null);
   const tourRef = useRef(null);
   const mapRef = useRef(null);
@@ -811,24 +539,11 @@ function App() {
   const visitedCount = visitedIds.length;
   const progressPercent = Math.round((visitedCount / murals.length) * 100);
 
-  
-  const activeSmartRoute = smartRoutesManual.find((route) => route.id === activeSmartRouteId) || smartRoutesManual[0];
-  const visibleMurals = activeSmartRoute.stops
-    .map((id) => murals.find((mural) => mural.id === id))
-    .filter(Boolean);
-
-  const selectSmartRoute = (routeId) => {
-    const route = smartRoutesManual.find((item) => item.id === routeId) || smartRoutesManual[0];
-    setActiveSmartRouteId(route.id);
-    setSelectedId(route.stops[0] || murals[0].id);
-  };
-
-  const filteredMurals = (() => {
+  const filteredMurals = useMemo(() => {
     const q = query.trim().toLowerCase();
-    const source = visibleMurals || murals;
-    if (!q) return source;
-    return source.filter((m) => `${m.title} ${m.artist} ${m.address} ${m.tags.join(' ')}`.toLowerCase().includes(q));
-  })();
+    if (!q) return murals;
+    return murals.filter((m) => `${m.title} ${m.artist} ${m.address} ${m.tags.join(' ')}`.toLowerCase().includes(q));
+  }, [query]);
 
   useEffect(() => {
     const onHash = () => {
@@ -846,7 +561,7 @@ function App() {
   const selectMural = (id, scroll = true) => {
     setSelectedId(id);
     window.history.replaceState(null, '', `#${id}`);
-    if (scroll) setIsMuralSheetOpen(true);
+    if (scroll) setTimeout(() => detailsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
   };
 
   const toggleVisited = (id = selectedMural.id) => {
@@ -881,7 +596,7 @@ function App() {
   const goToStep = (index) => {
     const safe = (index + murals.length) % murals.length;
     selectMural(murals[safe].id, false);
-    setIsMuralSheetOpen(true);
+    setTimeout(() => tourRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
   };
 
   return (
@@ -901,20 +616,27 @@ function App() {
             <h1>{t.title}</h1>
             <p className="subtitle">{t.subtitle}</p>
             <div className="hero-quick-links">
-              <a href="#mappa" onClick={(e) => { e.preventDefault(); document.getElementById('mappa')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navMap}</a>
-              <a href="#parcheggi" onClick={(e) => { e.preventDefault(); document.getElementById('parcheggi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navParking}</a>
-              <a href="#oltre-murales" onClick={(e) => { e.preventDefault(); document.getElementById('oltre-murales')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navBeyond}</a>
-              <a href="#dove-fermarsi" onClick={(e) => { e.preventDefault(); document.getElementById('dove-fermarsi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navFood}</a>
+              <a href="#mappa" onClick={(e) => { e.preventDefault(); document.getElementById('mappa')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>Mappa</a>
+              <a href="#parcheggi" onClick={(e) => { e.preventDefault(); document.getElementById('parcheggi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>I parcheggi</a>
+              <a href="#oltre-murales" onClick={(e) => { e.preventDefault(); document.getElementById('oltre-murales')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>Oltre i murales</a>
+              <a href="#dove-fermarsi" onClick={(e) => { e.preventDefault(); document.getElementById('dove-fermarsi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>Dove fermarsi</a>
             </div>
           </div>
           <img src="/images/memoria-desiderio.jpg" alt="Murales Memoria e desiderio" className="hero-image" />
         </div>
       </header>
 
+      <nav className="mobile-dock" aria-label="Navigazione rapida">
+        <a href="#mappa" onClick={(e) => { e.preventDefault(); document.getElementById('mappa')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>🗺️<span>Mappa</span></a>
+        <a href="#tour" onClick={(e) => { e.preventDefault(); document.getElementById('tour')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>🚶<span>Tour</span></a>
+        <a href="#oltre-murales" onClick={(e) => { e.preventDefault(); document.getElementById('oltre-murales')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>✨<span>Oltre</span></a>
+        <a href="#dove-fermarsi" onClick={(e) => { e.preventDefault(); document.getElementById('dove-fermarsi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>☕<span>Soste</span></a>
+      </nav>
+
       <main>
         <section className="section route-section">
           <div className="section-heading">
-            <p className="kicker">{t.routeKicker}</p>
+            <p className="kicker">Riparbella si racconta sui muri</p>
             <h2>{t.route}</h2>
           </div>
           <div className="text-card">
@@ -925,45 +647,45 @@ function App() {
 
         <section className="section tips-section">
           <div className="section-heading">
-            <p className="kicker">{t.beforeStartKicker}</p>
+            <p className="kicker">Prima di partire</p>
             <h2>{t.visitTipsTitle}</h2>
           </div>
           <div className="tips-grid">
             <article className="tip-card">
               <strong>45/60 min</strong>
-              <span>{t.visitCard1Text}</span>
+              <span>Durata consigliata con soste davanti alle opere.</span>
             </article>
             <article className="tip-card">
               <strong>Percorso a piedi</strong>
-              <span>{t.visitCard2Text}</span>
+              <span>Il tour attraversa il centro storico e segue l’andamento della strada.</span>
             </article>
             <article className="tip-card">
               <strong>Scarpe comode</strong>
-              <span>{t.visitCard3Text}</span>
+              <span>Il borgo ha salite, discese e scorci da scoprire lentamente.</span>
             </article>
             <article className="tip-card">
               <strong>Rispetto</strong>
-              <span>{t.visitCard4Text}</span>
+              <span>Alcune opere si trovano su edifici abitati: osserva e fotografa con discrezione.</span>
             </article>
           </div>
         </section>
 
-        <section className="section progress-section">
+        <section id="tour" className="section progress-section">
           <div className="section-heading">
-            <p className="kicker">{t.progressKicker}</p>
-            <h2>{t.progressTitle}</h2>
+            <p className="kicker">Il tuo percorso</p>
+            <h2>Segna le tappe visitate</h2>
           </div>
           <div className="progress-card">
             <div className="progress-copy">
-              <strong>{visitedCount} / {murals.length} {t.progressSeen}</strong>
-              <span>{t.progressHint}</span>
+              <strong>{visitedCount} / {murals.length} murales visti</strong>
+              <span>Usa il pulsante “Vista” nelle schede per tenere traccia del tour direttamente dal tuo smartphone.</span>
             </div>
-            <div className="progress-meter" aria-label={`${t.progressAria} ${progressPercent}%`}>
+            <div className="progress-meter" aria-label={`Percorso completato al ${progressPercent}%`}>
               <span style={{ width: `${progressPercent}%` }}></span>
             </div>
             <div className="progress-actions">
               <button className="primary" onClick={() => toggleVisited(selectedMural.id)}>{isVisited(selectedMural.id) ? 'Segna come da rivedere' : 'Segna tappa vista'}</button>
-              <button className="secondary" onClick={resetVisited}>{t.clearRoute}</button>
+              <button className="secondary" onClick={resetVisited}>Azzera percorso</button>
             </div>
           </div>
         </section>
@@ -979,60 +701,14 @@ function App() {
           </div>
         </section>
 
-        
-        <section className="section smart-stops-section">
-          <div className="section-heading">
-            <p className="kicker">{t.smartStopsKicker}</p>
-            <h2>{t.smartStopsTitle}</h2>
-          </div>
-          <div className="text-card smart-stops-intro">
-            <p>{t.smartStopsText}</p>
-          </div>
-          <div className="smart-route-grid">
-            {smartRoutesManual.map((route) => {
-              const labels = {
-                complete: [t.smartRouteComplete, t.smartRouteCompleteText],
-                short: [t.smartRouteShort, t.smartRouteShortText],
-                panorama: [t.smartRoutePanorama, t.smartRoutePanoramaText],
-                etruscan: [t.smartRouteEtruscan, t.smartRouteEtruscanText],
-                family: [t.smartRouteFamily, t.smartRouteFamilyText]
-              };
-              const [title, text] = labels[route.id] || labels.complete;
-              const isActive = activeSmartRouteId === route.id;
-              return (
-                <button
-                  key={route.id}
-                  className={isActive ? 'smart-route-card active' : 'smart-route-card'}
-                  onClick={() => selectSmartRoute(route.id)}
-                >
-                  <span className="smart-route-emoji">{route.emoji}</span>
-                  <span>
-                    <strong>{title}</strong>
-                    <em>{text}</em>
-                    <small>{route.stops.length} {t.smartRouteStops}</small>
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-          <div className="smart-route-active-card">
-            <div>
-              <p className="kicker">{t.activeSmartRoute}</p>
-              <strong>{visibleMurals.map((mural) => mural.title).join(' → ')}</strong>
-            </div>
-            <button className="primary" onClick={() => setSelectedId(visibleMurals[0]?.id || murals[0].id)}>{t.startSmartRoute}</button>
-          </div>
-        </section>
-
         <section id="mappa" className="section map-section" ref={mapRef}>
           <div className="section-heading">
-            <p className="kicker">{t.stopOf} {selectedIndex + 1} {t.of} {murals.length}</p>
+            <p className="kicker">Tappa {selectedIndex + 1} di {murals.length}</p>
             <h2>{t.map}</h2>
           </div>
 
           <div className="map-intro-card">
             <p>{t.mapIntro}</p>
-            <button className="primary open-current-sheet" onClick={() => setIsMuralSheetOpen(true)}>{language === 'it' ? 'Apri scheda tappa' : 'Open stop card'}</button>
           </div>
 
           <div className="map-layout map-layout-v11">
@@ -1065,51 +741,48 @@ function App() {
             </div>
           </div>
 
-          {isMuralSheetOpen && (
-            <div className="mural-sheet-overlay" onClick={() => setIsMuralSheetOpen(false)} role="dialog" aria-modal="true">
-          <article className="selected-mural-card mural-glass-sheet" ref={detailsRef} onClick={(e) => e.stopPropagation()}>
-            <button className="sheet-close" onClick={() => setIsMuralSheetOpen(false)}>{language === 'it' ? 'Chiudi' : 'Close'}</button>
+          <article className="selected-mural-card" ref={detailsRef}>
             <div className="selected-mural-image-wrap">
               <img src={selectedMural.image} alt={selectedMural.title} />
             </div>
             <div className="selected-mural-content">
-              <p className="kicker">{t.selectedMuralCard}</p>
-              <p className="step">{t.stopOf} {selectedIndex + 1} {t.of} {murals.length}</p>
+              <p className="kicker">{t.selectedCardTitle}</p>
+              <p className="step">Tappa {selectedIndex + 1} di {murals.length}</p>
               <h3>{selectedMural.title}</h3>
               <p className="meta">{selectedMural.artist} · {selectedMural.year}</p>
               <p className="address">⌖ {selectedMural.address}</p>
               <div className="tags">
-                {(language === 'en' ? selectedMural.tagsEn || selectedMural.tags : selectedMural.tags).map((tag) => <span key={tag}>{tag}</span>)}
+                {selectedMural.tags.map((tag) => <span key={tag}>{tag}</span>)}
               </div>
 
               <div className="mini-block description-block">
                 <h4>Descrizione dell’opera</h4>
-                <p>{language === 'en' ? selectedMural.en : selectedMural.it}</p>
+                <p>{selectedMural.it}</p>
               </div>
 
               <div className="mini-block">
                 <h4>{t.observe}</h4>
-                <p>{language === 'en' ? (selectedMural.observeEn || selectedMural.observe || selectedMural.en) : (selectedMural.observe || selectedMural.it)}</p>
+                <p>{selectedMural.observe || selectedMural.it}</p>
               </div>
 
               <div className="mini-block">
                 <h4>{t.findDetails}</h4>
                 <ul className="detail-list">
-                  {(language === 'en' ? selectedMural.detailsToFindEn || selectedMural.detailsToFind : selectedMural.detailsToFind).map((detail) => <li key={detail}>{detail}</li>)}
+                  {selectedMural.detailsToFind.map((detail) => <li key={detail}>{detail}</li>)}
                 </ul>
               </div>
 
-              {(language === 'en' ? selectedMural.directionsNextEn || selectedMural.directionsNext : selectedMural.directionsNext) && (
+              {selectedMural.directionsNext && (
                 <div className="mini-block next-direction">
-                  <h4>{t.nextDirectionTitle}</h4>
-                  <p>{language === 'en' ? selectedMural.directionsNextEn || selectedMural.directionsNext : selectedMural.directionsNext}</p>
+                  <h4>Verso la prossima tappa</h4>
+                  <p>{selectedMural.directionsNext}</p>
                 </div>
               )}
 
               <div className="button-row">
                 <a href={navGoogle(selectedMural.lat, selectedMural.lng)} target="_blank" rel="noreferrer" className="primary link">{t.google}</a>
                 <a href={navApple(selectedMural.lat, selectedMural.lng)} target="_blank" rel="noreferrer" className="secondary link">{t.apple}</a>
-                <button className={isVisited(selectedMural.id) ? 'primary' : 'secondary'} onClick={() => toggleVisited(selectedMural.id)}>{isVisited(selectedMural.id) ? t.seenDone : t.markSeenShort}</button>
+                <button className={isVisited(selectedMural.id) ? 'primary' : 'secondary'} onClick={() => toggleVisited(selectedMural.id)}>{isVisited(selectedMural.id) ? 'Vista ✓' : 'Segna vista'}</button>
                 <button className="secondary" onClick={() => shareMural(selectedMural)}>{t.shareCard}</button>
               </div>
 
@@ -1119,17 +792,47 @@ function App() {
               </div>
             </div>
           </article>
-            </div>
-          )}
         </section>
 
+        <section className="section compact-list-section">
+
+          <div className="section-heading">
+            <p className="kicker">Consultazione rapida</p>
+            <h2>Tutte le opere</h2>
+          </div>
+
+          <input className="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder={t.searchPlaceholder} />
+
+          <div className="cards-grid">
+            {filteredMurals.map((mural, index) => (
+              <article key={mural.id} className={selectedId === mural.id ? 'mural-card selected' : 'mural-card'} onClick={() => selectMural(mural.id)}>
+                <img src={mural.image} alt={mural.title} />
+                <div>
+                  <p className="step">#{murals.findIndex((m) => m.id === mural.id) + 1} {isVisited(mural.id) && <span className="inline-visited">Vista</span>}</p>
+                  <h3>{mural.title}</h3>
+                  <p className="meta">{mural.artist} · {mural.year}</p>
+                  <div className="compact-details">
+                    {mural.detailsToFind.slice(0, 3).map((detail) => <span key={detail}>{detail}</span>)}
+                  </div>
+                  <p>{language === 'it' ? mural.it : mural.en}</p>
+                  <div className="card-actions">
+                    <button className="secondary small share-inline" onClick={(event) => { event.stopPropagation(); shareMural(mural); }}>{t.shareCard}</button>
+                    <button className="primary small share-inline" onClick={(event) => { event.stopPropagation(); selectMural(mural.id, true); }}>{t.backToTour}</button>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        
         <section id="oltre-murales" className="section extra-places-section">
           <div className="section-heading">
-            <p className="kicker">{t.extraKicker}</p>
-            <h2>{t.extraTitle}</h2>
+            <p className="kicker">Oltre i murales</p>
+            <h2>Scopri Riparbella oltre i murales</h2>
           </div>
           <div className="text-card">
-            <p>{t.extraIntro}</p>
+            <p>Il percorso dei murales può diventare l’occasione per scoprire altri luoghi del borgo: piccoli segni di memoria, arte, tradizione, esperienze sensoriali e vita quotidiana che raccontano Riparbella da prospettive diverse.</p>
           </div>
 
           <div className="extra-places-grid">
@@ -1137,20 +840,20 @@ function App() {
               <article className="extra-place-card" key={place.id}>
                 {place.image && (
                   <div className="extra-place-image">
-                    <img src={place.image} alt={getExtraText(place, 'title', language)} loading="lazy" />
+                    <img src={place.image} alt={place.title} loading="lazy" />
                   </div>
                 )}
                 <div className="extra-place-head">
-                  <p className="type">{getExtraText(place, 'category', language)}</p>
-                  <h3>{getExtraText(place, 'title', language)}</h3>
+                  <p className="type">{place.category}</p>
+                  <h3>{place.title}</h3>
                   <p className="address">⌖ {place.address}</p>
                 </div>
-                <p className="extra-place-intro">{getExtraText(place, 'intro', language)}</p>
+                <p className="extra-place-intro">{place.intro}</p>
                 <details>
-                  <summary>{t.readStory}</summary>
+                  <summary>Leggi la storia</summary>
                   <div className="extra-place-description">
-                    {getExtraText(place, 'description', language).split('\n\n').map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-                    <p className="credit">{getExtraText(place, 'credit', language)}</p>
+                    {place.description.split('\n\n').map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                    <p className="credit">{place.credit}</p>
                   </div>
                 </details>
                 <div className="button-row">
@@ -1199,11 +902,11 @@ function App() {
 
                         <section className="section practical food-section" id="dove-fermarsi">
           <div className="section-heading">
-            <p className="kicker">{t.foodKicker}</p>
+            <p className="kicker">Bar, ristoranti e pause</p>
             <h2>{t.food}</h2>
           </div>
           <div className="text-card food-intro">
-            <p>{t.foodIntro}</p>
+            <p>Una selezione di bar, osterie e ristoranti dove fermarsi prima, durante o dopo il percorso. Gli orari possono variare: consigliamo sempre di contattare direttamente l’attività prima della visita.</p>
           </div>
           <div className="practical-grid food-grid">
             {placesToEat.map((place) => (
@@ -1222,11 +925,11 @@ function App() {
                 <h3>{place.name}</h3>
                 <p className="address">⌖ {place.address}</p>
                 {place.note && <p className="place-note">{place.note}</p>}
-                {place.phone ? <p className="phone">{phoneLabel(place.phone)}</p> : <p className="phone muted">{t.phoneUnavailable}</p>}
+                {place.phone ? <p className="phone">{phoneLabel(place.phone)}</p> : <p className="phone muted">Telefono non disponibile</p>}
                 <div className="button-row food-buttons">
                   {place.phone && <a className="primary link" href={`tel:${place.phone}`}>{t.call}</a>}
                   <a className={place.phone ? "secondary link" : "primary link"} target="_blank" rel="noreferrer" href={placeMapUrl(place)}>{t.takeMe}</a>
-                  {place.website && <a className="secondary link" target="_blank" rel="noreferrer" href={place.website}>{t.infoButton}</a>}
+                  {place.website && <a className="secondary link" target="_blank" rel="noreferrer" href={place.website}>Info</a>}
                 </div>
               </article>
             ))}
@@ -1236,22 +939,30 @@ function App() {
       </main>
 
 
-      <nav className="bottom-mobile-nav" aria-label={t.quickNav || 'Navigazione rapida'}>
-        <a href="#mappa" onClick={(e) => { e.preventDefault(); document.getElementById('mappa')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navMap || t.map}</a>
-        <a href="#parcheggi" onClick={(e) => { e.preventDefault(); document.getElementById('parcheggi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navParking || t.parking}</a>
-        <a href="#oltre-murales" onClick={(e) => { e.preventDefault(); document.getElementById('oltre-murales')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navBeyond || 'Oltre'}</a>
-        <a href="#dove-fermarsi" onClick={(e) => { e.preventDefault(); document.getElementById('dove-fermarsi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navFood || t.food}</a>
-      </nav>
+      <section className="mobile-action-panel" aria-label="Azioni rapide per smartphone">
+        <button type="button" className="mobile-action-button primary" onClick={() => scrollToSection('tour')}>
+          Inizia il tour
+        </button>
+        <button type="button" className="mobile-action-button" onClick={() => scrollToSection('map')}>
+          Apri la mappa
+        </button>
+        <button type="button" className="mobile-action-button" onClick={() => scrollToSection('extra')}>
+          Oltre i murales
+        </button>
+      </section>
 
       <footer>
-        <p><strong>{t.footerMade}</strong></p>
-        <p>{t.footerPurpose}</p>
-        <p className="footer-project">{t.footerProject}</p>
+        <p><strong>Web app ideata e realizzata da Francesco Bolognesi</strong></p>
+        <p>per raccontare e valorizzare i murales di Riparbella.</p>
+        <p className="footer-project">Progetto digitale dedicato al percorso di arte pubblica del borgo, pensato come guida semplice, consultabile da smartphone durante la visita.</p>
         <div className="support-box support-box-small">
-          <p>{t.supportText}</p>
+          <p>Guida gratuita · Se vuoi, puoi sostenere il progetto con un caffè.</p>
+          <a className="kofi-footer-button" href="https://ko-fi.com/D1D31Z9GAW" target="_blank" rel="noreferrer" aria-label="Sostieni il progetto su Ko-fi">
+            <img height="36" style={{ border: 0, height: 36 }} src="https://storage.ko-fi.com/cdn/kofi6.png?v=6" alt="Buy Me a Coffee at ko-fi.com" />
+          </a>
         </div>
-        <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 1.44.15.1</strong></p>
+        <p>Testi, immagini e opere appartengono ai rispettivi autori e aventi diritto.</p>
+        <p><strong>Versione prototipo — 1.48</strong></p>
       </footer>
     </div>
   );

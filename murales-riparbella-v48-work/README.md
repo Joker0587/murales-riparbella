@@ -229,131 +229,16 @@ Integrato `@vercel/analytics` per monitorare visite e pagine viste dalla dashboa
 - Mantenute le foto dei locali nella sezione “Dove fermarsi”.
 
 
-## Ripartenza stabile V44.1
+## Novità V47 — versione 1.47
+- Migliorata l’esperienza smartphone con navigazione rapida fissa in basso.
+- Schede più leggibili su mobile con effetto liquid glass, pulsanti più grandi e layout ottimizzato.
+- Corretto il pacchetto per evitare installazioni pesanti o dipendenze non necessarie.
 
-Base scelta per ripartire in modo sicuro.
+## V48 - Smartphone experience plus
 
-- Build fix V44.1 mantenuto.
-- Rimossi `package-lock.json`, `node_modules`, `dist`, `.DS_Store`.
-- Aggiunti `.npmrc` e `vercel.json` per usare il registry pubblico npm.
-- Package React/Vite stabilizzato.
-- Versione aggiornata a 1.44.2.
-
-## V44.3 — Fix Node 24 / npm
-
-- Forzato Node 20 con `engines`, `.nvmrc` e `.node-version`.
-- Forzato npm 10.8.2 con `packageManager` e comando Vercel.
-- Rimosso `package-lock.json`.
-- Configurazione pensata per evitare l'errore npm `Exit handler never called`.
-
-## V44.4 — pnpm install fix
-
-Questa versione evita il bug npm `Exit handler never called` usando pnpm su Vercel.
-
-- Package manager: pnpm 9.15.4
-- Node: 20.x
-- Nessun package-lock.json
-- Install command Vercel: pnpm install
-- Build command Vercel: pnpm run build
-
-## V44.5 — Yarn install fix
-
-Questa versione evita sia il bug npm `Exit handler never called` sia l'errore pnpm `ERR_INVALID_THIS`.
-
-- Package manager: Yarn classic 1.22.22
-- Node: 20.x
-- Nessun package-lock / pnpm-lock / yarn.lock incluso
-- Install command Vercel: pulizia node_modules + yarn install
-- Build command Vercel: yarn build
-
-## V44.6 — traduzioni interfaccia
-
-- Base funzionante V44.5 mantenuta.
-- Aggiunte traduzioni alle parti fisse ancora in italiano: navigazione, progresso, Oltre i murales, Dove fermarsi e footer.
-- Nessuna modifica alla logica dell'app o al package manager.
-
-## V44.7 — traduzioni mancanti leggere
-
-- Base funzionante V44.6 mantenuta.
-- Tradotte ulteriori micro-parti fisse dell'interfaccia.
-- Nessuna modifica a package manager, logica, dati o grafica.
-
-## V44.8 — fix traduzioni da screenshot
-
-- Tradotte le card “Visit tips” rimaste in italiano.
-- Tradotte etichette scheda murale: tappa, descrizione opera, cosa osservare.
-- Sistemato testo Ko-fi dove possibile.
-- Base Yarn funzionante invariata.
-
-## V44.9 — traduzioni complete schede murales
-
-- Base funzionante V44.8 mantenuta.
-- Le schede murale ora mostrano descrizione, cosa osservare, dettagli da cercare e prossima tappa in inglese quando è selezionata la lingua ENG.
-- Tradotti altri testi fissi: consultazione rapida, tutte le opere, azzera percorso, prima di partire.
-- Nessuna modifica a Yarn/Vercel.
-
-## V44.9.1 — fix build
-
-- Corretto errore di sintassi: mancava una virgola dopo il campo `en` nelle schede murales.
-- Traduzioni V44.9 mantenute.
-- Configurazione Yarn/Vercel invariata.
-
-## V44.10 — traduzione Oltre i murales
-
-- Tradotte in inglese le schede della sezione “Oltre i murales”.
-- Titoli, categorie, introduzioni, testi lunghi e crediti cambiano in base alla lingua selezionata.
-- Base Yarn/Vercel invariata.
-
-## V44.10.1 — fix build Oltre i murales
-
-- Corretto errore di sintassi: mancava una virgola prima dei campi `titleEn` nella sezione “Oltre i murales”.
-- Traduzioni V44.10 mantenute.
-- Configurazione Yarn/Vercel invariata.
-
-## V44.11 — Mobile light
-
-- Migliorata usabilità da smartphone con sole modifiche CSS.
-- Menu mobile più comodo.
-- Pulsanti più grandi.
-- Spaziature migliori nelle schede.
-- Immagine murale più compatta.
-- Ko-fi meno invasivo su mobile.
-- Nessun percorso smart aggiunto.
-- Configurazione Yarn/Vercel invariata.
-
-## V44.12 — Mobile evidente
-
-- Aggiunta vera barra fissa in basso su smartphone.
-- Modifiche mobile più visibili: immagini più compatte, pulsanti grandi, card più leggibili.
-- CSS più mirato con selettori compatibili con la struttura reale dell’app.
-- Ko-fi reso meno invasivo su smartphone.
-- Nessuna modifica al package manager, alle traduzioni o alla logica principale.
-
-## V44.13 — Schede fluttuanti murales
-
-- Le schede dei murales si aprono in un pannello fluttuante effetto Liquid Glass.
-- Le card elenco diventano più leggere e aprono la scheda al tocco.
-- Aggiunto pulsante “Apri scheda tappa” nella sezione mappa.
-- Nessuna modifica a traduzioni, Vercel, Yarn o percorso smart.
-
-## V44.14 — Oltre i murales ad accordion
-
-- La sezione “Oltre i murales” è stata alleggerita con schede accordion.
-- I testi lunghi si aprono solo al tocco.
-- Rimossa la sezione “Consultazione rapida / Tutte le opere”, considerata ridondante dopo le schede fluttuanti.
-- Nessuna modifica a Yarn/Vercel.
-
-## V44.15 — Tappe smart manuali
-
-- Aggiunti percorsi smart manuali senza GPS.
-- Tour completo, breve 30 min, arte e panorama, Etruschi e memoria, con bambini.
-- Nessuna geolocalizzazione.
-- Nessuna API esterna.
-- Configurazione Yarn/Vercel invariata.
-
-## V44.15.1 — fix tappe smart manuali
-
-- Corretto errore runtime che causava schermata bianca.
-- Inserito correttamente lo stato `activeSmartRouteId`.
-- Le tappe smart restano manuali, senza GPS e senza geolocalizzazione.
-- Configurazione Yarn/Vercel invariata.
+- Aggiunto `type: module` in package.json per eliminare il warning ESM/CommonJS.
+- Migliorata l'usabilità mobile con pulsanti più grandi e aree touch più comode.
+- Aggiunto pannello rapido mobile “Inizia il tour / Apri la mappa / Oltre i murales”.
+- Rafforzato effetto liquid glass su card e navigazione mobile.
+- Migliorati scroll, safe-area iPhone, leggibilità e micro-interazioni da smartphone.
+- Aggiornato footer a versione 1.48.
