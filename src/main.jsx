@@ -348,6 +348,24 @@ const placesToEat = [
     note: 'Osteria intima e molto apprezzata per la cucina casalinga toscana, i piatti della tradizione e l’atmosfera familiare.',
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Osteria%20in%20Cantina%20Via%20XX%20Settembre%2010%20Riparbella',
     website: 'https://www.tripadvisor.it/Restaurant_Review-g652041-d2272107-Reviews-Osteria_In_Cantina-Riparbella_Province_of_Pisa_Tuscany.html'
+  },
+  {
+    name: 'Osteria La Pieve Vecchia',
+    type: 'Osteria / Cucina toscana',
+    typeEn: 'Osteria / Tuscan cuisine',
+    bestFor: 'Tradizione toscana e cucina stagionale',
+    bestForEn: 'Tuscan tradition and seasonal cuisine',
+    image: '/images/osteria-la-pieve-vecchia-esterno.jpg',
+    gallery: [
+      '/images/osteria-la-pieve-vecchia-pappardelle.jpg',
+      '/images/osteria-la-pieve-vecchia-antipasto.jpg'
+    ],
+    address: 'Località La Pieve Vecchia, 12, 56046 Riparbella PI',
+    phone: '+390586699103',
+    note: 'In un ambiente piacevole ed elegante, propone cucina toscana ispirata alle stagioni e ai prodotti del territorio, con qualità, innovazione e un tocco di tradizione.',
+    noteEn: 'In a pleasant and elegant setting, it offers Tuscan cuisine inspired by the seasons and local produce, combining quality, innovation and a touch of tradition.',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Osteria%20La%20Pieve%20Vecchia%20Localit%C3%A0%20La%20Pieve%20Vecchia%2012%20Riparbella',
+    website: 'https://www.lapievevecchiarelais.com/it/ristorante/'
   }
 ];
 
@@ -1251,7 +1269,7 @@ function App() {
           <p>{t.supportText}</p>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 1.44.15.1</strong></p>
+        <p><strong>{t.versionLabel} — 1.44.16</strong></p>
       </footer>
     </div>
   );
