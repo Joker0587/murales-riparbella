@@ -8,12 +8,52 @@ import { getExtraText } from './utils/localization';
 import { navGoogle, navApple, embedMapUrl } from './utils/navigation';
 import FoodCard from './components/FoodCard';
 import BottomMobileNav from './components/BottomMobileNav';
+import { SpeedInsights } from '@vercel/speed-insights/react';
+import { Analytics } from '@vercel/analytics/react';
+
+const familyHuntItems = [
+  { id: 'cinghiale', it: 'un cinghiale', en: 'a wild boar' },
+  { id: 'cavallo', it: 'un cavallo', en: 'a horse' },
+  { id: 'colomba', it: 'una colomba', en: 'a dove' },
+  { id: 'anfora', it: 'un’anfora', en: 'an amphora' },
+  { id: 'mare', it: 'il mare', en: 'the sea' },
+  { id: 'pettirosso', it: 'un pettirosso', en: 'a robin' },
+  { id: 'gazza', it: 'una gazza ladra', en: 'a magpie' },
+  { id: 'melograno', it: 'un melograno', en: 'a pomegranate' },
+  { id: 'giallo-azzurro', it: 'il colore giallo e azzurro', en: 'yellow and blue colours' },
+  { id: 'pentola', it: 'una pentola', en: 'a cooking pot' },
+  { id: 'vaso-etrusco', it: 'un vaso etrusco', en: 'an Etruscan vase' },
+  { id: 'oliva', it: 'un’oliva', en: 'an olive' }
+];
+
+const distanceKm = (from, to) => {
+  const toRad = (value) => (value * Math.PI) / 180;
+  const radius = 6371;
+  const dLat = toRad(to.lat - from.lat);
+  const dLng = toRad(to.lng - from.lng);
+  const lat1 = toRad(from.lat);
+  const lat2 = toRad(to.lat);
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
+  return radius * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+};
 
 export default function App() {
   const [language, setLanguage] = useState('it');
   const [selectedId, setSelectedId] = useState(() => window.location.hash?.replace('#', '') || murals[0].id);
   const [query, setQuery] = useState('');
   const [isMuralSheetOpen, setIsMuralSheetOpen] = useState(false);
+  const [isImmersiveMapOpen, setIsImmersiveMapOpen] = useState(false);
+  const [familyFoundIds, setFamilyFoundIds] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('riparbellaFamilyHunt') || '[]');
+    } catch (error) {
+      return [];
+    }
+  });
+  const [nearestStatus, setNearestStatus] = useState('idle');
+  const [nearestResult, setNearestResult] = useState(null);
   const detailsRef = useRef(null);
   const tourRef = useRef(null);
   const mapRef = useRef(null);
@@ -55,6 +95,23 @@ export default function App() {
     localStorage.setItem('riparbellaVisitedMurals', JSON.stringify(visitedIds));
   }, [visitedIds]);
 
+  useEffect(() => {
+    if (!isImmersiveMapOpen) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') setIsImmersiveMapOpen(false);
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [isImmersiveMapOpen]);
+
   const selectMural = (id, scroll = true) => {
     setSelectedId(id);
     window.history.replaceState(null, '', `#${id}`);
@@ -71,6 +128,64 @@ export default function App() {
 
   const isVisited = (id) => visitedIds.includes(id);
 
+
+  const toggleFamilyFound = (id) => {
+    setFamilyFoundIds((current) =>
+      current.includes(id)
+        ? current.filter((item) => item !== id)
+        : [...current, id]
+    );
+  };
+
+  const resetFamilyHunt = () => {
+    setFamilyFoundIds([]);
+  };
+
+  const findNearestMural = () => {
+    if (!navigator.geolocation) {
+      setNearestStatus('error');
+      return;
+    }
+
+    setNearestStatus('loading');
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const userPosition = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+
+        const candidates = murals.filter(
+          (mural) => Number.isFinite(mural.lat) && Number.isFinite(mural.lng)
+        );
+
+        if (!candidates.length) {
+          setNearestStatus('error');
+          return;
+        }
+
+        const nearest = candidates.reduce((closest, mural) => {
+          const muralDistance = distanceKm(userPosition, mural);
+          const closestDistance = distanceKm(userPosition, closest);
+          return muralDistance < closestDistance ? mural : closest;
+        }, candidates[0]);
+
+        const distance = distanceKm(userPosition, nearest);
+        setNearestResult({ mural: nearest, distance });
+        setNearestStatus('ready');
+        selectMural(nearest.id, true);
+      },
+      () => {
+        setNearestStatus('error');
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 60000
+      }
+    );
+  };
 
   const shareMural = async (mural = selectedMural) => {
     const url = `${window.location.origin}${window.location.pathname}#${mural.id}`;
@@ -118,8 +233,24 @@ export default function App() {
               <a href="#oltre-murales" onClick={(e) => { e.preventDefault(); document.getElementById('oltre-murales')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navBeyond}</a>
               <a href="#dove-fermarsi" onClick={(e) => { e.preventDefault(); document.getElementById('dove-fermarsi')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>{t.navFood}</a>
             </div>
+            <div className="nearest-mural-action">
+              <button type="button" onClick={findNearestMural} disabled={nearestStatus === 'loading'}>
+                <span aria-hidden="true">⌖</span>
+                <span>{nearestStatus === 'loading' ? t.nearestLoading : t.nearestButton}</span>
+              </button>
+              {nearestStatus === 'ready' && nearestResult && (
+                <p>
+                  {t.nearestFound}: <strong>{nearestResult.mural.title}</strong>
+                  {' · '}
+                  {nearestResult.distance < 1
+                    ? `${Math.max(1, Math.round(nearestResult.distance * 1000))} m`
+                    : `${nearestResult.distance.toFixed(1)} km`}
+                </p>
+              )}
+              {nearestStatus === 'error' && <p className="nearest-error">{t.nearestError}</p>}
+            </div>
           </div>
-          <img src="/images/memoria-desiderio.jpg" alt="Murales Memoria e desiderio" className="hero-image" />
+          <img src="/images/memoria-desiderio.jpg" alt="Murales Memoria e desiderio" className="hero-image hero-image-v22" />
         </div>
       </header>
 
@@ -200,7 +331,15 @@ export default function App() {
 
           <div className="map-intro-card">
             <p>{t.mapIntro}</p>
-            <button className="primary open-current-sheet" onClick={() => setIsMuralSheetOpen(true)}>{language === 'it' ? 'Apri scheda tappa' : 'Open stop card'}</button>
+            <div className="map-intro-actions">
+              <button className="primary immersive-map-launch" onClick={() => setIsImmersiveMapOpen(true)}>
+                <span aria-hidden="true">⌖</span>
+                {t.openImmersiveMap}
+              </button>
+              <button className="secondary open-current-sheet" onClick={() => setIsMuralSheetOpen(true)}>
+                {language === 'it' ? 'Apri scheda tappa' : 'Open stop card'}
+              </button>
+            </div>
           </div>
 
           <div className="map-layout map-layout-v11">
@@ -232,6 +371,60 @@ export default function App() {
               ))}
             </div>
           </div>
+
+          {isImmersiveMapOpen && (
+            <div className="immersive-map-overlay" role="dialog" aria-modal="true" aria-label={t.immersiveMapTitle}>
+              <div className="immersive-map-shell">
+                <div className="immersive-map-topbar">
+                  <div>
+                    <p className="kicker">{t.immersiveMapKicker}</p>
+                    <h3>{t.immersiveMapTitle}</h3>
+                  </div>
+                  <button className="immersive-map-close" onClick={() => setIsImmersiveMapOpen(false)} aria-label={t.close}>
+                    ×
+                  </button>
+                </div>
+
+                <div className="immersive-map-canvas">
+                  <iframe
+                    title={t.immersiveMapTitle}
+                    src={embedMapUrl(selectedMural.lat, selectedMural.lng)}
+                    loading="eager"
+                  />
+
+                  <div className="immersive-map-selected-card">
+                    <img src={selectedMural.image} alt={selectedMural.title} />
+                    <div className="immersive-map-selected-copy">
+                      <small>{t.stopOf} {selectedIndex + 1} {t.of} {murals.length}</small>
+                      <strong>{selectedMural.title}</strong>
+                      <span>{selectedMural.address}</span>
+                    </div>
+                    <div className="immersive-map-selected-actions">
+                      <button onClick={() => {
+                        setIsImmersiveMapOpen(false);
+                        setIsMuralSheetOpen(true);
+                      }}>{t.openCard}</button>
+                      <a href={navGoogle(selectedMural.lat, selectedMural.lng)} target="_blank" rel="noreferrer">{t.takeMe}</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="immersive-map-stops" aria-label={t.muralList}>
+                  {murals.map((mural, index) => (
+                    <button
+                      key={mural.id}
+                      className={selectedId === mural.id ? 'immersive-stop active' : 'immersive-stop'}
+                      onClick={() => selectMural(mural.id, false)}
+                    >
+                      <span>{index + 1}</span>
+                      <img src={mural.image} alt="" loading="lazy" />
+                      <strong>{mural.title}</strong>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
 
           {isMuralSheetOpen && (
             <div className="mural-sheet-overlay" onClick={() => setIsMuralSheetOpen(false)} role="dialog" aria-modal="true">
@@ -333,15 +526,57 @@ export default function App() {
 
         <section className="section family-section">
           <div className="section-heading">
-            <p className="kicker">Gioca con i murales</p>
+            <p className="kicker">{t.familyKicker}</p>
             <h2>{t.familyTitle}</h2>
           </div>
-          <div className="text-card family-card">
-            <p>{t.familySubtitle}</p>
-            <p>{t.familyIntro}</p>
-            <div className="hunt-grid">
-              {['un cinghiale', 'un cavallo', 'una colomba', 'un’anfora', 'il mare', 'un pettirosso', 'una gazza ladra', 'un melograno', 'il colore giallo e azzurro', 'una pentola', 'un vaso etrusco', 'un’oliva'].map((item) => <span key={item}>☐ {item}</span>)}
+
+          <div className="text-card family-card interactive-family-card">
+            <div className="family-hunt-head">
+              <div>
+                <p>{t.familySubtitle}</p>
+                <p>{t.familyIntro}</p>
+              </div>
+              <div className="family-hunt-progress" aria-live="polite">
+                <strong>{familyFoundIds.length}/{familyHuntItems.length}</strong>
+                <span>{t.familyFound}</span>
+              </div>
             </div>
+
+            <div className="family-progress-track" aria-hidden="true">
+              <span style={{ width: `${Math.round((familyFoundIds.length / familyHuntItems.length) * 100)}%` }} />
+            </div>
+
+            <div className="hunt-grid interactive-hunt-grid">
+              {familyHuntItems.map((item) => {
+                const found = familyFoundIds.includes(item.id);
+                return (
+                  <button
+                    type="button"
+                    key={item.id}
+                    className={found ? 'hunt-item found' : 'hunt-item'}
+                    onClick={() => toggleFamilyFound(item.id)}
+                    aria-pressed={found}
+                  >
+                    <span className="hunt-check" aria-hidden="true">{found ? '✓' : ''}</span>
+                    <span>{language === 'en' ? item.en : item.it}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {familyFoundIds.length === familyHuntItems.length && (
+              <div className="family-complete" role="status">
+                <span aria-hidden="true">★</span>
+                <strong>{t.familyCompleteTitle}</strong>
+                <p>{t.familyCompleteText}</p>
+              </div>
+            )}
+
+            {familyFoundIds.length > 0 && (
+              <button type="button" className="family-reset" onClick={resetFamilyHunt}>
+                {t.familyReset}
+              </button>
+            )}
           </div>
         </section>
 
@@ -391,24 +626,26 @@ export default function App() {
           <p>{t.supportText}</p>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 2.1.1</strong></p>
+        <p><strong>{t.versionLabel} — 2.4.0</strong></p>
       </footer>
+      <Analytics />
+      <SpeedInsights />
 
-      <nav className="mobile-premium-nav" aria-label={language === 'en' ? 'Quick navigation' : 'Navigazione rapida'}>
+      <nav className="mobile-premium-nav v22-nav" aria-label={language === 'en' ? 'Quick navigation' : 'Navigazione rapida'}>
         <a href="#top" className="mobile-premium-nav-item">
-          <span aria-hidden="true">⌂</span>
-          <small>{language === 'en' ? 'Home' : 'Home'}</small>
+          <span className="v22-icon" aria-hidden="true">⌂</span>
+          <small>Home</small>
         </a>
         <a href="#murales" className="mobile-premium-nav-item">
-          <span aria-hidden="true">◫</span>
+          <span className="v22-icon" aria-hidden="true">▦</span>
           <small>{language === 'en' ? 'Murals' : 'Murales'}</small>
         </a>
         <a href="#mappa" className="mobile-premium-nav-item mobile-premium-nav-main">
-          <span aria-hidden="true">⌖</span>
+          <span className="v22-icon" aria-hidden="true">⌖</span>
           <small>{language === 'en' ? 'Map' : 'Mappa'}</small>
         </a>
         <a href="#oltre" className="mobile-premium-nav-item">
-          <span aria-hidden="true">✦</span>
+          <span className="v22-icon" aria-hidden="true">✦</span>
           <small>{language === 'en' ? 'Explore' : 'Scopri'}</small>
         </a>
       </nav>

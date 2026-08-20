@@ -408,3 +408,47 @@ La struttura dati introdotta con V2.0 resta invariata.
 - La ricerca murales usa nuovamente direttamente l'elenco completo dei murales.
 - Mantenuta la grafica Mobile Premium e la bottom navigation Liquid Glass.
 - Node 24 / Rollup 4.59.0 invariati.
+
+## V2.1.2 — Vercel Speed Insights
+
+- Integrato `@vercel/speed-insights`.
+- Aggiunto il componente React `<SpeedInsights />`.
+- Nessuna modifica alla grafica o ai contenuti.
+- Node 24 e configurazione Vercel invariati.
+
+## V2.2 — Visual Refresh
+
+- Hero ridisegnata con gerarchia più editoriale.
+- Azioni iniziali trasformate in una griglia 2×2 più compatta.
+- Bottom navigation Liquid Glass più sottile e discreta.
+- Mappa evidenziata come azione primaria nella bottom bar.
+- Card murales e locali più eleganti, con bordi e ombre più leggere.
+- Tipografia mobile più bilanciata.
+- Nessuna nuova funzione.
+- Speed Insights mantenuto.
+
+## V2.3 — Caccia ai dettagli + Murale più vicino
+
+- La sezione bambini/famiglie è ora una vera checklist interattiva.
+- Le spunte vengono salvate localmente sul dispositivo.
+- Aggiunta barra di avanzamento e premio finale “Piccolo esploratore di Riparbella”.
+- Aggiunto pulsante “Murale più vicino”.
+- La geolocalizzazione si attiva esclusivamente al tocco del pulsante.
+- Il pulsante individua il murale più vicino, mostra la distanza e apre la scheda.
+- Nessun riordino del percorso e nessuna geolocalizzazione in background.
+
+## V2.3.1 — Analytics completo
+
+- Integrato `@vercel/analytics` per visitatori, page views e bounce rate.
+- Mantenuto `@vercel/speed-insights` per le metriche Core Web Vitals.
+- Nessuna modifica a grafica, contenuti o logica dell'app.
+
+## V2.4 — Mappa immersiva
+
+- Aggiunto pulsante “Apri mappa immersiva”.
+- La mappa si apre quasi a tutto schermo.
+- Mini-card flottante del murale selezionato con foto, indirizzo e azioni.
+- Lista orizzontale delle tappe in basso.
+- Toccando una tappa, la mappa passa al murale selezionato.
+- Chiusura rapida con pulsante × o tasto Esc.
+- Nessuna libreria cartografica aggiunta.

@@ -1,6 +1,6 @@
 {
   "name": "murales-riparbella",
-  "version": "2.1.1",
+  "version": "2.4.0",
   "private": true,
   "type": "module",
   "packageManager": "yarn@1.22.22",
@@ -15,7 +15,9 @@
   "dependencies": {
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "lucide-react": "0.468.0"
+    "lucide-react": "0.468.0",
+    "@vercel/speed-insights": "1.2.0",
+    "@vercel/analytics": "1.5.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "4.3.4",
