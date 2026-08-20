@@ -400,3 +400,11 @@ Primo aggiornamento grafico della serie 2.x:
 - nessuna Tappa Smart e nessuna geolocalizzazione.
 
 La struttura dati introdotta con V2.0 resta invariata.
+
+## V2.1.1 — Runtime fix
+
+- Corretto il problema della schermata bianca della V2.1.
+- Rimossi definitivamente tutti i riferimenti residui alle Tappe Smart da `App.jsx`.
+- La ricerca murales usa nuovamente direttamente l'elenco completo dei murales.
+- Mantenuta la grafica Mobile Premium e la bottom navigation Liquid Glass.
+- Node 24 / Rollup 4.59.0 invariati.

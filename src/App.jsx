@@ -12,7 +12,6 @@ import BottomMobileNav from './components/BottomMobileNav';
 export default function App() {
   const [language, setLanguage] = useState('it');
   const [selectedId, setSelectedId] = useState(() => window.location.hash?.replace('#', '') || murals[0].id);
-  const [activeSmartRouteId, setActiveSmartRouteId] = useState('complete');
   const [query, setQuery] = useState('');
   const [isMuralSheetOpen, setIsMuralSheetOpen] = useState(false);
   const detailsRef = useRef(null);
@@ -32,23 +31,15 @@ export default function App() {
   const visitedCount = visitedIds.length;
   const progressPercent = Math.round((visitedCount / murals.length) * 100);
 
-  
-  const activeSmartRoute = smartRoutesManual.find((route) => route.id === activeSmartRouteId) || smartRoutesManual[0];
-  const visibleMurals = activeSmartRoute.stops
-    .map((id) => murals.find((mural) => mural.id === id))
-    .filter(Boolean);
-
-  const selectSmartRoute = (routeId) => {
-    const route = smartRoutesManual.find((item) => item.id === routeId) || smartRoutesManual[0];
-    setActiveSmartRouteId(route.id);
-    setSelectedId(route.stops[0] || murals[0].id);
-  };
 
   const filteredMurals = (() => {
     const q = query.trim().toLowerCase();
-    const source = visibleMurals || murals;
-    if (!q) return source;
-    return source.filter((m) => `${m.title} ${m.artist} ${m.address} ${m.tags.join(' ')}`.toLowerCase().includes(q));
+    if (!q) return murals;
+    return murals.filter((m) =>
+      `${m.title} ${m.artist} ${m.address} ${m.tags.join(' ')}`
+        .toLowerCase()
+        .includes(q)
+    );
   })();
 
   useEffect(() => {
@@ -200,50 +191,6 @@ export default function App() {
           </div>
         </section>
 
-        
-        <section className="section smart-stops-section">
-          <div className="section-heading">
-            <p className="kicker">{t.smartStopsKicker}</p>
-            <h2>{t.smartStopsTitle}</h2>
-          </div>
-          <div className="text-card smart-stops-intro">
-            <p>{t.smartStopsText}</p>
-          </div>
-          <div className="smart-route-grid">
-            {smartRoutesManual.map((route) => {
-              const labels = {
-                complete: [t.smartRouteComplete, t.smartRouteCompleteText],
-                short: [t.smartRouteShort, t.smartRouteShortText],
-                panorama: [t.smartRoutePanorama, t.smartRoutePanoramaText],
-                etruscan: [t.smartRouteEtruscan, t.smartRouteEtruscanText],
-                family: [t.smartRouteFamily, t.smartRouteFamilyText]
-              };
-              const [title, text] = labels[route.id] || labels.complete;
-              const isActive = activeSmartRouteId === route.id;
-              return (
-                <button
-                  key={route.id}
-                  className={isActive ? 'smart-route-card active' : 'smart-route-card'}
-                  onClick={() => selectSmartRoute(route.id)}
-                >
-                  <span className="smart-route-emoji">{route.emoji}</span>
-                  <span>
-                    <strong>{title}</strong>
-                    <em>{text}</em>
-                    <small>{route.stops.length} {t.smartRouteStops}</small>
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-          <div className="smart-route-active-card">
-            <div>
-              <p className="kicker">{t.activeSmartRoute}</p>
-              <strong>{visibleMurals.map((mural) => mural.title).join(' → ')}</strong>
-            </div>
-            <button className="primary" onClick={() => setSelectedId(visibleMurals[0]?.id || murals[0].id)}>{t.startSmartRoute}</button>
-          </div>
-        </section>
 
         <section id="mappa" className="section map-section" ref={mapRef}>
           <div className="section-heading">
@@ -444,7 +391,7 @@ export default function App() {
           <p>{t.supportText}</p>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 2.1.0</strong></p>
+        <p><strong>{t.versionLabel} — 2.1.1</strong></p>
       </footer>
 
       <nav className="mobile-premium-nav" aria-label={language === 'en' ? 'Quick navigation' : 'Navigazione rapida'}>
