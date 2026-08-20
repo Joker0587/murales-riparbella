@@ -1,5 +1,14 @@
 export const ui = {
   it: {
+    nearestButton: "Murale più vicino",
+    nearestLoading: "Cerco il murale più vicino…",
+    nearestFound: "Più vicino a te",
+    nearestError: "Non riesco ad accedere alla posizione. Puoi scegliere il murale dalla mappa.",
+    familyKicker: "Gioca con i murales",
+    familyFound: "dettagli trovati",
+    familyCompleteTitle: "Piccolo esploratore di Riparbella!",
+    familyCompleteText: "Hai trovato tutti i dettagli della caccia al tesoro.",
+    familyReset: "Ricomincia la caccia",
     heroKicker: 'Guida digitale interattiva',
     title: 'Murales di Riparbella',
     subtitle: 'Un percorso a piedi tra arte urbana, memoria, paesaggio e comunità.',
@@ -111,6 +120,15 @@ export const ui = {
     prototype: 'Versione prototipo — 2026'
   },
   en: {
+    nearestButton: "Closest mural",
+    nearestLoading: "Finding the closest mural…",
+    nearestFound: "Closest to you",
+    nearestError: "I can’t access your location. You can choose a mural from the map.",
+    familyKicker: "Play with the murals",
+    familyFound: "details found",
+    familyCompleteTitle: "Little Riparbella explorer!",
+    familyCompleteText: "You found every detail in the treasure hunt.",
+    familyReset: "Restart the hunt",
     heroKicker: 'Interactive digital guide',
     title: 'Murals of Riparbella',
     subtitle: 'A walking route through urban art, memory, landscape and community.',

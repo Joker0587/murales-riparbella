@@ -2617,3 +2617,444 @@ a, button {
     scroll-behavior: auto;
   }
 }
+
+
+/* =========================================================
+   V2.2 — VISUAL REFRESH
+   Premium editorial mobile experience.
+   ========================================================= */
+
+:root {
+  --v22-ink: #182230;
+  --v22-cream: #f7f2e8;
+  --v22-card: rgba(255,255,255,.78);
+  --v22-border: rgba(24,34,48,.10);
+  --v22-shadow: 0 18px 52px rgba(27,34,45,.10);
+}
+
+/* HERO */
+.premium-hero {
+  background:
+    radial-gradient(circle at 15% 15%, rgba(255,216,120,.34), transparent 34%),
+    radial-gradient(circle at 92% 20%, rgba(170,215,210,.22), transparent 28%),
+    linear-gradient(180deg, #fbf7ef 0%, #f6f2e8 100%);
+}
+
+.premium-hero .kicker,
+.premium-hero .eyebrow {
+  letter-spacing: .24em;
+  font-weight: 900;
+  opacity: .78;
+}
+
+.premium-hero h1 {
+  max-width: 8ch;
+  text-wrap: balance;
+}
+
+.hero-actions-v22 {
+  gap: 12px !important;
+}
+
+.hero-actions-v22 > * {
+  box-shadow: none !important;
+}
+
+/* Make first two actions more important, others lighter */
+.hero-actions-v22 > *:nth-child(1),
+.hero-actions-v22 > *:nth-child(2) {
+  background: var(--v22-ink) !important;
+  color: #fff !important;
+  border-color: var(--v22-ink) !important;
+}
+
+.hero-actions-v22 > *:nth-child(3),
+.hero-actions-v22 > *:nth-child(4) {
+  background: rgba(255,255,255,.70) !important;
+  border: 1px solid var(--v22-border) !important;
+  color: var(--v22-ink) !important;
+}
+
+/* CARDS */
+.mural-card,
+.place-card,
+.extra-accordion-card,
+.text-card,
+.progress-card {
+  border: 1px solid var(--v22-border) !important;
+  box-shadow: var(--v22-shadow) !important;
+}
+
+.mural-card,
+.place-card {
+  background: var(--v22-card) !important;
+}
+
+.mural-card img,
+.place-card img,
+.hero-image-v22 {
+  filter: saturate(.96) contrast(1.02);
+}
+
+.mural-card h3,
+.place-card h3 {
+  letter-spacing: -.025em;
+}
+
+/* FLOATING GLASS NAV */
+.v22-nav {
+  border-color: rgba(255,255,255,.58) !important;
+  background: rgba(244,242,236,.66) !important;
+  box-shadow:
+    0 14px 38px rgba(18,26,38,.16),
+    inset 0 1px 0 rgba(255,255,255,.76) !important;
+}
+
+.v22-nav .mobile-premium-nav-main {
+  background: rgba(24,34,48,.92) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+.v22-icon {
+  font-size: 1.05rem !important;
+  font-weight: 800;
+}
+
+/* SECTIONS */
+.section-heading h2 {
+  max-width: 12ch;
+  text-wrap: balance;
+}
+
+.section-heading .kicker {
+  opacity: .68;
+}
+
+@media (max-width: 760px) {
+  .premium-hero {
+    padding-bottom: 22px !important;
+  }
+
+  .premium-hero h1 {
+    font-size: clamp(3.35rem, 16vw, 5.3rem) !important;
+    line-height: .88 !important;
+    letter-spacing: -.072em !important;
+    margin-bottom: 18px !important;
+  }
+
+  .premium-hero p {
+    max-width: 29ch;
+    font-size: 1.04rem !important;
+    line-height: 1.42 !important;
+  }
+
+  .hero-actions-v22 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    margin-top: 20px !important;
+  }
+
+  .hero-actions-v22 > * {
+    min-height: 58px !important;
+    border-radius: 20px !important;
+    padding: 12px 14px !important;
+    font-size: .95rem !important;
+    font-weight: 850 !important;
+  }
+
+  .hero-image-v22 {
+    margin-top: 18px !important;
+    max-height: 220px !important;
+    border-radius: 30px !important;
+    box-shadow: 0 24px 60px rgba(20,30,40,.14);
+  }
+
+  .section {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .section-heading {
+    margin-bottom: 12px !important;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(2.2rem, 11vw, 3.5rem) !important;
+    letter-spacing: -.055em !important;
+  }
+
+  .mural-card,
+  .place-card,
+  .extra-accordion-card,
+  .text-card {
+    border-radius: 28px !important;
+  }
+
+  .mural-card {
+    box-shadow: 0 18px 44px rgba(18,28,42,.10) !important;
+  }
+
+  .mural-card img {
+    max-height: 230px !important;
+  }
+
+  .place-card img {
+    max-height: 205px !important;
+  }
+
+  .mobile-premium-nav {
+    min-height: 62px !important;
+    padding: 6px !important;
+    border-radius: 22px !important;
+    bottom: calc(8px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .mobile-premium-nav-item {
+    height: 48px !important;
+    border-radius: 16px !important;
+    gap: 1px !important;
+  }
+
+  .mobile-premium-nav-item small {
+    font-size: .61rem !important;
+    font-weight: 800 !important;
+  }
+
+  .mobile-premium-nav-item > span {
+    font-size: 1rem !important;
+  }
+
+  footer {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom)) !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero-actions-v22 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .hero-actions-v22 > * {
+    font-size: .9rem !important;
+    min-height: 54px !important;
+  }
+}
+
+
+/* =========================================================
+   V2.3 — Family Hunt + Closest Mural
+   ========================================================= */
+
+.nearest-mural-action {
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.nearest-mural-action button {
+  min-height: 52px;
+  border: 0;
+  border-radius: 18px;
+  background: rgba(255,255,255,.72);
+  color: var(--v22-ink, #182230);
+  box-shadow: 0 12px 34px rgba(18,28,42,.09);
+  font: inherit;
+  font-weight: 850;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  cursor: pointer;
+}
+
+.nearest-mural-action button:disabled {
+  opacity: .65;
+  cursor: wait;
+}
+
+.nearest-mural-action p {
+  margin: 0 4px;
+  font-size: .86rem !important;
+  line-height: 1.35 !important;
+}
+
+.nearest-error {
+  opacity: .72;
+}
+
+.family-hunt-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  align-items: start;
+}
+
+.family-hunt-head p {
+  margin-top: 0;
+}
+
+.family-hunt-progress {
+  min-width: 92px;
+  padding: 12px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.58);
+  text-align: center;
+  display: grid;
+  gap: 1px;
+}
+
+.family-hunt-progress strong {
+  font-size: 1.42rem;
+  letter-spacing: -.04em;
+}
+
+.family-hunt-progress span {
+  font-size: .7rem;
+  opacity: .65;
+}
+
+.family-progress-track {
+  height: 7px;
+  margin: 16px 0 18px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(24,34,48,.08);
+}
+
+.family-progress-track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #182230;
+  transition: width .28s ease;
+}
+
+.interactive-hunt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.hunt-item {
+  appearance: none;
+  min-height: 62px;
+  padding: 11px 13px;
+  border: 1px solid rgba(24,34,48,.11);
+  border-radius: 18px;
+  background: rgba(255,255,255,.66);
+  color: inherit;
+  font: inherit;
+  font-weight: 750;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform .16s ease, background .16s ease, border-color .16s ease;
+}
+
+.hunt-item:active {
+  transform: scale(.98);
+}
+
+.hunt-check {
+  flex: 0 0 26px;
+  width: 26px;
+  height: 26px;
+  border-radius: 9px;
+  border: 2px solid rgba(24,34,48,.20);
+  display: grid;
+  place-items: center;
+  font-size: .9rem;
+  font-weight: 950;
+}
+
+.hunt-item.found {
+  background: rgba(225,239,224,.82);
+  border-color: rgba(62,130,74,.22);
+}
+
+.hunt-item.found .hunt-check {
+  background: #2f6d3b;
+  border-color: #2f6d3b;
+  color: #fff;
+}
+
+.family-complete {
+  margin-top: 16px;
+  padding: 18px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(255,236,164,.62), rgba(225,239,224,.72));
+  display: grid;
+  gap: 5px;
+}
+
+.family-complete > span {
+  font-size: 1.5rem;
+}
+
+.family-complete p {
+  margin: 0;
+}
+
+.family-reset {
+  margin-top: 14px;
+  border: 0;
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+  opacity: .72;
+}
+
+@media (max-width: 760px) {
+  .nearest-mural-action button {
+    width: 100%;
+    min-height: 54px;
+    border-radius: 18px;
+  }
+
+  .family-hunt-head {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .family-hunt-progress {
+    width: fit-content;
+    min-width: 104px;
+    grid-template-columns: auto auto;
+    align-items: baseline;
+    gap: 6px;
+    text-align: left;
+  }
+
+  .family-hunt-progress strong {
+    font-size: 1.25rem;
+  }
+
+  .interactive-hunt-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+  }
+
+  .hunt-item {
+    min-height: 68px;
+    border-radius: 18px;
+    padding: 10px;
+    font-size: .9rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .interactive-hunt-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hunt-item {
+    min-height: 58px;
+  }
+}
