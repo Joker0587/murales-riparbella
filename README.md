@@ -426,3 +426,13 @@ La struttura dati introdotta con V2.0 resta invariata.
 - Tipografia mobile più bilanciata.
 - Nessuna nuova funzione.
 - Speed Insights mantenuto.
+
+## V2.3 — Caccia ai dettagli + Murale più vicino
+
+- La sezione bambini/famiglie è ora una vera checklist interattiva.
+- Le spunte vengono salvate localmente sul dispositivo.
+- Aggiunta barra di avanzamento e premio finale “Piccolo esploratore di Riparbella”.
+- Aggiunto pulsante “Murale più vicino”.
+- La geolocalizzazione si attiva esclusivamente al tocco del pulsante.
+- Il pulsante individua il murale più vicino, mostra la distanza e apre la scheda.
+- Nessun riordino del percorso e nessuna geolocalizzazione in background.
