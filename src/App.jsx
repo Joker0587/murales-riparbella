@@ -3,7 +3,6 @@ import { murals } from './data/murals';
 import { parkingSpots } from './data/parkingSpots';
 import { placesToEat } from './data/placesToEat';
 import { ui } from './data/ui';
-import { smartRoutesManual } from './data/smartRoutes';
 import { extraPlaces } from './data/extraPlaces';
 import { getExtraText } from './utils/localization';
 import { navGoogle, navApple, embedMapUrl } from './utils/navigation';

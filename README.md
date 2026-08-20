@@ -381,3 +381,8 @@ Questa versione evita sia il bug npm `Exit handler never called` sia l'errore pn
 - Rollup fissato a 4.59.0 per evitare la risoluzione problematica di `@rollup/rollup-openbsd-x64@4.62.5`.
 - Rimosso `corepack prepare` dall'installazione Vercel.
 - Build invariata con `yarn build`.
+
+## V2.0.3
+
+- Rimossa la sezione/funzionalità **Tappe Smart**.
+- Nessuna modifica intenzionale a murales, ristoranti, Oltre i murales o grafica restante.
