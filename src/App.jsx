@@ -107,7 +107,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <header className="hero">
+      <header id="top" className="hero premium-hero">
         <nav className="topbar">
           <div className="brand">Riparbella Murales</div>
           <div className="lang">
@@ -444,8 +444,28 @@ export default function App() {
           <p>{t.supportText}</p>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 2.0.0</strong></p>
+        <p><strong>{t.versionLabel} — 2.1.0</strong></p>
       </footer>
+
+      <nav className="mobile-premium-nav" aria-label={language === 'en' ? 'Quick navigation' : 'Navigazione rapida'}>
+        <a href="#top" className="mobile-premium-nav-item">
+          <span aria-hidden="true">⌂</span>
+          <small>{language === 'en' ? 'Home' : 'Home'}</small>
+        </a>
+        <a href="#murales" className="mobile-premium-nav-item">
+          <span aria-hidden="true">◫</span>
+          <small>{language === 'en' ? 'Murals' : 'Murales'}</small>
+        </a>
+        <a href="#mappa" className="mobile-premium-nav-item mobile-premium-nav-main">
+          <span aria-hidden="true">⌖</span>
+          <small>{language === 'en' ? 'Map' : 'Mappa'}</small>
+        </a>
+        <a href="#oltre" className="mobile-premium-nav-item">
+          <span aria-hidden="true">✦</span>
+          <small>{language === 'en' ? 'Explore' : 'Scopri'}</small>
+        </a>
+      </nav>
+
     </div>
   );
 }

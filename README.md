@@ -386,3 +386,17 @@ Questa versione evita sia il bug npm `Exit handler never called` sia l'errore pn
 
 - Rimossa la sezione/funzionalità **Tappe Smart**.
 - Nessuna modifica intenzionale a murales, ristoranti, Oltre i murales o grafica restante.
+
+## V2.1 — Mobile Premium
+
+Primo aggiornamento grafico della serie 2.x:
+- nuova barra mobile flottante Liquid Glass;
+- aree touch più grandi;
+- card più editoriali e fotografiche;
+- spaziature smartphone rifinite;
+- micro-interazioni leggere;
+- supporto safe-area iPhone;
+- rispetto di `prefers-reduced-motion`;
+- nessuna Tappa Smart e nessuna geolocalizzazione.
+
+La struttura dati introdotta con V2.0 resta invariata.

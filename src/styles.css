@@ -2542,3 +2542,211 @@ html {
     width: 100%;
   }
 }
+
+
+/* =========================================================
+   V2.1 — Mobile Premium
+   Visual-only upgrade: glass navigation, editorial cards,
+   touch comfort and subtle native-feeling motion.
+   ========================================================= */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a, button {
+  touch-action: manipulation;
+}
+
+.premium-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 42%;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(10, 18, 24, .18), transparent);
+}
+
+.mobile-premium-nav {
+  display: none;
+}
+
+/* Refined card motion without JS */
+@media (prefers-reduced-motion: no-preference) {
+  .mural-card,
+  .place-card,
+  .extra-card,
+  .text-card {
+    transition:
+      transform .22s cubic-bezier(.2,.8,.2,1),
+      box-shadow .22s ease,
+      border-color .22s ease;
+  }
+
+  .mural-card:active,
+  .place-card:active,
+  .extra-card:active {
+    transform: scale(.985);
+  }
+}
+
+@media (max-width: 760px) {
+  body {
+    padding-bottom: calc(92px + env(safe-area-inset-bottom));
+  }
+
+  main {
+    overflow: clip;
+  }
+
+  .section {
+    margin-top: 22px;
+    margin-bottom: 28px;
+  }
+
+  .section-heading {
+    margin-bottom: 14px;
+  }
+
+  .section-heading h2 {
+    letter-spacing: -.035em;
+    line-height: 1.02;
+  }
+
+  /* More editorial cards */
+  .mural-card,
+  .place-card,
+  .extra-card,
+  .text-card {
+    border-radius: 26px;
+  }
+
+  .mural-card,
+  .place-card {
+    overflow: hidden;
+    box-shadow: 0 16px 42px rgba(18, 28, 42, .09);
+  }
+
+  .mural-card img,
+  .place-card img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .mural-card img {
+    max-height: 245px;
+  }
+
+  .place-card img {
+    max-height: 220px;
+  }
+
+  button,
+  .button,
+  .primary,
+  .secondary {
+    min-height: 48px;
+    border-radius: 16px;
+  }
+
+  /* Bottom navigation — glass only where it adds value */
+  .mobile-premium-nav {
+    position: fixed;
+    z-index: 999;
+    left: 50%;
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    width: min(calc(100% - 24px), 430px);
+    min-height: 68px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    padding: 7px;
+    border: 1px solid rgba(255,255,255,.52);
+    border-radius: 25px;
+    background: rgba(246, 244, 238, .76);
+    box-shadow:
+      0 18px 55px rgba(15, 24, 34, .20),
+      inset 0 1px 0 rgba(255,255,255,.72);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    backdrop-filter: blur(22px) saturate(160%);
+  }
+
+  .mobile-premium-nav-item {
+    min-width: 0;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 2px;
+    color: inherit;
+    text-decoration: none;
+    border-radius: 18px;
+    font-weight: 800;
+  }
+
+  .mobile-premium-nav-item > span {
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  .mobile-premium-nav-item small {
+    font-size: .66rem;
+    line-height: 1;
+    opacity: .72;
+  }
+
+  .mobile-premium-nav-main {
+    background: rgba(255,255,255,.58);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.78);
+  }
+
+  .mobile-premium-nav-item:active {
+    background: rgba(255,255,255,.78);
+    transform: scale(.96);
+  }
+
+  /* Floating panels feel more native on phones */
+  .modal,
+  .glass-panel,
+  .floating-panel {
+    border-radius: 30px 30px 0 0;
+  }
+
+  /* Horizontal breathing room for long content */
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@media (max-width: 390px) {
+  .mobile-premium-nav {
+    width: calc(100% - 16px);
+    bottom: calc(7px + env(safe-area-inset-bottom));
+    border-radius: 22px;
+  }
+
+  .mobile-premium-nav-item {
+    height: 52px;
+  }
+
+  .mobile-premium-nav-item small {
+    font-size: .62rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
