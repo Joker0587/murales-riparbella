@@ -367,3 +367,17 @@ Questa versione evita sia il bug npm `Exit handler never called` sia l'errore pn
 - `src/main.jsx` è ora solo il punto di ingresso React; l'app vive in `src/App.jsx`.
 - Aspetto e funzioni principali mantenuti.
 - Inserita Osteria La Pieve Vecchia con le immagini fornite.
+
+## V2.0.1 — Vercel install fix
+
+- Rimosso `corepack prepare` dall'Install Command.
+- Vercel usa direttamente Yarn disponibile nell'ambiente.
+- Node resta fissato a 20.x.
+- Build invariata: `yarn build`.
+
+## V2.0.2 — Node 24 / Rollup fix
+
+- Node aggiornato a 24.x per allinearsi ai requisiti Vercel.
+- Rollup fissato a 4.59.0 per evitare la risoluzione problematica di `@rollup/rollup-openbsd-x64@4.62.5`.
+- Rimosso `corepack prepare` dall'installazione Vercel.
+- Build invariata con `yarn build`.
