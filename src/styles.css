@@ -2410,135 +2410,210 @@ html {
 }
 
 
-/* V44.15 — Tappe smart manuali */
-.smart-stops-section {
-  margin-top: 28px;
-  margin-bottom: 34px;
+
+/* =========================================================
+   V2.1 — Mobile Premium
+   Visual-only upgrade: glass navigation, editorial cards,
+   touch comfort and subtle native-feeling motion.
+   ========================================================= */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
 }
 
-.smart-stops-intro {
-  margin-bottom: 16px;
+body {
+  -webkit-tap-highlight-color: transparent;
 }
 
-.smart-route-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 12px;
+a, button {
+  touch-action: manipulation;
 }
 
-.smart-route-card {
-  appearance: none;
-  border: 1px solid rgba(30, 38, 55, 0.10);
-  background: rgba(255, 252, 244, 0.76);
-  border-radius: 26px;
-  padding: 16px;
-  text-align: left;
-  display: grid;
-  gap: 12px;
-  min-height: 185px;
-  cursor: pointer;
-  box-shadow: 0 14px 38px rgba(18, 28, 42, 0.08);
-  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+.premium-hero {
+  position: relative;
+  overflow: hidden;
 }
 
-.smart-route-card:hover,
-.smart-route-card.active {
-  transform: translateY(-2px);
-  background: rgba(255, 252, 244, 0.96);
-  box-shadow: 0 22px 58px rgba(18, 28, 42, 0.14);
+.premium-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 42%;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(10, 18, 24, .18), transparent);
 }
 
-.smart-route-card.active {
-  outline: 2px solid rgba(20, 28, 42, 0.18);
+.mobile-premium-nav {
+  display: none;
 }
 
-.smart-route-emoji {
-  width: 46px;
-  height: 46px;
-  display: grid;
-  place-items: center;
-  border-radius: 18px;
-  background: rgba(20, 28, 42, 0.08);
-  font-size: 1.45rem;
-}
+/* Refined card motion without JS */
+@media (prefers-reduced-motion: no-preference) {
+  .mural-card,
+  .place-card,
+  .extra-card,
+  .text-card {
+    transition:
+      transform .22s cubic-bezier(.2,.8,.2,1),
+      box-shadow .22s ease,
+      border-color .22s ease;
+  }
 
-.smart-route-card span:last-child {
-  display: grid;
-  gap: 7px;
-}
-
-.smart-route-card strong {
-  font-size: 1.02rem;
-  line-height: 1.08;
-}
-
-.smart-route-card em {
-  font-style: normal;
-  font-size: 0.88rem;
-  line-height: 1.35;
-  opacity: 0.72;
-}
-
-.smart-route-card small {
-  font-weight: 850;
-  opacity: 0.56;
-  text-transform: uppercase;
-  letter-spacing: .12em;
-}
-
-.smart-route-active-card {
-  margin-top: 14px;
-  padding: 18px;
-  border-radius: 26px;
-  background:
-    linear-gradient(135deg, rgba(255,255,255,0.82), rgba(255,255,255,0.48)),
-    radial-gradient(circle at top left, rgba(255, 205, 120, 0.25), transparent 42%);
-  border: 1px solid rgba(30, 38, 55, 0.10);
-  box-shadow: 0 18px 54px rgba(18, 28, 42, 0.10);
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 14px;
-  align-items: center;
-}
-
-.smart-route-active-card strong {
-  display: block;
-  font-size: 1.02rem;
-  line-height: 1.4;
-}
-
-@media (max-width: 980px) {
-  .smart-route-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .mural-card:active,
+  .place-card:active,
+  .extra-card:active {
+    transform: scale(.985);
   }
 }
 
 @media (max-width: 760px) {
-  .smart-route-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
+  body {
+    padding-bottom: calc(92px + env(safe-area-inset-bottom));
   }
 
-  .smart-route-card {
-    grid-template-columns: 52px 1fr;
-    align-items: center;
-    min-height: auto;
-    padding: 13px;
-    border-radius: 22px;
+  main {
+    overflow: clip;
   }
 
-  .smart-route-emoji {
-    width: 48px;
-    height: 48px;
+  .section {
+    margin-top: 22px;
+    margin-bottom: 28px;
   }
 
-  .smart-route-active-card {
-    grid-template-columns: 1fr;
-    padding: 16px;
-    border-radius: 22px;
+  .section-heading {
+    margin-bottom: 14px;
   }
 
-  .smart-route-active-card button {
+  .section-heading h2 {
+    letter-spacing: -.035em;
+    line-height: 1.02;
+  }
+
+  /* More editorial cards */
+  .mural-card,
+  .place-card,
+  .extra-card,
+  .text-card {
+    border-radius: 26px;
+  }
+
+  .mural-card,
+  .place-card {
+    overflow: hidden;
+    box-shadow: 0 16px 42px rgba(18, 28, 42, .09);
+  }
+
+  .mural-card img,
+  .place-card img {
     width: 100%;
+    object-fit: cover;
+  }
+
+  .mural-card img {
+    max-height: 245px;
+  }
+
+  .place-card img {
+    max-height: 220px;
+  }
+
+  button,
+  .button,
+  .primary,
+  .secondary {
+    min-height: 48px;
+    border-radius: 16px;
+  }
+
+  /* Bottom navigation — glass only where it adds value */
+  .mobile-premium-nav {
+    position: fixed;
+    z-index: 999;
+    left: 50%;
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    width: min(calc(100% - 24px), 430px);
+    min-height: 68px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    padding: 7px;
+    border: 1px solid rgba(255,255,255,.52);
+    border-radius: 25px;
+    background: rgba(246, 244, 238, .76);
+    box-shadow:
+      0 18px 55px rgba(15, 24, 34, .20),
+      inset 0 1px 0 rgba(255,255,255,.72);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    backdrop-filter: blur(22px) saturate(160%);
+  }
+
+  .mobile-premium-nav-item {
+    min-width: 0;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 2px;
+    color: inherit;
+    text-decoration: none;
+    border-radius: 18px;
+    font-weight: 800;
+  }
+
+  .mobile-premium-nav-item > span {
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  .mobile-premium-nav-item small {
+    font-size: .66rem;
+    line-height: 1;
+    opacity: .72;
+  }
+
+  .mobile-premium-nav-main {
+    background: rgba(255,255,255,.58);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.78);
+  }
+
+  .mobile-premium-nav-item:active {
+    background: rgba(255,255,255,.78);
+    transform: scale(.96);
+  }
+
+  /* Floating panels feel more native on phones */
+  .modal,
+  .glass-panel,
+  .floating-panel {
+    border-radius: 30px 30px 0 0;
+  }
+
+  /* Horizontal breathing room for long content */
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@media (max-width: 390px) {
+  .mobile-premium-nav {
+    width: calc(100% - 16px);
+    bottom: calc(7px + env(safe-area-inset-bottom));
+    border-radius: 22px;
+  }
+
+  .mobile-premium-nav-item {
+    height: 52px;
+  }
+
+  .mobile-premium-nav-item small {
+    font-size: .62rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }

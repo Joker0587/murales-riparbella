@@ -357,3 +357,61 @@ Questa versione evita sia il bug npm `Exit handler never called` sia l'errore pn
 - Inserito correttamente lo stato `activeSmartRouteId`.
 - Le tappe smart restano manuali, senza GPS e senza geolocalizzazione.
 - Configurazione Yarn/Vercel invariata.
+
+
+## Versione 2.0 — refactor strutturale
+
+- Separati i dati dei murales, parcheggi, ristoranti, luoghi extra e traduzioni in `src/data/`.
+- Separate le utility di navigazione/localizzazione in `src/utils/`.
+- Creati componenti riutilizzabili per schede ristorante e navigazione mobile.
+- `src/main.jsx` è ora solo il punto di ingresso React; l'app vive in `src/App.jsx`.
+- Aspetto e funzioni principali mantenuti.
+- Inserita Osteria La Pieve Vecchia con le immagini fornite.
+
+## V2.0.1 — Vercel install fix
+
+- Rimosso `corepack prepare` dall'Install Command.
+- Vercel usa direttamente Yarn disponibile nell'ambiente.
+- Node resta fissato a 20.x.
+- Build invariata: `yarn build`.
+
+## V2.0.2 — Node 24 / Rollup fix
+
+- Node aggiornato a 24.x per allinearsi ai requisiti Vercel.
+- Rollup fissato a 4.59.0 per evitare la risoluzione problematica di `@rollup/rollup-openbsd-x64@4.62.5`.
+- Rimosso `corepack prepare` dall'installazione Vercel.
+- Build invariata con `yarn build`.
+
+## V2.0.3
+
+- Rimossa la sezione/funzionalità **Tappe Smart**.
+- Nessuna modifica intenzionale a murales, ristoranti, Oltre i murales o grafica restante.
+
+## V2.1 — Mobile Premium
+
+Primo aggiornamento grafico della serie 2.x:
+- nuova barra mobile flottante Liquid Glass;
+- aree touch più grandi;
+- card più editoriali e fotografiche;
+- spaziature smartphone rifinite;
+- micro-interazioni leggere;
+- supporto safe-area iPhone;
+- rispetto di `prefers-reduced-motion`;
+- nessuna Tappa Smart e nessuna geolocalizzazione.
+
+La struttura dati introdotta con V2.0 resta invariata.
+
+## V2.1.1 — Runtime fix
+
+- Corretto il problema della schermata bianca della V2.1.
+- Rimossi definitivamente tutti i riferimenti residui alle Tappe Smart da `App.jsx`.
+- La ricerca murales usa nuovamente direttamente l'elenco completo dei murales.
+- Mantenuta la grafica Mobile Premium e la bottom navigation Liquid Glass.
+- Node 24 / Rollup 4.59.0 invariati.
+
+## V2.1.2 — Vercel Speed Insights
+
+- Integrato `@vercel/speed-insights`.
+- Aggiunto il componente React `<SpeedInsights />`.
+- Nessuna modifica alla grafica o ai contenuti.
+- Node 24 e configurazione Vercel invariati.
