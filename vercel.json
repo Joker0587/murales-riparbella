@@ -1,5 +1,6 @@
 {
-  "installCommand": "rm -rf node_modules package-lock.json pnpm-lock.yaml yarn.lock && corepack enable && corepack prepare yarn@1.22.22 --activate && yarn install --non-interactive --network-timeout 120000 --registry https://registry.npmjs.org",
+  "installCommand": "rm -rf node_modules package-lock.json pnpm-lock.yaml && yarn install --non-interactive --network-timeout 120000 --registry https://registry.npmjs.org",
   "buildCommand": "yarn build",
+  "outputDirectory": "dist",
   "framework": "vite"
 }
