@@ -1,6 +1,8 @@
 export const placesToEat = [
   {
     name: 'Piccola Osteria Paperini',
+    lat: 43.36458,
+    lng: 10.59918,
     type: 'Osteria',
     bestFor: 'Cucina toscana e mediterranea',
     image: '/images/piccola-osteria-paperini.jpg',
@@ -12,6 +14,8 @@ export const placesToEat = [
   },
   {
     name: 'Bistrot 1986',
+    lat: 43.36513,
+    lng: 10.60043,
     type: 'Bistrot / Ristorante',
     bestFor: 'Pranzo, cena e sapori toscani',
     image: '/images/bistrot-1986.jpg',
@@ -23,6 +27,8 @@ export const placesToEat = [
   },
   {
     name: 'Caffè Perbacco Osteria',
+    lat: 43.3589,
+    lng: 10.6048,
     type: 'Bar / Osteria',
     bestFor: 'Colazione, pranzo e aperitivo',
     image: '/images/caffe-perbacco.jpg',
@@ -34,6 +40,8 @@ export const placesToEat = [
   },
   {
     name: 'La Piazzetta Ristorante Pizzeria Griglieria',
+    lat: 43.36418,
+    lng: 10.59855,
     type: 'Ristorante / Pizzeria / Griglieria',
     bestFor: 'Pizza, griglia e terrazza',
     image: '/images/la-piazzetta.jpg',
@@ -45,6 +53,8 @@ export const placesToEat = [
   },
   {
     name: 'Jemsi Bar Caffetteria-Aperitivi-Drink',
+    lat: 43.36473,
+    lng: 10.60012,
     type: 'Bar / Caffetteria',
     bestFor: 'Caffè, aperitivi e drink',
     image: '/images/jemsi-bar.jpg',
@@ -56,6 +66,8 @@ export const placesToEat = [
   },
   {
     name: 'Bar da Libero',
+    lat: 43.36541,
+    lng: 10.60055,
     type: 'Bar',
     bestFor: 'Pausa veloce nel borgo',
     image: '/images/bar-da-libero.jpg',
@@ -66,6 +78,8 @@ export const placesToEat = [
   },
   {
     name: 'Osteria in Cantina',
+    lat: 43.36433,
+    lng: 10.59882,
     type: 'Osteria / Cucina toscana',
     bestFor: 'Cucina casalinga e tradizione',
     image: '/images/osteria-in-cantina.jpg',
@@ -77,6 +91,8 @@ export const placesToEat = [
   }  ,
   {
     name: 'Osteria La Pieve Vecchia',
+    lat: 43.3419862,
+    lng: 10.5814567,
     type: 'Osteria / Cucina toscana',
     bestFor: 'Cucina toscana, carne e tradizione',
     image: '/images/osteria-la-pieve-vecchia-esterno.jpg',
