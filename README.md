@@ -452,3 +452,13 @@ La struttura dati introdotta con V2.0 resta invariata.
 - Toccando una tappa, la mappa passa al murale selezionato.
 - Chiusura rapida con pulsante × o tasto Esc.
 - Nessuna libreria cartografica aggiunta.
+
+## V2.5 — Mappa tematica
+
+- La mappa immersiva ora dispone di quattro livelli: Murales, Oltre, Parcheggi e Dove fermarsi.
+- Ogni categoria usa un'icona/colore diverso.
+- I punti sono cliccabili direttamente sopra la mappa.
+- La scheda selezionata è stata resa molto più compatta per lasciare più spazio alla cartografia.
+- Aggiunto carosello compatto delle tappe in basso.
+- La mappa usa OpenStreetMap senza API key.
+- Per i locali della sezione “Dove fermarsi” sono state aggiunte coordinate per la visualizzazione cartografica; la navigazione finale continua ad aprire i rispettivi link Maps.

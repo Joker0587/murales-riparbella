@@ -1,5 +1,11 @@
 export const ui = {
   it: {
+    mapCategories: "Categorie della mappa",
+    mapPoints: "Punti sulla mappa",
+    mapFilterMurals: "Murales",
+    mapFilterBeyond: "Oltre",
+    mapFilterParking: "Parcheggi",
+    mapFilterFood: "Dove fermarsi",
     openImmersiveMap: "Apri mappa immersiva",
     immersiveMapKicker: "Esplora il borgo",
     immersiveMapTitle: "Mappa immersiva",
@@ -125,6 +131,12 @@ export const ui = {
     prototype: 'Versione prototipo — 2026'
   },
   en: {
+    mapCategories: "Map categories",
+    mapPoints: "Map points",
+    mapFilterMurals: "Murals",
+    mapFilterBeyond: "Beyond",
+    mapFilterParking: "Parking",
+    mapFilterFood: "Food & drink",
     openImmersiveMap: "Open immersive map",
     immersiveMapKicker: "Explore the village",
     immersiveMapTitle: "Immersive map",

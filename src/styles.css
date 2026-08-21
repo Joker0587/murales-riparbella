@@ -3363,3 +3363,334 @@ a, button {
     flex-basis: 150px;
   }
 }
+
+
+/* =========================================================
+   V2.5 — MAPPA TEMATICA
+   ========================================================= */
+
+.thematic-map-shell {
+  grid-template-rows: auto auto minmax(0,1fr) auto;
+}
+
+.thematic-map-topbar {
+  min-height: 68px;
+  padding-block: 12px;
+}
+
+.thematic-map-filters {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 10px;
+  background: rgba(248,245,238,.95);
+  border-bottom: 1px solid rgba(24,34,48,.08);
+  scrollbar-width: none;
+}
+
+.thematic-map-filters::-webkit-scrollbar,
+.thematic-map-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.thematic-filter {
+  flex: 1 0 120px;
+  min-height: 46px;
+  border: 1px solid rgba(24,34,48,.09);
+  border-radius: 16px;
+  background: rgba(255,255,255,.60);
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font: inherit;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.thematic-filter > span {
+  font-size: 1rem;
+}
+
+.thematic-filter small {
+  font-size: .76rem;
+}
+
+.thematic-filter.active {
+  background: #182230;
+  color: #fff;
+  border-color: #182230;
+}
+
+.thematic-map-canvas {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.thematic-map-canvas iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.thematic-marker-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.thematic-marker {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  width: 34px;
+  height: 34px;
+  border: 2px solid rgba(255,255,255,.94);
+  border-radius: 50% 50% 50% 12px;
+  rotate: -45deg;
+  background: #182230;
+  color: white;
+  box-shadow: 0 8px 20px rgba(12,20,30,.28);
+  cursor: pointer;
+  pointer-events: auto;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  z-index: 3;
+}
+
+.thematic-marker > span {
+  rotate: 45deg;
+  font-size: .72rem;
+  line-height: 1;
+  font-weight: 950;
+}
+
+.thematic-marker.beyond { background: #9a6413; }
+.thematic-marker.parking { background: #2e6593; }
+.thematic-marker.food { background: #8b3f31; }
+
+.thematic-marker.active {
+  width: 42px;
+  height: 42px;
+  z-index: 6;
+  outline: 4px solid rgba(255,255,255,.42);
+}
+
+.thematic-map-mini-card {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: 62px minmax(0,1fr) auto;
+  gap: 10px;
+  align-items: center;
+  padding: 9px;
+  border-radius: 20px;
+  background: rgba(249,247,242,.80);
+  border: 1px solid rgba(255,255,255,.70);
+  box-shadow: 0 14px 38px rgba(15,24,34,.18);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(20px) saturate(150%);
+}
+
+.thematic-map-mini-card img,
+.thematic-mini-icon {
+  width: 62px;
+  height: 58px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.thematic-mini-icon {
+  display: grid;
+  place-items: center;
+  background: rgba(24,34,48,.08);
+  font-size: 1.35rem;
+  font-weight: 900;
+}
+
+.thematic-mini-copy {
+  min-width: 0;
+  display: grid;
+  gap: 1px;
+}
+
+.thematic-mini-copy small {
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .61rem;
+  font-weight: 900;
+  opacity: .58;
+}
+
+.thematic-mini-copy strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.thematic-mini-copy span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: .78rem;
+  opacity: .68;
+}
+
+.thematic-mini-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.thematic-mini-actions button,
+.thematic-mini-actions a {
+  min-height: 38px;
+  border-radius: 12px;
+  border: 0;
+  padding: 0 10px;
+  font: inherit;
+  font-size: .75rem;
+  font-weight: 850;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thematic-mini-actions button {
+  background: #182230;
+  color: #fff;
+}
+
+.thematic-mini-actions a {
+  color: inherit;
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(24,34,48,.09);
+}
+
+.thematic-map-carousel {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  padding: 7px 9px calc(7px + env(safe-area-inset-bottom));
+  background: rgba(248,245,238,.94);
+  border-top: 1px solid rgba(24,34,48,.08);
+  scrollbar-width: none;
+}
+
+.thematic-carousel-item {
+  flex: 0 0 142px;
+  min-height: 44px;
+  border: 1px solid rgba(24,34,48,.08);
+  border-radius: 14px;
+  background: rgba(255,255,255,.58);
+  color: inherit;
+  padding: 6px 8px;
+  display: grid;
+  grid-template-columns: 22px minmax(0,1fr);
+  align-items: center;
+  gap: 6px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.thematic-carousel-item strong {
+  font-size: .72rem;
+  line-height: 1.08;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.thematic-carousel-item.active {
+  background: #182230;
+  color: #fff;
+}
+
+@media (max-width: 760px) {
+  .thematic-map-shell {
+    grid-template-rows: auto auto minmax(0,1fr) auto;
+  }
+
+  .thematic-map-topbar {
+    min-height: 60px;
+    padding-top: calc(8px + env(safe-area-inset-top));
+    padding-bottom: 8px;
+  }
+
+  .thematic-map-topbar h3 {
+    font-size: 1.4rem;
+  }
+
+  .thematic-map-filters {
+    padding: 6px 8px;
+    gap: 6px;
+  }
+
+  .thematic-filter {
+    flex-basis: 108px;
+    min-height: 42px;
+    border-radius: 14px;
+  }
+
+  .thematic-filter small {
+    font-size: .70rem;
+  }
+
+  .thematic-map-mini-card {
+    grid-template-columns: 52px minmax(0,1fr);
+    bottom: 7px;
+    left: 7px;
+    right: 7px;
+    border-radius: 18px;
+    padding: 7px;
+  }
+
+  .thematic-map-mini-card img,
+  .thematic-mini-icon {
+    width: 52px;
+    height: 50px;
+    border-radius: 13px;
+  }
+
+  .thematic-mini-actions {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .thematic-mini-actions > :only-child {
+    grid-column: 1 / -1;
+  }
+
+  .thematic-mini-actions button,
+  .thematic-mini-actions a {
+    min-height: 36px;
+  }
+
+  .thematic-map-carousel {
+    padding-top: 5px;
+    padding-bottom: calc(5px + env(safe-area-inset-bottom));
+  }
+
+  .thematic-carousel-item {
+    flex-basis: 128px;
+    min-height: 40px;
+  }
+
+  .thematic-marker {
+    width: 31px;
+    height: 31px;
+  }
+
+  .thematic-marker.active {
+    width: 38px;
+    height: 38px;
+  }
+}
