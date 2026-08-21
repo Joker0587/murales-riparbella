@@ -462,3 +462,11 @@ La struttura dati introdotta con V2.0 resta invariata.
 - Aggiunto carosello compatto delle tappe in basso.
 - La mappa usa OpenStreetMap senza API key.
 - Per i locali della sezione “Dove fermarsi” sono state aggiunte coordinate per la visualizzazione cartografica; la navigazione finale continua ad aprire i rispettivi link Maps.
+
+## V2.5.1 — Leaflet + marker anteprima
+
+- Sostituito l'iframe statico con una vera mappa Leaflet / OpenStreetMap.
+- I marker sono legati alle coordinate geografiche e seguono correttamente zoom e pan.
+- I murales sono rappresentati da piccole anteprime fotografiche.
+- Le altre categorie mantengono marker tematici.
+- Filtri e mini-card della V2.5 restano disponibili.

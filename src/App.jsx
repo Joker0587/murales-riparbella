@@ -8,6 +8,7 @@ import { getExtraText } from './utils/localization';
 import { navGoogle, navApple, embedMapUrl } from './utils/navigation';
 import FoodCard from './components/FoodCard';
 import BottomMobileNav from './components/BottomMobileNav';
+import ImmersiveThematicMap from './components/ImmersiveThematicMap';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Analytics } from '@vercel/analytics/react';
 
@@ -47,49 +48,7 @@ const mapCategoryConfig = {
   food: { icon: '🍴', labelKey: 'mapFilterFood' }
 };
 
-const buildOsmEmbedUrl = (items) => {
-  const valid = items.filter((item) => Number.isFinite(item.lat) && Number.isFinite(item.lng));
-  if (!valid.length) return 'https://www.openstreetmap.org/export/embed.html?bbox=10.594%2C43.362%2C10.603%2C43.367&layer=mapnik';
 
-  const lats = valid.map((item) => item.lat);
-  const lngs = valid.map((item) => item.lng);
-  let minLat = Math.min(...lats);
-  let maxLat = Math.max(...lats);
-  let minLng = Math.min(...lngs);
-  let maxLng = Math.max(...lngs);
-
-  const latPad = Math.max((maxLat - minLat) * 0.18, 0.0012);
-  const lngPad = Math.max((maxLng - minLng) * 0.18, 0.0015);
-  minLat -= latPad;
-  maxLat += latPad;
-  minLng -= lngPad;
-  maxLng += lngPad;
-
-  return `https://www.openstreetmap.org/export/embed.html?bbox=${encodeURIComponent(`${minLng},${minLat},${maxLng},${maxLat}`)}&layer=mapnik`;
-};
-
-const projectMarker = (item, items) => {
-  const valid = items.filter((entry) => Number.isFinite(entry.lat) && Number.isFinite(entry.lng));
-  if (!valid.length) return { left: 50, top: 50 };
-
-  const lats = valid.map((entry) => entry.lat);
-  const lngs = valid.map((entry) => entry.lng);
-  let minLat = Math.min(...lats);
-  let maxLat = Math.max(...lats);
-  let minLng = Math.min(...lngs);
-  let maxLng = Math.max(...lngs);
-
-  const latPad = Math.max((maxLat - minLat) * 0.18, 0.0012);
-  const lngPad = Math.max((maxLng - minLng) * 0.18, 0.0015);
-  minLat -= latPad;
-  maxLat += latPad;
-  minLng -= lngPad;
-  maxLng += lngPad;
-
-  const left = ((item.lng - minLng) / Math.max(maxLng - minLng, 0.00001)) * 100;
-  const top = (1 - (item.lat - minLat) / Math.max(maxLat - minLat, 0.00001)) * 100;
-  return { left, top };
-};
 
 export default function App() {
   const [language, setLanguage] = useState('it');
@@ -522,37 +481,17 @@ export default function App() {
                 </div>
 
                 <div className="immersive-map-canvas thematic-map-canvas">
-                  <iframe
-                    key={mapCategory}
-                    title={t.immersiveMapTitle}
-                    src={buildOsmEmbedUrl(thematicMapItems)}
-                    loading="eager"
+                  <ImmersiveThematicMap
+                    items={thematicMapItems}
+                    selectedKey={thematicSelectedItem?.key || null}
+                    onSelect={(key) => {
+                      setMapSelectedKey(key);
+                      const item = thematicMapItems.find((entry) => entry.key === key);
+                      if (item?.category === 'murals' && item.sourceId) {
+                        selectMural(item.sourceId, false);
+                      }
+                    }}
                   />
-
-                  <div className="thematic-marker-layer" aria-label={t.mapPoints}>
-                    {thematicMapItems.map((item) => {
-                      const pos = projectMarker(item, thematicMapItems);
-                      const active = thematicSelectedItem?.key === item.key;
-                      const icon = mapCategoryConfig[item.category]?.icon || '•';
-                      return (
-                        <button
-                          key={item.key}
-                          type="button"
-                          className={active ? `thematic-marker ${item.category} active` : `thematic-marker ${item.category}`}
-                          style={{ left: `${pos.left}%`, top: `${pos.top}%` }}
-                          onClick={() => {
-                            setMapSelectedKey(item.key);
-                            if (item.category === 'murals' && item.sourceId) {
-                              selectMural(item.sourceId, false);
-                            }
-                          }}
-                          aria-label={item.title}
-                        >
-                          <span>{item.category === 'murals' ? (item.number || icon) : icon}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
 
                   {thematicSelectedItem && (
                     <div className="thematic-map-mini-card">
@@ -801,7 +740,7 @@ export default function App() {
           <p>{t.supportText}</p>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 2.5.0</strong></p>
+        <p><strong>{t.versionLabel} — 2.5.1</strong></p>
       </footer>
       <Analytics />
       <SpeedInsights />
