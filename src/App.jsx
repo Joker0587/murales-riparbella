@@ -280,7 +280,7 @@ export default function App() {
 
     const text = language === 'en'
       ? (selectedMural.en || selectedMural.it || '')
-      : (selectedMural.it || selectedMural.en || '');
+      : (selectedMural.audioGuideIt || selectedMural.it || selectedMural.en || '');
 
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = language === 'en' ? 'en-US' : 'it-IT';
@@ -617,8 +617,8 @@ export default function App() {
                 <div className="narration-card-copy">
                   <span className="narration-icon" aria-hidden="true">🔊</span>
                   <div>
-                    <strong>{language === 'en' ? 'Listen to this mural' : 'Ascolta il murale'}</strong>
-                    <small>{language === 'en' ? 'Narration of the main description' : 'Voce narrante della descrizione principale'}</small>
+                    <strong>{language === 'en' ? 'Listen to the story' : 'Ascolta la storia'}</strong>
+                    <small>{language === 'en' ? 'Narration of the main description' : 'Audioguida narrativa del murale'}</small>
                   </div>
                 </div>
 

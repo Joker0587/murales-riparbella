@@ -481,7 +481,8 @@ La struttura dati introdotta con V2.0 resta invariata.
 
 ## V2.5.2 — Voce narrante
 
-- Pulsante Ascolta il murale nella scheda.
+- Pulsante “Ascolta la storia” nella scheda.
+- Audioguida narrativa italiana dedicata per tutti i 13 murales (`audioGuideIt`), con fallback alla descrizione esistente.
 - Play, pausa/riprendi e stop.
 - Lingua IT/EN automatica.
 - Web Speech API, senza file audio esterni.
