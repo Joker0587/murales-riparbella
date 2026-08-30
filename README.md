@@ -481,38 +481,7 @@ La struttura dati introdotta con V2.0 resta invariata.
 
 ## V2.5.2 — Voce narrante
 
-- Pulsante “Ascolta la storia” nella scheda.
-- Audioguida narrativa italiana dedicata per tutti i 13 murales (`audioGuideIt`), con fallback alla descrizione esistente.
-
-## V2.5.3 — Audioguida professionale
-
-- 13 tracce MP3 italiane generate con OpenAI Text-to-Speech, voce `marin`.
-- Player audio nativo con avanzamento, pausa, ripresa e controllo del volume.
-- Indicazione trasparente della voce generata con AI.
-- Sintesi vocale del browser mantenuta come fallback e per la versione inglese.
-
-## V2.5.4 — Audioguida bilingue
-
-- 13 testi narrativi inglesi dedicati (`audioGuideEn`).
-- Player collegato automaticamente alla traccia italiana o inglese in base alla lingua selezionata.
-- Sintesi vocale del browser mantenuta come fallback.
-
-## V2.5.5 — Tour guidato + QR code
-
-- Modalità di visita passo-passo con avanzamento tra le 13 tappe.
-- Ripresa automatica della tappa corrente sul dispositivo.
-- Indicazioni, navigazione e audioguida disponibili nella stessa scheda.
-- QR dinamico per ogni murale, collegato all’indirizzo pubblico corrente dell’app.
-- Download del singolo QR in formato SVG, pronto per la stampa.
-
-## V2.5.6 — Percorso guidato completo
-
-- Tappa corrente mostrata nel formato “4 di 13”.
-- Prossima tappa con distanza stimata in linea d’aria.
-- Indicazioni sintetiche sempre visibili durante il tour.
-- Pulsante “Portami lì” collegato direttamente alla navigazione verso il prossimo murale.
-- Avanzamento automatico e schermata finale di completamento.
-- Ripresa della visita dalla tappa lasciata in sospeso.
+- Pulsante Ascolta il murale nella scheda.
 - Play, pausa/riprendi e stop.
 - Lingua IT/EN automatica.
 - Web Speech API, senza file audio esterni.

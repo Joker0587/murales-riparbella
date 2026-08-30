@@ -10,7 +10,6 @@ import FoodCard from './components/FoodCard';
 import ImmersiveThematicMap from './components/ImmersiveThematicMap';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Analytics } from '@vercel/analytics/react';
-import { QRCodeSVG } from 'qrcode.react';
 
 const familyHuntItems = [
   { id: 'cinghiale', it: 'un cinghiale', en: 'a wild boar' },
@@ -52,26 +51,14 @@ const mapCategoryConfig = {
 
 export default function App() {
   const [language, setLanguage] = useState('it');
-  const [selectedId, setSelectedId] = useState(() => {
-    try {
-      return window.location.hash?.replace('#', '') || localStorage.getItem('riparbellaGuidedTourStop') || murals[0].id;
-    } catch (error) {
-      return window.location.hash?.replace('#', '') || murals[0].id;
-    }
-  });
+  const [selectedId, setSelectedId] = useState(() => window.location.hash?.replace('#', '') || murals[0].id);
   const [query, setQuery] = useState('');
   const [isMuralSheetOpen, setIsMuralSheetOpen] = useState(false);
   const [isImmersiveMapOpen, setIsImmersiveMapOpen] = useState(false);
   const [isFloatingMenuOpen, setIsFloatingMenuOpen] = useState(false);
+  const [fontScale, setFontScale] = useState(() => Number(localStorage.getItem('riparbellaFontScale') || 1));
+  const [privacyOpen, setPrivacyOpen] = useState(false);
   const [speechStatus, setSpeechStatus] = useState('idle');
-  const [audioError, setAudioError] = useState(false);
-  const [guidedTourActive, setGuidedTourActive] = useState(() => {
-    try {
-      return localStorage.getItem('riparbellaGuidedTourActive') === 'true';
-    } catch (error) {
-      return false;
-    }
-  });
   const [mapCategory, setMapCategory] = useState('murals');
   const [mapSelectedKey, setMapSelectedKey] = useState(null);
   const [familyFoundIds, setFamilyFoundIds] = useState(() => {
@@ -86,20 +73,10 @@ export default function App() {
   const detailsRef = useRef(null);
   const tourRef = useRef(null);
   const mapRef = useRef(null);
-  const audioRef = useRef(null);
 
   const t = ui[language];
   const selectedIndex = Math.max(0, murals.findIndex((m) => m.id === selectedId));
   const selectedMural = murals[selectedIndex] || murals[0];
-  const selectedAudio = language === 'en' ? selectedMural.audioEn : selectedMural.audioIt;
-  const selectedMuralUrl = `${window.location.origin}${window.location.pathname}#${selectedMural.id}`;
-  const nextTourMural = selectedIndex < murals.length - 1 ? murals[selectedIndex + 1] : null;
-  const nextTourDistance = nextTourMural ? distanceKm(selectedMural, nextTourMural) : null;
-  const nextTourDistanceLabel = nextTourDistance == null
-    ? ''
-    : nextTourDistance < 1
-      ? `${Math.max(1, Math.round(nextTourDistance * 1000))} m`
-      : `${nextTourDistance.toFixed(1)} km`;
   const thematicMapItems = (() => {
     if (mapCategory === 'beyond') {
       return extraPlaces
@@ -203,19 +180,6 @@ export default function App() {
   }, [visitedIds]);
 
   useEffect(() => {
-    localStorage.setItem('riparbellaGuidedTourActive', String(guidedTourActive));
-    if (guidedTourActive) localStorage.setItem('riparbellaGuidedTourStop', selectedId);
-  }, [guidedTourActive, selectedId]);
-
-  useEffect(() => {
-    audioRef.current?.pause();
-    if (audioRef.current) audioRef.current.currentTime = 0;
-    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-    setSpeechStatus('idle');
-    setAudioError(false);
-  }, [selectedId, language]);
-
-  useEffect(() => {
     if (!isImmersiveMapOpen) return undefined;
 
     const previousOverflow = document.body.style.overflow;
@@ -308,8 +272,6 @@ export default function App() {
   };
 
   const stopNarration = () => {
-    audioRef.current?.pause();
-    if (audioRef.current) audioRef.current.currentTime = 0;
     if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     setSpeechStatus('idle');
   };
@@ -319,8 +281,8 @@ export default function App() {
     window.speechSynthesis.cancel();
 
     const text = language === 'en'
-      ? (selectedMural.audioGuideEn || selectedMural.en || selectedMural.it || '')
-      : (selectedMural.audioGuideIt || selectedMural.it || selectedMural.en || '');
+      ? (selectedMural.en || selectedMural.it || '')
+      : (selectedMural.it || selectedMural.en || '');
 
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = language === 'en' ? 'en-US' : 'it-IT';
@@ -352,6 +314,14 @@ export default function App() {
     }
   };
 
+  useEffect(() => {
+    const value = Math.min(1.25, Math.max(0.9, fontScale));
+    document.documentElement.style.setProperty('--app-font-scale', value);
+    localStorage.setItem('riparbellaFontScale', String(value));
+  }, [fontScale]);
+
+  const changeFontScale = (delta) => setFontScale(v => Math.round(Math.min(1.25, Math.max(0.9, v + delta)) * 100) / 100);
+
   const goToSection = (id) => {
     setIsFloatingMenuOpen(false);
     window.setTimeout(() => {
@@ -381,36 +351,6 @@ export default function App() {
     const safe = (index + murals.length) % murals.length;
     selectMural(murals[safe].id, false);
     setIsMuralSheetOpen(true);
-  };
-
-  const startGuidedTour = () => {
-    setGuidedTourActive(true);
-    selectMural(selectedMural.id, false);
-    setIsMuralSheetOpen(true);
-  };
-
-  const endGuidedTour = () => {
-    stopNarration();
-    setGuidedTourActive(false);
-    localStorage.removeItem('riparbellaGuidedTourStop');
-  };
-
-  const advanceGuidedTour = () => {
-    if (!isVisited(selectedMural.id)) toggleVisited(selectedMural.id);
-    if (nextTourMural) goToStep(selectedIndex + 1);
-  };
-
-  const downloadSelectedQr = () => {
-    const svg = document.getElementById(`mural-qr-${selectedMural.id}`);
-    if (!svg) return;
-    const source = new XMLSerializer().serializeToString(svg);
-    const blob = new Blob([source], { type: 'image/svg+xml;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `qr-murale-${selectedMural.id}.svg`;
-    link.click();
-    URL.revokeObjectURL(url);
   };
 
   return (
@@ -465,20 +405,6 @@ export default function App() {
           <div className="text-card">
             <p>{t.routeText}</p>
             <p>{t.routeText2}</p>
-          </div>
-          <div className="guided-tour-launch">
-            <div>
-              <span aria-hidden="true">◎</span>
-              <div>
-                <strong>{language === 'it' ? 'Visita guidata passo-passo' : 'Step-by-step guided visit'}</strong>
-                <p>{language === 'it' ? 'Segui le 13 tappe, ascolta le storie e riprendi il percorso quando vuoi.' : 'Follow all 13 stops, listen to their stories and resume the route at any time.'}</p>
-              </div>
-            </div>
-            <button type="button" className="primary" onClick={startGuidedTour}>
-              {guidedTourActive
-                ? (language === 'it' ? 'Riprendi il tour' : 'Resume tour')
-                : (language === 'it' ? 'Inizia il tour' : 'Start tour')}
-            </button>
           </div>
         </section>
 
@@ -683,39 +609,6 @@ export default function App() {
               <img src={selectedMural.image} alt={selectedMural.title} />
             </div>
             <div className="selected-mural-content">
-              {guidedTourActive && (
-                <div className="guided-tour-status">
-                  <div className="guided-tour-status-head">
-                    <div>
-                      <small>{language === 'it' ? 'Tappa corrente' : 'Current stop'}</small>
-                      <strong>{selectedIndex + 1} {language === 'it' ? 'di' : 'of'} {murals.length} · {selectedMural.title}</strong>
-                    </div>
-                    <button type="button" onClick={endGuidedTour}>{language === 'it' ? 'Termina' : 'End tour'}</button>
-                  </div>
-                  <div className="guided-tour-meter"><span style={{ width: `${((selectedIndex + 1) / murals.length) * 100}%` }} /></div>
-                  {nextTourMural ? (
-                    <div className="guided-tour-next">
-                      <div>
-                        <small>{language === 'it' ? 'Prossima tappa' : 'Next stop'}</small>
-                        <strong>{nextTourMural.title} · {nextTourDistanceLabel}</strong>
-                        <p>{language === 'en' ? selectedMural.directionsNextEn || selectedMural.directionsNext : selectedMural.directionsNext}</p>
-                      </div>
-                      <div className="guided-tour-next-actions">
-                        <a href={navGoogle(nextTourMural.lat, nextTourMural.lng)} target="_blank" rel="noreferrer">
-                          <span aria-hidden="true">⌖</span> {language === 'it' ? 'Portami lì' : 'Take me there'}
-                        </a>
-                        <button type="button" onClick={advanceGuidedTour}>{language === 'it' ? 'Tappa successiva' : 'Next stop'}</button>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="guided-tour-complete">
-                      <strong>{language === 'it' ? 'Tour completato!' : 'Tour completed!'}</strong>
-                      <p>{language === 'it' ? 'Hai raggiunto tutte le 13 tappe dei Murales di Riparbella.' : 'You have reached all 13 stops on the Riparbella mural route.'}</p>
-                      <button type="button" onClick={endGuidedTour}>{language === 'it' ? 'Concludi il tour' : 'Finish tour'}</button>
-                    </div>
-                  )}
-                </div>
-              )}
               <p className="kicker">{t.selectedMuralCard}</p>
               <p className="step">{t.stopOf} {selectedIndex + 1} {t.of} {murals.length}</p>
               <h3>{selectedMural.title}</h3>
@@ -734,28 +627,11 @@ export default function App() {
                 <div className="narration-card-copy">
                   <span className="narration-icon" aria-hidden="true">🔊</span>
                   <div>
-                    <strong>{language === 'en' ? 'Listen to the story' : 'Ascolta la storia'}</strong>
-                    <small>{language === 'en' ? 'Narrative audio guide · AI-generated voice' : 'Audioguida narrativa · Voce generata con AI'}</small>
+                    <strong>{language === 'en' ? 'Listen to this mural' : 'Ascolta il murale'}</strong>
+                    <small>{language === 'en' ? 'Narration of the main description' : 'Voce narrante della descrizione principale'}</small>
                   </div>
                 </div>
 
-                {selectedAudio && !audioError ? (
-                  <audio
-                    key={selectedAudio}
-                    ref={audioRef}
-                    className="narration-audio"
-                    controls
-                    preload="metadata"
-                    src={selectedAudio}
-                    onPlay={() => {
-                      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-                      setSpeechStatus('idle');
-                    }}
-                    onError={() => setAudioError(true)}
-                  >
-                    Il tuo browser non supporta la riproduzione audio.
-                  </audio>
-                ) : (
                 <div className="narration-controls">
                   {speechStatus === 'idle' ? (
                     <button type="button" className="narration-primary" onClick={speakSelectedMural}>
@@ -776,7 +652,6 @@ export default function App() {
                     </>
                   )}
                 </div>
-                )}
               </div>
 
               <div className="mini-block">
@@ -803,22 +678,6 @@ export default function App() {
                 <a href={navApple(selectedMural.lat, selectedMural.lng)} target="_blank" rel="noreferrer" className="secondary link">{t.apple}</a>
                 <button className={isVisited(selectedMural.id) ? 'primary' : 'secondary'} onClick={() => toggleVisited(selectedMural.id)}>{isVisited(selectedMural.id) ? t.seenDone : t.markSeenShort}</button>
                 <button className="secondary" onClick={() => shareMural(selectedMural)}>{t.shareCard}</button>
-              </div>
-
-              <div className="mural-qr-card">
-                <QRCodeSVG
-                  id={`mural-qr-${selectedMural.id}`}
-                  value={selectedMuralUrl}
-                  size={144}
-                  level="H"
-                  marginSize={2}
-                  title={`${selectedMural.title} — Riparbella Murales`}
-                />
-                <div>
-                  <strong>{language === 'it' ? 'QR di questa tappa' : 'QR code for this stop'}</strong>
-                  <p>{language === 'it' ? 'Apre direttamente questa scheda e la relativa audioguida.' : 'Opens this mural card and its audio guide directly.'}</p>
-                  <button type="button" className="secondary" onClick={downloadSelectedQr}>{language === 'it' ? 'Scarica QR' : 'Download QR'}</button>
-                </div>
               </div>
 
               <div className="button-row">
@@ -971,7 +830,7 @@ export default function App() {
           <p>{t.supportText}</p>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 2.5.6</strong></p>
+        <p><strong>{t.versionLabel} — 2.6.0</strong></p>
       </footer>
       
       <div className={isFloatingMenuOpen ? 'floating-menu-shell open' : 'floating-menu-shell'}>
@@ -1014,11 +873,30 @@ export default function App() {
                 <span aria-hidden="true">🍴</span>
                 <strong>{language === 'en' ? 'Food & drink' : 'Dove fermarsi'}</strong>
               </button>
+              <div className="floating-accessibility-tools">
+                <button type="button" onClick={() => changeFontScale(-0.1)} aria-label="Riduci dimensione testo">A−</button>
+                <button type="button" onClick={() => changeFontScale(0.1)} aria-label="Aumenta dimensione testo">A+</button>
+              </div>
+              <button type="button" onClick={() => { setIsFloatingMenuOpen(false); setPrivacyOpen(true); }}>
+                <span aria-hidden="true">🔒</span><strong>Privacy</strong>
+              </button>
             </nav>
           </>
         )}
       </div>
 
+      {privacyOpen && (
+        <div className="privacy-dialog-overlay" role="dialog" aria-modal="true" aria-labelledby="privacy-title" onClick={() => setPrivacyOpen(false)}>
+          <article className="privacy-dialog" onClick={(e) => e.stopPropagation()}>
+            <button className="privacy-close" type="button" onClick={() => setPrivacyOpen(false)} aria-label="Chiudi">×</button>
+            <p className="kicker">Privacy</p>
+            <h2 id="privacy-title">{language === 'en' ? 'Your location stays under your control' : 'La tua posizione resta sotto il tuo controllo'}</h2>
+            <p>{language === 'en' ? 'Location is requested only when you use a location feature. It is used to show where you are and calculate nearby murals. GPS coordinates are not intentionally stored by the app.' : 'La posizione viene richiesta solo quando utilizzi una funzione di localizzazione. Serve a mostrarti dove ti trovi e a calcolare i murales vicini. Le coordinate GPS non vengono intenzionalmente memorizzate dall’app.'}</p>
+            <p>{language === 'en' ? 'Visit progress, family hunt progress and accessibility preferences may be stored locally in your browser. Vercel Analytics and Speed Insights are used for aggregate usage and performance information.' : 'L’avanzamento della visita, la caccia ai dettagli e le preferenze di accessibilità possono essere salvati localmente nel browser. Vercel Analytics e Speed Insights sono utilizzati per informazioni aggregate su utilizzo e prestazioni.'}</p>
+            <button type="button" className="primary" onClick={() => setPrivacyOpen(false)}>{language === 'en' ? 'Got it' : 'Ho capito'}</button>
+          </article>
+        </div>
+      )}
       <Analytics />
       <SpeedInsights />
 
