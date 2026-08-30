@@ -442,3 +442,60 @@ La struttura dati introdotta con V2.0 resta invariata.
 - Integrato `@vercel/analytics` per visitatori, page views e bounce rate.
 - Mantenuto `@vercel/speed-insights` per le metriche Core Web Vitals.
 - Nessuna modifica a grafica, contenuti o logica dell'app.
+
+## V2.4 — Mappa immersiva
+
+- Aggiunto pulsante “Apri mappa immersiva”.
+- La mappa si apre quasi a tutto schermo.
+- Mini-card flottante del murale selezionato con foto, indirizzo e azioni.
+- Lista orizzontale delle tappe in basso.
+- Toccando una tappa, la mappa passa al murale selezionato.
+- Chiusura rapida con pulsante × o tasto Esc.
+- Nessuna libreria cartografica aggiunta.
+
+## V2.5 — Mappa tematica
+
+- La mappa immersiva ora dispone di quattro livelli: Murales, Oltre, Parcheggi e Dove fermarsi.
+- Ogni categoria usa un'icona/colore diverso.
+- I punti sono cliccabili direttamente sopra la mappa.
+- La scheda selezionata è stata resa molto più compatta per lasciare più spazio alla cartografia.
+- Aggiunto carosello compatto delle tappe in basso.
+- La mappa usa OpenStreetMap senza API key.
+- Per i locali della sezione “Dove fermarsi” sono state aggiunte coordinate per la visualizzazione cartografica; la navigazione finale continua ad aprire i rispettivi link Maps.
+
+## V2.5.1 — Leaflet + marker anteprima
+
+- Sostituito l'iframe statico con una vera mappa Leaflet / OpenStreetMap.
+- I marker sono legati alle coordinate geografiche e seguono correttamente zoom e pan.
+- I murales sono rappresentati da piccole anteprime fotografiche.
+- Le altre categorie mantengono marker tematici.
+- Filtri e mini-card della V2.5 restano disponibili.
+
+## V2.5.2 — Floating Menu
+
+- Rimossa la barra di navigazione fissa in basso.
+- Aggiunto un unico pulsante flottante compatto.
+- Il pulsante apre un pannello Liquid Glass con Home, Murales, Mappa, Oltre e Dove fermarsi.
+- Più spazio utile alla mappa immersiva e ai contenuti su smartphone.
+- Leaflet, filtri tematici, Analytics e Speed Insights invariati.
+
+## V2.5.2 — Voce narrante
+
+- Pulsante “Ascolta la storia” nella scheda.
+- Audioguida narrativa italiana dedicata per tutti i 13 murales (`audioGuideIt`), con fallback alla descrizione esistente.
+
+## V2.5.3 — Audioguida professionale
+
+- 13 tracce MP3 italiane generate con OpenAI Text-to-Speech, voce `marin`.
+- Player audio nativo con avanzamento, pausa, ripresa e controllo del volume.
+- Indicazione trasparente della voce generata con AI.
+- Sintesi vocale del browser mantenuta come fallback e per la versione inglese.
+
+## V2.5.4 — Audioguida bilingue
+
+- 13 testi narrativi inglesi dedicati (`audioGuideEn`).
+- Player collegato automaticamente alla traccia italiana o inglese in base alla lingua selezionata.
+- Sintesi vocale del browser mantenuta come fallback.
+- Play, pausa/riprendi e stop.
+- Lingua IT/EN automatica.
+- Web Speech API, senza file audio esterni.
