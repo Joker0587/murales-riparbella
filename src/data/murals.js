@@ -2,6 +2,17 @@ export const murals = [
   {
     id: 'gioia',
     title: 'La Gioia',
+    audioGuideIt: `Benvenuto a Riparbella. Il nostro viaggio tra i murales comincia qui, in Piazza della Madonna, davanti a La Gioia, opera realizzata nel 2020 da Vincenzo Marano Esposito, in arte Vinci.
+
+Fermati un momento e guarda questa grande finestra dipinta sul paesaggio.
+
+Davanti a te ritrovi gli elementi che definiscono l’identità di Riparbella: le colline, i vigneti, gli oliveti, il bosco e, più lontano, il mare.
+
+Non è soltanto la rappresentazione di un panorama. È quasi un autoritratto del paese, raccontato attraverso la natura che lo circonda.
+
+Prima di proseguire, cerca con lo sguardo il mare all’orizzonte. Poi torna verso il centro dell’opera e osserva come il borgo sembri protetto, quasi abbracciato, dal paesaggio.
+
+È da questo abbraccio che inizia il nostro viaggio.`,
     artist: 'Vincenzo Marano Esposito, in arte Vinci',
     year: '2020',
     address: 'Piazza della Madonna',
@@ -22,6 +33,19 @@ export const murals = [
   {
     id: 'lari',
     title: 'I Lari',
+    audioGuideIt: `Siamo in Piazza Giacomo Matteotti. Davanti a te c’è I Lari, opera realizzata nel 2024 da Giò Pistone.
+
+Per comprenderla, guarda prima l’edificio sul quale è stata dipinta. Questo era l’antico palazzo di giustizia di Riparbella, con le sue carceri: un luogo legato quindi a una memoria piuttosto severa.
+
+L’artista sceglie di trasformarla attraverso colori forti, luminosi e quasi festosi.
+
+I protagonisti sono tre Lari. Nell’antichità erano gli spiriti protettori della casa e della famiglia.
+
+Qui diventano nuovi custodi della piazza e, simbolicamente, dell’intera comunità.
+
+Osserva i tre stendardi colorati e il contrasto tra la loro energia e l’edificio antico.
+
+Un luogo che un tempo rappresentava giudizio e reclusione diventa così un’immagine di protezione e rinascita.`,
     artist: 'Giò Pistone',
     year: '2024',
     address: 'Piazza Giacomo Matteotti, muro del palazzo davanti al bar I Lari',
@@ -42,6 +66,21 @@ export const murals = [
   {
     id: 'memoria',
     title: 'Memoria e desiderio',
+    audioGuideIt: `Non cercare subito di capire questa facciata.
+
+Avvicinati e guardala come se fosse una grande mappa. Perché Memoria e desiderio, realizzata nel 2024 da Daniel Muñoz, è proprio questo: una mappa di Riparbella. Ma decisamente particolare.
+
+L’artista parte dalla vista dall’alto del paese e sostituisce alla cartografia tradizionale qualcosa di molto più personale.
+
+Qui trovano spazio ricordi, profumi, abitudini, luoghi e storie raccontati dagli abitanti. E accanto alla memoria degli adulti compaiono i desideri e i sogni dei più giovani.
+
+Prova a cercare i piccoli segni disseminati nell’opera. Parlano di panchine, sapori, storie familiari e futuro.
+
+E cerca anche la legenda sulla facciata laterale.
+
+Questa non è una mappa che serve per sapere dove andare.
+
+È una mappa che racconta cosa significa appartenere a un luogo.`,
     artist: 'Daniel Muñoz',
     year: '2024',
     address: 'Piazza Giacomo Matteotti, facciata principale del palazzo del bar Memoria e desiderio',
@@ -62,6 +101,23 @@ export const murals = [
   {
     id: 'amphora',
     title: 'Amphora',
+    audioGuideIt: `Davanti a te c’è Amphora, realizzata da Tellas nel 2025.
+
+Il suo linguaggio è molto diverso dalle opere che abbiamo incontrato finora: essenziale, elegante, quasi silenzioso.
+
+Il punto di partenza è l’anfora.
+
+Un oggetto antico che diventa simbolo del vino, della terra e della memoria agricola di Riparbella. Intorno ad essa prendono forma gli olivi, i vigneti e il paesaggio della campagna.
+
+Ora osserva soprattutto i colori.
+
+La scelta della bicromia richiama la tradizione dello sgraffito toscano, una tecnica decorativa nella quale il disegno sembra nascere direttamente dalla superficie.
+
+Ed è proprio questa la sensazione più interessante dell’opera.
+
+Avvicinandoti, Amphora sembra quasi non essere stata dipinta sopra il muro.
+
+Sembra essere sempre stata lì, nascosta nella sua materia, in attesa di emergere.`,
     artist: 'Tellas',
     year: '2025',
     address: 'Piazza Matteotti',
@@ -82,6 +138,25 @@ export const murals = [
   {
     id: 'corona',
     title: 'Corona Aurea',
+    audioGuideIt: `Qui il nostro percorso incontra direttamente la storia più antica di Riparbella.
+
+Davanti a te c’è Corona Aurea, realizzata nel 2025 da Giorgio Bartocci.
+
+L’ispirazione nasce da un reperto prezioso: la corona funeraria etrusca conservata nel Museo C’ERA.
+
+Ma Bartocci non la riproduce semplicemente.
+
+La trasforma.
+
+Osserva il movimento circolare dell’opera. Segni e pennellate sembrano ruotare, sovrapporsi e quasi uscire dalla parete. Poi cerca i riflessi metallici.
+
+Se la luce cambia, cambia anche la percezione del murale.
+
+Un oggetto appartenente al passato viene così reinterpretato attraverso il linguaggio dell’arte urbana contemporanea.
+
+Per qualche istante, prova a guardare questa parete non come un semplice muro dipinto, ma come una grande reliquia contemporanea.
+
+Un incontro tra memoria etrusca, luce e presente.`,
     artist: 'Giorgio Bartocci',
     year: '2025',
     address: 'Nei pressi del Museo C’ERA',
@@ -102,6 +177,19 @@ export const murals = [
   {
     id: 'amore',
     title: 'L’amore nella pentola',
+    audioGuideIt: `Questa volta il murale ci porta dentro una storia che gli abitanti di Riparbella hanno tramandato nel tempo.
+
+L’amore nella pentola, realizzato da Zed 1 nel 2024, racconta un’antica tradizione legata alla notte di San Giovanni.
+
+Si racconta che le donne si riunissero attorno al fuoco e facessero sciogliere il piombo dentro grandi pentole.
+
+Una volta versato e raffreddato, il metallo assumeva forme imprevedibili. Quelle forme venivano interpretate cercando indizi sul futuro… e soprattutto sul futuro sposo.
+
+Zed 1 trasforma questo rito popolare in una scena piena di ironia e riferimenti alla comunità.
+
+Cerca la grande pentola e il fuoco. Poi prova a trovare il cinghiale, il cavallo Gino e la bandiera sarda.
+
+Sono dettagli apparentemente lontani tra loro, ma insieme costruiscono un racconto fatto di tradizioni, persone e memoria collettiva.`,
     artist: 'Zed 1',
     year: '2024',
     address: 'Piazza Borgo di Sotto',
@@ -122,6 +210,25 @@ export const murals = [
   {
     id: 'terra-colori',
     title: 'Terra e colori',
+    audioGuideIt: `Dopo tante storie, questa volta lascia parlare prima di tutto i colori.
+
+Terra e colori, realizzata nel 2024 da Mina Hamada e Zosen Bandido, è una vera esplosione di energia.
+
+Non cercare necessariamente un’unica scena.
+
+Gli artisti hanno trasformato Riparbella in un insieme di forme, simboli e sensazioni.
+
+Guarda attentamente: puoi riconoscere le onde, il sole e la luna, l’oliva, i colori che richiamano il vino e una finestra aperta sul paesaggio.
+
+Sono frammenti del territorio che si mescolano come dentro un grande mosaico contemporaneo.
+
+C’è anche un piccolo gioco per te.
+
+Prova a individuare la lente-faro e la cazzuola nascoste nella composizione.
+
+Qui Riparbella non viene descritta attraverso una fotografia.
+
+Viene raccontata attraverso le sensazioni che può lasciare a chi la attraversa: terra, luce, mare e colore.`,
     artist: 'Mina Hamada e Zosen Bandido',
     year: '2024',
     address: 'Piazza Federigo Baldasserini',
@@ -142,6 +249,27 @@ export const murals = [
   {
     id: 'universo',
     title: 'Universo Riparbella',
+    audioGuideIt: `Adesso il nostro percorso cambia ancora.
+
+In Universo Riparbella, realizzato nel 2021 da Vinci insieme ai bambini della scuola primaria, Via della Noce diventa un grande gioco all’aperto.
+
+L’opera nasce da un laboratorio dedicato all’Agenda 2030 e al futuro sostenibile.
+
+Guarda a terra e lungo il percorso e cerca il nastro giallo e azzurro.
+
+È il filo che collega le diverse parti del murale, quasi come le caselle di un gigantesco gioco dell’oca.
+
+Seguendolo incontrerai disegni, idee e messaggi realizzati dai bambini.
+
+Per questo non avere fretta.
+
+Questa è un’opera che si scopre camminando.
+
+Segui il percorso e prova a guardare il paese attraverso gli occhi dei più piccoli.
+
+Perché qui non sono gli adulti a spiegare ai bambini come dovrebbe essere il futuro.
+
+Sono i bambini che provano a raccontarlo a noi.`,
     artist: 'Vincenzo Marano Esposito con i bambini della scuola primaria',
     year: '2021',
     address: 'Via della Noce',
@@ -162,6 +290,27 @@ export const murals = [
   {
     id: 'hitnes',
     title: 'Hunting Hunters',
+    audioGuideIt: `Fermati davanti a Hunting Hunters, realizzata da Hitnes nel 2025, e preparati a entrare in una piccola favola.
+
+Una favola, però, un po’ strana.
+
+Tra gli animali dell’opera puoi riconoscere un pettirosso e alcune gazze ladre. Compaiono anche elementi che richiamano la caccia.
+
+Ma osservando meglio, qualcosa non torna.
+
+I ruoli sembrano invertirsi e diventa difficile capire chi sia veramente il cacciatore… e chi la preda.
+
+Hitnes gioca proprio con questa ambiguità.
+
+Ora prova a trovare l’anello nascosto e osserva gli elementi che ricordano una trappola.
+
+Quando li avrai individuati, torna a guardare l’intera scena.
+
+Forse la domanda che il murale vuole lasciarti è proprio questa:
+
+è sempre l’uomo a cacciare la natura?
+
+Oppure, questa volta, è la natura che sta aspettando l’uomo?`,
     artist: 'Hitnes',
     year: '2025',
     address: 'Via della Noce 1',
@@ -182,6 +331,25 @@ export const murals = [
   {
     id: 'aris',
     title: 'La Chimera',
+    audioGuideIt: `Con La Chimera, realizzata da Aris nel 2025, torniamo alle radici etrusche di Riparbella.
+
+Ma lo facciamo attraverso un linguaggio decisamente contemporaneo.
+
+L’artista prende ispirazione dai reperti conservati nel Museo C’ERA e, in particolare, dagli antichi vasi.
+
+Osserva le forme bicrome e i profili stilizzati.
+
+Gli oggetti archeologici perdono la loro forma tradizionale e vengono trasformati in immagini grafiche moderne.
+
+L’opera contiene anche un omaggio a Pietro Leopoldo di Toscana e al suo interesse per la civiltà etrusca.
+
+Prova quindi a cercare il vaso etrusco nascosto nella composizione.
+
+Davanti a questa parete, passato e presente non sono due mondi separati.
+
+L’archeologia diventa il punto di partenza per creare qualcosa di nuovo.
+
+Un ponte tra storia, ricerca e arte urbana.`,
     artist: 'Aris',
     year: '2025',
     address: 'Via della Noce',
@@ -202,6 +370,23 @@ export const murals = [
   {
     id: 'riparbella01',
     title: 'Riparbella01',
+    audioGuideIt: `Questa è probabilmente l’opera più astratta del nostro percorso.
+
+Riparbella01, realizzata da Moneyless nel 2024, non racconta una storia attraverso personaggi o paesaggi riconoscibili.
+
+Qui parlano le forme.
+
+Osserva le linee, gli spazi pieni e quelli vuoti e il modo in cui la composizione dialoga con l’architettura della scuola, risalente agli anni Trenta.
+
+Le geometrie richiamano movimento, ritmo, musica e le esperienze delle avanguardie artistiche.
+
+Ma c’è un particolare che rende quest’opera ancora più interessante.
+
+In alcuni momenti della giornata, quando la luce è quella giusta, i colori del murale si riflettono sulle finestre della palestra di fronte.
+
+Prova a voltarti e controllare.
+
+Potresti vedere quelle normali finestre trasformarsi, per qualche istante, in grandi vetrate dipinte.`,
     artist: 'Moneyless',
     year: '2024',
     address: 'Via della Noce 15, facciata laterale edificio scolastico',
@@ -222,6 +407,25 @@ export const murals = [
   {
     id: 'esperienza',
     title: 'L’esperienza più bella della nostra vita',
+    audioGuideIt: `Il titolo di questo murale è già una piccola storia.
+
+L’esperienza più bella della nostra vita nasce nel 2024 da un laboratorio di Giacomo Martellacci e Arianna Martucci insieme ai bambini della scuola primaria di Riparbella.
+
+E furono proprio i bambini, al termine dell’esperienza, a descriverla con queste parole.
+
+Guarda l’opera e prova a riconoscere il loro paese.
+
+Ci sono l’uva, i cinghiali, la campagna e, sullo sfondo, il mare.
+
+Elementi semplici, scelti attraverso lo sguardo dei più piccoli per raccontare il territorio nel quale crescono.
+
+Ma il dettaglio più importante non è necessariamente una figura.
+
+Sono i segni lasciati dai bambini.
+
+Perché questa volta l’arte pubblica non è soltanto qualcosa che una comunità riceve.
+
+È qualcosa che la comunità, attraverso i suoi bambini, ha contribuito direttamente a creare.`,
     artist: 'Giacomo Martellacci, Arianna Martucci e i bambini della scuola primaria',
     year: '2024',
     address: 'Via Gramsci',
@@ -242,6 +446,25 @@ export const murals = [
   {
     id: 'turan',
     title: 'Il sonno di Turan',
+    audioGuideIt: `Siamo arrivati all’ultima tappa del nostro viaggio.
+
+Sulle pareti della palestra comunale, Vesod realizza nel 2025 Il sonno di Turan, un’opera dedicata alla Liberazione e alla pace.
+
+Al centro troviamo Turan, dea etrusca dell’amore e della vitalità.
+
+Osservala.
+
+Sembra dormire, sospesa tra memoria e rinascita.
+
+Il suo risveglio diventa simbolicamente il momento in cui l’energia dell’amore torna a prendere il posto delle ombre della guerra.
+
+Intorno a lei cerca il cigno nero, il melograno e la colomba bianca.
+
+Poi allontanati leggermente e guarda il profilo complessivo dell’opera: la figura della dea entra in dialogo con la collina e con il mare.
+
+Turan diventa così quasi una presenza protettiva che veglia sul territorio.
+
+E con un’immagine di amore, pace e rinascita, si conclude il nostro viaggio tra i Murales di Riparbella.`,
     artist: 'Vesod',
     year: '2025',
     address: 'Via Gramsci, palestra comunale',

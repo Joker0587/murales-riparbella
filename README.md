@@ -485,3 +485,8 @@ La struttura dati introdotta con V2.0 resta invariata.
 - Play, pausa/riprendi e stop.
 - Lingua IT/EN automatica.
 - Web Speech API, senza file audio esterni.
+
+## V2.6 completa — Audioguide narrative
+
+- Inserite 13 audioguide italiane dedicate, separate dalle descrizioni delle schede.
+- Il pulsante “Ascolta la storia” legge `audioGuideIt`, con fallback alla descrizione normale.
