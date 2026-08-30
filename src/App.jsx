@@ -10,6 +10,7 @@ import FoodCard from './components/FoodCard';
 import ImmersiveThematicMap from './components/ImmersiveThematicMap';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Analytics } from '@vercel/analytics/react';
+import { QRCodeSVG } from 'qrcode.react';
 
 const familyHuntItems = [
   { id: 'cinghiale', it: 'un cinghiale', en: 'a wild boar' },
@@ -51,13 +52,26 @@ const mapCategoryConfig = {
 
 export default function App() {
   const [language, setLanguage] = useState('it');
-  const [selectedId, setSelectedId] = useState(() => window.location.hash?.replace('#', '') || murals[0].id);
+  const [selectedId, setSelectedId] = useState(() => {
+    try {
+      return window.location.hash?.replace('#', '') || localStorage.getItem('riparbellaGuidedTourStop') || murals[0].id;
+    } catch (error) {
+      return window.location.hash?.replace('#', '') || murals[0].id;
+    }
+  });
   const [query, setQuery] = useState('');
   const [isMuralSheetOpen, setIsMuralSheetOpen] = useState(false);
   const [isImmersiveMapOpen, setIsImmersiveMapOpen] = useState(false);
   const [isFloatingMenuOpen, setIsFloatingMenuOpen] = useState(false);
   const [speechStatus, setSpeechStatus] = useState('idle');
   const [audioError, setAudioError] = useState(false);
+  const [guidedTourActive, setGuidedTourActive] = useState(() => {
+    try {
+      return localStorage.getItem('riparbellaGuidedTourActive') === 'true';
+    } catch (error) {
+      return false;
+    }
+  });
   const [mapCategory, setMapCategory] = useState('murals');
   const [mapSelectedKey, setMapSelectedKey] = useState(null);
   const [familyFoundIds, setFamilyFoundIds] = useState(() => {
@@ -77,6 +91,15 @@ export default function App() {
   const t = ui[language];
   const selectedIndex = Math.max(0, murals.findIndex((m) => m.id === selectedId));
   const selectedMural = murals[selectedIndex] || murals[0];
+  const selectedAudio = language === 'en' ? selectedMural.audioEn : selectedMural.audioIt;
+  const selectedMuralUrl = `${window.location.origin}${window.location.pathname}#${selectedMural.id}`;
+  const nextTourMural = selectedIndex < murals.length - 1 ? murals[selectedIndex + 1] : null;
+  const nextTourDistance = nextTourMural ? distanceKm(selectedMural, nextTourMural) : null;
+  const nextTourDistanceLabel = nextTourDistance == null
+    ? ''
+    : nextTourDistance < 1
+      ? `${Math.max(1, Math.round(nextTourDistance * 1000))} m`
+      : `${nextTourDistance.toFixed(1)} km`;
   const thematicMapItems = (() => {
     if (mapCategory === 'beyond') {
       return extraPlaces
@@ -178,6 +201,11 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem('riparbellaVisitedMurals', JSON.stringify(visitedIds));
   }, [visitedIds]);
+
+  useEffect(() => {
+    localStorage.setItem('riparbellaGuidedTourActive', String(guidedTourActive));
+    if (guidedTourActive) localStorage.setItem('riparbellaGuidedTourStop', selectedId);
+  }, [guidedTourActive, selectedId]);
 
   useEffect(() => {
     audioRef.current?.pause();
@@ -291,7 +319,7 @@ export default function App() {
     window.speechSynthesis.cancel();
 
     const text = language === 'en'
-      ? (selectedMural.en || selectedMural.it || '')
+      ? (selectedMural.audioGuideEn || selectedMural.en || selectedMural.it || '')
       : (selectedMural.audioGuideIt || selectedMural.it || selectedMural.en || '');
 
     const utterance = new SpeechSynthesisUtterance(text);
@@ -355,6 +383,36 @@ export default function App() {
     setIsMuralSheetOpen(true);
   };
 
+  const startGuidedTour = () => {
+    setGuidedTourActive(true);
+    selectMural(selectedMural.id, false);
+    setIsMuralSheetOpen(true);
+  };
+
+  const endGuidedTour = () => {
+    stopNarration();
+    setGuidedTourActive(false);
+    localStorage.removeItem('riparbellaGuidedTourStop');
+  };
+
+  const advanceGuidedTour = () => {
+    if (!isVisited(selectedMural.id)) toggleVisited(selectedMural.id);
+    if (nextTourMural) goToStep(selectedIndex + 1);
+  };
+
+  const downloadSelectedQr = () => {
+    const svg = document.getElementById(`mural-qr-${selectedMural.id}`);
+    if (!svg) return;
+    const source = new XMLSerializer().serializeToString(svg);
+    const blob = new Blob([source], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `qr-murale-${selectedMural.id}.svg`;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="app">
       <header id="top" className="hero premium-hero">
@@ -407,6 +465,20 @@ export default function App() {
           <div className="text-card">
             <p>{t.routeText}</p>
             <p>{t.routeText2}</p>
+          </div>
+          <div className="guided-tour-launch">
+            <div>
+              <span aria-hidden="true">◎</span>
+              <div>
+                <strong>{language === 'it' ? 'Visita guidata passo-passo' : 'Step-by-step guided visit'}</strong>
+                <p>{language === 'it' ? 'Segui le 13 tappe, ascolta le storie e riprendi il percorso quando vuoi.' : 'Follow all 13 stops, listen to their stories and resume the route at any time.'}</p>
+              </div>
+            </div>
+            <button type="button" className="primary" onClick={startGuidedTour}>
+              {guidedTourActive
+                ? (language === 'it' ? 'Riprendi il tour' : 'Resume tour')
+                : (language === 'it' ? 'Inizia il tour' : 'Start tour')}
+            </button>
           </div>
         </section>
 
@@ -611,6 +683,39 @@ export default function App() {
               <img src={selectedMural.image} alt={selectedMural.title} />
             </div>
             <div className="selected-mural-content">
+              {guidedTourActive && (
+                <div className="guided-tour-status">
+                  <div className="guided-tour-status-head">
+                    <div>
+                      <small>{language === 'it' ? 'Tappa corrente' : 'Current stop'}</small>
+                      <strong>{selectedIndex + 1} {language === 'it' ? 'di' : 'of'} {murals.length} · {selectedMural.title}</strong>
+                    </div>
+                    <button type="button" onClick={endGuidedTour}>{language === 'it' ? 'Termina' : 'End tour'}</button>
+                  </div>
+                  <div className="guided-tour-meter"><span style={{ width: `${((selectedIndex + 1) / murals.length) * 100}%` }} /></div>
+                  {nextTourMural ? (
+                    <div className="guided-tour-next">
+                      <div>
+                        <small>{language === 'it' ? 'Prossima tappa' : 'Next stop'}</small>
+                        <strong>{nextTourMural.title} · {nextTourDistanceLabel}</strong>
+                        <p>{language === 'en' ? selectedMural.directionsNextEn || selectedMural.directionsNext : selectedMural.directionsNext}</p>
+                      </div>
+                      <div className="guided-tour-next-actions">
+                        <a href={navGoogle(nextTourMural.lat, nextTourMural.lng)} target="_blank" rel="noreferrer">
+                          <span aria-hidden="true">⌖</span> {language === 'it' ? 'Portami lì' : 'Take me there'}
+                        </a>
+                        <button type="button" onClick={advanceGuidedTour}>{language === 'it' ? 'Tappa successiva' : 'Next stop'}</button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="guided-tour-complete">
+                      <strong>{language === 'it' ? 'Tour completato!' : 'Tour completed!'}</strong>
+                      <p>{language === 'it' ? 'Hai raggiunto tutte le 13 tappe dei Murales di Riparbella.' : 'You have reached all 13 stops on the Riparbella mural route.'}</p>
+                      <button type="button" onClick={endGuidedTour}>{language === 'it' ? 'Concludi il tour' : 'Finish tour'}</button>
+                    </div>
+                  )}
+                </div>
+              )}
               <p className="kicker">{t.selectedMuralCard}</p>
               <p className="step">{t.stopOf} {selectedIndex + 1} {t.of} {murals.length}</p>
               <h3>{selectedMural.title}</h3>
@@ -630,18 +735,18 @@ export default function App() {
                   <span className="narration-icon" aria-hidden="true">🔊</span>
                   <div>
                     <strong>{language === 'en' ? 'Listen to the story' : 'Ascolta la storia'}</strong>
-                    <small>{language === 'en' ? 'Narration of the main description' : 'Audioguida narrativa · Voce generata con AI'}</small>
+                    <small>{language === 'en' ? 'Narrative audio guide · AI-generated voice' : 'Audioguida narrativa · Voce generata con AI'}</small>
                   </div>
                 </div>
 
-                {language === 'it' && selectedMural.audioIt && !audioError ? (
+                {selectedAudio && !audioError ? (
                   <audio
-                    key={selectedMural.audioIt}
+                    key={selectedAudio}
                     ref={audioRef}
                     className="narration-audio"
                     controls
                     preload="metadata"
-                    src={selectedMural.audioIt}
+                    src={selectedAudio}
                     onPlay={() => {
                       if ('speechSynthesis' in window) window.speechSynthesis.cancel();
                       setSpeechStatus('idle');
@@ -698,6 +803,22 @@ export default function App() {
                 <a href={navApple(selectedMural.lat, selectedMural.lng)} target="_blank" rel="noreferrer" className="secondary link">{t.apple}</a>
                 <button className={isVisited(selectedMural.id) ? 'primary' : 'secondary'} onClick={() => toggleVisited(selectedMural.id)}>{isVisited(selectedMural.id) ? t.seenDone : t.markSeenShort}</button>
                 <button className="secondary" onClick={() => shareMural(selectedMural)}>{t.shareCard}</button>
+              </div>
+
+              <div className="mural-qr-card">
+                <QRCodeSVG
+                  id={`mural-qr-${selectedMural.id}`}
+                  value={selectedMuralUrl}
+                  size={144}
+                  level="H"
+                  marginSize={2}
+                  title={`${selectedMural.title} — Riparbella Murales`}
+                />
+                <div>
+                  <strong>{language === 'it' ? 'QR di questa tappa' : 'QR code for this stop'}</strong>
+                  <p>{language === 'it' ? 'Apre direttamente questa scheda e la relativa audioguida.' : 'Opens this mural card and its audio guide directly.'}</p>
+                  <button type="button" className="secondary" onClick={downloadSelectedQr}>{language === 'it' ? 'Scarica QR' : 'Download QR'}</button>
+                </div>
               </div>
 
               <div className="button-row">
@@ -850,7 +971,7 @@ export default function App() {
           <p>{t.supportText}</p>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 2.5.3</strong></p>
+        <p><strong>{t.versionLabel} — 2.5.6</strong></p>
       </footer>
       
       <div className={isFloatingMenuOpen ? 'floating-menu-shell open' : 'floating-menu-shell'}>
