@@ -57,6 +57,7 @@ export default function App() {
   const [isImmersiveMapOpen, setIsImmersiveMapOpen] = useState(false);
   const [isFloatingMenuOpen, setIsFloatingMenuOpen] = useState(false);
   const [speechStatus, setSpeechStatus] = useState('idle');
+  const [audioError, setAudioError] = useState(false);
   const [mapCategory, setMapCategory] = useState('murals');
   const [mapSelectedKey, setMapSelectedKey] = useState(null);
   const [familyFoundIds, setFamilyFoundIds] = useState(() => {
@@ -71,6 +72,7 @@ export default function App() {
   const detailsRef = useRef(null);
   const tourRef = useRef(null);
   const mapRef = useRef(null);
+  const audioRef = useRef(null);
 
   const t = ui[language];
   const selectedIndex = Math.max(0, murals.findIndex((m) => m.id === selectedId));
@@ -178,6 +180,14 @@ export default function App() {
   }, [visitedIds]);
 
   useEffect(() => {
+    audioRef.current?.pause();
+    if (audioRef.current) audioRef.current.currentTime = 0;
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    setSpeechStatus('idle');
+    setAudioError(false);
+  }, [selectedId, language]);
+
+  useEffect(() => {
     if (!isImmersiveMapOpen) return undefined;
 
     const previousOverflow = document.body.style.overflow;
@@ -270,6 +280,8 @@ export default function App() {
   };
 
   const stopNarration = () => {
+    audioRef.current?.pause();
+    if (audioRef.current) audioRef.current.currentTime = 0;
     if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     setSpeechStatus('idle');
   };
@@ -618,10 +630,27 @@ export default function App() {
                   <span className="narration-icon" aria-hidden="true">🔊</span>
                   <div>
                     <strong>{language === 'en' ? 'Listen to the story' : 'Ascolta la storia'}</strong>
-                    <small>{language === 'en' ? 'Narration of the main description' : 'Audioguida narrativa del murale'}</small>
+                    <small>{language === 'en' ? 'Narration of the main description' : 'Audioguida narrativa · Voce generata con AI'}</small>
                   </div>
                 </div>
 
+                {language === 'it' && selectedMural.audioIt && !audioError ? (
+                  <audio
+                    key={selectedMural.audioIt}
+                    ref={audioRef}
+                    className="narration-audio"
+                    controls
+                    preload="metadata"
+                    src={selectedMural.audioIt}
+                    onPlay={() => {
+                      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+                      setSpeechStatus('idle');
+                    }}
+                    onError={() => setAudioError(true)}
+                  >
+                    Il tuo browser non supporta la riproduzione audio.
+                  </audio>
+                ) : (
                 <div className="narration-controls">
                   {speechStatus === 'idle' ? (
                     <button type="button" className="narration-primary" onClick={speakSelectedMural}>
@@ -642,6 +671,7 @@ export default function App() {
                     </>
                   )}
                 </div>
+                )}
               </div>
 
               <div className="mini-block">
@@ -820,7 +850,7 @@ export default function App() {
           <p>{t.supportText}</p>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 2.5.2</strong></p>
+        <p><strong>{t.versionLabel} — 2.5.3</strong></p>
       </footer>
       
       <div className={isFloatingMenuOpen ? 'floating-menu-shell open' : 'floating-menu-shell'}>

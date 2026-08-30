@@ -483,6 +483,13 @@ La struttura dati introdotta con V2.0 resta invariata.
 
 - Pulsante “Ascolta la storia” nella scheda.
 - Audioguida narrativa italiana dedicata per tutti i 13 murales (`audioGuideIt`), con fallback alla descrizione esistente.
+
+## V2.5.3 — Audioguida professionale
+
+- 13 tracce MP3 italiane generate con OpenAI Text-to-Speech, voce `marin`.
+- Player audio nativo con avanzamento, pausa, ripresa e controllo del volume.
+- Indicazione trasparente della voce generata con AI.
+- Sintesi vocale del browser mantenuta come fallback e per la versione inglese.
 - Play, pausa/riprendi e stop.
 - Lingua IT/EN automatica.
 - Web Speech API, senza file audio esterni.
