@@ -7,7 +7,7 @@ import { extraPlaces } from './data/extraPlaces';
 import { getExtraText } from './utils/localization';
 import { navGoogle, navApple, embedMapUrl } from './utils/navigation';
 import FoodCard from './components/FoodCard';
-import BottomMobileNav from './components/BottomMobileNav';
+import ImmersiveThematicMap from './components/ImmersiveThematicMap';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Analytics } from '@vercel/analytics/react';
 
@@ -47,49 +47,7 @@ const mapCategoryConfig = {
   food: { icon: '🍴', labelKey: 'mapFilterFood' }
 };
 
-const buildOsmEmbedUrl = (items) => {
-  const valid = items.filter((item) => Number.isFinite(item.lat) && Number.isFinite(item.lng));
-  if (!valid.length) return 'https://www.openstreetmap.org/export/embed.html?bbox=10.594%2C43.362%2C10.603%2C43.367&layer=mapnik';
 
-  const lats = valid.map((item) => item.lat);
-  const lngs = valid.map((item) => item.lng);
-  let minLat = Math.min(...lats);
-  let maxLat = Math.max(...lats);
-  let minLng = Math.min(...lngs);
-  let maxLng = Math.max(...lngs);
-
-  const latPad = Math.max((maxLat - minLat) * 0.18, 0.0012);
-  const lngPad = Math.max((maxLng - minLng) * 0.18, 0.0015);
-  minLat -= latPad;
-  maxLat += latPad;
-  minLng -= lngPad;
-  maxLng += lngPad;
-
-  return `https://www.openstreetmap.org/export/embed.html?bbox=${encodeURIComponent(`${minLng},${minLat},${maxLng},${maxLat}`)}&layer=mapnik`;
-};
-
-const projectMarker = (item, items) => {
-  const valid = items.filter((entry) => Number.isFinite(entry.lat) && Number.isFinite(entry.lng));
-  if (!valid.length) return { left: 50, top: 50 };
-
-  const lats = valid.map((entry) => entry.lat);
-  const lngs = valid.map((entry) => entry.lng);
-  let minLat = Math.min(...lats);
-  let maxLat = Math.max(...lats);
-  let minLng = Math.min(...lngs);
-  let maxLng = Math.max(...lngs);
-
-  const latPad = Math.max((maxLat - minLat) * 0.18, 0.0012);
-  const lngPad = Math.max((maxLng - minLng) * 0.18, 0.0015);
-  minLat -= latPad;
-  maxLat += latPad;
-  minLng -= lngPad;
-  maxLng += lngPad;
-
-  const left = ((item.lng - minLng) / Math.max(maxLng - minLng, 0.00001)) * 100;
-  const top = (1 - (item.lat - minLat) / Math.max(maxLat - minLat, 0.00001)) * 100;
-  return { left, top };
-};
 
 export default function App() {
   const [language, setLanguage] = useState('it');
@@ -97,6 +55,8 @@ export default function App() {
   const [query, setQuery] = useState('');
   const [isMuralSheetOpen, setIsMuralSheetOpen] = useState(false);
   const [isImmersiveMapOpen, setIsImmersiveMapOpen] = useState(false);
+  const [isFloatingMenuOpen, setIsFloatingMenuOpen] = useState(false);
+  const [speechStatus, setSpeechStatus] = useState('idle');
   const [mapCategory, setMapCategory] = useState('murals');
   const [mapSelectedKey, setMapSelectedKey] = useState(null);
   const [familyFoundIds, setFamilyFoundIds] = useState(() => {
@@ -307,6 +267,56 @@ export default function App() {
         maximumAge: 60000
       }
     );
+  };
+
+  const stopNarration = () => {
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    setSpeechStatus('idle');
+  };
+
+  const speakSelectedMural = () => {
+    if (!('speechSynthesis' in window) || !selectedMural) return;
+    window.speechSynthesis.cancel();
+
+    const text = language === 'en'
+      ? (selectedMural.en || selectedMural.it || '')
+      : (selectedMural.it || selectedMural.en || '');
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = language === 'en' ? 'en-US' : 'it-IT';
+    utterance.rate = 0.95;
+    utterance.pitch = 1;
+
+    const voices = window.speechSynthesis.getVoices();
+    const preferred = voices.find((voice) =>
+      voice.lang?.toLowerCase().startsWith(language === 'en' ? 'en' : 'it')
+    );
+    if (preferred) utterance.voice = preferred;
+
+    utterance.onstart = () => setSpeechStatus('speaking');
+    utterance.onend = () => setSpeechStatus('idle');
+    utterance.onerror = () => setSpeechStatus('idle');
+
+    window.speechSynthesis.speak(utterance);
+  };
+
+  const toggleNarrationPause = () => {
+    if (!('speechSynthesis' in window)) return;
+
+    if (window.speechSynthesis.paused) {
+      window.speechSynthesis.resume();
+      setSpeechStatus('speaking');
+    } else if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.pause();
+      setSpeechStatus('paused');
+    }
+  };
+
+  const goToSection = (id) => {
+    setIsFloatingMenuOpen(false);
+    window.setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 40);
   };
 
   const shareMural = async (mural = selectedMural) => {
@@ -522,37 +532,17 @@ export default function App() {
                 </div>
 
                 <div className="immersive-map-canvas thematic-map-canvas">
-                  <iframe
-                    key={mapCategory}
-                    title={t.immersiveMapTitle}
-                    src={buildOsmEmbedUrl(thematicMapItems)}
-                    loading="eager"
+                  <ImmersiveThematicMap
+                    items={thematicMapItems}
+                    selectedKey={thematicSelectedItem?.key || null}
+                    onSelect={(key) => {
+                      setMapSelectedKey(key);
+                      const item = thematicMapItems.find((entry) => entry.key === key);
+                      if (item?.category === 'murals' && item.sourceId) {
+                        selectMural(item.sourceId, false);
+                      }
+                    }}
                   />
-
-                  <div className="thematic-marker-layer" aria-label={t.mapPoints}>
-                    {thematicMapItems.map((item) => {
-                      const pos = projectMarker(item, thematicMapItems);
-                      const active = thematicSelectedItem?.key === item.key;
-                      const icon = mapCategoryConfig[item.category]?.icon || '•';
-                      return (
-                        <button
-                          key={item.key}
-                          type="button"
-                          className={active ? `thematic-marker ${item.category} active` : `thematic-marker ${item.category}`}
-                          style={{ left: `${pos.left}%`, top: `${pos.top}%` }}
-                          onClick={() => {
-                            setMapSelectedKey(item.key);
-                            if (item.category === 'murals' && item.sourceId) {
-                              selectMural(item.sourceId, false);
-                            }
-                          }}
-                          aria-label={item.title}
-                        >
-                          <span>{item.category === 'murals' ? (item.number || icon) : icon}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
 
                   {thematicSelectedItem && (
                     <div className="thematic-map-mini-card">
@@ -602,9 +592,9 @@ export default function App() {
           )}
 
           {isMuralSheetOpen && (
-            <div className="mural-sheet-overlay" onClick={() => setIsMuralSheetOpen(false)} role="dialog" aria-modal="true">
+            <div className="mural-sheet-overlay" onClick={() => { stopNarration(); setIsMuralSheetOpen(false); }} role="dialog" aria-modal="true">
           <article className="selected-mural-card mural-glass-sheet" ref={detailsRef} onClick={(e) => e.stopPropagation()}>
-            <button className="sheet-close" onClick={() => setIsMuralSheetOpen(false)}>{language === 'it' ? 'Chiudi' : 'Close'}</button>
+            <button className="sheet-close" onClick={() => { stopNarration(); setIsMuralSheetOpen(false); }}>{language === 'it' ? 'Chiudi' : 'Close'}</button>
             <div className="selected-mural-image-wrap">
               <img src={selectedMural.image} alt={selectedMural.title} />
             </div>
@@ -621,6 +611,37 @@ export default function App() {
               <div className="mini-block description-block">
                 <h4>Descrizione dell’opera</h4>
                 <p>{language === 'en' ? selectedMural.en : selectedMural.it}</p>
+              </div>
+
+              <div className="narration-card">
+                <div className="narration-card-copy">
+                  <span className="narration-icon" aria-hidden="true">🔊</span>
+                  <div>
+                    <strong>{language === 'en' ? 'Listen to this mural' : 'Ascolta il murale'}</strong>
+                    <small>{language === 'en' ? 'Narration of the main description' : 'Voce narrante della descrizione principale'}</small>
+                  </div>
+                </div>
+
+                <div className="narration-controls">
+                  {speechStatus === 'idle' ? (
+                    <button type="button" className="narration-primary" onClick={speakSelectedMural}>
+                      <span aria-hidden="true">▶</span>
+                      {language === 'en' ? 'Play' : 'Ascolta'}
+                    </button>
+                  ) : (
+                    <>
+                      <button type="button" className="narration-primary" onClick={toggleNarrationPause}>
+                        <span aria-hidden="true">{speechStatus === 'paused' ? '▶' : 'Ⅱ'}</span>
+                        {speechStatus === 'paused'
+                          ? (language === 'en' ? 'Resume' : 'Riprendi')
+                          : (language === 'en' ? 'Pause' : 'Pausa')}
+                      </button>
+                      <button type="button" className="narration-stop" onClick={stopNarration}>
+                        <span aria-hidden="true">■</span> Stop
+                      </button>
+                    </>
+                  )}
+                </div>
               </div>
 
               <div className="mini-block">
@@ -791,8 +812,6 @@ export default function App() {
       </main>
 
 
-      <BottomMobileNav t={t} />
-
       <footer>
         <p><strong>{t.footerMade}</strong></p>
         <p>{t.footerPurpose}</p>
@@ -801,29 +820,57 @@ export default function App() {
           <p>{t.supportText}</p>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 2.5.0</strong></p>
+        <p><strong>{t.versionLabel} — 2.5.2</strong></p>
       </footer>
+      
+      <div className={isFloatingMenuOpen ? 'floating-menu-shell open' : 'floating-menu-shell'}>
+        <button
+          type="button"
+          className="floating-menu-trigger"
+          onClick={() => setIsFloatingMenuOpen((open) => !open)}
+          aria-expanded={isFloatingMenuOpen}
+          aria-label={language === 'en' ? 'Open navigation menu' : 'Apri menu di navigazione'}
+        >
+          <span className="floating-menu-trigger-icon" aria-hidden="true">{isFloatingMenuOpen ? '×' : '☰'}</span>
+        </button>
+
+        {isFloatingMenuOpen && (
+          <>
+            <button
+              type="button"
+              className="floating-menu-backdrop"
+              onClick={() => setIsFloatingMenuOpen(false)}
+              aria-label={language === 'en' ? 'Close menu' : 'Chiudi menu'}
+            />
+            <nav className="floating-menu-panel" aria-label={language === 'en' ? 'Quick navigation' : 'Navigazione rapida'}>
+              <button type="button" onClick={() => goToSection('top')}>
+                <span aria-hidden="true">⌂</span>
+                <strong>Home</strong>
+              </button>
+              <button type="button" onClick={() => goToSection('murales')}>
+                <span aria-hidden="true">🎨</span>
+                <strong>{language === 'en' ? 'Murals' : 'Murales'}</strong>
+              </button>
+              <button type="button" onClick={() => goToSection('mappa')}>
+                <span aria-hidden="true">⌖</span>
+                <strong>{language === 'en' ? 'Map' : 'Mappa'}</strong>
+              </button>
+              <button type="button" onClick={() => goToSection('oltre-murales')}>
+                <span aria-hidden="true">✦</span>
+                <strong>{language === 'en' ? 'Beyond' : 'Oltre'}</strong>
+              </button>
+              <button type="button" onClick={() => goToSection('dove-fermarsi')}>
+                <span aria-hidden="true">🍴</span>
+                <strong>{language === 'en' ? 'Food & drink' : 'Dove fermarsi'}</strong>
+              </button>
+            </nav>
+          </>
+        )}
+      </div>
+
       <Analytics />
       <SpeedInsights />
 
-      <nav className="mobile-premium-nav v22-nav" aria-label={language === 'en' ? 'Quick navigation' : 'Navigazione rapida'}>
-        <a href="#top" className="mobile-premium-nav-item">
-          <span className="v22-icon" aria-hidden="true">⌂</span>
-          <small>Home</small>
-        </a>
-        <a href="#murales" className="mobile-premium-nav-item">
-          <span className="v22-icon" aria-hidden="true">▦</span>
-          <small>{language === 'en' ? 'Murals' : 'Murales'}</small>
-        </a>
-        <a href="#mappa" className="mobile-premium-nav-item mobile-premium-nav-main">
-          <span className="v22-icon" aria-hidden="true">⌖</span>
-          <small>{language === 'en' ? 'Map' : 'Mappa'}</small>
-        </a>
-        <a href="#oltre" className="mobile-premium-nav-item">
-          <span className="v22-icon" aria-hidden="true">✦</span>
-          <small>{language === 'en' ? 'Explore' : 'Scopri'}</small>
-        </a>
-      </nav>
 
     </div>
   );
