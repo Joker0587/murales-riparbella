@@ -58,7 +58,7 @@ export default function App() {
   const [isFloatingMenuOpen, setIsFloatingMenuOpen] = useState(false);
   const [fontScale, setFontScale] = useState(() => Number(localStorage.getItem('riparbellaFontScale') || 1));
   const [privacyOpen, setPrivacyOpen] = useState(false);
-  const [speechStatus, setSpeechStatus] = useState('idle');
+  const audioRef = useRef(null);
   const [mapCategory, setMapCategory] = useState('murals');
   const [mapSelectedKey, setMapSelectedKey] = useState(null);
   const [familyFoundIds, setFamilyFoundIds] = useState(() => {
@@ -273,46 +273,8 @@ export default function App() {
   };
 
   const stopNarration = () => {
-    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-    setSpeechStatus('idle');
-  };
-
-  const speakSelectedMural = () => {
-    if (!('speechSynthesis' in window) || !selectedMural) return;
-    window.speechSynthesis.cancel();
-
-    const text = language === 'en'
-      ? (selectedMural.audioGuideEn || selectedMural.en || selectedMural.it || '')
-      : (selectedMural.audioGuideIt || selectedMural.it || selectedMural.en || '');
-
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = language === 'en' ? 'en-US' : 'it-IT';
-    utterance.rate = 0.95;
-    utterance.pitch = 1;
-
-    const voices = window.speechSynthesis.getVoices();
-    const preferred = voices.find((voice) =>
-      voice.lang?.toLowerCase().startsWith(language === 'en' ? 'en' : 'it')
-    );
-    if (preferred) utterance.voice = preferred;
-
-    utterance.onstart = () => setSpeechStatus('speaking');
-    utterance.onend = () => setSpeechStatus('idle');
-    utterance.onerror = () => setSpeechStatus('idle');
-
-    window.speechSynthesis.speak(utterance);
-  };
-
-  const toggleNarrationPause = () => {
-    if (!('speechSynthesis' in window)) return;
-
-    if (window.speechSynthesis.paused) {
-      window.speechSynthesis.resume();
-      setSpeechStatus('speaking');
-    } else if (window.speechSynthesis.speaking) {
-      window.speechSynthesis.pause();
-      setSpeechStatus('paused');
-    }
+    audioRef.current?.pause();
+    if (audioRef.current) audioRef.current.currentTime = 0;
   };
 
   useEffect(() => {
@@ -633,30 +595,21 @@ export default function App() {
                   <span className="narration-icon" aria-hidden="true">🔊</span>
                   <div>
                     <strong>{language === 'en' ? 'Listen to the story' : 'Ascolta la storia'}</strong>
-                    <small>{language === 'en' ? 'Narration of the main description' : 'Audioguida narrativa dell’opera'}</small>
+                    <small>{language === 'en' ? 'Narrative audio guide · AI-generated voice' : 'Audioguida narrativa · Voce generata con AI'}</small>
                   </div>
                 </div>
 
-                <div className="narration-controls">
-                  {speechStatus === 'idle' ? (
-                    <button type="button" className="narration-primary" onClick={speakSelectedMural}>
-                      <span aria-hidden="true">▶</span>
-                      {language === 'en' ? 'Play' : 'Ascolta'}
-                    </button>
-                  ) : (
-                    <>
-                      <button type="button" className="narration-primary" onClick={toggleNarrationPause}>
-                        <span aria-hidden="true">{speechStatus === 'paused' ? '▶' : 'Ⅱ'}</span>
-                        {speechStatus === 'paused'
-                          ? (language === 'en' ? 'Resume' : 'Riprendi')
-                          : (language === 'en' ? 'Pause' : 'Pausa')}
-                      </button>
-                      <button type="button" className="narration-stop" onClick={stopNarration}>
-                        <span aria-hidden="true">■</span> Stop
-                      </button>
-                    </>
-                  )}
-                </div>
+                <audio
+                  key={`${selectedMural.id}-${language}`}
+                  ref={audioRef}
+                  className="narration-audio"
+                  controls
+                  preload="metadata"
+                  src={language === 'en' ? selectedMural.audioEn : selectedMural.audioIt}
+                  aria-label={language === 'en' ? 'Listen to the story' : 'Ascolta la storia'}
+                >
+                  {language === 'en' ? 'Your browser does not support audio playback.' : 'Il tuo browser non supporta la riproduzione audio.'}
+                </audio>
               </div>
 
               <div className="mini-block">

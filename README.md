@@ -502,3 +502,6 @@ mantengono navigazione, condivisione e stato della visita.
 I 13 murales originali e tutti i loro campi, comprese le audioguide, sono invariati.
 Family Hunt mantiene i suoi obiettivi originali. Versione applicazione e cache PWA: 2.6.1.
 Le funzioni esistenti rimangono presenti; Tappe Smart non è stata reintrodotta.
+
+### Correzione audio V2.6.1
+Ripristinate le 26 tracce MP3 (13 IT + 13 EN) dalla versione locale con voce migliorata. Player audio nativo, senza fallback automatico alla voce del browser. Cache aggiornata.

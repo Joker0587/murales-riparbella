@@ -1,6 +1,8 @@
 export const murals = [
   {
     id: 'gioia',
+    audioEn: '/audio/en/gioia.mp3',
+    audioIt: '/audio/it/gioia.mp3',
     title: 'La Gioia',
     audioGuideIt: `Benvenuto a Riparbella. Il nostro viaggio tra i murales comincia qui, in Piazza della Madonna, davanti a La Gioia, opera realizzata nel 2020 da Vincenzo Marano Esposito, in arte Vinci.
 
@@ -32,6 +34,8 @@ Prima di proseguire, cerca con lo sguardo il mare all’orizzonte. Poi torna ver
   },
   {
     id: 'lari',
+    audioEn: '/audio/en/lari.mp3',
+    audioIt: '/audio/it/lari.mp3',
     title: 'I Lari',
     audioGuideIt: `Siamo in Piazza Giacomo Matteotti. Davanti a te c’è I Lari, opera realizzata nel 2024 da Giò Pistone.
 
@@ -65,6 +69,8 @@ Un luogo che un tempo rappresentava giudizio e reclusione diventa così un’imm
   },
   {
     id: 'memoria',
+    audioEn: '/audio/en/memoria.mp3',
+    audioIt: '/audio/it/memoria.mp3',
     title: 'Memoria e desiderio',
     audioGuideIt: `Non cercare subito di capire questa facciata.
 
@@ -100,6 +106,8 @@ Questa non è una mappa che serve per sapere dove andare.
   },
   {
     id: 'amphora',
+    audioEn: '/audio/en/amphora.mp3',
+    audioIt: '/audio/it/amphora.mp3',
     title: 'Amphora',
     audioGuideIt: `Davanti a te c’è Amphora, realizzata da Tellas nel 2025.
 
@@ -137,6 +145,8 @@ Sembra essere sempre stata lì, nascosta nella sua materia, in attesa di emerger
   },
   {
     id: 'corona',
+    audioEn: '/audio/en/corona.mp3',
+    audioIt: '/audio/it/corona.mp3',
     title: 'Corona Aurea',
     audioGuideIt: `Qui il nostro percorso incontra direttamente la storia più antica di Riparbella.
 
@@ -176,6 +186,8 @@ Un incontro tra memoria etrusca, luce e presente.`,
   },
   {
     id: 'amore',
+    audioEn: '/audio/en/amore.mp3',
+    audioIt: '/audio/it/amore.mp3',
     title: 'L’amore nella pentola',
     audioGuideIt: `Questa volta il murale ci porta dentro una storia che gli abitanti di Riparbella hanno tramandato nel tempo.
 
@@ -209,6 +221,8 @@ Sono dettagli apparentemente lontani tra loro, ma insieme costruiscono un raccon
   },
   {
     id: 'terra-colori',
+    audioEn: '/audio/en/terra-colori.mp3',
+    audioIt: '/audio/it/terra-colori.mp3',
     title: 'Terra e colori',
     audioGuideIt: `Dopo tante storie, questa volta lascia parlare prima di tutto i colori.
 
@@ -248,6 +262,8 @@ Viene raccontata attraverso le sensazioni che può lasciare a chi la attraversa:
   },
   {
     id: 'universo',
+    audioEn: '/audio/en/universo.mp3',
+    audioIt: '/audio/it/universo.mp3',
     title: 'Universo Riparbella',
     audioGuideIt: `Adesso il nostro percorso cambia ancora.
 
@@ -289,6 +305,8 @@ Sono i bambini che provano a raccontarlo a noi.`,
   },
   {
     id: 'hitnes',
+    audioEn: '/audio/en/hitnes.mp3',
+    audioIt: '/audio/it/hitnes.mp3',
     title: 'Hunting Hunters',
     audioGuideIt: `Fermati davanti a Hunting Hunters, realizzata da Hitnes nel 2025, e preparati a entrare in una piccola favola.
 
@@ -330,6 +348,8 @@ Oppure, questa volta, è la natura che sta aspettando l’uomo?`,
   },
   {
     id: 'aris',
+    audioEn: '/audio/en/aris.mp3',
+    audioIt: '/audio/it/aris.mp3',
     title: 'La Chimera',
     audioGuideIt: `Con La Chimera, realizzata da Aris nel 2025, torniamo alle radici etrusche di Riparbella.
 
@@ -369,6 +389,8 @@ Un ponte tra storia, ricerca e arte urbana.`,
   },
   {
     id: 'riparbella01',
+    audioEn: '/audio/en/riparbella01.mp3',
+    audioIt: '/audio/it/riparbella01.mp3',
     title: 'Riparbella01',
     audioGuideIt: `Questa è probabilmente l’opera più astratta del nostro percorso.
 
@@ -406,6 +428,8 @@ Potresti vedere quelle normali finestre trasformarsi, per qualche istante, in gr
   },
   {
     id: 'esperienza',
+    audioEn: '/audio/en/esperienza.mp3',
+    audioIt: '/audio/it/esperienza.mp3',
     title: 'L’esperienza più bella della nostra vita',
     audioGuideIt: `Il titolo di questo murale è già una piccola storia.
 
@@ -445,6 +469,8 @@ Perché questa volta l’arte pubblica non è soltanto qualcosa che una comunit�
   },
   {
     id: 'turan',
+    audioEn: '/audio/en/turan.mp3',
+    audioIt: '/audio/it/turan.mp3',
     title: 'Il sonno di Turan',
     audioGuideIt: `Siamo arrivati all’ultima tappa del nostro viaggio.
 

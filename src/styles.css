@@ -3975,3 +3975,5 @@ button,a{touch-action:manipulation}button:focus-visible,a:focus-visible{outline:
 @media(prefers-contrast:more){.text-card,.selected-mural-card,.narration-card,.floating-menu-panel{border:2px solid currentColor!important}}
 
 .new-work-badge { display: inline-block; padding: 4px 9px; border-radius: 99px; background: #f3b431; color: #1f2933; font-size: 11px; font-weight: 800; font-style: normal; letter-spacing: .04em; }
+
+.narration-audio { width: 100%; min-width: 0; margin-top: 12px; }
