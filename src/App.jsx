@@ -127,7 +127,8 @@ export default function App() {
       sourceId: item.id,
       category: 'murals',
       title: item.title,
-      subtitle: item.address,
+      subtitle: item.pending ? item.it : item.address,
+      badge: item.badge,
       image: item.image,
       lat: item.lat,
       lng: item.lng,
@@ -501,7 +502,8 @@ export default function App() {
                     <img className="route-thumb" src={mural.image} alt={mural.title} loading="lazy" />
                     <span>
                       <strong>{mural.title}</strong>
-                      <small>{mural.address}</small>
+                      <small>{mural.pending ? mural.it : mural.address}</small>
+                      {mural.badge && <em className="new-work-badge">{mural.badge}</em>}
                       {isVisited(mural.id) && <em className="visited-pill">Vista</em>}
                     </span>
                   </button>
@@ -567,6 +569,7 @@ export default function App() {
                         <small>{t[mapCategoryConfig[thematicSelectedItem.category]?.labelKey]}</small>
                         <strong>{thematicSelectedItem.title}</strong>
                         <span>{thematicSelectedItem.subtitle}</span>
+                        {thematicSelectedItem.badge && <em className="new-work-badge">{thematicSelectedItem.badge}</em>}
                       </div>
                       <div className="thematic-mini-actions">
                         {thematicSelectedItem.category === 'murals' && thematicSelectedItem.sourceId && (
@@ -612,8 +615,9 @@ export default function App() {
               <p className="kicker">{t.selectedMuralCard}</p>
               <p className="step">{t.stopOf} {selectedIndex + 1} {t.of} {murals.length}</p>
               <h3>{selectedMural.title}</h3>
-              <p className="meta">{selectedMural.artist} · {selectedMural.year}</p>
-              <p className="address">⌖ {selectedMural.address}</p>
+              {selectedMural.badge && <span className="new-work-badge">{selectedMural.badge}</span>}
+              {!selectedMural.pending && <p className="meta">{selectedMural.artist} · {selectedMural.year}</p>}
+              {selectedMural.address && <p className="address">⌖ {selectedMural.address}</p>}
               <div className="tags">
                 {(language === 'en' ? selectedMural.tagsEn || selectedMural.tags : selectedMural.tags).map((tag) => <span key={tag}>{tag}</span>)}
               </div>
@@ -623,6 +627,7 @@ export default function App() {
                 <p>{language === 'en' ? selectedMural.en : selectedMural.it}</p>
               </div>
 
+              {!selectedMural.pending && <>
               <div className="narration-card">
                 <div className="narration-card-copy">
                   <span className="narration-icon" aria-hidden="true">🔊</span>
@@ -665,6 +670,8 @@ export default function App() {
                   {(language === 'en' ? selectedMural.detailsToFindEn || selectedMural.detailsToFind : selectedMural.detailsToFind).map((detail) => <li key={detail}>{detail}</li>)}
                 </ul>
               </div>
+
+              </>}
 
               {(language === 'en' ? selectedMural.directionsNextEn || selectedMural.directionsNext : selectedMural.directionsNext) && (
                 <div className="mini-block next-direction">
@@ -830,7 +837,7 @@ export default function App() {
           <p>{t.supportText}</p>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 2.6.0</strong></p>
+        <p><strong>{t.versionLabel} — 2.6.1</strong></p>
       </footer>
       
       <div className={isFloatingMenuOpen ? 'floating-menu-shell open' : 'floating-menu-shell'}>

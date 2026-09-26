@@ -490,3 +490,15 @@ La struttura dati introdotta con V2.0 resta invariata.
 
 - Inserite 13 audioguide italiane dedicate, separate dalle descrizioni delle schede.
 - Il pulsante “Ascolta la storia” legge `audioGuideIt`, con fallback alla descrizione normale.
+
+## V2.6.1 — Le Colline delle Fiabe 2026
+
+Aggiunti cinque punti provvisori nella categoria Murales, con coordinate fornite,
+placeholder SVG coordinato e badge NOVITÀ 2026. Le etichette Nuova opera 1–5
+sono identificativi provvisori, non titoli delle opere. Non sono stati aggiunti
+artisti, indirizzi, audioguide o dettagli non forniti. Le schede provvisorie
+mantengono navigazione, condivisione e stato della visita.
+
+I 13 murales originali e tutti i loro campi, comprese le audioguide, sono invariati.
+Family Hunt mantiene i suoi obiettivi originali. Versione applicazione e cache PWA: 2.6.1.
+Le funzioni esistenti rimangono presenti; Tappe Smart non è stata reintrodotta.

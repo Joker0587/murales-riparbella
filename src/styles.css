@@ -3973,3 +3973,5 @@ button,a{touch-action:manipulation}button:focus-visible,a:focus-visible{outline:
 .privacy-dialog-overlay{position:fixed;inset:0;z-index:9000;background:rgba(10,16,24,.35);backdrop-filter:blur(8px);display:grid;place-items:center;padding:18px}.privacy-dialog{position:relative;width:min(560px,100%);max-height:85vh;overflow:auto;background:#f7f4ed;color:#182230;border-radius:26px;padding:26px;box-shadow:0 30px 90px rgba(0,0,0,.25)}.privacy-dialog p{line-height:1.65}.privacy-close{position:absolute;right:14px;top:14px;width:44px;height:44px;border:0;border-radius:14px;font-size:1.4rem}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 @media(prefers-contrast:more){.text-card,.selected-mural-card,.narration-card,.floating-menu-panel{border:2px solid currentColor!important}}
+
+.new-work-badge { display: inline-block; padding: 4px 9px; border-radius: 99px; background: #f3b431; color: #1f2933; font-size: 11px; font-weight: 800; font-style: normal; letter-spacing: .04em; }

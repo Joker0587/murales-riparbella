@@ -481,5 +481,95 @@ E con un’immagine di amore, pace e rinascita, si conclude il nostro viaggio tr
     detailsToFindEn: ["the goddess Turan", "the black swan", "the pomegranate", "the white dove", "the outline of the hill and the sea"],
     observeEn: "Look at Turan as a figure suspended between memory and rebirth: love, peace and liberation are at the heart of the work.",
     directionsNextEn: "You have completed the tour. You can return towards the historic centre or choose a car park or a place to stop from the guide.",
-  }
+  },
+{
+  "id": "nuova-opera-2026-1",
+  "title": "Nuova opera 1",
+  "pending": true,
+  "badge": "NOVITÀ 2026",
+  "artist": "",
+  "year": "",
+  "address": "",
+  "lat": 43.36362686567491,
+  "lng": 10.596852447330768,
+  "image": "/images/nuova-opera-2026.svg",
+  "tags": [
+    "NOVITÀ 2026"
+  ],
+  "detailsToFind": [],
+  "it": "Le Colline delle Fiabe 2026",
+  "en": "Le Colline delle Fiabe 2026"
+},
+{
+  "id": "nuova-opera-2026-2",
+  "title": "Nuova opera 2",
+  "pending": true,
+  "badge": "NOVITÀ 2026",
+  "artist": "",
+  "year": "",
+  "address": "",
+  "lat": 43.36359398890753,
+  "lng": 10.5981722587049,
+  "image": "/images/nuova-opera-2026.svg",
+  "tags": [
+    "NOVITÀ 2026"
+  ],
+  "detailsToFind": [],
+  "it": "Le Colline delle Fiabe 2026",
+  "en": "Le Colline delle Fiabe 2026"
+},
+{
+  "id": "nuova-opera-2026-3",
+  "title": "Nuova opera 3",
+  "pending": true,
+  "badge": "NOVITÀ 2026",
+  "artist": "",
+  "year": "",
+  "address": "",
+  "lat": 43.36476817301948,
+  "lng": 10.600042914815115,
+  "image": "/images/nuova-opera-2026.svg",
+  "tags": [
+    "NOVITÀ 2026"
+  ],
+  "detailsToFind": [],
+  "it": "Le Colline delle Fiabe 2026",
+  "en": "Le Colline delle Fiabe 2026"
+},
+{
+  "id": "nuova-opera-2026-4",
+  "title": "Nuova opera 4",
+  "pending": true,
+  "badge": "NOVITÀ 2026",
+  "artist": "",
+  "year": "",
+  "address": "",
+  "lat": 43.36486911713411,
+  "lng": 10.60025550260675,
+  "image": "/images/nuova-opera-2026.svg",
+  "tags": [
+    "NOVITÀ 2026"
+  ],
+  "detailsToFind": [],
+  "it": "Le Colline delle Fiabe 2026",
+  "en": "Le Colline delle Fiabe 2026"
+},
+{
+  "id": "nuova-opera-2026-5",
+  "title": "Nuova opera 5",
+  "pending": true,
+  "badge": "NOVITÀ 2026",
+  "artist": "",
+  "year": "",
+  "address": "",
+  "lat": 43.36609006596812,
+  "lng": 10.601022693144426,
+  "image": "/images/nuova-opera-2026.svg",
+  "tags": [
+    "NOVITÀ 2026"
+  ],
+  "detailsToFind": [],
+  "it": "Le Colline delle Fiabe 2026",
+  "en": "Le Colline delle Fiabe 2026"
+}
 ];
