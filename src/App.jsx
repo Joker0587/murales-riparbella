@@ -56,8 +56,9 @@ export default function App() {
   const [isMuralSheetOpen, setIsMuralSheetOpen] = useState(false);
   const [isImmersiveMapOpen, setIsImmersiveMapOpen] = useState(false);
   const [isFloatingMenuOpen, setIsFloatingMenuOpen] = useState(false);
-  const [speechStatus, setSpeechStatus] = useState('idle');
-  const [audioError, setAudioError] = useState(false);
+  const [fontScale, setFontScale] = useState(() => Number(localStorage.getItem('riparbellaFontScale') || 1));
+  const [privacyOpen, setPrivacyOpen] = useState(false);
+  const audioRef = useRef(null);
   const [mapCategory, setMapCategory] = useState('murals');
   const [mapSelectedKey, setMapSelectedKey] = useState(null);
   const [familyFoundIds, setFamilyFoundIds] = useState(() => {
@@ -72,12 +73,10 @@ export default function App() {
   const detailsRef = useRef(null);
   const tourRef = useRef(null);
   const mapRef = useRef(null);
-  const audioRef = useRef(null);
 
   const t = ui[language];
   const selectedIndex = Math.max(0, murals.findIndex((m) => m.id === selectedId));
   const selectedMural = murals[selectedIndex] || murals[0];
-  const selectedAudio = language === 'en' ? selectedMural.audioEn : selectedMural.audioIt;
   const thematicMapItems = (() => {
     if (mapCategory === 'beyond') {
       return extraPlaces
@@ -128,7 +127,8 @@ export default function App() {
       sourceId: item.id,
       category: 'murals',
       title: item.title,
-      subtitle: item.address,
+      subtitle: item.pending ? item.it : item.address,
+      badge: item.badge,
       image: item.image,
       lat: item.lat,
       lng: item.lng,
@@ -179,14 +179,6 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem('riparbellaVisitedMurals', JSON.stringify(visitedIds));
   }, [visitedIds]);
-
-  useEffect(() => {
-    audioRef.current?.pause();
-    if (audioRef.current) audioRef.current.currentTime = 0;
-    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-    setSpeechStatus('idle');
-    setAudioError(false);
-  }, [selectedId, language]);
 
   useEffect(() => {
     if (!isImmersiveMapOpen) return undefined;
@@ -283,47 +275,15 @@ export default function App() {
   const stopNarration = () => {
     audioRef.current?.pause();
     if (audioRef.current) audioRef.current.currentTime = 0;
-    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-    setSpeechStatus('idle');
   };
 
-  const speakSelectedMural = () => {
-    if (!('speechSynthesis' in window) || !selectedMural) return;
-    window.speechSynthesis.cancel();
+  useEffect(() => {
+    const value = Math.min(1.25, Math.max(0.9, fontScale));
+    document.documentElement.style.setProperty('--app-font-scale', value);
+    localStorage.setItem('riparbellaFontScale', String(value));
+  }, [fontScale]);
 
-    const text = language === 'en'
-      ? (selectedMural.audioGuideEn || selectedMural.en || selectedMural.it || '')
-      : (selectedMural.audioGuideIt || selectedMural.it || selectedMural.en || '');
-
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = language === 'en' ? 'en-US' : 'it-IT';
-    utterance.rate = 0.95;
-    utterance.pitch = 1;
-
-    const voices = window.speechSynthesis.getVoices();
-    const preferred = voices.find((voice) =>
-      voice.lang?.toLowerCase().startsWith(language === 'en' ? 'en' : 'it')
-    );
-    if (preferred) utterance.voice = preferred;
-
-    utterance.onstart = () => setSpeechStatus('speaking');
-    utterance.onend = () => setSpeechStatus('idle');
-    utterance.onerror = () => setSpeechStatus('idle');
-
-    window.speechSynthesis.speak(utterance);
-  };
-
-  const toggleNarrationPause = () => {
-    if (!('speechSynthesis' in window)) return;
-
-    if (window.speechSynthesis.paused) {
-      window.speechSynthesis.resume();
-      setSpeechStatus('speaking');
-    } else if (window.speechSynthesis.speaking) {
-      window.speechSynthesis.pause();
-      setSpeechStatus('paused');
-    }
-  };
+  const changeFontScale = (delta) => setFontScale(v => Math.round(Math.min(1.25, Math.max(0.9, v + delta)) * 100) / 100);
 
   const goToSection = (id) => {
     setIsFloatingMenuOpen(false);
@@ -504,7 +464,8 @@ export default function App() {
                     <img className="route-thumb" src={mural.image} alt={mural.title} loading="lazy" />
                     <span>
                       <strong>{mural.title}</strong>
-                      <small>{mural.address}</small>
+                      <small>{mural.pending ? mural.it : mural.address}</small>
+                      {mural.badge && <em className="new-work-badge">{mural.badge}</em>}
                       {isVisited(mural.id) && <em className="visited-pill">Vista</em>}
                     </span>
                   </button>
@@ -570,6 +531,7 @@ export default function App() {
                         <small>{t[mapCategoryConfig[thematicSelectedItem.category]?.labelKey]}</small>
                         <strong>{thematicSelectedItem.title}</strong>
                         <span>{thematicSelectedItem.subtitle}</span>
+                        {thematicSelectedItem.badge && <em className="new-work-badge">{thematicSelectedItem.badge}</em>}
                       </div>
                       <div className="thematic-mini-actions">
                         {thematicSelectedItem.category === 'murals' && thematicSelectedItem.sourceId && (
@@ -615,8 +577,9 @@ export default function App() {
               <p className="kicker">{t.selectedMuralCard}</p>
               <p className="step">{t.stopOf} {selectedIndex + 1} {t.of} {murals.length}</p>
               <h3>{selectedMural.title}</h3>
-              <p className="meta">{selectedMural.artist} · {selectedMural.year}</p>
-              <p className="address">⌖ {selectedMural.address}</p>
+              {selectedMural.badge && <span className="new-work-badge">{selectedMural.badge}</span>}
+              {!selectedMural.pending && <p className="meta">{selectedMural.artist} · {selectedMural.year}</p>}
+              {selectedMural.address && <p className="address">⌖ {selectedMural.address}</p>}
               <div className="tags">
                 {(language === 'en' ? selectedMural.tagsEn || selectedMural.tags : selectedMural.tags).map((tag) => <span key={tag}>{tag}</span>)}
               </div>
@@ -626,6 +589,7 @@ export default function App() {
                 <p>{language === 'en' ? selectedMural.en : selectedMural.it}</p>
               </div>
 
+              {!selectedMural.pending && <>
               <div className="narration-card">
                 <div className="narration-card-copy">
                   <span className="narration-icon" aria-hidden="true">🔊</span>
@@ -635,44 +599,17 @@ export default function App() {
                   </div>
                 </div>
 
-                {selectedAudio && !audioError ? (
-                  <audio
-                    key={selectedAudio}
-                    ref={audioRef}
-                    className="narration-audio"
-                    controls
-                    preload="metadata"
-                    src={selectedAudio}
-                    onPlay={() => {
-                      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-                      setSpeechStatus('idle');
-                    }}
-                    onError={() => setAudioError(true)}
-                  >
-                    Il tuo browser non supporta la riproduzione audio.
-                  </audio>
-                ) : (
-                <div className="narration-controls">
-                  {speechStatus === 'idle' ? (
-                    <button type="button" className="narration-primary" onClick={speakSelectedMural}>
-                      <span aria-hidden="true">▶</span>
-                      {language === 'en' ? 'Play' : 'Ascolta'}
-                    </button>
-                  ) : (
-                    <>
-                      <button type="button" className="narration-primary" onClick={toggleNarrationPause}>
-                        <span aria-hidden="true">{speechStatus === 'paused' ? '▶' : 'Ⅱ'}</span>
-                        {speechStatus === 'paused'
-                          ? (language === 'en' ? 'Resume' : 'Riprendi')
-                          : (language === 'en' ? 'Pause' : 'Pausa')}
-                      </button>
-                      <button type="button" className="narration-stop" onClick={stopNarration}>
-                        <span aria-hidden="true">■</span> Stop
-                      </button>
-                    </>
-                  )}
-                </div>
-                )}
+                <audio
+                  key={`${selectedMural.id}-${language}`}
+                  ref={audioRef}
+                  className="narration-audio"
+                  controls
+                  preload="metadata"
+                  src={language === 'en' ? selectedMural.audioEn : selectedMural.audioIt}
+                  aria-label={language === 'en' ? 'Listen to the story' : 'Ascolta la storia'}
+                >
+                  {language === 'en' ? 'Your browser does not support audio playback.' : 'Il tuo browser non supporta la riproduzione audio.'}
+                </audio>
               </div>
 
               <div className="mini-block">
@@ -686,6 +623,8 @@ export default function App() {
                   {(language === 'en' ? selectedMural.detailsToFindEn || selectedMural.detailsToFind : selectedMural.detailsToFind).map((detail) => <li key={detail}>{detail}</li>)}
                 </ul>
               </div>
+
+              </>}
 
               {(language === 'en' ? selectedMural.directionsNextEn || selectedMural.directionsNext : selectedMural.directionsNext) && (
                 <div className="mini-block next-direction">
@@ -851,7 +790,7 @@ export default function App() {
           <p>{t.supportText}</p>
         </div>
         <p>{t.rightsText}</p>
-        <p><strong>{t.versionLabel} — 2.5.4</strong></p>
+        <p><strong>{t.versionLabel} — 2.6.1</strong></p>
       </footer>
       
       <div className={isFloatingMenuOpen ? 'floating-menu-shell open' : 'floating-menu-shell'}>
@@ -894,11 +833,30 @@ export default function App() {
                 <span aria-hidden="true">🍴</span>
                 <strong>{language === 'en' ? 'Food & drink' : 'Dove fermarsi'}</strong>
               </button>
+              <div className="floating-accessibility-tools">
+                <button type="button" onClick={() => changeFontScale(-0.1)} aria-label="Riduci dimensione testo">A−</button>
+                <button type="button" onClick={() => changeFontScale(0.1)} aria-label="Aumenta dimensione testo">A+</button>
+              </div>
+              <button type="button" onClick={() => { setIsFloatingMenuOpen(false); setPrivacyOpen(true); }}>
+                <span aria-hidden="true">🔒</span><strong>Privacy</strong>
+              </button>
             </nav>
           </>
         )}
       </div>
 
+      {privacyOpen && (
+        <div className="privacy-dialog-overlay" role="dialog" aria-modal="true" aria-labelledby="privacy-title" onClick={() => setPrivacyOpen(false)}>
+          <article className="privacy-dialog" onClick={(e) => e.stopPropagation()}>
+            <button className="privacy-close" type="button" onClick={() => setPrivacyOpen(false)} aria-label="Chiudi">×</button>
+            <p className="kicker">Privacy</p>
+            <h2 id="privacy-title">{language === 'en' ? 'Your location stays under your control' : 'La tua posizione resta sotto il tuo controllo'}</h2>
+            <p>{language === 'en' ? 'Location is requested only when you use a location feature. It is used to show where you are and calculate nearby murals. GPS coordinates are not intentionally stored by the app.' : 'La posizione viene richiesta solo quando utilizzi una funzione di localizzazione. Serve a mostrarti dove ti trovi e a calcolare i murales vicini. Le coordinate GPS non vengono intenzionalmente memorizzate dall’app.'}</p>
+            <p>{language === 'en' ? 'Visit progress, family hunt progress and accessibility preferences may be stored locally in your browser. Vercel Analytics and Speed Insights are used for aggregate usage and performance information.' : 'L’avanzamento della visita, la caccia ai dettagli e le preferenze di accessibilità possono essere salvati localmente nel browser. Vercel Analytics e Speed Insights sono utilizzati per informazioni aggregate su utilizzo e prestazioni.'}</p>
+            <button type="button" className="primary" onClick={() => setPrivacyOpen(false)}>{language === 'en' ? 'Got it' : 'Ho capito'}</button>
+          </article>
+        </div>
+      )}
       <Analytics />
       <SpeedInsights />
 

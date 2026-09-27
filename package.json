@@ -1,6 +1,6 @@
 {
   "name": "murales-riparbella",
-  "version": "2.5.4",
+  "version": "2.6.1",
   "private": true,
   "type": "module",
   "packageManager": "yarn@1.22.22",

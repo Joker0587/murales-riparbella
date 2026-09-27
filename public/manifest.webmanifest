@@ -1,0 +1,19 @@
+{
+  "name": "Murales di Riparbella",
+  "short_name": "Murales",
+  "description": "Guida ai Murales di Riparbella",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f7f4ed",
+  "theme_color": "#182230",
+  "lang": "it",
+  "icons": [
+    {
+      "src": "/pwa-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

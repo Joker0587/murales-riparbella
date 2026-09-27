@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+<title id="title">NUOVA OPERA — WORK IN PROGRESS</title><desc id="desc">Le Colline delle Fiabe 2026. NOVITÀ 2026.</desc>
+<rect width="800" height="600" fill="#fbf7ef"/>
+<circle cx="675" cy="110" r="135" fill="#f3b431" opacity=".35"/>
+<path d="M0 480 Q180 340 390 470 T800 430 V600 H0Z" fill="#1f6f8b" opacity=".15"/>
+<path d="M0 540 Q240 430 430 530 T800 495 V600 H0Z" fill="#1f6f8b" opacity=".22"/>
+<rect x="285" y="90" width="230" height="46" rx="23" fill="#f3b431"/>
+<g text-anchor="middle" font-family="Arial, sans-serif" fill="#1f2933">
+<text x="400" y="120" font-size="23" font-weight="700">NOVITÀ 2026</text>
+<text x="400" y="255" font-size="56" font-weight="700">NUOVA OPERA</text>
+<text x="400" y="310" font-size="26" letter-spacing="4" fill="#1f6f8b">WORK IN PROGRESS</text>
+<text x="400" y="390" font-size="32">Le Colline delle Fiabe 2026</text>
+</g></svg>

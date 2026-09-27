@@ -481,21 +481,30 @@ La struttura dati introdotta con V2.0 resta invariata.
 
 ## V2.5.2 — Voce narrante
 
-- Pulsante “Ascolta la storia” nella scheda.
-- Audioguida narrativa italiana dedicata per tutti i 13 murales (`audioGuideIt`), con fallback alla descrizione esistente.
-
-## V2.5.3 — Audioguida professionale
-
-- 13 tracce MP3 italiane generate con OpenAI Text-to-Speech, voce `marin`.
-- Player audio nativo con avanzamento, pausa, ripresa e controllo del volume.
-- Indicazione trasparente della voce generata con AI.
-- Sintesi vocale del browser mantenuta come fallback e per la versione inglese.
-
-## V2.5.4 — Audioguida bilingue
-
-- 13 testi narrativi inglesi dedicati (`audioGuideEn`).
-- Player collegato automaticamente alla traccia italiana o inglese in base alla lingua selezionata.
-- Sintesi vocale del browser mantenuta come fallback.
+- Pulsante Ascolta il murale nella scheda.
 - Play, pausa/riprendi e stop.
 - Lingua IT/EN automatica.
 - Web Speech API, senza file audio esterni.
+
+## V2.6 completa — Audioguide narrative
+
+- Inserite 13 audioguide italiane dedicate, separate dalle descrizioni delle schede.
+- Il pulsante “Ascolta la storia” legge `audioGuideIt`, con fallback alla descrizione normale.
+
+## V2.6.1 — Le Colline delle Fiabe 2026
+
+Aggiunti cinque punti provvisori nella categoria Murales, con coordinate fornite,
+placeholder SVG coordinato e badge NOVITÀ 2026. Le etichette Nuova opera 1–5
+sono identificativi provvisori, non titoli delle opere. Non sono stati aggiunti
+artisti, indirizzi, audioguide o dettagli non forniti. Le schede provvisorie
+mantengono navigazione, condivisione e stato della visita.
+
+I 13 murales originali e tutti i loro campi, comprese le audioguide, sono invariati.
+Family Hunt mantiene i suoi obiettivi originali. Versione applicazione e cache PWA: 2.6.1.
+Le funzioni esistenti rimangono presenti; Tappe Smart non è stata reintrodotta.
+
+### Correzione audio V2.6.1
+Ripristinate le 26 tracce MP3 (13 IT + 13 EN) dalla versione locale con voce migliorata. Player audio nativo, senza fallback automatico alla voce del browser. Cache aggiornata.
+
+### Foto dei nuovi murales — 27 settembre 2026
+Cinque foto originali abbinate alle coordinate nei nomi dei file. Titoli provvisori, descrizioni e tracce audio con voce migliorata mantenuti.
